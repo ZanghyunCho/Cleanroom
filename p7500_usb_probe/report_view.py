@@ -23,7 +23,7 @@ def hex_dump(data,base=0):
 
 def event_description(e):
     op=e.get('operation','')
-    kind='영역 자료' if e.get('kind')=='key' and e.get('profile')=='bounds' else e.get('kind')
+    kind='영역 자료' if e.get('kind')=='key' and e.get('profile') in ('bounds','full') else e.get('kind')
     if e.get('event')=='bridge_launch':return f"[{op}] 보조 프로그램 실행 (PID {e.get('pid','?')})"
     if e.get('event')=='stage':return f"[{op}] "+STAGES.get(e.get('stage'),str(e.get('stage')))
     if e.get('event')=='read_start':
@@ -48,6 +48,7 @@ def report_details(r,offset=None):
            f"선택 영역: {r.get('region','미확인')}",
            f"읽기 시험: {r.get('profile','keys')} / 모드 기록: {r.get('printer_mode_declared','미기록')} (사용자 선택, 자동 감지 아님)",
            '주소는 서비스 공간의 후보 오프셋입니다. 물리 플래시 위치는 미확인입니다.', '']
+    if r.get('full_read'):lines.append('전체 읽기 비교: '+str(r['full_read']))
     if r.get('analysis_only'):lines.append('기존 JSON을 재분석한 결과입니다. 이 분석에서 USB를 새로 읽지는 않았습니다.')
     total=sum(len(bytes.fromhex(s['data_hex'])) for row in r.get('locations',[]) for s in row.get('samples',[]))
     lines.append(f'검증된 데이터 페이로드 합계: {total}바이트 (반복 읽기 포함)')

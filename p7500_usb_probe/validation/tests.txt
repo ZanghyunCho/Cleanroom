@@ -1,3 +1,5 @@
+test_full_extent_and_alignment (test_probe.FullReadTests.test_full_extent_and_alignment) ... ok
+test_full_images_complete_and_interrupted (test_probe.FullReadTests.test_full_images_complete_and_interrupted) ... ok
 test_a3_control_compares_data_to_nvram_serial_without_comparing_usb_id (test_probe.ProtocolTests.test_a3_control_compares_data_to_nvram_serial_without_comparing_usb_id) ... ok
 test_all_na_has_no_payload_but_does_have_responses (test_probe.ProtocolTests.test_all_na_has_no_payload_but_does_have_responses) ... ok
 test_all_reads_match_and_serial_confirmed (test_probe.ProtocolTests.test_all_reads_match_and_serial_confirmed) ... ok
@@ -32,6 +34,6 @@ test_wrong_request_or_region_does_not_pass (test_probe.ProtocolTests.test_wrong_
 test_zero_response_does_not_pass (test_probe.ProtocolTests.test_zero_response_does_not_pass) ... ok
 
 ----------------------------------------------------------------------
-Ran 32 tests in 0.863s
+Ran 34 tests in 0.864s
 
 OK

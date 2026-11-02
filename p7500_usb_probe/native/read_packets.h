@@ -9,7 +9,7 @@ static unsigned make_fixed_read(unsigned char req[16],int serial,unsigned region
   int key=offset==0x7010||offset==0x6d000;
   int boundary=(region==0xa3&&(offset==0||offset==0x644||offset==0xffc0||offset==0x10000))||
                (region==0xd6&&(offset==0||offset==0xfc0||offset==0x1000));
-  if((region!=0xa3&&region!=0xd6)||(!key&&!boundary)||count!=64)return 0;
+  if((region!=0xa3&&region!=0xd6)||(!key&&!boundary&&!(offset%64==0&&offset<(region==0xa3?0x10000:0x1000)))||count!=64)return 0;
  }
  const unsigned char prefix[]={0x7c,0x7c,12,0,0x75,0x06,0x98,0x67,0x4c,0};
  memset(req,0,16);memcpy(req,prefix,sizeof(prefix));

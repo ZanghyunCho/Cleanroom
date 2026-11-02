@@ -1,8 +1,8 @@
 {
-  "version": "0.3",
+  "version": "0.4",
   "platform": "Windows 10/11; Python 3.10+ Tkinter GUI; bundled x86 native helper",
-  "purpose": "Read-only candidate key reads and fixed A3/D6 boundary/control reads with operator-declared mode",
-  "tests": "32 passed; native C/Python parity and 9 original service DLL packet vectors checked",
+  "purpose": "Read-only fixed region full two-pass acquisition, boundaries and candidate key reads",
+  "tests": "34 passed; existing original DLL 9-vector evidence retained; full acquisition synthetic tests",
   "hardware_usb_tested": false,
   "windows_gui_executed": false,
   "service_region_to_flash_mapping_confirmed": false,
@@ -31,18 +31,18 @@
     },
     {
       "path": "README.ko.md",
-      "bytes": 9431,
-      "sha256": "c539f959da4716695b253b6a1c98f2c5db6e4117ae385934e78903d6780c71a4"
+      "bytes": 11171,
+      "sha256": "7657d100bfb758d518f7f51899ee63d0b18981a953a6da42c9610a5051619413"
     },
     {
       "path": "app.py",
-      "bytes": 18589,
-      "sha256": "9da89e01790c223be566e7cd6619b255eba595d65560aed17459998d617b0f74"
+      "bytes": 19330,
+      "sha256": "eac2e91e1133b77468720102bd710ca446b761f87bf3a7dbdd4a79a155847e22"
     },
     {
       "path": "bin/usb_bridge32.exe",
       "bytes": 57856,
-      "sha256": "64212e977f28b5f55eaed77e14ab19f3685c818eec31013a7df1f526344ee33d"
+      "sha256": "4b4f0684678331addaebdb2b2b8dbb34fc4e71934d6aab3084ce8f45f155ce74"
     },
     {
       "path": "native/build_bridge.bat",
@@ -51,18 +51,18 @@
     },
     {
       "path": "native/read_packets.h",
-      "bytes": 1064,
-      "sha256": "45934b4c0da7ad08fe5719188c47144369838908ae58f13cd96cfe5421d79bc9"
+      "bytes": 1119,
+      "sha256": "5daca7a5d075e1783e6af3893ab6c76403a739ff0c5cda00c3a9ea496ac6a903"
     },
     {
       "path": "native/usb_bridge.c",
-      "bytes": 8129,
-      "sha256": "68ba3e0a50505a2ad291077dd488f63f16851d74094b0dbab49ae6bbfcde55fc"
+      "bytes": 8381,
+      "sha256": "2844d73bf659affb6b0612d5b293a8f890d24cafafe26aee1f7be1311ad22bc7"
     },
     {
       "path": "probe_core.py",
-      "bytes": 18771,
-      "sha256": "39ecc44b3cc6c8a266f5b6cff33791a9c481b2c7dd2d6db9b46f2c384f3faa6f"
+      "bytes": 20517,
+      "sha256": "cc268f05013151fc146dcc256a3e1ce36b9192e3d61111bee51f632abfdfeff9"
     },
     {
       "path": "reference/epson-p7500-original-public.bin",
@@ -71,8 +71,8 @@
     },
     {
       "path": "report_view.py",
-      "bytes": 6682,
-      "sha256": "8ac3c618510e4a2875b461baf7edcca4322a1cf5d46ddcc70b71a01a541d2ad3"
+      "bytes": 6778,
+      "sha256": "36d6861d6d60d7a45984bd07078e16077aa6fc2062f2f83970ce3e0ed9959088"
     },
     {
       "path": "run_gui.bat",
@@ -86,8 +86,8 @@
     },
     {
       "path": "tests/test_probe.py",
-      "bytes": 12521,
-      "sha256": "352891abb0813adbcb3f6f150726b4240783836d005f985dea4d5e97378d6507"
+      "bytes": 14475,
+      "sha256": "9a086627ebaa9738f990b8721ece011c639210111f7ad5286251bec15b57c42f"
     },
     {
       "path": "validation/original-dll-packet-parity.json",
@@ -96,8 +96,8 @@
     },
     {
       "path": "validation/tests.txt",
-      "bytes": 3875,
-      "sha256": "3c522f8e741821be56e43be01c62d3648194e46bdfb933ef9af7150164ac99c2"
+      "bytes": 4089,
+      "sha256": "08da665235050fe2d7322675e3126c7385af2fbab82eae034f4ded7322adbc04"
     }
   ]
 }

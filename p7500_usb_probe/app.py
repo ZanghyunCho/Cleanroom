@@ -7,7 +7,7 @@ from report_view import event_description,hex_dump,report_details
 
 class App:
     def __init__(self,root):
-        self.root=root;root.title('SC-P7500 USB 공개키 읽기 시험 v0.3');root.geometry('1050x780');root.minsize(900,700)
+        self.root=root;root.title('SC-P7500 USB 공개키 읽기 시험 v0.4');root.geometry('1050x780');root.minsize(900,700)
         style=ttk.Style()
         if 'vista' in style.theme_names():style.theme_use('vista')
         self.queue=queue.Queue();self.bridge=None;self.busy=False;self.devices=[];self.last_path=None;self.last_report=None;self.closed=False
@@ -34,6 +34,7 @@ class App:
         ttk.Label(bar,text='모드 (기록용)').pack(side='left')
         self.mode_combo=ttk.Combobox(bar,textvariable=self.printer_mode,values=('미기록','일반','Repair'),state='readonly',width=8);self.mode_combo.pack(side='left',padx=(8,16))
         self.read_button=ttk.Button(bar,text='두 위치 읽기 시험',command=self.probe);self.read_button.pack(side='left',padx=(0,8));self.controls.append(self.read_button)
+        full_button=ttk.Button(bar,text='영역 전체 2회 읽기',command=lambda:self.probe('full'));full_button.pack(side='left',padx=(0,8));self.controls.append(full_button)
         bounds_button=ttk.Button(bar,text='영역 범위 읽기',command=lambda:self.probe('bounds'));bounds_button.pack(side='left',padx=(0,8));self.controls.append(bounds_button)
         self.cancel_button=ttk.Button(bar,text='중지',command=self.cancel,state='disabled');self.cancel_button.pack(side='right')
         bar2=ttk.Frame(bars);bar2.pack(fill='x',pady=(7,0))
@@ -106,12 +107,18 @@ class App:
         self.table.delete(*self.table.get_children());self.add_log(f"선택 영역 {region:02X}, 모드 기록 {printer_mode}, 시험 {profile} 읽기를 시작합니다.")
         def job():
             events=[]
+            from datetime import datetime
+            import json
+            checkpoint=Path(directory);checkpoint.mkdir(parents=True,exist_ok=True)
+            journal=checkpoint/(datetime.now().strftime('%Y%m%d-%H%M%S-%f')+'-events.jsonl')
             def progress(event):
-                events.append(event);self.queue.put(('progress',event))
+                events.append(event)
+                with journal.open('a',encoding='utf8') as stream:stream.write(json.dumps(event,ensure_ascii=False)+'\n')
+                self.queue.put(('progress',event))
             try:
                 fresh=self.bridge.scan(on_event=progress)
                 if not any(d['path']==device['path'] and d['port']==device['port'] for d in fresh):raise ProbeError('선택한 USB 장치가 변경되었습니다. 다시 검색하세요.')
-                result=self.bridge.run(['probe',driver,device['port'],f'{region:X}',profile],60,on_event=progress)
+                result=self.bridge.run(['probe',driver,device['port'],f'{region:X}',profile],1800 if profile=='full' else 60,on_event=progress)
                 report=evaluate_run(device,events,ref,region,profile,printer_mode);report['bridge_exit_code']=result['exit_code'];report['bridge_stderr']=result['stderr']
                 if result['exit_code']!=0:
                     report['errors'].append('USB 보조 프로그램 종료 코드: '+str(result['exit_code']));report['success']=False
@@ -121,7 +128,7 @@ class App:
                 if hasattr(e,'partial_stdout'):report['partial_helper_stdout']=e.partial_stdout
                 if hasattr(e,'stderr'):report['bridge_stderr']=e.stderr
             path=save_report(report,directory);return ('report',(report,str(path)))
-        self.start(job,'USB 읽기 시험 중… 각 고정 위치를 2회 읽습니다. 보조 프로그램 제한 60초.')
+        self.start(job,'USB 읽기 시험 중… 각 고정 위치를 2회 읽습니다. 전체 읽기 제한 30분, 나머지 시험 60초.')
     def demo(self):
         try:ref=reference_key(self.ref.get());report=demo_report(ref);path=save_report(report,self.output.get());self.show_report(report,str(path))
         except Exception as e:messagebox.showerror('데모 실패',str(e))
@@ -132,14 +139,15 @@ class App:
             self.table.insert('','end',values=(row['offset'],('[데모] ' if demo else '')+row['status'],f"64B × {len(row['samples'])}" if row['samples'] else '0B','예' if row['stable'] else '아니오', '유효' if row['valid_p256'] else '아니오',row['samples'][0]['sha256'] if row['samples'] else '—'))
             if row.get('error'):self.add_log(row['offset']+': '+row['error'])
             if 'nvram_serial_prefix_match' in row:self.add_log(f"{row['offset']} 앞 10바이트와 NVRAM 시리얼 일치: {row['nvram_serial_prefix_match']}")
-            for i,sample in enumerate(row['samples']):
+            for i,sample in enumerate(row['samples'] if r.get('profile')!='full' else []):
                 self.add_log(f"{row['offset']} / 회차 {sample.get('repeat',i)+1} / 실제 수신 데이터:\n"+hex_dump(bytes.fromhex(sample['data_hex']),int(row['offset'],16)))
+        if r.get('full_read'):self.add_log('전체 읽기 비교: '+str(r['full_read']))
         self.identity.set(f"모델: {r['device']['model']}    USB ID: {r.get('usb_id') or '미확인'}\nNVRAM 시리얼: {r['serial'] or '미확인'}")
         for error in r.get('errors',[]):self.add_log('오류: '+error)
         if r.get('serial_read_error'):self.add_log('NVRAM 시리얼 조회: '+r['serial_read_error'])
         summary=r.get('read_summary',{});count=summary.get('decoded_data_bytes',summary.get('decoded_key_data_bytes',0));self.add_log(f"자료 읽기 반환 {summary.get('data_responses_recorded',summary.get('key_responses_recorded',0))}회 / 추출 데이터 {count}바이트 (반복 포함) / NA {summary.get('na_responses',0)}회 / 모드 기록 {r.get('printer_mode_declared','미기록')}")
         self.add_log(('기존 기록 재분석: ' if r.get('analysis_only') else '결과 저장: ')+path)
-        self.status.set('데모 완료 — 합성 데이터이며 실기 결과가 아닙니다.' if demo else '영역 확인 시험을 기록했습니다. 범위 안과 경계 밖의 데이터·NA·무응답을 비교하세요.' if r.get('profile')=='bounds' else '두 후보 위치의 반복 읽기와 참조 키 비교가 일치했습니다.' if r['success'] else '키 읽기 데이터 0바이트 — 연결 단계와 NA 응답을 확인하세요.' if not count else '수신 데이터를 표시했습니다. 공개키 비교 결과를 확인하세요.')
+        self.status.set('데모 완료 — 합성 데이터이며 실기 결과가 아닙니다.' if demo else '영역 확인 시험을 기록했습니다. 범위 안과 경계 밖의 데이터·NA·무응답을 비교하세요.' if r.get('profile') in ('bounds','full') else '두 후보 위치의 반복 읽기와 참조 키 비교가 일치했습니다.' if r['success'] else '키 읽기 데이터 0바이트 — 연결 단계와 NA 응답을 확인하세요.' if not count else '수신 데이터를 표시했습니다. 공개키 비교 결과를 확인하세요.')
 
     def load_report(self):
         path=filedialog.askopenfilename(title='이전 하드웨어 JSON 열기',filetypes=[('읽기 보고서','*.json')])

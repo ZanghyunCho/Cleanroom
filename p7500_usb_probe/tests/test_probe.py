@@ -174,3 +174,31 @@ class ProtocolTests(unittest.TestCase):
         with self.assertRaises(ProbeError):read_offsets(0xff,'bounds')
 
 if __name__=='__main__':unittest.main()
+
+class FullReadTests(unittest.TestCase):
+    def test_full_extent_and_alignment(self):
+        self.assertEqual(len(read_offsets(0xa3,'full')),1024)
+        self.assertEqual(read_offsets(0xd6,'full')[-1],0xfc0)
+        for region in REGION_SIZES:
+            for off in read_offsets(region,'full'):self.assertEqual(len(request_bytes(off,64,region)),16)
+        with self.assertRaises(ProbeError):request_bytes(1,64,0xa3)
+    def test_full_images_complete_and_interrupted(self):
+        key=reference_key(ROOT/'reference/epson-p7500-original-public.bin')
+        fixture=demo_report(key);events=[e for e in fixture['events'] if e.get('kind')!='key']
+        for repeat in range(2):
+            for off in read_offsets(0xd6,'full'):
+                data=bytes([off//64])*64
+                events.append({'event':'read','kind':'key','profile':'full','region':0xd6,'offset':off,'requested':64,'repeat':repeat,'driver_result':0,'request_hex':request_bytes(off,64,0xd6).hex(),'response_window_hex':(b'@BDC PS\r\nSF:'+data+b';\x0c').hex()})
+        report=evaluate_run(fixture['device'],events,key,0xd6,'full')
+        self.assertTrue(report['full_read']['identical']);self.assertFalse(report['key_reads_match'])
+        with tempfile.TemporaryDirectory() as d:
+            p=save_report(report,d)
+            self.assertEqual(p.with_name(p.stem+'-pass1.bin').stat().st_size,4096)
+            self.assertEqual(p.with_name(p.stem+'-pass1.bin').read_bytes(),p.with_name(p.stem+'-pass2.bin').read_bytes())
+        events.pop()
+        report=evaluate_run(fixture['device'],events,key,0xd6,'full')
+        self.assertFalse(report['full_read']['complete']);self.assertEqual(report['full_read']['passes'][1]['missing_offsets'],['0xfc0'])
+        with tempfile.TemporaryDirectory() as d:
+            p=save_report(report,d)
+            self.assertTrue(p.with_name(p.stem+'-pass1.bin').exists())
+            self.assertFalse(p.with_name(p.stem+'-pass2.bin').exists())

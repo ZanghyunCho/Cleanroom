@@ -7,6 +7,7 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parent
 DRIVER_SHA256='42f775bdd44425227a36750d6942104db99c9a37dfe82c4ce2d810b7b38eda18'
 OFFSETS=(0x7010,0x6d000)
+REGION_SIZES={0xa3:0x10000,0xd6:0x1000}
 BOUND_OFFSETS={0xa3:(0,0x644,0xffc0,0x10000),0xd6:(0,0xfc0,0x1000)}
 P=2**256-2**224+2**192+2**96-1
 B=int('5ac635d8aa3a93e7b3ebbd55769886bc651d06b0cc53b0f63bce3c3e27d2604b',16)
@@ -35,15 +36,15 @@ def reference_key(path):
     return b
 
 def read_offsets(region,profile='keys'):
-    if region not in BOUND_OFFSETS or profile not in ('keys','bounds'):raise ProbeError('허용되지 않은 읽기 시험입니다.')
-    return OFFSETS if profile=='keys' else BOUND_OFFSETS[region]
+    if region not in BOUND_OFFSETS or profile not in ('keys','bounds','full'):raise ProbeError('허용되지 않은 읽기 시험입니다.')
+    return tuple(range(0,REGION_SIZES[region],64)) if profile=='full' else OFFSETS if profile=='keys' else BOUND_OFFSETS[region]
 
 def request_bytes(offset,count,region=None):
     if region is None:
         if (offset,count)!=(0x644,10):raise ProbeError('시리얼 읽기 주소가 올바르지 않습니다.')
         body=b'\x5d\xa2\xae'+struct.pack('<IH',offset,count)
     else:
-        if region not in BOUND_OFFSETS or offset not in (*OFFSETS,*BOUND_OFFSETS[region]) or count!=64:raise ProbeError('허용된 고정 읽기 범위를 벗어났습니다.')
+        if region not in BOUND_OFFSETS or (offset not in (*OFFSETS,*BOUND_OFFSETS[region]) and not (0<=offset<REGION_SIZES[region] and offset%64==0)) or count!=64:raise ProbeError('허용된 고정 읽기 범위를 벗어났습니다.')
         body=b'\x98\x67\x4c'+bytes([region])+struct.pack('<IH',offset,count)
     return b'||'+struct.pack('<H',len(body)+2)+b'\x75\x06'+body
 
@@ -163,7 +164,7 @@ def check_driver(path):
 
 def evaluate_run(device,events,reference,region,profile='keys',printer_mode='미기록'):
     offsets=read_offsets(region,profile)
-    report={'version':3,'app_version':'0.3','utc':datetime.now(timezone.utc).isoformat(),'mode':'hardware',
+    report={'version':3,'app_version':'0.4','utc':datetime.now(timezone.utc).isoformat(),'mode':'hardware',
             'profile':profile,'printer_mode_declared':printer_mode,'printer_mode_source':'operator declaration, not firmware detection',
             'device':device,'region':hex(region),'candidate_mapping':'UNCONFIRMED: service offsets are hypotheses, not proven flash addresses',
             'reference_sha256':hashlib.sha256(reference).hexdigest(),'events':events,'locations':[],'errors':[],
@@ -246,9 +247,21 @@ def evaluate_run(device,events,reference,region,profile='keys',printer_mode='미
     summary=report['read_summary']
     summary.update(data_responses_recorded=len(key_returns),decoded_payload_samples=summary['decoded_key_samples'],
                    decoded_data_bytes=summary['decoded_key_data_bytes'])
-    if profile=='bounds':
+    if profile!='keys':
         summary.update(key_responses_recorded=0,decoded_key_samples=0,decoded_key_data_bytes=0)
         report['bounds_basis']='Host service backup sizes: A3 64KiB and D6 4KiB. Device-enforced limits are being tested, not assumed.'
+    if profile=='full':
+        size=REGION_SIZES[region]
+        passes=[]
+        for repeat in range(2):
+            blocks={int(row['offset'],16):bytes.fromhex(sample['data_hex']) for row in report['locations'] for sample in row['samples'] if sample['repeat']==repeat}
+            missing=[off for off in offsets if off not in blocks]
+            data=b''.join(blocks[off] for off in offsets) if not missing else None
+            passes.append({'repeat':repeat,'complete':not missing,'bytes_read':len(blocks)*64,'missing_offsets':[hex(off) for off in missing],
+                           'sha256':hashlib.sha256(data).hexdigest() if data is not None else None})
+        report['full_read']={'size':size,'passes':passes,'complete':all(p['complete'] for p in passes),
+                             'identical':all(p['complete'] for p in passes) and passes[0]['sha256']==passes[1]['sha256'],
+                             'unstable_offsets':[row['offset'] for row in report['locations'] if len(row['samples'])==2 and not row['stable']]}
     return report
 
 def save_report(report,directory):
@@ -256,6 +269,13 @@ def save_report(report,directory):
     name=datetime.now().strftime('%Y%m%d-%H%M%S-%f')
     path=folder/(name+'-'+report.get('mode','hardware')+'.json')
     path.write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
+    if report.get('profile')=='full':
+        for repeat in range(2):
+            blocks=sorted((int(row['offset'],16),bytes.fromhex(sample['data_hex'])) for row in report['locations'] for sample in row['samples'] if sample['repeat']==repeat)
+            # Sparse JSON retains exact offsets; incomplete reads must never become padded full images.
+            if len(blocks)*64==report['full_read']['size']:
+                path.with_name(path.stem+f'-pass{repeat+1}.bin').write_bytes(b''.join(data for _,data in blocks))
+        return path
     for row in report.get('locations',[]):
         for i,sample in enumerate(row.get('samples',[])):
             path.with_name(path.stem+'-'+row['offset']+'-'+str(sample.get('repeat',i))+'.bin').write_bytes(bytes.fromhex(sample['data_hex']))

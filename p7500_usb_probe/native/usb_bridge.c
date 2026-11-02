@@ -66,10 +66,11 @@ static void read_request(Ctl ctl,void*object,unsigned region,unsigned offset,uns
 int wmain(int argc,wchar_t**argv){
  SetErrorMode(SEM_FAILCRITICALERRORS|SEM_NOGPFAULTERRORBOX);
  setvbuf(stdout,NULL,_IONBF,0);stage("helper_started");if(argc==2&&wcscmp(argv[1],L"scan")==0)return scan();
- if((argc!=5&&argc!=6)||wcscmp(argv[1],L"probe")!=0)return fail("expected scan or probe DLL PORT REGION [keys|bounds]",ERROR_INVALID_PARAMETER);
+ if((argc!=5&&argc!=6)||wcscmp(argv[1],L"probe")!=0)return fail("expected scan or probe DLL PORT REGION [keys|bounds|full]",ERROR_INVALID_PARAMETER);
+ int full=argc==6&&wcscmp(argv[5],L"full")==0;
  int bounds=argc==6&&wcscmp(argv[5],L"bounds")==0;
- if(argc==6&&!bounds&&wcscmp(argv[5],L"keys")!=0)return fail("unknown read profile",ERROR_INVALID_PARAMETER);
- const char*profile=bounds?"bounds":"keys";
+ if(argc==6&&!bounds&&!full&&wcscmp(argv[5],L"keys")!=0)return fail("unknown read profile",ERROR_INVALID_PARAMETER);
+ const char*profile=full?"full":bounds?"bounds":"keys";
  wchar_t*end;unsigned long port=wcstoul(argv[3],&end,10);if(*end||port>9)return fail("USB port must be 0..9",ERROR_INVALID_PARAMETER);
  unsigned long region=wcstoul(argv[4],&end,16);if(*end||(region!=0xa3&&region!=0xd6))return fail("region must be A3 or D6",ERROR_INVALID_PARAMETER);
  stage("load_library_start");
@@ -92,6 +93,7 @@ int wmain(int argc,wchar_t**argv){
  const unsigned keys[]={0x7010,0x6d000},a3_bounds[]={0,0x644,0xffc0,0x10000},d6_bounds[]={0,0xfc0,0x1000};
  const unsigned*offsets=bounds?(region==0xa3?a3_bounds:d6_bounds):keys;
  unsigned total=bounds?(region==0xa3?4:3):2;
- for(unsigned i=0;i<total;i++)for(int repeat=0;repeat<2;repeat++)read_request(ctl,object,region,offsets[i],64,0,repeat,profile);
+ if(full){for(int repeat=0;repeat<2;repeat++)for(unsigned offset=0;offset<(region==0xa3?0x10000:0x1000);offset+=64)read_request(ctl,object,region,offset,64,0,repeat,profile);}
+ else for(unsigned i=0;i<total;i++)for(int repeat=0;repeat<2;repeat++)read_request(ctl,object,region,offsets[i],64,0,repeat,profile);
  stage("close_start");dtor(object);free(object);FreeLibrary(dll);stage("close_done");printf("{\"event\":\"done\"}\n");return 0;
 }
