@@ -7,6 +7,7 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parent
 DRIVER_SHA256='42f775bdd44425227a36750d6942104db99c9a37dfe82c4ce2d810b7b38eda18'
 OFFSETS=(0x7010,0x6d000)
+BOUND_OFFSETS={0xa3:(0,0x644,0xffc0,0x10000),0xd6:(0,0xfc0,0x1000)}
 P=2**256-2**224+2**192+2**96-1
 B=int('5ac635d8aa3a93e7b3ebbd55769886bc651d06b0cc53b0f63bce3c3e27d2604b',16)
 
@@ -33,12 +34,16 @@ def reference_key(path):
     if not valid_public_key(b):raise ProbeError('참조 파일은 유효한 P-256 공개키여야 합니다. 64바이트 X||Y 또는 65바이트 04||X||Y 형식입니다.')
     return b
 
+def read_offsets(region,profile='keys'):
+    if region not in BOUND_OFFSETS or profile not in ('keys','bounds'):raise ProbeError('허용되지 않은 읽기 시험입니다.')
+    return OFFSETS if profile=='keys' else BOUND_OFFSETS[region]
+
 def request_bytes(offset,count,region=None):
     if region is None:
         if (offset,count)!=(0x644,10):raise ProbeError('시리얼 읽기 주소가 올바르지 않습니다.')
         body=b'\x5d\xa2\xae'+struct.pack('<IH',offset,count)
     else:
-        if region not in (0xa3,0xd6) or offset not in OFFSETS or count!=64:raise ProbeError('허용된 키 읽기 범위를 벗어났습니다.')
+        if region not in BOUND_OFFSETS or offset not in (*OFFSETS,*BOUND_OFFSETS[region]) or count!=64:raise ProbeError('허용된 고정 읽기 범위를 벗어났습니다.')
         body=b'\x98\x67\x4c'+bytes([region])+struct.pack('<IH',offset,count)
     return b'||'+struct.pack('<H',len(body)+2)+b'\x75\x06'+body
 
@@ -156,8 +161,10 @@ def check_driver(path):
     if digest!=DRIVER_SHA256:raise ProbeError('분석한 버전의 EprisDrv.dll과 해시가 다릅니다. 호환되지 않는 DLL은 호출하지 않습니다.')
     return path
 
-def evaluate_run(device,events,reference,region):
-    report={'version':2,'app_version':'0.2','utc':datetime.now(timezone.utc).isoformat(),'mode':'hardware',
+def evaluate_run(device,events,reference,region,profile='keys',printer_mode='미기록'):
+    offsets=read_offsets(region,profile)
+    report={'version':3,'app_version':'0.3','utc':datetime.now(timezone.utc).isoformat(),'mode':'hardware',
+            'profile':profile,'printer_mode_declared':printer_mode,'printer_mode_source':'operator declaration, not firmware detection',
             'device':device,'region':hex(region),'candidate_mapping':'UNCONFIRMED: service offsets are hypotheses, not proven flash addresses',
             'reference_sha256':hashlib.sha256(reference).hexdigest(),'events':events,'locations':[],'errors':[],
             'usb_id':device.get('usb_id',device.get('serial','')),
@@ -165,7 +172,7 @@ def evaluate_run(device,events,reference,region):
             'serial':'','serial_source':'NVRAM 미확인'}
     report['planned_reads']=[{'kind':'serial','offset':'0x644','requested':10,
                              'request_hex':request_bytes(0x644,10).hex()}]
-    for offset in OFFSETS:
+    for offset in offsets:
         for repeat in range(2):
             report['planned_reads'].append({'kind':'key','region':hex(region),'offset':hex(offset),
                                            'requested':64,'repeat':repeat,'request_hex':request_bytes(offset,64,region).hex()})
@@ -189,7 +196,7 @@ def evaluate_run(device,events,reference,region):
         sn=value.decode('ascii');report['nvram_serial']=sn
         report['serial']=sn;report['serial_source']='NVRAM 0x0644 (10바이트 읽기)'
     except (ProbeError,KeyError,ValueError) as e:report['serial_read_error']=str(e)
-    for offset in OFFSETS:
+    for offset in offsets:
         row={'offset':hex(offset),'status':'데이터 수신 없음','matched_reference':False,'stable':False,
              'valid_p256':False,'samples':[],'response_errors':[],'na_responses':0}
         samples=[e for e in events if e.get('event')=='read' and e.get('kind')=='key' and e.get('offset')==offset]
@@ -198,6 +205,7 @@ def evaluate_run(device,events,reference,region):
             try:
                 if e['driver_result']!=0:raise ProbeError('USB 통신 실패: '+str(e['driver_result']))
                 if e.get('region')!=region or e.get('requested')!=64 or bytes.fromhex(e['request_hex'])!=request_bytes(offset,64,region):raise ProbeError('수집된 요청이 예정된 읽기 요청과 다릅니다.')
+                if e.get('profile',profile)!=profile:raise ProbeError('응답이 선택한 읽기 시험과 다릅니다.')
                 raw=bytes.fromhex(e['response_window_hex'])
                 if na_response(raw):row['na_responses']+=1
                 data=parse_reply(raw,offset,64)
@@ -222,8 +230,10 @@ def evaluate_run(device,events,reference,region):
         elif row['na_responses']:row['status']='NA 응답 (데이터 없음)'
         if not complete and not row['response_errors']:row['response_errors'].append('독립적인 읽기 응답 2개를 확인하지 못했습니다.')
         if row['response_errors']:row['error']=' / '.join(row['response_errors'])
+        if profile=='bounds' and region==0xa3 and offset==0x644 and row['samples'] and report['serial']:
+            row['nvram_serial_prefix_match']=all(bytes.fromhex(s['data_hex'])[:10]==report['serial'].encode('ascii') for s in row['samples'])
         report['locations'].append(row)
-    report['key_reads_match']=all(r['matched_reference'] for r in report['locations'])
+    report['key_reads_match']=profile=='keys' and all(r['matched_reference'] for r in report['locations'])
     report['identity_confirmed']=bool(report['serial']) and not report['errors']
     report['success']=report['key_reads_match'] and report['identity_confirmed']
     stages=[e for e in events if e.get('event')=='stage']
@@ -233,6 +243,12 @@ def evaluate_run(device,events,reference,region):
                           'decoded_key_data_bytes':sum(len(bytes.fromhex(s['data_hex'])) for r in report['locations'] for s in r['samples']),
                           'na_responses':sum(r['na_responses'] for r in report['locations']),
                           'last_stage':stages[-1].get('stage') if stages else None}
+    summary=report['read_summary']
+    summary.update(data_responses_recorded=len(key_returns),decoded_payload_samples=summary['decoded_key_samples'],
+                   decoded_data_bytes=summary['decoded_key_data_bytes'])
+    if profile=='bounds':
+        summary.update(key_responses_recorded=0,decoded_key_samples=0,decoded_key_data_bytes=0)
+        report['bounds_basis']='Host service backup sizes: A3 64KiB and D6 4KiB. Device-enforced limits are being tested, not assumed.'
     return report
 
 def save_report(report,directory):

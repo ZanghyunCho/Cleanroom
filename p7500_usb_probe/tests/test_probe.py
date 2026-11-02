@@ -18,7 +18,7 @@ class ProtocolTests(unittest.TestCase):
         self.assertEqual(parse_reply(b'EE:00000644ABC1234567;\x0c',0x644,10,True),b'ABC1234567')
         with self.assertRaises(ProbeError):parse_reply(b'EE:00000700ABC1234567;\x0c',0x644,10,True)
     def test_only_allow_fixed_reads(self):
-        for args in ((0,64,0xa3),(0x7010,65,0xa3),(0x7010,64,0xff),(0,10,None)):
+        for args in ((0x1234,64,0xa3),(0x7010,65,0xa3),(0x7010,64,0xff),(0,10,None)):
             with self.assertRaises(ProbeError):request_bytes(*args)
     def hardware_fixture(self):
         r=demo_report(self.key);return r['device'],copy.deepcopy(r['events'])
@@ -139,9 +139,38 @@ class ProtocolTests(unittest.TestCase):
     def test_native_builder_matches_reference_protocol(self):
         with tempfile.TemporaryDirectory() as td:
             exe=Path(td)/'fixture';subprocess.run(['cc',str(ROOT/'tests/packet_fixture.c'),'-o',str(exe)],check=True)
-            for serial,region,off,count in ((0,0xa3,0x7010,64),(0,0xa3,0x6d000,64),(0,0xd6,0x7010,64),(1,0,0x644,10)):
+            cases=[(0,r,off,64) for r in (0xa3,0xd6) for off in (*OFFSETS,*BOUND_OFFSETS[r])]+[(1,0,0x644,10)]
+            for serial,region,off,count in cases:
                 r=subprocess.check_output([str(exe),str(serial),f'{region:x}',f'{off:x}',str(count)]).decode()
                 self.assertEqual(bytes.fromhex(r),request_bytes(off,count,None if serial else region))
-            self.assertNotEqual(subprocess.run([str(exe),'0','a3','0','64'],capture_output=True).returncode,0)
+            self.assertNotEqual(subprocess.run([str(exe),'0','a3','1234','64'],capture_output=True).returncode,0)
+    def bounds_fixture(self,region):
+        d,old=self.hardware_fixture();events=old[:2]
+        for off in BOUND_OFFSETS[region]:
+            end=0x10000 if region==0xa3 else 0x1000
+            data=(b'DEMO000001'+b'\xff'*54) if off==0x644 else b'\xff'*64
+            raw=b'||:98:NA;\x0c' if off==end else b'@BDC PS\r\nSF:'+data+b';\x0c'
+            for repeat in range(2):
+                events.append({'event':'read','kind':'key','profile':'bounds','region':region,'offset':off,
+                               'requested':64,'repeat':repeat,'driver_result':0,'request_hex':request_bytes(off,64,region).hex(),
+                               'response_window_hex':(raw+b'\0'*(4096-len(raw))).hex()})
+        events.append({'event':'done'});return d,events
+    def test_d6_bounds_use_addresses_inside_original_backup_window(self):
+        self.assertEqual(read_offsets(0xd6,'bounds'),(0,0xfc0,0x1000))
+        d,e=self.bounds_fixture(0xd6);r=evaluate_run(d,e,self.key,0xd6,'bounds','Repair')
+        self.assertEqual(r['printer_mode_declared'],'Repair');self.assertFalse(r['success'])
+        self.assertEqual(r['read_summary']['decoded_data_bytes'],256)
+        self.assertEqual(r['read_summary']['na_responses'],2);self.assertEqual(r['locations'][-1]['offset'],'0x1000')
+    def test_a3_control_compares_data_to_nvram_serial_without_comparing_usb_id(self):
+        d,e=self.bounds_fixture(0xa3);r=evaluate_run(d,e,self.key,0xa3,'bounds','일반')
+        row=next(row for row in r['locations'] if row['offset']=='0x644')
+        self.assertTrue(row['nvram_serial_prefix_match']);self.assertEqual(r['read_summary']['decoded_data_bytes'],384)
+        self.assertFalse(r['key_reads_match'])
+    def test_profile_mismatch_is_not_accepted(self):
+        d,e=self.bounds_fixture(0xd6);e[2]['profile']='keys'
+        r=evaluate_run(d,e,self.key,0xd6,'bounds');self.assertEqual(len(r['locations'][0]['samples']),1)
+    def test_read_profile_is_bounded(self):
+        with self.assertRaises(ProbeError):read_offsets(0xa3,'arbitrary')
+        with self.assertRaises(ProbeError):read_offsets(0xff,'bounds')
 
 if __name__=='__main__':unittest.main()

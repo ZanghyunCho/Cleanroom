@@ -5,15 +5,66 @@
   "channel_tag_source": "SC-P7500 LK branch, ServiceSupportModelCLI.dll VA 0x10044F98",
   "cases": [
     {
+      "region": "0xa3",
       "offset": "0x7010",
       "requested_bytes": 64,
       "original_dll_request_hex": "7c7c0c00750698674ca3107000004000",
       "python_request_matches": true
     },
     {
+      "region": "0xa3",
       "offset": "0x6d000",
       "requested_bytes": 64,
       "original_dll_request_hex": "7c7c0c00750698674ca300d006004000",
+      "python_request_matches": true
+    },
+    {
+      "region": "0xa3",
+      "offset": "0x0",
+      "requested_bytes": 64,
+      "original_dll_request_hex": "7c7c0c00750698674ca3000000004000",
+      "python_request_matches": true
+    },
+    {
+      "region": "0xa3",
+      "offset": "0x644",
+      "requested_bytes": 64,
+      "original_dll_request_hex": "7c7c0c00750698674ca3440600004000",
+      "python_request_matches": true
+    },
+    {
+      "region": "0xa3",
+      "offset": "0xffc0",
+      "requested_bytes": 64,
+      "original_dll_request_hex": "7c7c0c00750698674ca3c0ff00004000",
+      "python_request_matches": true
+    },
+    {
+      "region": "0xa3",
+      "offset": "0x10000",
+      "requested_bytes": 64,
+      "original_dll_request_hex": "7c7c0c00750698674ca3000001004000",
+      "python_request_matches": true
+    },
+    {
+      "region": "0xd6",
+      "offset": "0x0",
+      "requested_bytes": 64,
+      "original_dll_request_hex": "7c7c0c00750698674cd6000000004000",
+      "python_request_matches": true
+    },
+    {
+      "region": "0xd6",
+      "offset": "0xfc0",
+      "requested_bytes": 64,
+      "original_dll_request_hex": "7c7c0c00750698674cd6c00f00004000",
+      "python_request_matches": true
+    },
+    {
+      "region": "0xd6",
+      "offset": "0x1000",
+      "requested_bytes": 64,
+      "original_dll_request_hex": "7c7c0c00750698674cd6001000004000",
       "python_request_matches": true
     }
   ]

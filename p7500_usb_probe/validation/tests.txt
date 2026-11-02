@@ -1,6 +1,8 @@
+test_a3_control_compares_data_to_nvram_serial_without_comparing_usb_id (test_probe.ProtocolTests.test_a3_control_compares_data_to_nvram_serial_without_comparing_usb_id) ... ok
 test_all_na_has_no_payload_but_does_have_responses (test_probe.ProtocolTests.test_all_na_has_no_payload_but_does_have_responses) ... ok
 test_all_reads_match_and_serial_confirmed (test_probe.ProtocolTests.test_all_reads_match_and_serial_confirmed) ... ok
 test_binary_payload_including_zero (test_probe.ProtocolTests.test_binary_payload_including_zero) ... ok
+test_d6_bounds_use_addresses_inside_original_backup_window (test_probe.ProtocolTests.test_d6_bounds_use_addresses_inside_original_backup_window) ... ok
 test_demo_never_claims_hardware_success (test_probe.ProtocolTests.test_demo_never_claims_hardware_success) ... ok
 test_driver_failure_cannot_pass_with_matching_data (test_probe.ProtocolTests.test_driver_failure_cannot_pass_with_matching_data) ... ok
 test_duplicate_repeat_fails (test_probe.ProtocolTests.test_duplicate_repeat_fails) ... ok
@@ -11,6 +13,8 @@ test_missing_read_or_done_does_not_pass (test_probe.ProtocolTests.test_missing_r
 test_native_builder_matches_reference_protocol (test_probe.ProtocolTests.test_native_builder_matches_reference_protocol) ... ok
 test_only_allow_fixed_reads (test_probe.ProtocolTests.test_only_allow_fixed_reads) ... ok
 test_partial_valid_payload_is_preserved (test_probe.ProtocolTests.test_partial_valid_payload_is_preserved) ... ok
+test_profile_mismatch_is_not_accepted (test_probe.ProtocolTests.test_profile_mismatch_is_not_accepted) ... ok
+test_read_profile_is_bounded (test_probe.ProtocolTests.test_read_profile_is_bounded) ... ok
 test_reference_65_byte_form (test_probe.ProtocolTests.test_reference_65_byte_form) ... ok
 test_reference_is_valid_p256 (test_probe.ProtocolTests.test_reference_is_valid_p256) ... ok
 test_reject_error_short_ascii_or_missing_terminator (test_probe.ProtocolTests.test_reject_error_short_ascii_or_missing_terminator) ... ok
@@ -28,6 +32,6 @@ test_wrong_request_or_region_does_not_pass (test_probe.ProtocolTests.test_wrong_
 test_zero_response_does_not_pass (test_probe.ProtocolTests.test_zero_response_does_not_pass) ... ok
 
 ----------------------------------------------------------------------
-Ran 28 tests in 0.856s
+Ran 32 tests in 0.863s
 
 OK

@@ -23,15 +23,16 @@ def hex_dump(data,base=0):
 
 def event_description(e):
     op=e.get('operation','')
+    kind='영역 자료' if e.get('kind')=='key' and e.get('profile')=='bounds' else e.get('kind')
     if e.get('event')=='bridge_launch':return f"[{op}] 보조 프로그램 실행 (PID {e.get('pid','?')})"
     if e.get('event')=='stage':return f"[{op}] "+STAGES.get(e.get('stage'),str(e.get('stage')))
     if e.get('event')=='read_start':
         target='NVRAM' if e.get('kind')=='serial' else f"영역 {e.get('region',0):02X}"
-        return f"읽기 호출 전: {e.get('kind')} / {target} / 오프셋 {e.get('offset',0):#x} / {e.get('requested')}바이트 / 회차 {e.get('repeat',0)+1}"
+        return f"읽기 호출 전: {kind} / {target} / 오프셋 {e.get('offset',0):#x} / {e.get('requested')}바이트 / 회차 {e.get('repeat',0)+1}"
     if e.get('event')=='read':
         raw=bytes.fromhex(e.get('response_window_hex',''))
         detail='NA (데이터 없음)' if na_response(raw) else '응답 캡처 있음' if raw.strip(b'\0') else '캡처 창이 모두 00'
-        return f"읽기 반환: {e.get('kind')} / {e.get('offset',0):#x} / 코드 {e.get('driver_result')} / {detail}"
+        return f"읽기 반환: {kind} / {e.get('offset',0):#x} / 코드 {e.get('driver_result')} / {detail}"
     if e.get('event')=='opened':return f"USB 열기 확인: 포트 {e.get('port','?')}"
     if e.get('event')=='error':return f"오류: {e.get('message')} ({e.get('code')})"
     if e.get('event')=='native_output':return '보조 프로그램 출력: '+str(e.get('text',''))[:240]
@@ -45,16 +46,18 @@ def report_details(r,offset=None):
            f"NVRAM 시리얼: {nvram_serial or '미확인'}",
            'USB ID와 NVRAM 시리얼은 서로 다른 식별자이며 동일성 비교를 하지 않습니다.',
            f"선택 영역: {r.get('region','미확인')}",
+           f"읽기 시험: {r.get('profile','keys')} / 모드 기록: {r.get('printer_mode_declared','미기록')} (사용자 선택, 자동 감지 아님)",
            '주소는 서비스 공간의 후보 오프셋입니다. 물리 플래시 위치는 미확인입니다.', '']
     if r.get('analysis_only'):lines.append('기존 JSON을 재분석한 결과입니다. 이 분석에서 USB를 새로 읽지는 않았습니다.')
     total=sum(len(bytes.fromhex(s['data_hex'])) for row in r.get('locations',[]) for s in row.get('samples',[]))
     lines.append(f'검증된 데이터 페이로드 합계: {total}바이트 (반복 읽기 포함)')
-    if not total:lines.append('공개키 후보 위치에서 추출된 데이터가 없습니다. 아래에 요청·오류 기록을 표시합니다.')
+    if not total:lines.append('선택한 위치에서 추출된 데이터가 없습니다. 아래에 요청·오류 기록을 표시합니다.')
     if r.get('serial_data_hex'):lines.extend(['NVRAM 시리얼 원시 10바이트:',hex_dump(bytes.fromhex(r['serial_data_hex']))])
     for row in r.get('locations',[]):
         if offset and row['offset']!=offset:continue
         lines.extend(['',f"=== {r.get('region')} / {row['offset']} : {row.get('status')} ==="])
         if row.get('error'):lines.append('진단: '+row['error'])
+        if 'nvram_serial_prefix_match' in row:lines.append('앞 10바이트와 일반 NVRAM 시리얼 일치: '+str(row['nvram_serial_prefix_match']))
         if not row.get('samples'):lines.append('추출된 64바이트 데이터 없음')
         for i,s in enumerate(row.get('samples',[])):
             data=bytes.fromhex(s['data_hex'])

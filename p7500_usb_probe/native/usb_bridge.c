@@ -15,7 +15,7 @@
 static const GUID usbprint={0x28d78fad,0x5a12,0x11d1,{0xae,0x5b,0,0,0xf8,3,0xa8,0xc2}};
 static void hex(const void *p,size_t n){const unsigned char*b=p;for(size_t i=0;i<n;i++)printf("%02x",b[i]);}
 static void wh(const wchar_t*s){hex(s,wcslen(s)*sizeof(wchar_t));}
-static void stage(const char*s){printf("{\"event\":\"stage\",\"stage\":\"%s\",\"helper_version\":\"0.2\",\"ticks_ms\":%llu}\n",s,(unsigned long long)GetTickCount64());fflush(stdout);}
+static void stage(const char*s){printf("{\"event\":\"stage\",\"stage\":\"%s\",\"helper_version\":\"0.3\",\"ticks_ms\":%llu}\n",s,(unsigned long long)GetTickCount64());fflush(stdout);}
 static int fail(const char*s,long long code){printf("{\"event\":\"error\",\"message\":\"%s\",\"code\":%lld}\n",s,code);fflush(stdout);return 1;}
 static int scan(void){
  stage("scan_started");
@@ -53,20 +53,23 @@ typedef void (__thiscall *Dtor)(void*);
 typedef int (__thiscall *Open)(void*,int,int);
 typedef void (__thiscall *GetID)(void*,char*,int);
 typedef int (__thiscall *Ctl)(void*,const unsigned char*,unsigned int,unsigned char*);
-static void read_request(Ctl ctl,void*object,unsigned region,unsigned offset,unsigned count,int serial,int repeat){
+static void read_request(Ctl ctl,void*object,unsigned region,unsigned offset,unsigned count,int serial,int repeat,const char*profile){
  /* Only command 98 (selected read) and 5D (NVRAM serial read) can be emitted. */
  unsigned char req[16];unsigned n=make_fixed_read(req,serial,region,offset,count);
  if(!n){fail("read request rejected",ERROR_INVALID_PARAMETER);return;}
  unsigned char *reply=calloc(1,1024*1024);if(!reply){fail("allocation",ERROR_NOT_ENOUGH_MEMORY);return;}
- printf("{\"event\":\"read_start\",\"kind\":\"%s\",\"region\":%u,\"offset\":%u,\"requested\":%u,\"repeat\":%d,\"request_hex\":\"",serial?"serial":"key",region,offset,count,repeat);hex(req,n);printf("\"}\n");fflush(stdout);
+ printf("{\"event\":\"read_start\",\"profile\":\"%s\",\"kind\":\"%s\",\"region\":%u,\"offset\":%u,\"requested\":%u,\"repeat\":%d,\"request_hex\":\"",profile,serial?"serial":"key",region,offset,count,repeat);hex(req,n);printf("\"}\n");fflush(stdout);
  int rc=ctl(object,req,n,reply);
- printf("{\"event\":\"read\",\"kind\":\"%s\",\"region\":%u,\"offset\":%u,\"requested\":%u,\"repeat\":%d,\"driver_result\":%d,\"request_hex\":\"",serial?"serial":"key",region,offset,count,repeat,rc);hex(req,n);
+ printf("{\"event\":\"read\",\"profile\":\"%s\",\"kind\":\"%s\",\"region\":%u,\"offset\":%u,\"requested\":%u,\"repeat\":%d,\"driver_result\":%d,\"request_hex\":\"",profile,serial?"serial":"key",region,offset,count,repeat,rc);hex(req,n);
  printf("\",\"capture_window_bytes\":4096,\"response_window_hex\":\"");hex(reply,4096);printf("\"}\n");fflush(stdout);free(reply);
 }
 int wmain(int argc,wchar_t**argv){
  SetErrorMode(SEM_FAILCRITICALERRORS|SEM_NOGPFAULTERRORBOX);
  setvbuf(stdout,NULL,_IONBF,0);stage("helper_started");if(argc==2&&wcscmp(argv[1],L"scan")==0)return scan();
- if(argc!=5||wcscmp(argv[1],L"probe")!=0)return fail("expected scan or probe DLL PORT REGION",ERROR_INVALID_PARAMETER);
+ if((argc!=5&&argc!=6)||wcscmp(argv[1],L"probe")!=0)return fail("expected scan or probe DLL PORT REGION [keys|bounds]",ERROR_INVALID_PARAMETER);
+ int bounds=argc==6&&wcscmp(argv[5],L"bounds")==0;
+ if(argc==6&&!bounds&&wcscmp(argv[5],L"keys")!=0)return fail("unknown read profile",ERROR_INVALID_PARAMETER);
+ const char*profile=bounds?"bounds":"keys";
  wchar_t*end;unsigned long port=wcstoul(argv[3],&end,10);if(*end||port>9)return fail("USB port must be 0..9",ERROR_INVALID_PARAMETER);
  unsigned long region=wcstoul(argv[4],&end,16);if(*end||(region!=0xa3&&region!=0xd6))return fail("region must be A3 or D6",ERROR_INVALID_PARAMETER);
  stage("load_library_start");
@@ -85,8 +88,10 @@ int wmain(int argc,wchar_t**argv){
  stage("identity_start");char id[1024]={0};getid(object,id,sizeof(id));id[sizeof(id)-1]=0;stage("identity_done");
  printf("{\"event\":\"opened\",\"device_id_hex\":\"");hex(id,strlen(id));printf("\",\"port\":%lu}\n",port);
  if(!strstr(id,"P7500")&&!strstr(id,"P-7500")){fail("opened printer is not SC-P7500",ERROR_NOT_SUPPORTED);stage("close_start");dtor(object);free(object);FreeLibrary(dll);return 1;}
- read_request(ctl,object,0,0x644,10,1,0);
- const unsigned offsets[]={0x7010,0x6d000};
- for(unsigned i=0;i<2;i++)for(int repeat=0;repeat<2;repeat++)read_request(ctl,object,region,offsets[i],64,0,repeat);
+ read_request(ctl,object,0,0x644,10,1,0,profile);
+ const unsigned keys[]={0x7010,0x6d000},a3_bounds[]={0,0x644,0xffc0,0x10000},d6_bounds[]={0,0xfc0,0x1000};
+ const unsigned*offsets=bounds?(region==0xa3?a3_bounds:d6_bounds):keys;
+ unsigned total=bounds?(region==0xa3?4:3):2;
+ for(unsigned i=0;i<total;i++)for(int repeat=0;repeat<2;repeat++)read_request(ctl,object,region,offsets[i],64,0,repeat,profile);
  stage("close_start");dtor(object);free(object);FreeLibrary(dll);stage("close_done");printf("{\"event\":\"done\"}\n");return 0;
 }
