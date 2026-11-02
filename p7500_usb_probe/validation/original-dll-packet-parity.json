@@ -1,0 +1,20 @@
+{
+  "scope": "Original DLL isolated x86 packet construction only. No Windows driver or printer executed.",
+  "original_model_dll_sha256": "6df38fd688dcd6bfef0ffd5ab11c0e5e43a4b7e80b4270178a0b5ec1cb0b5c31",
+  "channel_tags": "7506",
+  "channel_tag_source": "SC-P7500 LK branch, ServiceSupportModelCLI.dll VA 0x10044F98",
+  "cases": [
+    {
+      "offset": "0x7010",
+      "requested_bytes": 64,
+      "original_dll_request_hex": "7c7c0c00750698674ca3107000004000",
+      "python_request_matches": true
+    },
+    {
+      "offset": "0x6d000",
+      "requested_bytes": 64,
+      "original_dll_request_hex": "7c7c0c00750698674ca300d006004000",
+      "python_request_matches": true
+    }
+  ]
+}
