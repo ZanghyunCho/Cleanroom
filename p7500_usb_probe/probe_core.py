@@ -12,6 +12,16 @@ B=int('5ac635d8aa3a93e7b3ebbd55769886bc651d06b0cc53b0f63bce3c3e27d2604b',16)
 
 class ProbeError(Exception):pass
 
+class BridgeError(ProbeError):
+    """A stopped helper retains every record received before the interruption."""
+    def __init__(self,message,events,stdout='',stderr='',operation='',reason=''):
+        super().__init__(message)
+        self.events=list(events);self.partial_stdout=stdout;self.stderr=stderr
+        self.operation=operation;self.reason=reason
+
+def na_response(raw):
+    return bool(re.fullmatch(rb'(?:\|\|:|@BDC PS\r\n)?[0-9a-fA-F]{2}:NA;\x0c\x00*',raw))
+
 def valid_public_key(data):
     if len(data)!=64:return False
     x,y=int.from_bytes(data[:32],'big'),int.from_bytes(data[32:],'big')
@@ -34,6 +44,7 @@ def request_bytes(offset,count,region=None):
 
 def parse_reply(raw,offset,count,serial=False):
     # Consume exactly the requested binary payload; never strip zero bytes from it.
+    if na_response(raw):raise ProbeError('프린터가 NA를 반환했습니다. 데이터는 없습니다.')
     token=b'EE:' if serial else b'SF:'
     pos=raw.find(token)
     if pos<0:
@@ -69,38 +80,69 @@ def device_from_event(event):
         last=parent.rsplit('\\',1)[-1]
         if last and '&' not in last:serial=last;source='USB 상위 장치 인스턴스 ID'
     epson='EPSON' in (text+' '+name).upper() or 'VID_04B8' in parent.upper()
-    return {'port':event['port'],'name':name,'model':model,'serial':serial,'serial_source':source,
+    return {'port':event['port'],'name':name,'model':model,'usb_id':serial,'usb_id_source':source,
             'epson':epson,'supported':'P7500' in model.upper() or 'P-7500' in model.upper(),
             'path':_wide(event,'path_utf16'),'instance':_wide(event,'instance_utf16'),'parent':parent,
             'ieee1284':text,'identity_error':event.get('identity_error',0),'raw_event':event}
 
 class Bridge:
-    def __init__(self,path=None):
+    def __init__(self,path=None,command_prefix=None):
         self.path=Path(path or ROOT/'bin/usb_bridge32.exe');self.cancel=threading.Event();self.process=None
+        self.command_prefix=list(command_prefix or [])
     def stop(self):
         self.cancel.set()
         p=self.process
         if p and p.poll() is None:p.terminate()
-    def run(self,args,timeout=60):
+    def run(self,args,timeout=60,on_event=None):
+        import queue
         if self.cancel.is_set():raise ProbeError('취소되었습니다.')
         if not self.path.is_file():raise ProbeError('bin/usb_bridge32.exe가 없습니다.')
-        self.process=subprocess.Popen([str(self.path),*map(str,args)],stdout=subprocess.PIPE,stderr=subprocess.PIPE,
+        operation=str(args[0]) if args else 'unknown'
+        self.process=subprocess.Popen([*self.command_prefix,str(self.path),*map(str,args)],stdout=subprocess.PIPE,stderr=subprocess.PIPE,
                                       creationflags=getattr(subprocess,'CREATE_NO_WINDOW',0))
+        proc=self.process;lines=queue.Queue();events=[];stdout=[];stderr=[]
+        def emit(event):
+            event=dict(event);event.setdefault('operation',operation)
+            event.setdefault('received_at_utc',datetime.now(timezone.utc).isoformat())
+            events.append(event)
+            if on_event:on_event(event)
+        emit({'event':'bridge_launch','helper':self.path.name,'pid':proc.pid,'timeout_seconds':timeout})
+        def read_stdout():
+            try:
+                for line in iter(proc.stdout.readline,b''):lines.put(line)
+            finally:lines.put(None)
+        def read_stderr():
+            for block in iter(lambda:proc.stderr.read(4096),b''):stderr.append(block)
+        out_thread=threading.Thread(target=read_stdout,daemon=True);err_thread=threading.Thread(target=read_stderr,daemon=True)
+        out_thread.start();err_thread.start();finished=False;reason=''
         deadline=time.monotonic()+timeout
         while True:
-            try:out,err=self.process.communicate(timeout=.15);break
-            except subprocess.TimeoutExpired:
-                if self.cancel.is_set() or time.monotonic()>deadline:
-                    self.process.kill();out,err=self.process.communicate()
-                    ex=ProbeError('USB 작업이 취소되었거나 제한 시간을 초과했습니다.')
-                    ex.partial_stdout=out.decode('utf8',errors='replace');raise ex
-        try:events=[json.loads(line) for line in out.decode('utf8').splitlines() if line.strip()]
-        except (ValueError,UnicodeError) as e:raise ProbeError('보조 프로그램 응답을 해석하지 못했습니다: '+out[:300].decode(errors='replace')) from e
-        if not events:raise ProbeError('USB 보조 프로그램 실행 실패: '+err[:500].decode(errors='replace'))
-        return {'events':events,'exit_code':self.process.returncode,'stderr':err.decode(errors='replace')}
+            if not reason and (self.cancel.is_set() or time.monotonic()>deadline):
+                reason='cancelled' if self.cancel.is_set() else 'timeout'
+                if proc.poll() is None:proc.kill()
+            try:line=lines.get(timeout=.05)
+            except queue.Empty:line=b''
+            if line is None:finished=True
+            elif line:
+                stdout.append(line)
+                try:
+                    event=json.loads(line.decode('utf8'))
+                    if not isinstance(event,dict):raise ValueError('not an object')
+                    emit(event)
+                except (ValueError,UnicodeError):emit({'event':'native_output','text':line.decode('utf8',errors='replace').rstrip()})
+            if finished and proc.poll() is not None:break
+        proc.wait();out_thread.join();err_thread.join();proc.stdout.close();proc.stderr.close()
+        err=b''.join(stderr).decode('utf8',errors='replace')
+        if reason:
+            message='USB 작업을 중지했습니다.' if reason=='cancelled' else 'USB 작업 제한 시간을 초과했습니다.'
+            raise BridgeError(message,events,b''.join(stdout).decode('utf8',errors='replace'),err,operation,reason)
+        if not any(e.get('event') not in ('bridge_launch','native_output') for e in events):
+            raise BridgeError('USB 보조 프로그램이 진단 기록을 남기지 않았습니다: '+str(proc.returncode),events,
+                              b''.join(stdout).decode('utf8',errors='replace'),err,operation,'no_helper_events')
+        return {'events':events,'exit_code':proc.returncode,'stderr':err}
 
-    def scan(self):
-        result=self.run(['scan'],30)
+    def scan(self,on_event=None):
+        result=self.run(['scan'],30,on_event=on_event)
         errors=[e for e in result['events'] if e.get('event')=='error']
         if errors:raise ProbeError(str(errors))
         if result['exit_code']!=0 or not any(e.get('event')=='scan_done' for e in result['events']):
@@ -115,16 +157,25 @@ def check_driver(path):
     return path
 
 def evaluate_run(device,events,reference,region):
-    report={'version':1,'utc':datetime.now(timezone.utc).isoformat(),'mode':'hardware',
+    report={'version':2,'app_version':'0.2','utc':datetime.now(timezone.utc).isoformat(),'mode':'hardware',
             'device':device,'region':hex(region),'candidate_mapping':'UNCONFIRMED: service offsets are hypotheses, not proven flash addresses',
             'reference_sha256':hashlib.sha256(reference).hexdigest(),'events':events,'locations':[],'errors':[],
-            'serial':device.get('serial',''),'serial_source':device.get('serial_source','미확인')}
+            'usb_id':device.get('usb_id',device.get('serial','')),
+            'usb_id_source':device.get('usb_id_source',device.get('serial_source','미확인')),
+            'serial':'','serial_source':'NVRAM 미확인'}
+    report['planned_reads']=[{'kind':'serial','offset':'0x644','requested':10,
+                             'request_hex':request_bytes(0x644,10).hex()}]
+    for offset in OFFSETS:
+        for repeat in range(2):
+            report['planned_reads'].append({'kind':'key','region':hex(region),'offset':hex(offset),
+                                           'requested':64,'repeat':repeat,'request_hex':request_bytes(offset,64,region).hex()})
     opened=[e for e in events if e.get('event')=='opened']
     if len(opened)!=1:report['errors'].append('프린터 열기 확인 응답이 없습니다.')
     else:
         identity=bytes.fromhex(opened[0].get('device_id_hex','')).decode('ascii',errors='replace')
         if not re.search(r'P-?7500',identity,re.I):report['errors'].append('열린 프린터의 모델이 P7500과 다릅니다.')
         report['opened_identity']=identity
+        if 'port' in opened[0] and opened[0]['port']!=device.get('port'):report['errors'].append('열린 USB 포트가 선택한 장치의 포트와 다릅니다.')
     report['errors'] += [str(e) for e in events if e.get('event')=='error']
     if not any(e.get('event')=='done' for e in events):report['errors'].append('읽기 세션이 정상 종료되지 않았습니다.')
     serials=[e for e in events if e.get('event')=='read' and e.get('kind')=='serial']
@@ -133,30 +184,55 @@ def evaluate_run(device,events,reference,region):
         s=serials[0]
         if s['driver_result']!=0 or bytes.fromhex(s['request_hex'])!=request_bytes(0x644,10):raise ProbeError('시리얼 읽기 요청 또는 전송 결과가 올바르지 않습니다.')
         value=parse_reply(bytes.fromhex(s['response_window_hex']),0x644,10,True)
+        report['serial_data_hex']=value.hex()
         if not re.fullmatch(rb'[A-Za-z0-9]{10}',value):raise ProbeError('시리얼 값이 유효한 10자리 영숫자가 아닙니다.')
         sn=value.decode('ascii');report['nvram_serial']=sn
-        if report['serial'] and report['serial']!=sn:report['errors'].append('USB 시리얼과 NVRAM 시리얼이 다릅니다.')
-        else:report['serial']=sn;report['serial_source']='NVRAM 0x0644 (서비스 도구와 동일한 10바이트 읽기)'
+        report['serial']=sn;report['serial_source']='NVRAM 0x0644 (10바이트 읽기)'
     except (ProbeError,KeyError,ValueError) as e:report['serial_read_error']=str(e)
     for offset in OFFSETS:
-        row={'offset':hex(offset),'status':'읽기 실패','matched_reference':False,'stable':False,'valid_p256':False,'samples':[]}
+        row={'offset':hex(offset),'status':'데이터 수신 없음','matched_reference':False,'stable':False,
+             'valid_p256':False,'samples':[],'response_errors':[],'na_responses':0}
         samples=[e for e in events if e.get('event')=='read' and e.get('kind')=='key' and e.get('offset')==offset]
-        try:
-            if len(samples)!=2 or sorted(e.get('repeat') for e in samples)!=[0,1]:raise ProbeError('독립적인 읽기 응답 2개가 필요합니다.')
-            for e in sorted(samples,key=lambda x:x['repeat']):
+        row['returned_reads']=len(samples)
+        for e in samples:
+            try:
                 if e['driver_result']!=0:raise ProbeError('USB 통신 실패: '+str(e['driver_result']))
                 if e.get('region')!=region or e.get('requested')!=64 or bytes.fromhex(e['request_hex'])!=request_bytes(offset,64,region):raise ProbeError('수집된 요청이 예정된 읽기 요청과 다릅니다.')
-                data=parse_reply(bytes.fromhex(e['response_window_hex']),offset,64)
-                row['samples'].append({'data_hex':data.hex(),'sha256':hashlib.sha256(data).hexdigest()})
-            row['stable']=row['samples'][0]['data_hex']==row['samples'][1]['data_hex']
-            data=bytes.fromhex(row['samples'][0]['data_hex']);row['valid_p256']=valid_public_key(data)
+                raw=bytes.fromhex(e['response_window_hex'])
+                if na_response(raw):row['na_responses']+=1
+                data=parse_reply(raw,offset,64)
+                row['samples'].append({'repeat':e.get('repeat'),'data_hex':data.hex(),
+                                       'sha256':hashlib.sha256(data).hexdigest(),
+                                       'content':'all_ff' if data==b'\xff'*64 else 'all_zero' if data==b'\0'*64 else 'mixed'})
+            except (ProbeError,KeyError,ValueError) as error:row['response_errors'].append(str(error))
+        repeats=[s.get('repeat') for s in row['samples']]
+        complete=len(row['samples'])==2 and set(repeats)=={0,1} and not row['response_errors']
+        if row['samples']:
+            data=bytes.fromhex(row['samples'][0]['data_hex'])
+            row['valid_p256']=all(valid_public_key(bytes.fromhex(s['data_hex'])) for s in row['samples'])
+            row['stable']=complete and row['samples'][0]['data_hex']==row['samples'][1]['data_hex']
             row['matched_reference']=row['stable'] and data==reference
-            row['status']='참조 키 일치 (2회 동일)' if row['matched_reference'] else '반복 응답 불일치' if not row['stable'] else '참조 키 불일치'
-        except (ProbeError,KeyError,ValueError) as e:row['error']=str(e)
+            if not complete:row['status']=f"64바이트 {len(row['samples'])}회 수신 / 비교 미완료"
+            elif not row['stable']:row['status']='반복 읽기 불일치'
+            elif data==b'\xff'*64:row['status']='FF 64바이트 (2회 동일, 키 아님)'
+            elif data==b'\0'*64:row['status']='00 64바이트 (2회 동일, 키 아님)'
+            elif row['matched_reference']:row['status']='참조 공개키 일치 (2회 동일)'
+            elif row['valid_p256']:row['status']='다른 P-256 키 수신 (2회 동일)'
+            else:row['status']='64바이트 수신 / 공개키 아님'
+        elif row['na_responses']:row['status']='NA 응답 (데이터 없음)'
+        if not complete and not row['response_errors']:row['response_errors'].append('독립적인 읽기 응답 2개를 확인하지 못했습니다.')
+        if row['response_errors']:row['error']=' / '.join(row['response_errors'])
         report['locations'].append(row)
     report['key_reads_match']=all(r['matched_reference'] for r in report['locations'])
     report['identity_confirmed']=bool(report['serial']) and not report['errors']
     report['success']=report['key_reads_match'] and report['identity_confirmed']
+    stages=[e for e in events if e.get('event')=='stage']
+    key_returns=[e for e in events if e.get('event')=='read' and e.get('kind')=='key']
+    report['read_summary']={'key_responses_recorded':len(key_returns),
+                          'decoded_key_samples':sum(len(r['samples']) for r in report['locations']),
+                          'decoded_key_data_bytes':sum(len(bytes.fromhex(s['data_hex'])) for r in report['locations'] for s in r['samples']),
+                          'na_responses':sum(r['na_responses'] for r in report['locations']),
+                          'last_stage':stages[-1].get('stage') if stages else None}
     return report
 
 def save_report(report,directory):
@@ -166,12 +242,12 @@ def save_report(report,directory):
     path.write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
     for row in report.get('locations',[]):
         for i,sample in enumerate(row.get('samples',[])):
-            path.with_name(path.stem+'-'+row['offset']+'-'+str(i)+'.bin').write_bytes(bytes.fromhex(sample['data_hex']))
+            path.with_name(path.stem+'-'+row['offset']+'-'+str(sample.get('repeat',i))+'.bin').write_bytes(bytes.fromhex(sample['data_hex']))
     return path
 
 def demo_report(reference):
     """Entirely synthetic; never instantiate Bridge or label results as hardware."""
-    device={'model':'SC-P7500 [데모]','serial':'DEMO000001','serial_source':'합성 데이터','port':0}
+    device={'model':'SC-P7500 [데모]','serial':'USB-DEMO-ID','serial_source':'합성 USB ID','port':0}
     def event(offset,data,repeat=0,serial=False):
         prefix=b'EE:00000644' if serial else b'SF:'
         raw=b'@BDC PS\r\n'+prefix+data+b';\x0c'

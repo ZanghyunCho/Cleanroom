@@ -44,9 +44,15 @@ class ProtocolTests(unittest.TestCase):
     def test_duplicate_repeat_fails(self):
         d,e=self.hardware_fixture();e[3]['repeat']=0
         self.assertFalse(evaluate_run(d,e,self.key,0xa3)['success'])
-    def test_usb_serial_mismatch_fails(self):
+    def test_usb_id_is_independent_from_nvram_serial(self):
         d,e=self.hardware_fixture();d['serial']='DIFFERENT1'
-        self.assertFalse(evaluate_run(d,e,self.key,0xa3)['success'])
+        r=evaluate_run(d,e,self.key,0xa3)
+        self.assertTrue(r['success']);self.assertEqual(r['usb_id'],'DIFFERENT1')
+        self.assertEqual(r['serial'],'DEMO000001');self.assertEqual(r['errors'],[])
+    def test_usb_id_does_not_substitute_for_failed_nvram_serial(self):
+        d,e=self.hardware_fixture();e[1]['driver_result']=-20
+        r=evaluate_run(d,e,self.key,0xa3)
+        self.assertEqual(r['serial'],'');self.assertTrue(r['usb_id']);self.assertFalse(r['identity_confirmed'])
     def test_zero_response_does_not_pass(self):
         d,e=self.hardware_fixture();e[2]['response_window_hex']='00'*4096
         self.assertFalse(evaluate_run(d,e,self.key,0xa3)['success'])
@@ -55,9 +61,9 @@ class ProtocolTests(unittest.TestCase):
         self.assertFalse(evaluate_run(d,e,self.key,0xa3)['success'])
     def test_identity_and_usb_generated_instance_not_serial(self):
         ev={'port':0,'ieee1284_hex':b'\x00\x50MFG:EPSON;MDL:SC-P7500;SN:ABC1234567;'.hex()}
-        d=device_from_event(ev);self.assertEqual(d['serial'],'ABC1234567');self.assertTrue(d['supported'])
+        d=device_from_event(ev);self.assertEqual(d['usb_id'],'ABC1234567');self.assertTrue(d['supported'])
         ev={'port':0,'parent_utf16':'USB\\VID_04B8&PID_0001\\6&12345&0&1'.encode('utf-16le').hex()}
-        self.assertEqual(device_from_event(ev)['serial'],'')
+        self.assertEqual(device_from_event(ev)['usb_id'],'')
     def test_reference_65_byte_form(self):
         with tempfile.TemporaryDirectory() as td:
             p=Path(td)/'key.bin';p.write_bytes(b'\4'+self.key);self.assertEqual(reference_key(p),self.key)
@@ -75,6 +81,60 @@ class ProtocolTests(unittest.TestCase):
                        {'events':[{'event':'scan_done'}],'exit_code':1,'stderr':''}):
             bridge.run=lambda *a,_result=result,**k:_result
             with self.assertRaises(ProbeError):bridge.scan()
+    def test_partial_valid_payload_is_preserved(self):
+        d,e=self.hardware_fixture();del e[3]
+        r=evaluate_run(d,e,self.key,0xa3)
+        self.assertFalse(r['success']);self.assertEqual(len(r['locations'][0]['samples']),1)
+        with tempfile.TemporaryDirectory() as td:
+            save_report(r,td);self.assertEqual(len(list(Path(td).glob('*.bin'))),3)
+    def ff_na_fixture(self,region=0xa3):
+        d,e=self.hardware_fixture()
+        for item in e:
+            if item.get('kind')!='key':continue
+            item['region']=region;item['request_hex']=request_bytes(item['offset'],64,region).hex()
+            raw=(b'@BDC PS\r\nSF:'+b'\xff'*64+b';\x0c') if region==0xa3 and item['offset']==0x7010 else b'||:98:NA;\x0c'
+            item['response_window_hex']=(raw+b'\0'*(4096-len(raw))).hex()
+        return d,e
+    def test_ff_read_and_na_are_distinct_results(self):
+        d,e=self.ff_na_fixture();r=evaluate_run(d,e,self.key,0xa3)
+        self.assertEqual(r['errors'],[]);self.assertTrue(r['identity_confirmed']);self.assertFalse(r['success'])
+        self.assertIn('FF 64바이트',r['locations'][0]['status']);self.assertTrue(r['locations'][0]['stable'])
+        self.assertFalse(r['locations'][0]['valid_p256']);self.assertIn('NA 응답',r['locations'][1]['status'])
+        self.assertEqual(r['read_summary']['decoded_key_data_bytes'],128);self.assertEqual(r['read_summary']['na_responses'],2)
+    def test_all_na_has_no_payload_but_does_have_responses(self):
+        d,e=self.ff_na_fixture(0xd6);r=evaluate_run(d,e,self.key,0xd6)
+        self.assertEqual(r['read_summary']['key_responses_recorded'],4)
+        self.assertEqual(r['read_summary']['na_responses'],4);self.assertEqual(r['read_summary']['decoded_key_data_bytes'],0)
+    def test_report_details_shows_actual_bytes_and_na(self):
+        from report_view import report_details
+        d,e=self.ff_na_fixture();r=evaluate_run(d,e,self.key,0xa3);text=report_details(r)
+        self.assertIn('FF FF FF FF FF FF FF FF',text);self.assertIn('128바이트',text)
+        self.assertIn('98:NA',text);self.assertIn('요청 HEX:',text)
+    def test_report_without_reads_does_not_invent_hex_data(self):
+        from report_view import report_details
+        d,_=self.hardware_fixture();r=evaluate_run(d,[],self.key,0xa3);text=report_details(r)
+        self.assertIn('추출된 데이터가 없습니다',text);self.assertIn('예정된 읽기 요청',text)
+        self.assertEqual(r['read_summary']['decoded_key_data_bytes'],0)
+    def test_timeout_keeps_streamed_records(self):
+        with tempfile.TemporaryDirectory() as td:
+            p=Path(td)/'fake_helper.py'
+            p.write_text('import json,time\nprint(json.dumps({"event":"stage","stage":"load_library_start"}),flush=True)\ntime.sleep(10)\n')
+            bridge=Bridge(p,command_prefix=[sys.executable,'-u']);seen=[]
+            with self.assertRaises(BridgeError) as caught:
+                bridge.run(['probe'],timeout=.8,on_event=lambda e:seen.append((e,bridge.process.poll())))
+            ex=caught.exception
+            self.assertEqual(ex.reason,'timeout');self.assertIn('load_library_start',ex.partial_stdout)
+            self.assertTrue(any(e.get('stage')=='load_library_start' and state is None for e,state in seen))
+            self.assertTrue(any(e.get('stage')=='load_library_start' for e in ex.events))
+            self.assertIsNotNone(bridge.process.poll())
+    def test_stream_preserves_unknown_native_output(self):
+        with tempfile.TemporaryDirectory() as td:
+            p=Path(td)/'fake_helper.py'
+            p.write_text('print("native diagnostic",flush=True)\nprint(\'{"event":"done"}\',flush=True)\n')
+            result=Bridge(p,command_prefix=[sys.executable,'-u']).run(['probe'])
+            self.assertEqual(result['exit_code'],0)
+            self.assertTrue(any(e.get('event')=='native_output' for e in result['events']))
+            self.assertTrue(any(e.get('event')=='done' for e in result['events']))
     @unittest.skipUnless(shutil.which('cc'),'native compiler unavailable')
     def test_native_builder_matches_reference_protocol(self):
         with tempfile.TemporaryDirectory() as td:

@@ -1,25 +1,33 @@
+test_all_na_has_no_payload_but_does_have_responses (test_probe.ProtocolTests.test_all_na_has_no_payload_but_does_have_responses) ... ok
 test_all_reads_match_and_serial_confirmed (test_probe.ProtocolTests.test_all_reads_match_and_serial_confirmed) ... ok
 test_binary_payload_including_zero (test_probe.ProtocolTests.test_binary_payload_including_zero) ... ok
 test_demo_never_claims_hardware_success (test_probe.ProtocolTests.test_demo_never_claims_hardware_success) ... ok
 test_driver_failure_cannot_pass_with_matching_data (test_probe.ProtocolTests.test_driver_failure_cannot_pass_with_matching_data) ... ok
 test_duplicate_repeat_fails (test_probe.ProtocolTests.test_duplicate_repeat_fails) ... ok
 test_empty_scan_and_incomplete_scan_are_distinguished (test_probe.ProtocolTests.test_empty_scan_and_incomplete_scan_are_distinguished) ... ok
+test_ff_read_and_na_are_distinct_results (test_probe.ProtocolTests.test_ff_read_and_na_are_distinct_results) ... ok
 test_identity_and_usb_generated_instance_not_serial (test_probe.ProtocolTests.test_identity_and_usb_generated_instance_not_serial) ... ok
 test_missing_read_or_done_does_not_pass (test_probe.ProtocolTests.test_missing_read_or_done_does_not_pass) ... ok
 test_native_builder_matches_reference_protocol (test_probe.ProtocolTests.test_native_builder_matches_reference_protocol) ... ok
 test_only_allow_fixed_reads (test_probe.ProtocolTests.test_only_allow_fixed_reads) ... ok
+test_partial_valid_payload_is_preserved (test_probe.ProtocolTests.test_partial_valid_payload_is_preserved) ... ok
 test_reference_65_byte_form (test_probe.ProtocolTests.test_reference_65_byte_form) ... ok
 test_reference_is_valid_p256 (test_probe.ProtocolTests.test_reference_is_valid_p256) ... ok
 test_reject_error_short_ascii_or_missing_terminator (test_probe.ProtocolTests.test_reject_error_short_ascii_or_missing_terminator) ... ok
 test_repeated_read_difference_fails (test_probe.ProtocolTests.test_repeated_read_difference_fails) ... ok
+test_report_details_shows_actual_bytes_and_na (test_probe.ProtocolTests.test_report_details_shows_actual_bytes_and_na) ... ok
 test_report_keeps_raw_and_separate_payloads (test_probe.ProtocolTests.test_report_keeps_raw_and_separate_payloads) ... ok
+test_report_without_reads_does_not_invent_hex_data (test_probe.ProtocolTests.test_report_without_reads_does_not_invent_hex_data) ... ok
 test_serial_address_echo (test_probe.ProtocolTests.test_serial_address_echo) ... ok
-test_usb_serial_mismatch_fails (test_probe.ProtocolTests.test_usb_serial_mismatch_fails) ... ok
+test_stream_preserves_unknown_native_output (test_probe.ProtocolTests.test_stream_preserves_unknown_native_output) ... ok
+test_timeout_keeps_streamed_records (test_probe.ProtocolTests.test_timeout_keeps_streamed_records) ... ok
+test_usb_id_does_not_substitute_for_failed_nvram_serial (test_probe.ProtocolTests.test_usb_id_does_not_substitute_for_failed_nvram_serial) ... ok
+test_usb_id_is_independent_from_nvram_serial (test_probe.ProtocolTests.test_usb_id_is_independent_from_nvram_serial) ... ok
 test_wrong_opened_model_fails (test_probe.ProtocolTests.test_wrong_opened_model_fails) ... ok
 test_wrong_request_or_region_does_not_pass (test_probe.ProtocolTests.test_wrong_request_or_region_does_not_pass) ... ok
 test_zero_response_does_not_pass (test_probe.ProtocolTests.test_zero_response_does_not_pass) ... ok
 
 ----------------------------------------------------------------------
-Ran 20 tests in 0.032s
+Ran 28 tests in 0.856s
 
 OK
