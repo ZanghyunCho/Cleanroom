@@ -1,0 +1,47 @@
+{
+  "classification": "BOOT DIAGNOSTICS ONLY; NO VIRTUALIZATION; PHYSICAL BOOT NOT VERIFIED",
+  "original_inputs_checked": true,
+  "key_only_changes_public_keys_only": true,
+  "crom_nop_retains_original_keys_nv_and_all_runtime_hooks": true,
+  "equivalent_instruction_cases": 80,
+  "native_crom_probe": {
+    "variant": "crom_nop_only",
+    "native_parser_returned_frames": 2,
+    "native_decode_return": 1,
+    "huffman_fixture_calls": 690,
+    "frames": [
+      {
+        "frame_start": "0x70004",
+        "destination": "0x433e0000",
+        "bytes": 3562656,
+        "all_bytes_equal_python_decoder": true,
+        "first_mismatch": null,
+        "native_output_sha256": "a3e8c2a1d312e1c5f6c6ebb10c2fa46404cc6376274283e95b44a9e62a706427",
+        "python_output_sha256": "a3e8c2a1d312e1c5f6c6ebb10c2fa46404cc6376274283e95b44a9e62a706427"
+      },
+      {
+        "frame_start": "0x1cdbb0",
+        "destination": "0xb9dc7000",
+        "bytes": 34436,
+        "all_bytes_equal_python_decoder": true,
+        "first_mismatch": null,
+        "native_output_sha256": "18ba565dee9ffdf1252c60fba3a7fcbcb7e3e909c234129b6b019b400a86f065",
+        "python_output_sha256": "18ba565dee9ffdf1252c60fba3a7fcbcb7e3e909c234129b6b019b400a86f065"
+      }
+    ]
+  },
+  "physical_printer_boot_verified": false,
+  "elapsed_seconds": 36.103,
+  "generator_cli_checks": [
+    {
+      "variant": "key-only",
+      "cli_executed_from_packaged_script": true,
+      "both_output_file_sizes_and_hashes_verified": true
+    },
+    {
+      "variant": "crom-nop",
+      "cli_executed_from_packaged_script": true,
+      "both_output_file_sizes_and_hashes_verified": true
+    }
+  ]
+}
