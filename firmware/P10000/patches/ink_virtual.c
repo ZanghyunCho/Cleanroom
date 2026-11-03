@@ -8,6 +8,7 @@ typedef unsigned char u8;typedef unsigned short u16;typedef unsigned int u32;
 #define COOKIE ((volatile u32 *)0x43b1a790)
 __attribute__((section(".ink_state"),used)) u8 state_image[1684]={0};
 extern u32 chip_reset(u32 region);
+extern u32 chip_read(u32 slot,u32 address,u16 *out);
 SEC(".ink_status") void ink_status(void *unused) {
  u32 s,changed=0;(void)unused;
  for(s=0;s<10;s++){
@@ -36,6 +37,10 @@ SEC(".ink_refresh") u32 ink_refresh(void) {
  for(i=0;i<160;i++)info[i]=0;
  for(s=0;s<10;s++){
   u8 *p=chip+56*s;p[0]=1;p[1]=2;*(u16 *)(p+8)=680;
+#ifdef INK_METADATA_FIX
+  p[1]=(*(volatile u8 *)0x7ff029b3==3)?0:1;
+  chip_read(s,0x2e,(u16 *)(p+4));
+#endif
   p[12]=26;p[13]=11;p[14]=4;p[15]=26;p[16]=11;p[17]=4;
   p[18]='V';p[19]='3';for(i=2;i<10;i++)p[18+i]=(u8)('0'+s);
   *(u16 *)(info+16*s)=680;

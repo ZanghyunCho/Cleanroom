@@ -1,0 +1,559 @@
+{
+  "native_word_backend_and_field_read_write_passed": true,
+  "integrated_native_field_write_readback_cases_passed": 2310,
+  "word_state_preserved_across_refresh": true,
+  "synthetic_identity_packets": [
+    {
+      "slot": 0,
+      "virtual_serial": "V300000000"
+    },
+    {
+      "slot": 1,
+      "virtual_serial": "V311111111"
+    },
+    {
+      "slot": 2,
+      "virtual_serial": "V322222222"
+    },
+    {
+      "slot": 3,
+      "virtual_serial": "V333333333"
+    },
+    {
+      "slot": 4,
+      "virtual_serial": "V344444444"
+    },
+    {
+      "slot": 5,
+      "virtual_serial": "V355555555"
+    },
+    {
+      "slot": 6,
+      "virtual_serial": "V366666666"
+    },
+    {
+      "slot": 7,
+      "virtual_serial": "V377777777"
+    },
+    {
+      "slot": 8,
+      "virtual_serial": "V388888888"
+    },
+    {
+      "slot": 9,
+      "virtual_serial": "V399999999"
+    }
+  ],
+  "native_presence_query_and_completion_passed": true,
+  "native_detection_completion_and_upper_IKS_no_end_passed": true,
+  "upper_IKS_counterexample_empty_flags_detected": true,
+  "native_whole_cartridge_check_passed": true,
+  "fault_and_absence_states_cannot_restore_non_normal_report": true,
+  "native_sender_to_JCT_no_non_genuine_mask": true,
+  "native_status_packet_all_slots_ready_full": true,
+  "ils_raw_active_input_reports_normal_through_native_caller": true,
+  "physical_chip_transport_entries_not_entered": true,
+  "V2_maintenance_preserved": true,
+  "all_12_native_availability_flags_usable": true,
+  "fixtures": [
+    "RAM and settings mapped explicitly",
+    "Logging, OS allocation/send/free and request completion hooks",
+    "NV/date housekeeping at 0x43b2dab4 and 0x43b18a74 stubbed; not storage validation",
+    "Original upper IKS job uses an explicit IPC bridge carrying actual native detection reply; selected-slot, mode and notification OS fixtures",
+    "No physical chip or cryptographic success oracle"
+  ],
+  "physical_printer_tested": false,
+  "factory_authentication_not_reproduced": true,
+  "synthetic_chip_template_semantics_not_fully_characterized": true,
+  "metadata": {
+    "cases": [
+      {
+        "region": 1,
+        "slot": 0,
+        "native_type": 1,
+        "native_Tcode": 8096,
+        "native_date_fields": [
+          26,
+          11,
+          4
+        ],
+        "virtual_serial": "V300000000"
+      },
+      {
+        "region": 1,
+        "slot": 1,
+        "native_type": 1,
+        "native_Tcode": 8092,
+        "native_date_fields": [
+          26,
+          11,
+          4
+        ],
+        "virtual_serial": "V311111111"
+      },
+      {
+        "region": 1,
+        "slot": 2,
+        "native_type": 1,
+        "native_Tcode": 8099,
+        "native_date_fields": [
+          26,
+          11,
+          4
+        ],
+        "virtual_serial": "V322222222"
+      },
+      {
+        "region": 1,
+        "slot": 3,
+        "native_type": 1,
+        "native_Tcode": 8090,
+        "native_date_fields": [
+          26,
+          11,
+          4
+        ],
+        "virtual_serial": "V333333333"
+      },
+      {
+        "region": 1,
+        "slot": 4,
+        "native_type": 1,
+        "native_Tcode": 8095,
+        "native_date_fields": [
+          26,
+          11,
+          4
+        ],
+        "virtual_serial": "V344444444"
+      },
+      {
+        "region": 1,
+        "slot": 5,
+        "native_type": 1,
+        "native_Tcode": 8091,
+        "native_date_fields": [
+          26,
+          11,
+          4
+        ],
+        "virtual_serial": "V355555555"
+      },
+      {
+        "region": 1,
+        "slot": 6,
+        "native_type": 1,
+        "native_Tcode": 8098,
+        "native_date_fields": [
+          26,
+          11,
+          4
+        ],
+        "virtual_serial": "V366666666"
+      },
+      {
+        "region": 1,
+        "slot": 7,
+        "native_type": 1,
+        "native_Tcode": 8097,
+        "native_date_fields": [
+          26,
+          11,
+          4
+        ],
+        "virtual_serial": "V377777777"
+      },
+      {
+        "region": 1,
+        "slot": 8,
+        "native_type": 1,
+        "native_Tcode": 8094,
+        "native_date_fields": [
+          26,
+          11,
+          4
+        ],
+        "virtual_serial": "V388888888"
+      },
+      {
+        "region": 1,
+        "slot": 9,
+        "native_type": 1,
+        "native_Tcode": 8093,
+        "native_date_fields": [
+          26,
+          11,
+          4
+        ],
+        "virtual_serial": "V399999999"
+      },
+      {
+        "region": 2,
+        "slot": 0,
+        "native_type": 1,
+        "native_Tcode": 8006,
+        "native_date_fields": [
+          26,
+          11,
+          4
+        ],
+        "virtual_serial": "V300000000"
+      },
+      {
+        "region": 2,
+        "slot": 1,
+        "native_type": 1,
+        "native_Tcode": 8002,
+        "native_date_fields": [
+          26,
+          11,
+          4
+        ],
+        "virtual_serial": "V311111111"
+      },
+      {
+        "region": 2,
+        "slot": 2,
+        "native_type": 1,
+        "native_Tcode": 8009,
+        "native_date_fields": [
+          26,
+          11,
+          4
+        ],
+        "virtual_serial": "V322222222"
+      },
+      {
+        "region": 2,
+        "slot": 3,
+        "native_type": 1,
+        "native_Tcode": 8000,
+        "native_date_fields": [
+          26,
+          11,
+          4
+        ],
+        "virtual_serial": "V333333333"
+      },
+      {
+        "region": 2,
+        "slot": 4,
+        "native_type": 1,
+        "native_Tcode": 8005,
+        "native_date_fields": [
+          26,
+          11,
+          4
+        ],
+        "virtual_serial": "V344444444"
+      },
+      {
+        "region": 2,
+        "slot": 5,
+        "native_type": 1,
+        "native_Tcode": 8001,
+        "native_date_fields": [
+          26,
+          11,
+          4
+        ],
+        "virtual_serial": "V355555555"
+      },
+      {
+        "region": 2,
+        "slot": 6,
+        "native_type": 1,
+        "native_Tcode": 8008,
+        "native_date_fields": [
+          26,
+          11,
+          4
+        ],
+        "virtual_serial": "V366666666"
+      },
+      {
+        "region": 2,
+        "slot": 7,
+        "native_type": 1,
+        "native_Tcode": 8007,
+        "native_date_fields": [
+          26,
+          11,
+          4
+        ],
+        "virtual_serial": "V377777777"
+      },
+      {
+        "region": 2,
+        "slot": 8,
+        "native_type": 1,
+        "native_Tcode": 8004,
+        "native_date_fields": [
+          26,
+          11,
+          4
+        ],
+        "virtual_serial": "V388888888"
+      },
+      {
+        "region": 2,
+        "slot": 9,
+        "native_type": 1,
+        "native_Tcode": 8003,
+        "native_date_fields": [
+          26,
+          11,
+          4
+        ],
+        "virtual_serial": "V399999999"
+      },
+      {
+        "region": 3,
+        "slot": 0,
+        "native_type": 0,
+        "native_Tcode": 8036,
+        "native_date_fields": [
+          26,
+          11,
+          4
+        ],
+        "virtual_serial": "V300000000"
+      },
+      {
+        "region": 3,
+        "slot": 1,
+        "native_type": 0,
+        "native_Tcode": 8032,
+        "native_date_fields": [
+          26,
+          11,
+          4
+        ],
+        "virtual_serial": "V311111111"
+      },
+      {
+        "region": 3,
+        "slot": 2,
+        "native_type": 0,
+        "native_Tcode": 8039,
+        "native_date_fields": [
+          26,
+          11,
+          4
+        ],
+        "virtual_serial": "V322222222"
+      },
+      {
+        "region": 3,
+        "slot": 3,
+        "native_type": 0,
+        "native_Tcode": 8030,
+        "native_date_fields": [
+          26,
+          11,
+          4
+        ],
+        "virtual_serial": "V333333333"
+      },
+      {
+        "region": 3,
+        "slot": 4,
+        "native_type": 0,
+        "native_Tcode": 8035,
+        "native_date_fields": [
+          26,
+          11,
+          4
+        ],
+        "virtual_serial": "V344444444"
+      },
+      {
+        "region": 3,
+        "slot": 5,
+        "native_type": 0,
+        "native_Tcode": 8031,
+        "native_date_fields": [
+          26,
+          11,
+          4
+        ],
+        "virtual_serial": "V355555555"
+      },
+      {
+        "region": 3,
+        "slot": 6,
+        "native_type": 0,
+        "native_Tcode": 8038,
+        "native_date_fields": [
+          26,
+          11,
+          4
+        ],
+        "virtual_serial": "V366666666"
+      },
+      {
+        "region": 3,
+        "slot": 7,
+        "native_type": 0,
+        "native_Tcode": 8037,
+        "native_date_fields": [
+          26,
+          11,
+          4
+        ],
+        "virtual_serial": "V377777777"
+      },
+      {
+        "region": 3,
+        "slot": 8,
+        "native_type": 0,
+        "native_Tcode": 8034,
+        "native_date_fields": [
+          26,
+          11,
+          4
+        ],
+        "virtual_serial": "V388888888"
+      },
+      {
+        "region": 3,
+        "slot": 9,
+        "native_type": 0,
+        "native_Tcode": 8033,
+        "native_date_fields": [
+          26,
+          11,
+          4
+        ],
+        "virtual_serial": "V399999999"
+      },
+      {
+        "region": 4,
+        "slot": 0,
+        "native_type": 1,
+        "native_Tcode": 8026,
+        "native_date_fields": [
+          26,
+          11,
+          4
+        ],
+        "virtual_serial": "V300000000"
+      },
+      {
+        "region": 4,
+        "slot": 1,
+        "native_type": 1,
+        "native_Tcode": 8022,
+        "native_date_fields": [
+          26,
+          11,
+          4
+        ],
+        "virtual_serial": "V311111111"
+      },
+      {
+        "region": 4,
+        "slot": 2,
+        "native_type": 1,
+        "native_Tcode": 8029,
+        "native_date_fields": [
+          26,
+          11,
+          4
+        ],
+        "virtual_serial": "V322222222"
+      },
+      {
+        "region": 4,
+        "slot": 3,
+        "native_type": 1,
+        "native_Tcode": 8020,
+        "native_date_fields": [
+          26,
+          11,
+          4
+        ],
+        "virtual_serial": "V333333333"
+      },
+      {
+        "region": 4,
+        "slot": 4,
+        "native_type": 1,
+        "native_Tcode": 8025,
+        "native_date_fields": [
+          26,
+          11,
+          4
+        ],
+        "virtual_serial": "V344444444"
+      },
+      {
+        "region": 4,
+        "slot": 5,
+        "native_type": 1,
+        "native_Tcode": 8021,
+        "native_date_fields": [
+          26,
+          11,
+          4
+        ],
+        "virtual_serial": "V355555555"
+      },
+      {
+        "region": 4,
+        "slot": 6,
+        "native_type": 1,
+        "native_Tcode": 8028,
+        "native_date_fields": [
+          26,
+          11,
+          4
+        ],
+        "virtual_serial": "V366666666"
+      },
+      {
+        "region": 4,
+        "slot": 7,
+        "native_type": 1,
+        "native_Tcode": 8027,
+        "native_date_fields": [
+          26,
+          11,
+          4
+        ],
+        "virtual_serial": "V377777777"
+      },
+      {
+        "region": 4,
+        "slot": 8,
+        "native_type": 1,
+        "native_Tcode": 8024,
+        "native_date_fields": [
+          26,
+          11,
+          4
+        ],
+        "virtual_serial": "V388888888"
+      },
+      {
+        "region": 4,
+        "slot": 9,
+        "native_type": 1,
+        "native_Tcode": 8023,
+        "native_date_fields": [
+          26,
+          11,
+          4
+        ],
+        "virtual_serial": "V399999999"
+      }
+    ],
+    "all_40_region_slot_metadata_cases_passed": true,
+    "native_unknown_type_2_not_emitted": true,
+    "raw_chip_and_native_notification_dates_match": true,
+    "dates_are_synthetic_not_actual_product_expiration": true,
+    "Windows_Status_Monitor_rendering_tested": false,
+    "manufacturer_and_ink_type_name_mapping_not_independently_confirmed": true,
+    "physical_printer_tested": false
+  }
+}

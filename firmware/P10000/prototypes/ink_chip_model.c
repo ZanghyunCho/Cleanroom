@@ -33,6 +33,10 @@ SEC(".chip_reset") u32 chip_reset(u32 region) {
   STATE[slot*WORDS+0x2e]=codes[20+slot];
   /* Element 0x24: 3400 / 5 = 680 in the original capacity parser. */
   STATE[slot*WORDS+0x2d]=3400;
+#ifdef INK_METADATA_FIX
+  STATE[slot*WORDS+0x24]=(26u<<9)|(11u<<5)|4u;
+  STATE[slot*WORDS+0x25]=(26u<<9)|(11u<<5)|4u;
+#endif
  }
  return 0;
 }

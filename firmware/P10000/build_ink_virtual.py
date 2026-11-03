@@ -6,9 +6,10 @@ ROOT=Path(__file__).resolve().parent
 ADDRESSES={'.ink_check':0x19424,'.ink_refresh':0x199a8,'.ink_state':0x1a100,'.ink_detect':0x1ab7c,'.ink_presence':0x1b328,'.ink_rw':0x1b450,'.ink_power':0x1ce48,'.chip_read':0x1cf00,'.chip_write':0x1d000,'.chip_reset':0x1d100,'.ink_info':0x1d300,'.ink_status':0x1d600,'.ink_ensure':0x1d900,'.ink_flush':0x1e274,'.ink_info_entry':0x1fef4,'.ink_status_entry':0x20014,'.ink_read_entry':0x2aa4c,'.ink_write_entry':0x2d3c4,'.ink_ils':0x3f3a4}
 DEAD=[(0x19424,0x197b4),(0x199a8,0x1a8f8),(0x1ab7c,0x1aed8),(0x1b328,0x1b3cc),(0x1b450,0x1b978),(0x1ce48,0x1ddf0),(0x1e274,0x1e2c0),(0x1fef4,0x1ffe4),(0x20014,0x200b0),(0x2aa4c,0x2ab80),(0x2d3c4,0x2d4c0),(0x3f3a4,0x3f448)]
 ENTRIES={0x19424,0x199a8,0x1ab7c,0x1b328,0x1b450,0x1ce48,0x1e274,0x1fef4,0x20014,0x2aa4c,0x2d3c4,0x3f3a4}
-def compile_sections():
+def compile_sections(metadata_fix=False):
  env=os.environ.copy();env['ZIG_GLOBAL_CACHE_DIR']=str(ROOT/'build/zig-global-cache');env['ZIG_LOCAL_CACHE_DIR']=str(ROOT/'build/zig-local-cache')
  args=[str(ROOT.parent/'P7500/tools/ziglang/zig'),'cc','-target','arm-freestanding-eabi','-mcpu=arm926ej_s','-mfloat-abi=soft','-marm','-Os','-fno-vectorize','-fno-slp-vectorize','-ffreestanding','-fno-builtin','-fno-stack-protector','-fno-unwind-tables','-fno-asynchronous-unwind-tables','-DCHIP_PRODUCTION=1','-DCHIP_STATE_ADDRESS=0x43b1a100','-nostdlib','-Wl,-T,patches/ink_virtual.ld','-Wl,--entry=ink_refresh','-Wl,--no-gc-sections','-Wl,--build-id=none','patches/ink_virtual.c','prototypes/ink_chip_model.c','-o','build/ink-virtual.elf']
+ if metadata_fix:args.insert(2,'-DINK_METADATA_FIX=1')
  subprocess.run(args,cwd=ROOT,env=env,check=True);b=(ROOT/'build/ink-virtual.elf').read_bytes();shoff=struct.unpack_from('<I',b,32)[0];size,n,st=struct.unpack_from('<HHH',b,46);hdr=[struct.unpack_from('<10I',b,shoff+i*size) for i in range(n)];s=hdr[st];names=b[s[4]:s[4]+s[5]];out={}
  for h in hdr:
   name=names[h[0]:names.find(b'\0',h[0])].decode()
@@ -21,8 +22,8 @@ def compile_sections():
  for (a,b),(c,d) in zip(ranges,ranges[1:]):assert b<=c
  return out
 
-def patched_module():
- base,v2=v2_module();original=(ROOT/'inputs/main-block-3.bin').read_bytes();out=bytearray(base);sections=compile_sections();changes=[]
+def patched_module(metadata_fix=False):
+ base,v2=v2_module();original=(ROOT/'inputs/main-block-3.bin').read_bytes();out=bytearray(base);sections=compile_sections(metadata_fix);changes=[]
  # No surviving direct branch may enter replaced bodies except their public entries.
  branch_hits=[]
  for off in range(0,len(original)-4,4):
@@ -48,6 +49,6 @@ def patched_module():
  last=0
  for lo,hi in sorted((o,o+len(d)) for o,d in sections.values()):assert out[last:lo]==base[last:lo];last=hi
  assert out[last:]==base[last:] and len(out)==len(base)
- report={'base_V2_patch_report':v2,'new_ranges':changes,'state_address':'0x43b1a100','state_bytes':1684,'state_in_replaced_cover_handler':True,'surviving_interior_direct_branch_hits':branch_hits,'external_literal_references_to_state':refs,'MPU_data_access_region4_RW_from_original_setup':True,'original_module_size_preserved':True,'decoded_sha256':hashlib.sha256(out).hexdigest(),'factory_authentication_not_reproduced':True,'identity_metadata_is_synthetic':True,'state_not_persistent_across_reboot':True,'physical_printer_tested':False}
- (ROOT/'build/ink-virtual-module.bin').write_bytes(out);(ROOT/'build/ink-virtual-patches.json').write_text(json.dumps(report,indent=2)+'\n');return bytes(out),report
+ report={'metadata_fix':metadata_fix,'base_V2_patch_report':v2,'new_ranges':changes,'state_address':'0x43b1a100','state_bytes':1684,'state_in_replaced_cover_handler':True,'surviving_interior_direct_branch_hits':branch_hits,'external_literal_references_to_state':refs,'MPU_data_access_region4_RW_from_original_setup':True,'original_module_size_preserved':True,'decoded_sha256':hashlib.sha256(out).hexdigest(),'factory_authentication_not_reproduced':True,'identity_metadata_is_synthetic':True,'state_not_persistent_across_reboot':True,'physical_printer_tested':False}
+ (ROOT/('build/ink-metadata-v4-module.bin' if metadata_fix else 'build/ink-virtual-module.bin')).write_bytes(out);(ROOT/('build/ink-metadata-v4-patches.json' if metadata_fix else 'build/ink-virtual-patches.json')).write_text(json.dumps(report,indent=2)+'\n');return bytes(out),report
 if __name__=='__main__':print(json.dumps(patched_module()[1],indent=2))

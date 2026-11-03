@@ -1,0 +1,10 @@
+{
+  "source": "User report and screenshot in conversation; no direct cloud printer access",
+  "reported_on_client_date": "2026-11-04",
+  "candidate": "LAB_UNVERIFIED_FM001PA_INK_VIRTUAL_V3.EFU",
+  "candidate_sha256": "961f4042a589aef2934fed91efb87cc1420e523d8ebf07676f9e9e68cc2fbeb3",
+  "reported_general_operation_success": true,
+  "observed_UI_issue": "Windows Epson Status Monitor cartridge details show unknown values and 2000/00 dates",
+  "individual_physical_test_steps_not_specified": true,
+  "new_V4_tested": false
+}

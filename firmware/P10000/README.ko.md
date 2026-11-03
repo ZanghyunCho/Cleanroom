@@ -85,3 +85,7 @@ python firmware/P10000/probe_mixed_mappings.py --start-index 347332 --seconds 18
 ## 잉크 가상화 V3 후보
 
 [범위·검증·미검증 항목](INK-VIRTUAL-V3.ko.md)에 잉크 미장착/정품 보고/ILS 정상 보고의 통합 후보를 기록했습니다. V3는 실기 미검증이며, V2 배포본은 보존했습니다.
+
+## V3 사용자 성공 보고와 V4 상세 정보 수정 후보
+
+사용자가 V3 정상 동작 및 Status Monitor의 미확정 상세 정보 화면을 보고했습니다. [V4 수정 내용과 한계](INK-METADATA-V4.ko.md)를 기록했습니다. V4 실제 표시 결과는 미검증입니다.

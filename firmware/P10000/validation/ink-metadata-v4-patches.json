@@ -1,0 +1,217 @@
+{
+  "metadata_fix": true,
+  "base_V2_patch_report": {
+    "decoded_size_unchanged": true,
+    "decoded_bytes": 2581676,
+    "patched_sha256": "b37525fced77a59472134ff1a262d8e34e2d10cbd2fba560fcf748f95c87382f",
+    "ranges": [
+      {
+        "name": ".p_mt_write0",
+        "offset": "0x16eb0",
+        "bytes": 8,
+        "original_sha256": "969ab5b4ed72ff3493e113f90afc9bd6afa7aecb7d02e60ae140cc44c64993b0",
+        "replacement_sha256": "6dcd5e75586fe6683156c0d559d4827b73bd48d501fa5781a1c6099aacd7c877"
+      },
+      {
+        "name": ".p_mt_write1",
+        "offset": "0x16edc",
+        "bytes": 8,
+        "original_sha256": "50852c49689a14bc897281a886c13a9ba211de5ffd35fc106191de2a87f486c5",
+        "replacement_sha256": "6dcd5e75586fe6683156c0d559d4827b73bd48d501fa5781a1c6099aacd7c877"
+      },
+      {
+        "name": ".p_mt_check",
+        "offset": "0x1bdf8",
+        "bytes": 28,
+        "original_sha256": "86572422415b41736860feef2592065f3d4366cc5c47889141d017ef7bc39bb4",
+        "replacement_sha256": "374e353212b361f893aca359f6d0f263473376cece0176ca34d1221cb59b9e6b"
+      },
+      {
+        "name": ".p_mt_power",
+        "offset": "0x1c230",
+        "bytes": 180,
+        "original_sha256": "0d4e95a42adb5e082419c337e553c52965cc58607c4b41ae53c6aee2f6b9be65",
+        "replacement_sha256": "34b1d2f0607e4a3bbd04b92f20725e0d66fcb7be73c0d70831957483ca8a7125"
+      },
+      {
+        "name": ".p_mt_status",
+        "offset": "0x1c600",
+        "bytes": 180,
+        "original_sha256": "46f4b8d76bee6aa1752924576b544aabdf68c564544a59f2e08a56bf8e280eb6",
+        "replacement_sha256": "93342562a014b6f4225a28f275c88c421df63ac9165099c51015c93df5743643"
+      },
+      {
+        "name": ".p_mt_rw",
+        "offset": "0x1c948",
+        "bytes": 4,
+        "original_sha256": "e506f1b7eb5c3563131ed686a9d777e4e9c799db0c7793becade44d0afd6048c",
+        "replacement_sha256": "ff8e2f6195b21740eba4efcad679a81615e33e9de2a138e9641bc6b0a2ac0d81"
+      },
+      {
+        "name": ".p_mt_check2",
+        "offset": "0x1ddf0",
+        "bytes": 16,
+        "original_sha256": "05e0fc7f3683f4c59fb0aafac6d41529cef0b497dd243734ba5e0f9f64c2a3a5",
+        "replacement_sha256": "97725d1e36ce541700b4fb7b25507f5c6e6b33e9d728dcaef3bef4119552f3be"
+      },
+      {
+        "name": ".p_mt_status_entry",
+        "offset": "0x20654",
+        "bytes": 4,
+        "original_sha256": "e506f1b7eb5c3563131ed686a9d777e4e9c799db0c7793becade44d0afd6048c",
+        "replacement_sha256": "8ff8af5fd13c9a1c5017f4e9dfbee3e21ffff870ca2f3971d12313197a050d9f"
+      },
+      {
+        "name": ".p_region",
+        "offset": "0x2c794",
+        "bytes": 312,
+        "original_sha256": "9a1250ec4792b4aac150bfea825c2174f92952c20cba3a895da336e209352ea5",
+        "replacement_sha256": "489a53a9a6ab0110c9b0764ed9eada1b89b595777896ae005f0be7545b22f9c7"
+      },
+      {
+        "name": "maintenance_usage_zero",
+        "offset": "0x13954",
+        "bytes": 8
+      },
+      {
+        "name": "maintenance_status_read_normal",
+        "offset": "0x1eb24",
+        "bytes": 4
+      },
+      {
+        "name": "maintenance_unavailable_mask_zero",
+        "offset": "0x1eb98",
+        "bytes": 8
+      }
+    ],
+    "ink_absence_genuine_IES_virtualization_included": false
+  },
+  "new_ranges": [
+    {
+      "section": ".ink_check",
+      "offset": "0x19424",
+      "bytes": 16,
+      "replacement_sha256": "c304b228014d8dd1370395801fd8327ed18ea2a5d722c4e849d562864ce7f611"
+    },
+    {
+      "section": ".ink_refresh",
+      "offset": "0x199a8",
+      "bytes": 292,
+      "replacement_sha256": "cbbd90828c07ffb8bf943ebfe4e21b8fc4b7cacaf24a252ae564c28dfcc63627"
+    },
+    {
+      "section": ".ink_state",
+      "offset": "0x1a100",
+      "bytes": 1684,
+      "replacement_sha256": "cb28bb6971da208b2e994918ed565da20ef4c52cc70b04623e3ccad7da310dbf"
+    },
+    {
+      "section": ".ink_detect",
+      "offset": "0x1ab7c",
+      "bytes": 52,
+      "replacement_sha256": "04fbad264406811433fff05143eaad8c0ec51941d1b560eb69f13670546cc817"
+    },
+    {
+      "section": ".ink_presence",
+      "offset": "0x1b328",
+      "bytes": 36,
+      "replacement_sha256": "413933fab2196ef4eabb3dcd81b619442990f5dcbae4acd622ad7c913e2748ff"
+    },
+    {
+      "section": ".ink_rw",
+      "offset": "0x1b450",
+      "bytes": 16,
+      "replacement_sha256": "3b5b2616de50a26c14663cf542b2039494c729488a98021d9b5a306fbf6a312b"
+    },
+    {
+      "section": ".ink_power",
+      "offset": "0x1ce48",
+      "bytes": 16,
+      "replacement_sha256": "a46fa3657ccebda8c9f878532e2702f4ba8e1e06a4e0d05c162c5f8304269231"
+    },
+    {
+      "section": ".chip_read",
+      "offset": "0x1cf00",
+      "bytes": 72,
+      "replacement_sha256": "c5b5628b6d7e0cd192b15b231d9e70f383a4af2c93f6e412c52c3098ca81ac89"
+    },
+    {
+      "section": ".chip_write",
+      "offset": "0x1d000",
+      "bytes": 76,
+      "replacement_sha256": "ddf06f3cbe42033843ef3901c87b81186594c78925c6cc60d9cfb9fb8f1001c3"
+    },
+    {
+      "section": ".chip_reset",
+      "offset": "0x1d100",
+      "bytes": 160,
+      "replacement_sha256": "49489e9e9ac5498cc2c2679cfd709f88e3c6c300686edbcddce5215ee5c6a4bb"
+    },
+    {
+      "section": ".ink_info",
+      "offset": "0x1d300",
+      "bytes": 120,
+      "replacement_sha256": "21fcffb3042d17978047e9003b274cddd49b0167e46b70a7b8b2f4fae90246bd"
+    },
+    {
+      "section": ".ink_status",
+      "offset": "0x1d600",
+      "bytes": 144,
+      "replacement_sha256": "d3ff78a949e75f7fc41f65ab7ab807e850044428ca0bf778deb7aa7224fb82b4"
+    },
+    {
+      "section": ".ink_ensure",
+      "offset": "0x1d900",
+      "bytes": 68,
+      "replacement_sha256": "9c4f6a93f25037ee3e1e9d0f72f5f434c544fc1d7f6cb78897282d4a17df8000"
+    },
+    {
+      "section": ".ink_flush",
+      "offset": "0x1e274",
+      "bytes": 16,
+      "replacement_sha256": "1b3cd0413fea3623c8b68c14ba4c661499a3095ec522bd2bc560a6cc853226c0"
+    },
+    {
+      "section": ".ink_info_entry",
+      "offset": "0x1fef4",
+      "bytes": 4,
+      "replacement_sha256": "63decf2d4632c402da721ead43498d28cbb0f2b33f1de1a4856ad86baea16069"
+    },
+    {
+      "section": ".ink_status_entry",
+      "offset": "0x20014",
+      "bytes": 4,
+      "replacement_sha256": "88ba08c6f8bb7c138e4f3bfe4e5adf48ff2079ce5580388643b67f816a905447"
+    },
+    {
+      "section": ".ink_read_entry",
+      "offset": "0x2aa4c",
+      "bytes": 4,
+      "replacement_sha256": "df82e107df56dae719b41c435876dbca35e0d70c53ce699adb8f46b0643522b2"
+    },
+    {
+      "section": ".ink_write_entry",
+      "offset": "0x2d3c4",
+      "bytes": 4,
+      "replacement_sha256": "2fd093cab12448911dfbb5d1be39a94dddce5fae49034c10c8a0513184a2da65"
+    },
+    {
+      "section": ".ink_ils",
+      "offset": "0x3f3a4",
+      "bytes": 8,
+      "replacement_sha256": "6dcd5e75586fe6683156c0d559d4827b73bd48d501fa5781a1c6099aacd7c877"
+    }
+  ],
+  "state_address": "0x43b1a100",
+  "state_bytes": 1684,
+  "state_in_replaced_cover_handler": true,
+  "surviving_interior_direct_branch_hits": [],
+  "external_literal_references_to_state": [],
+  "MPU_data_access_region4_RW_from_original_setup": true,
+  "original_module_size_preserved": true,
+  "decoded_sha256": "baabc031e1fdb8a70e8b6aa257010d81eb3dae4a595d3083ce48813933195fe8",
+  "factory_authentication_not_reproduced": true,
+  "identity_metadata_is_synthetic": true,
+  "state_not_persistent_across_reboot": true,
+  "physical_printer_tested": false
+}

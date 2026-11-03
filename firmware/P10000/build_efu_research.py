@@ -5,15 +5,18 @@ from native import *
 from build_spi_research import make_payload,getter_checks,sha
 ROOT=Path(__file__).resolve().parent; INPUT=ROOT/'inputs'; OUT=ROOT/'build'
 def main():
- parser=argparse.ArgumentParser();group=parser.add_mutually_exclusive_group();group.add_argument('--region-maintenance',action='store_true');group.add_argument('--ink-virtual',action='store_true');args=parser.parse_args()
+ parser=argparse.ArgumentParser();group=parser.add_mutually_exclusive_group();group.add_argument('--region-maintenance',action='store_true');group.add_argument('--ink-virtual',action='store_true');group.add_argument('--ink-metadata',action='store_true');args=parser.parse_args()
  extra=None;runtime=None;ink_runtime=None
- if args.ink_virtual:
+ if args.ink_virtual or args.ink_metadata:
   from build_ink_virtual import patched_module
   from probe_ink_virtual import run as ink_run
   from probe_region_maintenance import run as v2_run
-  extra,_=patched_module();ink_runtime=ink_run(extra);runtime=v2_run(extra)
-  (OUT/'ink-virtual-runtime-results.json').write_text(json.dumps(ink_runtime,indent=2)+'\n')
-  (OUT/'ink-virtual-v2-regression-results.json').write_text(json.dumps(runtime,indent=2)+'\n')
+  extra,_=patched_module(metadata_fix=args.ink_metadata);ink_runtime=ink_run(extra);runtime=v2_run(extra)
+  if args.ink_metadata:
+   from probe_ink_metadata import run as metadata_run
+   ink_runtime['metadata']=metadata_run(extra)
+  (OUT/('ink-metadata-v4-runtime-results.json' if args.ink_metadata else 'ink-virtual-runtime-results.json')).write_text(json.dumps(ink_runtime,indent=2)+'\n')
+  (OUT/('ink-metadata-v4-v2-regression-results.json' if args.ink_metadata else 'ink-virtual-v2-regression-results.json')).write_text(json.dumps(runtime,indent=2)+'\n')
  if args.region_maintenance:
   from build_region_maintenance import patched_module
   from probe_region_maintenance import run
@@ -25,7 +28,7 @@ def main():
  kind,flag,address,size,total=struct.unpack_from('<BBIII',raw,record)
  assert (kind,flag,address,size)==(1,1,0x1400000,1410330)
  old=raw[record+14:record+14+size];payload,expected,codec=make_payload(old,0,extra)
- if args.ink_virtual:codec['changed_decoded_range']='see ink-virtual-patches.json, including base V2 ranges'
+ if args.ink_virtual or args.ink_metadata:codec['changed_decoded_range']='see '+('ink-metadata-v4-patches.json' if args.ink_metadata else 'ink-virtual-patches.json')+', including base V2 ranges'
  replacement=struct.pack('<BBIII',kind,0,address,len(payload),sum(payload)&0xffffffff)+payload
  component=bytearray(raw[first:record]+replacement+raw[record+14+size:end])
  delta=len(component)-(end-first);assert delta>=0
@@ -58,7 +61,7 @@ def main():
  boot.u.mem_write(address,payload);assert boot.call(0x17e8,1)==1
  assert bytes(boot.u.mem_read(0x43b00000,len(expected)))==expected
  cases=getter_checks(boot,0x43b24d70)
- source=INPUT/'extracted/SC-P10000_FM001PA.EFU';dest=OUT/('LAB_UNVERIFIED_FM001PA_INK_VIRTUAL_V3.EFU' if args.ink_virtual else ('LAB_UNVERIFIED_FM001PA_REGION_MAINTENANCE_V2.EFU' if args.region_maintenance else 'LAB_UNVERIFIED_FM001PA_METADATA_ONLY.EFU'));entries=[]
+ source=INPUT/'extracted/SC-P10000_FM001PA.EFU';dest=OUT/('LAB_UNVERIFIED_FM001PA_INK_METADATA_V4.EFU' if args.ink_metadata else ('LAB_UNVERIFIED_FM001PA_INK_VIRTUAL_V3.EFU' if args.ink_virtual else ('LAB_UNVERIFIED_FM001PA_REGION_MAINTENANCE_V2.EFU' if args.region_maintenance else 'LAB_UNVERIFIED_FM001PA_METADATA_ONLY.EFU')));entries=[]
  with zipfile.ZipFile(source) as src,zipfile.ZipFile(dest,'w') as dst:
   for info in src.infolist():
    old_entry=src.read(info.filename);new_entry=changed if info.filename=='EFU_File.rcx' else old_entry
@@ -67,5 +70,5 @@ def main():
   assert z.testzip() is None and z.read('EFU_File.rcx')==changed
   for entry in entries:assert sha(z.read(entry['name']))==entry['sha256']
  report={'classification':'LAB ONLY; TRANSPORT AND PHYSICAL BOOT UNVERIFIED','firmware':'FM001PA','region_maintenance_runtime':runtime,'ink_virtual_runtime':ink_runtime,'output':dest.name,'bytes':dest.stat().st_size,'sha256':sha(dest.read_bytes()),'rcx_sha256':sha(changed),'component_growth_bytes':delta,'codec':codec,'all_five_record_byte_sums_valid':True,'native_updater_sum_gate_passed':True,'native_updater_auth_gate_passed':True,'target_auth_not_called':True,'unchanged_other_block_exact_original_oracle_calls':len(calls),'authentication_code_unchanged':True,'opaque_32_byte_trailer_unchanged_but_not_validated':True,'native_boot_decoder_full_output_exact':True,'getter_and_remaining_cases_passed':cases,'zip_crc_passed':True,'entries':entries,'limitations':['Other block authentication uses an exact-original oracle, not a real MAC calculation','NML front receiver and opaque trailer semantics unresolved','Standalone decompressor test temporarily combines old boot emulator with new module, never outputs a mixed-version SPI image','No physical boot, USB transport, update or power-loss test performed'],'elapsed_seconds':round(time.time()-start,3)}
- (OUT/('ink-virtual-efu-results.json' if args.ink_virtual else ('region-maintenance-efu-results.json' if args.region_maintenance else 'efu-research-results.json'))).write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(report,indent=2))
+ (OUT/('ink-metadata-v4-efu-results.json' if args.ink_metadata else ('ink-virtual-efu-results.json' if args.ink_virtual else ('region-maintenance-efu-results.json' if args.region_maintenance else 'efu-research-results.json')))).write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(report,indent=2))
 if __name__=='__main__':main()

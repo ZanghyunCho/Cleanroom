@@ -1,0 +1,20 @@
+{
+  "regional_lookup_and_original_caller_cases_passed": 2070,
+  "all_4_region_tables_accepted_for_correct_slot": true,
+  "wrong_slot_and_invalid_codes_rejected": true,
+  "maintenance_power_check_rw_and_write_entries_passed": true,
+  "maintenance_physical_transport_not_entered": true,
+  "ink_cached_state_unchanged_by_maintenance_operations": true,
+  "missing_error_full_states_normalized": true,
+  "two_native_request_completions_passed": true,
+  "native_status_notification_reports_both_present_full": true,
+  "native_full_maintenance_initialization_returns_success": true,
+  "maintenance_read_output_bounds_preserved": true,
+  "physical_printer_tested": false,
+  "fixtures": [
+    "T-code element 0x25 supplied by synthetic chip-read hook",
+    "RAM cache and settings explicitly mapped",
+    "Logging and message completion supplied by hooks; maintenance transport hooks fail if entered"
+  ],
+  "IES_and_ink_presence_genuine_virtualization_tested": false
+}
