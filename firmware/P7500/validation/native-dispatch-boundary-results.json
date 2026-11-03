@@ -1,0 +1,95 @@
+{
+  "scope": "Native ARM dispatch boundary experiment in emulator RAM only",
+  "dispatch_table": "0x4365c444",
+  "row_bytes": 116,
+  "ink_routes": [
+    {
+      "slot": 0,
+      "access": 0,
+      "driver": 1
+    },
+    {
+      "slot": 1,
+      "access": 0,
+      "driver": 1
+    },
+    {
+      "slot": 2,
+      "access": 0,
+      "driver": 1
+    },
+    {
+      "slot": 3,
+      "access": 0,
+      "driver": 1
+    },
+    {
+      "slot": 4,
+      "access": 0,
+      "driver": 1
+    },
+    {
+      "slot": 5,
+      "access": 0,
+      "driver": 1
+    },
+    {
+      "slot": 6,
+      "access": 1,
+      "driver": 1
+    },
+    {
+      "slot": 7,
+      "access": 1,
+      "driver": 1
+    },
+    {
+      "slot": 8,
+      "access": 1,
+      "driver": 1
+    },
+    {
+      "slot": 9,
+      "access": 1,
+      "driver": 1
+    },
+    {
+      "slot": 10,
+      "access": 1,
+      "driver": 1
+    },
+    {
+      "slot": 11,
+      "access": 1,
+      "driver": 1
+    }
+  ],
+  "access_routes": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      1
+    ],
+    [
+      2,
+      0
+    ]
+  ],
+  "positive_physical_dispatch_controls": 12,
+  "null_callback_dispatch_cases": 30,
+  "physical_callbacks_during_null_dispatch": 0,
+  "pending_jobs_after_null_poll": [
+    1,
+    1,
+    1
+  ],
+  "null_result_buffer_untouched": true,
+  "original_dispatch_restored": true,
+  "conclusion": "Null callbacks suppress tested driver calls but leave requests pending and results uninitialized; a job completion/result adapter is required.",
+  "complete_virtual_job_adapter_implemented": false,
+  "all_hardware_paths_proven_unreachable": false,
+  "physical_printer_tested": false
+}

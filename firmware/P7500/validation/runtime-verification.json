@@ -6,8 +6,9 @@
     "runtime/native_adapter.h": "62d02a89b21ddd1a1f564ddeb22002359fcb46fb2c8321c4236ecb458be65f86",
     "runtime/probe_arm_integration.py": "84e805f86f29afb44d5825c32c1945f76dd2fa44a5fcca453741bea4253d86b5",
     "runtime/probe_compiled_bindings.py": "10f146dcf5ec167d0f4bf9dfeb8bc75daf2a9425bd86ff2de52617189fa92677",
+    "runtime/probe_dispatch_boundary.py": "19b2c2937684e134997a1928d0cb516d2bc67a4f63aca7874ab21a48cca4bafe",
     "runtime/test_runtime.py": "729bb5dc10bb2be2e46da78b965fa2622aff099aafc786bac760ccbb54d37311",
-    "runtime/verify.py": "c18a329225bc6850e2bd9d8eed5ef47474f3c1cb0c2890a26395b842c9c9607c",
+    "runtime/verify.py": "f6e3f70b3f3f5f64fa428bbc0783ed7b4950faecd050ee4e08b6044a81a1da82",
     "runtime/virtual_cartridge.c": "77427fb13d8f8935bd35f72d7bd0458960fffac6922025b74328a68b73a3e86f",
     "runtime/virtual_cartridge.h": "6c5667124a3c81bc44e78771da551391428ad3d286f8aa6f802c28a8f404aa99"
   },
@@ -47,7 +48,7 @@
         "native_presence": 12,
         "mocked_os_notifications": 48
       },
-      "elapsed_seconds": 17.42,
+      "elapsed_seconds": 1.45,
       "bindings": "Unicorn hooks; no flash-image patch addresses allocated",
       "storage": "Simulated independent erase/program banks, not printer NVRAM",
       "hardware_asic_spi_authentication_tested": false,
@@ -136,13 +137,108 @@
           "original_prologue_hex": "70402de9240050e3"
         }
       ],
-      "elapsed_seconds": 0.726,
+      "elapsed_seconds": 0.676,
       "python_hooks": "Storage transport, OS notifications and fault reporting only",
       "printer_ram_and_flash_placement_allocated": false,
       "printer_nor_erase_sync_contract_verified": false,
       "hardware_asic_spi_authentication_tested": false,
       "maintenance_scope": "Compiled native information/remaining/error getters; no physical GF-chip wire emulation",
       "flash_image_generated": false
+    },
+    "native-dispatch-boundary-results.json": {
+      "scope": "Native ARM dispatch boundary experiment in emulator RAM only",
+      "dispatch_table": "0x4365c444",
+      "row_bytes": 116,
+      "ink_routes": [
+        {
+          "slot": 0,
+          "access": 0,
+          "driver": 1
+        },
+        {
+          "slot": 1,
+          "access": 0,
+          "driver": 1
+        },
+        {
+          "slot": 2,
+          "access": 0,
+          "driver": 1
+        },
+        {
+          "slot": 3,
+          "access": 0,
+          "driver": 1
+        },
+        {
+          "slot": 4,
+          "access": 0,
+          "driver": 1
+        },
+        {
+          "slot": 5,
+          "access": 0,
+          "driver": 1
+        },
+        {
+          "slot": 6,
+          "access": 1,
+          "driver": 1
+        },
+        {
+          "slot": 7,
+          "access": 1,
+          "driver": 1
+        },
+        {
+          "slot": 8,
+          "access": 1,
+          "driver": 1
+        },
+        {
+          "slot": 9,
+          "access": 1,
+          "driver": 1
+        },
+        {
+          "slot": 10,
+          "access": 1,
+          "driver": 1
+        },
+        {
+          "slot": 11,
+          "access": 1,
+          "driver": 1
+        }
+      ],
+      "access_routes": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      "positive_physical_dispatch_controls": 12,
+      "null_callback_dispatch_cases": 30,
+      "physical_callbacks_during_null_dispatch": 0,
+      "pending_jobs_after_null_poll": [
+        1,
+        1,
+        1
+      ],
+      "null_result_buffer_untouched": true,
+      "original_dispatch_restored": true,
+      "conclusion": "Null callbacks suppress tested driver calls but leave requests pending and results uninitialized; a job completion/result adapter is required.",
+      "complete_virtual_job_adapter_implemented": false,
+      "all_hardware_paths_proven_unreachable": false,
+      "physical_printer_tested": false
     }
   },
   "physical_printer_or_flash_tested": false,
