@@ -1,0 +1,22 @@
+{
+  "status": "MAINTENANCE_USAGE_ZERO_EXPERIMENT",
+  "file": "SC-P10000_FM001PA_MAINTENANCE-ONLY_EXPERIMENTAL.EFU",
+  "sha256": "0c2eb756977bc233185bf316d565e5cfa7ed9d337465339bb91cae845d513efe",
+  "size_bytes": 109918625,
+  "original_efu_sha256": "5f3e12a6abc664adf9c07c22bba8001336c31d5c4ac4fa414a063f5ba893ad4a",
+  "decoded_code_changed_range": [
+    80212,
+    80220
+  ],
+  "new_ram_or_storage_allocated": false,
+  "chipless_mode_included": false,
+  "persistent_virtual_state_included": false,
+  "absent_maintenance_cartridge_virtualized": false,
+  "previous_region_efu_failed_on_device": true,
+  "previous_update_failure_cause_resolved": false,
+  "crc_and_known_additive_checksums_verified": true,
+  "unknown_main_trailer": "32 bytes preserved; purpose/authentication NOT verified",
+  "device_acceptance_verified": false,
+  "boot_verified": false,
+  "same_version_update_acceptance_verified": false
+}
