@@ -1,0 +1,11 @@
+test_all_blocks_and_known_container_checksums (test_experimental_efu.ExperimentalEFU.test_all_blocks_and_known_container_checksums) ... ok
+test_download_artifact_hash_matches_manifest (test_experimental_efu.ExperimentalEFU.test_download_artifact_hash_matches_manifest) ... ok
+test_only_classifier_bytes_change_in_decoded_code (test_experimental_efu.ExperimentalEFU.test_only_classifier_bytes_change_in_decoded_code) ... ok
+test_unidentified_trailer_is_preserved_and_not_reported_authenticated (test_experimental_efu.ExperimentalEFU.test_unidentified_trailer_is_preserved_and_not_reported_authenticated) ... ok
+test_unrelated_firmware_components_and_resources_are_unchanged (test_experimental_efu.ExperimentalEFU.test_unrelated_firmware_components_and_resources_are_unchanged) ... ok
+test_literal_ring_overlap_and_wrap_roundtrips (test_experimental_efu.LzssEncoding.test_literal_ring_overlap_and_wrap_roundtrips) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 3.768s
+
+OK

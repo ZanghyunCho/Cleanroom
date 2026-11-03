@@ -1,0 +1,19 @@
+{
+  "status": "REGION_ONLY_EXPERIMENT_NOT_FULL_CHIPLESS_FIRMWARE",
+  "file": "SC-P10000_FM001PA_REGION-ONLY_EXPERIMENTAL.EFU",
+  "sha256": "a670c9f796c98ddefcd77fe6a3cdb373c0d210ea14e1b4446f06b1041943ba25",
+  "size_bytes": 109918497,
+  "original_efu_sha256": "5f3e12a6abc664adf9c07c22bba8001336c31d5c4ac4fa414a063f5ba893ad4a",
+  "decoded_code_changed_range": [
+    182164,
+    182716
+  ],
+  "new_ram_or_storage_allocated": false,
+  "chipless_mode_included": false,
+  "persistent_virtual_state_included": false,
+  "crc_and_known_additive_checksums_verified": true,
+  "unknown_main_trailer": "32 bytes preserved; purpose/authentication NOT verified",
+  "device_acceptance_verified": false,
+  "boot_verified": false,
+  "same_version_update_acceptance_verified": false
+}
