@@ -24,16 +24,19 @@ def split(d):
   c=bytearray(len(d)//2);c[0::2]=d[start::4];c[1::2]=d[start+1::4];out.append(c)
  return out
 
-def make_payload(old,flag):
+def make_payload(old,flag,desired=None):
  n,total,packed_size,packed_sum=struct.unpack_from('<4I',old);stream=old[112:112+packed_size];decoded,_=decode(stream)
  assert len(decoded)==n and sum(decoded)&0xffffffff==total and sum(stream)&0xffffffff==packed_sum
  assert decoded[FUNCTION:FUNCTION+8]==OLD
  patched=bytearray(decoded);patched[FUNCTION:FUNCTION+8]=NEW;patched=bytes(patched)
  assert patched[:FUNCTION]==decoded[:FUNCTION] and patched[FUNCTION+8:]==decoded[FUNCTION+8:]
+ if desired is not None:
+  assert len(desired)==len(decoded) and desired[FUNCTION:FUNCTION+8]==NEW
+  patched=bytes(desired)
  replay,_=encode_preserving(stream,decoded);assert replay==stream
  packed,refs=encode_preserving(stream,patched);assert decode(packed)[0]==patched
  header=bytearray(old[:112]);struct.pack_into('<4I',header,0,n,sum(patched)&0xffffffff,len(packed),sum(packed)&0xffffffff);header[32]=flag
- return bytes(header)+packed,patched,{'decoded_bytes':n,'decoded_sha256':sha(patched),'changed_decoded_range':['0x13954','0x1395c'],'original_stream_bytes':len(stream),'new_stream_bytes':len(packed),'converted_references':refs,'unchanged_replay_exact_original':True}
+ return bytes(header)+packed,patched,{'decoded_bytes':n,'decoded_sha256':sha(patched),'changed_decoded_range':['0x13954','0x1395c'] if desired is None else 'see region-maintenance-patches.json','original_stream_bytes':len(stream),'new_stream_bytes':len(packed),'converted_references':refs,'unchanged_replay_exact_original':True}
 
 def getter_checks(m,remaining):
  m.u.mem_map(0x7ff02000,0x1000);cases=0;maximum=688000000

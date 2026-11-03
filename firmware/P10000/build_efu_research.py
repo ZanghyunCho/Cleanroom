@@ -1,25 +1,32 @@
 """FM001PA metadata-only EFU laboratory candidate; transport/footer unverified."""
 from pathlib import Path
-import json,struct,time,zipfile
+import json,struct,time,zipfile,argparse
 from native import *
 from build_spi_research import make_payload,getter_checks,sha
 ROOT=Path(__file__).resolve().parent; INPUT=ROOT/'inputs'; OUT=ROOT/'build'
 def main():
+ parser=argparse.ArgumentParser();parser.add_argument('--region-maintenance',action='store_true');args=parser.parse_args()
+ extra=None;runtime=None
+ if args.region_maintenance:
+  from build_region_maintenance import patched_module
+  from probe_region_maintenance import run
+  extra,_=patched_module();runtime=run(extra)
+  (OUT/'region-maintenance-runtime-results.json').write_text(json.dumps(runtime,indent=2)+'\n')
  start=time.time();raw=(INPUT/'efu-extracted/EFU_File.rcx').read_bytes()
  assert sha(raw)=='b2f8fbe030603a758a713210b7284a195b7959a8f118a5f9e3ad6167e6acfe6a'
  first=0x52b;end=0x12a030a;record=0x110d044
  kind,flag,address,size,total=struct.unpack_from('<BBIII',raw,record)
  assert (kind,flag,address,size)==(1,1,0x1400000,1410330)
- old=raw[record+14:record+14+size];payload,expected,codec=make_payload(old,0)
+ old=raw[record+14:record+14+size];payload,expected,codec=make_payload(old,0,extra)
  replacement=struct.pack('<BBIII',kind,0,address,len(payload),sum(payload)&0xffffffff)+payload
  component=bytearray(raw[first:record]+replacement+raw[record+14+size:end])
- delta=len(component)-(end-first);assert delta==18
+ delta=len(component)-(end-first);assert delta>=0
  assert component[-32:]==raw[end-32:end]
  assert component[36:36+59620]==raw[0x54f:0xee33]
  struct.pack_into('<I',component,17,len(component)-23)
  struct.pack_into('<I',component,28,len(component)-36)
  struct.pack_into('<I',component,32,sum(component[36:])&0xffffffff)
- header=raw[:first].replace(b'5 = "19529183"',b'5 = "19529201"');assert len(header)==first
+ header=raw[:first].replace(b'5 = "19529183"',('5 = "'+str(len(component))+'"').encode());assert len(header)==first
  changed=header+component+raw[end:]
  assert changed[first+len(component):]==raw[end:]
  # Parse all five records again, not just the changed record.
@@ -43,7 +50,7 @@ def main():
  boot.u.mem_write(address,payload);assert boot.call(0x17e8,1)==1
  assert bytes(boot.u.mem_read(0x43b00000,len(expected)))==expected
  cases=getter_checks(boot,0x43b24d70)
- source=INPUT/'extracted/SC-P10000_FM001PA.EFU';dest=OUT/'LAB_UNVERIFIED_FM001PA_METADATA_ONLY.EFU';entries=[]
+ source=INPUT/'extracted/SC-P10000_FM001PA.EFU';dest=OUT/('LAB_UNVERIFIED_FM001PA_REGION_MAINTENANCE_V2.EFU' if args.region_maintenance else 'LAB_UNVERIFIED_FM001PA_METADATA_ONLY.EFU');entries=[]
  with zipfile.ZipFile(source) as src,zipfile.ZipFile(dest,'w') as dst:
   for info in src.infolist():
    old_entry=src.read(info.filename);new_entry=changed if info.filename=='EFU_File.rcx' else old_entry
@@ -51,6 +58,6 @@ def main():
  with zipfile.ZipFile(dest) as z:
   assert z.testzip() is None and z.read('EFU_File.rcx')==changed
   for entry in entries:assert sha(z.read(entry['name']))==entry['sha256']
- report={'classification':'LAB ONLY; TRANSPORT AND PHYSICAL BOOT UNVERIFIED','firmware':'FM001PA','output':dest.name,'bytes':dest.stat().st_size,'sha256':sha(dest.read_bytes()),'rcx_sha256':sha(changed),'component_growth_bytes':delta,'codec':codec,'all_five_record_byte_sums_valid':True,'native_updater_sum_gate_passed':True,'native_updater_auth_gate_passed':True,'target_auth_not_called':True,'unchanged_other_block_exact_original_oracle_calls':len(calls),'authentication_code_unchanged':True,'opaque_32_byte_trailer_unchanged_but_not_validated':True,'native_boot_decoder_full_output_exact':True,'getter_and_remaining_cases_passed':cases,'zip_crc_passed':True,'entries':entries,'limitations':['Other block authentication uses an exact-original oracle, not a real MAC calculation','NML front receiver and opaque trailer semantics unresolved','Standalone decompressor test temporarily combines old boot emulator with new module, never outputs a mixed-version SPI image','No physical boot, USB transport, update or power-loss test performed'],'elapsed_seconds':round(time.time()-start,3)}
- (OUT/'efu-research-results.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(report,indent=2))
+ report={'classification':'LAB ONLY; TRANSPORT AND PHYSICAL BOOT UNVERIFIED','firmware':'FM001PA','region_maintenance_runtime':runtime,'output':dest.name,'bytes':dest.stat().st_size,'sha256':sha(dest.read_bytes()),'rcx_sha256':sha(changed),'component_growth_bytes':delta,'codec':codec,'all_five_record_byte_sums_valid':True,'native_updater_sum_gate_passed':True,'native_updater_auth_gate_passed':True,'target_auth_not_called':True,'unchanged_other_block_exact_original_oracle_calls':len(calls),'authentication_code_unchanged':True,'opaque_32_byte_trailer_unchanged_but_not_validated':True,'native_boot_decoder_full_output_exact':True,'getter_and_remaining_cases_passed':cases,'zip_crc_passed':True,'entries':entries,'limitations':['Other block authentication uses an exact-original oracle, not a real MAC calculation','NML front receiver and opaque trailer semantics unresolved','Standalone decompressor test temporarily combines old boot emulator with new module, never outputs a mixed-version SPI image','No physical boot, USB transport, update or power-loss test performed'],'elapsed_seconds':round(time.time()-start,3)}
+ (OUT/('region-maintenance-efu-results.json' if args.region_maintenance else 'efu-research-results.json')).write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(report,indent=2))
 if __name__=='__main__':main()
