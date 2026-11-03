@@ -1,0 +1,108 @@
+{
+  "revision": 4,
+  "name": "V4 mode-aware display",
+  "base": "exact REV3",
+  "base_decoded_sha256": "54f3ecb287e4166c6ca8e349c8c785d7fa3f7f90d288cc79fbbd2301faa863cd",
+  "decoded_sha256": "71fdd7c5f1ae724c45fb5aa33465eb214eac7f5b2cf1ccd479796f1aed93a0b1",
+  "helper_bytes": 56,
+  "helper_address": "0x10038360",
+  "display_policy": {
+    "LLK_native_mode_1": "T9139",
+    "V_native_mode_2": "T913D",
+    "V_native_product_id": 9130,
+    "V_native_ink_type": 152
+  },
+  "metadata_refresh": "every virtual read; RTC still cold record creation as REV3",
+  "changed_scope": "two code ranges relative to REV3",
+  "new_routes": [
+    {
+      "address": "0x10038360",
+      "image_range": [
+        1278816,
+        1278872
+      ],
+      "purpose": "Per-read code letter: slot1 D only when native CSIC mode is2(V); otherwise REV3 mapping",
+      "original_hex": "61d2e0e704e38235d5351c30c2321938e0b918408600ca0580ff3062b50580ff64590a30e031e21d6332920dbfffe2fb2606f4981510bcff",
+      "replacement_hex": "2c068c830310c8618c5701006142ea05627aca052a0644000000c8528a5620006b573200c132cb318b07f835423934353641383337323100"
+    },
+    {
+      "address": "0x100eb97c",
+      "image_range": [
+        2013564,
+        2013568
+      ],
+      "purpose": "Mode-aware display after native ink type and product ID selection; replay displaced addressing",
+      "original_hex": "c132cb31",
+      "replacement_hex": "b407e4c9"
+    }
+  ],
+  "routes": [
+    {
+      "address": "0x100382b8",
+      "image_range": [
+        1278648,
+        1278806
+      ],
+      "purpose": "metadata helper in body bypassed by existing virtual ReadDev entry redirect",
+      "original_hex": "07d89b0001d203e200ba860006e8bffff4fa0ac01d30bfff40fb0ac819381b4020361e0080ffea670a30e031ca75193018381b4080ffa4600a30e031ca6d1830bfff42fc0a3019382346030080ff6e680a30e0318a65a36f0300e069a20dbfff58fd0a30e031fa555fe29c00e0e18ae5a3570300e051d2056352d105d215d51500bab5151d30023abfffb0fe1d30203e2a00bfffb2fe1d4601002606bc98",
+      "replacement_hex": "031ee0ff63ff1d006337010063470500634f0900635f0d000032003abeff9cf8235f0d002c0610603f108c6f01000c6601008c7701002f063f000000ef69fb0d6172d10d6c72bb0dca6ac6720e69eb574300ca563f000d516b574200234705002c064a830310c8618c570100c8528a5620006b5732002337010023470500234f0900235f0d0023ff1d00031e20008b07a835423934353641383337323100"
+    },
+    {
+      "address": "0x100eb8e6",
+      "image_range": [
+        2013414,
+        2013422
+      ],
+      "purpose": "initialize display code and RTC year/month once when virtual record is created",
+      "original_hex": "085641306b573600",
+      "replacement_hex": "b407d2c900000000"
+    },
+    {
+      "address": "0x100ebaba",
+      "image_range": [
+        2013882,
+        2013892
+      ],
+      "purpose": "display field T913 plus slot-specific model character and padding",
+      "original_hex": "52434554545330304130",
+      "replacement_hex": "39543331202020202020"
+    },
+    {
+      "address": "0x100eb958",
+      "image_range": [
+        2013528,
+        2013550
+      ],
+      "purpose": "use T913 product profile row for the existing 11-ink mode",
+      "original_hex": "8d5701006252e2056452ea050c663000b5050c661800",
+      "replacement_hex": "0c661800000000000000000000000000000000000000"
+    },
+    {
+      "address": "0x10038360",
+      "image_range": [
+        1278816,
+        1278872
+      ],
+      "purpose": "Per-read code letter: slot1 D only when native CSIC mode is2(V); otherwise REV3 mapping",
+      "original_hex": "61d2e0e704e38235d5351c30c2321938e0b918408600ca0580ff3062b50580ff64590a30e031e21d6332920dbfffe2fb2606f4981510bcff",
+      "replacement_hex": "2c068c830310c8618c5701006142ea05627aca052a0644000000c8528a5620006b573200c132cb318b07f835423934353641383337323100"
+    },
+    {
+      "address": "0x100eb97c",
+      "image_range": [
+        2013564,
+        2013568
+      ],
+      "purpose": "Mode-aware display after native ink type and product ID selection; replay displaced addressing",
+      "original_hex": "c132cb31",
+      "replacement_hex": "b407e4c9"
+    }
+  ],
+  "accounting_policy_changed": false,
+  "cover_policy_changed": false,
+  "persistence_changed": false,
+  "maintenance_profiles_modified": false,
+  "low_ink_refill_policy_included": false,
+  "hardware_operation_verified": false,
+  "original_cave_indirect_entry_absence_proven": false
+}
