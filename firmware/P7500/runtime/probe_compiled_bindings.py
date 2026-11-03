@@ -21,7 +21,8 @@ HOOKS=[(0x433f57c0,'vr_native_get40'),(0x433f5934,'vr_native_set40'),
        (0x433f5b4c,'vr_native_add40'),(0x43403f68,'vr_native_set_cover'),
        (0x434027b0,'vr_native_read_mirror'),(0x43408d30,'vr_native_presence_ptr'),
        (0x434033a4,'vr_native_remaining_info'),(0x433f2f04,'vr_native_waste_info_ptr'),
-       (0x43407f20,'vr_native_waste_remaining_info'),(0x43408318,'vr_native_waste_error_code')]
+       (0x43407f20,'vr_native_waste_remaining_info'),(0x43408318,'vr_native_waste_error_code'),
+       (0x433f6e90,'vr_native_ink_check_job'),(0x433f71fc,'vr_native_ink_status_job')]
 
 class CompiledMachine(Machine):
     def __init__(self,flash=None,cut=None):
@@ -51,7 +52,7 @@ class CompiledMachine(Machine):
             trampolines.append(trampoline)
             self.patches.append({'entry':hex(entry),'adapter':name,'adapter_address':hex(self.symbols[name]),
                                  'trampoline':hex(trampoline) if trampoline else None,'original_prologue_hex':original.hex()})
-        self.u.mem_write(BINDINGS,struct.pack('<9I',*trampolines[:6],FAULT,NATIVE_MIRROR,trampolines[7]))
+        self.u.mem_write(BINDINGS,struct.pack('<10I',*trampolines[:6],FAULT,NATIVE_MIRROR,trampolines[7],0x4340a84c))
         if self.call('vr_native_attach',CTX,BINDINGS)!=0:raise AssertionError('Compiled adapter attachment failed')
         for entry,name in HOOKS:
             self.u.mem_write(entry,struct.pack('<2I',0xe51ff004,self.symbols[name]))

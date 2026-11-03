@@ -11,6 +11,7 @@ struct vr_native_bindings {
     void (*fault)(int);
     uint8_t *ink_mirror;
     uint8_t *(*waste_info_ptr)(uint32_t);
+    uint32_t (*slot_access)(uint32_t);
 };
 /* Original-function pointers must target verified relocated prologues, not the
  * patched entry addresses. No actual printer storage/RAM placement is selected. */
@@ -26,4 +27,9 @@ uint32_t vr_native_remaining_info(uint32_t);
 uint8_t *vr_native_waste_info_ptr(uint32_t);
 uint32_t vr_native_waste_remaining_info(uint32_t);
 uint32_t vr_native_waste_error_code(uint32_t);
+/* Synchronous upper ink-check/status jobs. mask is 12 uint32_t selections,
+ * or NULL for all slots. Results cover selected access groups, not just the
+ * selected slots. These functions do not emulate physical chip registers. */
+uint32_t vr_native_ink_check_job(const uint32_t *,uint8_t *);
+uint32_t vr_native_ink_status_job(uint32_t,const uint32_t *,uint8_t *);
 #endif

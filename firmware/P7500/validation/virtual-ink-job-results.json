@@ -1,0 +1,21 @@
+{
+  "scope": "Two compiled upper ink jobs, patched ARM entries and original upper callers",
+  "selection_mode_cases_passed": 12288,
+  "original_decoder_reference_cases": 6,
+  "null_mask_and_alias_cases_passed": 6,
+  "original_upper_wrappers_passed": 3,
+  "combined_native_selection_cases": 16,
+  "invalid_job_argument_cases_passed": 3,
+  "query_preserves_usage_generation": true,
+  "cover_generation_and_reboot_passed": true,
+  "faulted_jobs_rejected": 3,
+  "faulted_original_upper_wrappers_rejected": 3,
+  "invalid_route_rejected_without_replacing_attachment": true,
+  "physical_driver_callbacks_entered": 0,
+  "native_normal_check_code": 0,
+  "native_normal_status_code": 2,
+  "full_chip_communication_virtualized": false,
+  "native_persistence_backend_bound": false,
+  "physical_printer_tested": false,
+  "elapsed_seconds": 8.597
+}

@@ -2,17 +2,18 @@
   "source_sha256": {
     "runtime/arm.ld": "c54f32e8c3db2b8785b1433c50b6b02e39aac0cdc1cef80bab714c3a6da9181a",
     "runtime/build.py": "678f67dffc4d6aa4e9964a2d461464bfb139b37d8125b07819101346a14e91f9",
-    "runtime/native_adapter.c": "b58a0add23f7daba7df64499a08c047074bf69b5c545cbe168bc1b58d0f53f05",
-    "runtime/native_adapter.h": "62d02a89b21ddd1a1f564ddeb22002359fcb46fb2c8321c4236ecb458be65f86",
+    "runtime/native_adapter.c": "d8143ec9a825484280a1f45a9fdb0fd057d8ae7122f6a67a62d1ca2b67922766",
+    "runtime/native_adapter.h": "2df7fa83f8da318ebceaaad339f105fb60c6c89ce80072f758ed4ab113a9fe41",
     "runtime/probe_arm_integration.py": "84e805f86f29afb44d5825c32c1945f76dd2fa44a5fcca453741bea4253d86b5",
-    "runtime/probe_compiled_bindings.py": "10f146dcf5ec167d0f4bf9dfeb8bc75daf2a9425bd86ff2de52617189fa92677",
+    "runtime/probe_compiled_bindings.py": "ca7d9ff95c1789f3c54986e5a59525ba4c94f7fa0942c1df342b4357b8518999",
     "runtime/probe_dispatch_boundary.py": "19b2c2937684e134997a1928d0cb516d2bc67a4f63aca7874ab21a48cca4bafe",
+    "runtime/probe_virtual_ink_jobs.py": "a070ca0317f4806b3e998418d8b8fffa568218aa559eec016dea2e30581f93f1",
     "runtime/test_runtime.py": "729bb5dc10bb2be2e46da78b965fa2622aff099aafc786bac760ccbb54d37311",
-    "runtime/verify.py": "f6e3f70b3f3f5f64fa428bbc0783ed7b4950faecd050ee4e08b6044a81a1da82",
+    "runtime/verify.py": "ecabfb4a0103142fd11d5d5f380cf63d4b694a33e228247a684a593568185c40",
     "runtime/virtual_cartridge.c": "77427fb13d8f8935bd35f72d7bd0458960fffac6922025b74328a68b73a3e86f",
     "runtime/virtual_cartridge.h": "6c5667124a3c81bc44e78771da551391428ad3d286f8aa6f802c28a8f404aa99"
   },
-  "arm_elf_sha256": "3dd93f7df962905ae6cbd745e8b60ca862013c7ff6acb6f225e56cf571705ea1",
+  "arm_elf_sha256": "911e1d3e5e6094d078ade134033ee2b1806af6e496f8950272ea9e084eb1e67f",
   "original_merged_sha256": "ae9b0cd5f15f1f2edcfd671c9131d9383243e1fbf9c59b0bf31dcaa04968c551",
   "reports": {
     "virtual-runtime-host-results.json": {
@@ -48,7 +49,7 @@
         "native_presence": 12,
         "mocked_os_notifications": 48
       },
-      "elapsed_seconds": 1.45,
+      "elapsed_seconds": 2.265,
       "bindings": "Unicorn hooks; no flash-image patch addresses allocated",
       "storage": "Simulated independent erase/program banks, not printer NVRAM",
       "hardware_asic_spi_authentication_tested": false,
@@ -69,75 +70,89 @@
         {
           "entry": "0x433f57c0",
           "adapter": "vr_native_get40",
-          "adapter_address": "0x45001528",
+          "adapter_address": "0x4500158c",
           "trampoline": "0x47000200",
           "original_prologue_hex": "f04f2de90cd04de2"
         },
         {
           "entry": "0x433f5934",
           "adapter": "vr_native_set40",
-          "adapter_address": "0x4500166c",
+          "adapter_address": "0x450016d0",
           "trampoline": "0x47000220",
           "original_prologue_hex": "f04f2de90cd04de2"
         },
         {
           "entry": "0x433f5b4c",
           "adapter": "vr_native_add40",
-          "adapter_address": "0x45001748",
+          "adapter_address": "0x450017ac",
           "trampoline": "0x47000240",
           "original_prologue_hex": "f04f2de90cd04de2"
         },
         {
           "entry": "0x43403f68",
           "adapter": "vr_native_set_cover",
-          "adapter_address": "0x45001824",
+          "adapter_address": "0x45001888",
           "trampoline": "0x47000260",
           "original_prologue_hex": "f0402de9020050e3"
         },
         {
           "entry": "0x434027b0",
           "adapter": "vr_native_read_mirror",
-          "adapter_address": "0x45001948",
+          "adapter_address": "0x450019ac",
           "trampoline": "0x47000280",
           "original_prologue_hex": "f04f2de90050a0e3"
         },
         {
           "entry": "0x43408d30",
           "adapter": "vr_native_presence_ptr",
-          "adapter_address": "0x45001aac",
+          "adapter_address": "0x45001b10",
           "trampoline": "0x470002a0",
           "original_prologue_hex": "70402de908d04de2"
         },
         {
           "entry": "0x434033a4",
           "adapter": "vr_native_remaining_info",
-          "adapter_address": "0x45001b8c",
+          "adapter_address": "0x45001bf0",
           "trampoline": null,
           "original_prologue_hex": "f0402de90cd04de2"
         },
         {
           "entry": "0x433f2f04",
           "adapter": "vr_native_waste_info_ptr",
-          "adapter_address": "0x45001c00",
+          "adapter_address": "0x45001c64",
           "trampoline": "0x470002e0",
           "original_prologue_hex": "f0402de90cd04de2"
         },
         {
           "entry": "0x43407f20",
           "adapter": "vr_native_waste_remaining_info",
-          "adapter_address": "0x45001cf8",
+          "adapter_address": "0x45001d5c",
           "trampoline": null,
           "original_prologue_hex": "f0402de9c4709fe5"
         },
         {
           "entry": "0x43408318",
           "adapter": "vr_native_waste_error_code",
-          "adapter_address": "0x45001d64",
+          "adapter_address": "0x45001dc8",
           "trampoline": null,
           "original_prologue_hex": "70402de9240050e3"
+        },
+        {
+          "entry": "0x433f6e90",
+          "adapter": "vr_native_ink_check_job",
+          "adapter_address": "0x45001e2c",
+          "trampoline": null,
+          "original_prologue_hex": "f04f2de90070a0e3"
+        },
+        {
+          "entry": "0x433f71fc",
+          "adapter": "vr_native_ink_status_job",
+          "adapter_address": "0x45001f58",
+          "trampoline": null,
+          "original_prologue_hex": "f74f2de90070a0e3"
         }
       ],
-      "elapsed_seconds": 0.676,
+      "elapsed_seconds": 1.35,
       "python_hooks": "Storage transport, OS notifications and fault reporting only",
       "printer_ram_and_flash_placement_allocated": false,
       "printer_nor_erase_sync_contract_verified": false,
@@ -239,6 +254,27 @@
       "complete_virtual_job_adapter_implemented": false,
       "all_hardware_paths_proven_unreachable": false,
       "physical_printer_tested": false
+    },
+    "virtual-ink-job-results.json": {
+      "scope": "Two compiled upper ink jobs, patched ARM entries and original upper callers",
+      "selection_mode_cases_passed": 12288,
+      "original_decoder_reference_cases": 6,
+      "null_mask_and_alias_cases_passed": 6,
+      "original_upper_wrappers_passed": 3,
+      "combined_native_selection_cases": 16,
+      "invalid_job_argument_cases_passed": 3,
+      "query_preserves_usage_generation": true,
+      "cover_generation_and_reboot_passed": true,
+      "faulted_jobs_rejected": 3,
+      "faulted_original_upper_wrappers_rejected": 3,
+      "invalid_route_rejected_without_replacing_attachment": true,
+      "physical_driver_callbacks_entered": 0,
+      "native_normal_check_code": 0,
+      "native_normal_status_code": 2,
+      "full_chip_communication_virtualized": false,
+      "native_persistence_backend_bound": false,
+      "physical_printer_tested": false,
+      "elapsed_seconds": 8.597
     }
   },
   "physical_printer_or_flash_tested": false,

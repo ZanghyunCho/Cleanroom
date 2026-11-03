@@ -2,6 +2,7 @@
 static struct vr_context *context;
 static struct vr_native_bindings original;
 static int last_fault;
+static uint8_t slot_access[VR_SLOTS];
 
 static int ready(void) {return context && !last_fault && vr_presence_value(context,0)==1;}
 static void failed(int error) {
@@ -12,9 +13,17 @@ static void failed(int error) {
 }
 int vr_native_attach(struct vr_context *c,const struct vr_native_bindings *b) {
     if(!c || !b || !b->get40 || !b->set40 || !b->add40 || !b->set_cover ||
-       !b->read_mirror || !b->presence_ptr || !b->fault || !b->ink_mirror || !b->waste_info_ptr)return VR_ARGUMENT;
+       !b->read_mirror || !b->presence_ptr || !b->fault || !b->ink_mirror ||
+       !b->waste_info_ptr || !b->slot_access)return VR_ARGUMENT;
     if(c->busy)return VR_BUSY;
     if(vr_presence_value(c,0)!=1)return VR_NOT_READY;
+    uint8_t routes[VR_SLOTS];
+    for(uint32_t s=0;s<VR_SLOTS;s++) {
+        uint32_t access=b->slot_access(s);
+        if(access>=32)return VR_ARGUMENT;
+        routes[s]=(uint8_t)access;
+    }
+    for(uint32_t s=0;s<VR_SLOTS;s++)slot_access[s]=routes[s];
     original=*b;context=c;last_fault=0;return VR_OK;
 }
 int vr_native_fault(void) {return last_fault;}
@@ -84,4 +93,27 @@ uint32_t vr_native_waste_remaining_info(uint32_t box) {
 uint32_t vr_native_waste_error_code(uint32_t index) {
     if(index>=0x24 || !ready()){failed(index>=0x24?VR_ARGUMENT:VR_NOT_READY);return 1;}
     return 0;
+}
+
+static uint32_t ink_job(const uint32_t *mask,uint8_t *result,uint8_t normal) {
+    if(!result){failed(VR_ARGUMENT);return 1;}
+    if(!context){failed(VR_NOT_READY);return 1;}
+    /* Snapshot all selections before writing results: native callers may share
+     * input/output storage. A selected slot enables its entire access group. */
+    uint32_t selected=0;
+    for(uint32_t s=0;s<VR_SLOTS;s++)
+        if(!mask || mask[s])selected|=UINT32_C(1)<<slot_access[s];
+    if(!selected)return 0;
+    int healthy=ready();
+    for(uint32_t s=0;s<VR_SLOTS;s++)
+        if(selected&(UINT32_C(1)<<slot_access[s]))result[s]=healthy?normal:5;
+    if(!healthy){failed(VR_NOT_READY);return 1;}
+    return 0;
+}
+uint32_t vr_native_ink_check_job(const uint32_t *mask,uint8_t *result) {
+    return ink_job(mask,result,0);
+}
+uint32_t vr_native_ink_status_job(uint32_t mode,const uint32_t *mask,uint8_t *result) {
+    if(mode>1){failed(VR_ARGUMENT);return 1;}
+    return ink_job(mask,result,2);
 }
