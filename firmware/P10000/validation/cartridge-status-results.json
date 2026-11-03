@@ -1,0 +1,205 @@
+{
+  "scope": "Original cached status consumers, explicit synthetic RAM contents; no physical cartridge/sensor input",
+  "status_record_base": "0x43e5d514",
+  "record_stride": 12,
+  "status_zero_means_usable_for_these_consumers": true,
+  "entry_all_usable": "0x43b1e46c",
+  "entry_availability": "0x43b1aa94",
+  "cases": [
+    {
+      "case": "all_normal",
+      "all_usable": 1,
+      "per_slot_usable": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "case": "all_status_one",
+      "all_usable": 0,
+      "per_slot_usable": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "case": "one_nonzero_slot_0",
+      "all_usable": 0,
+      "per_slot_usable": [
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "case": "one_nonzero_slot_1",
+      "all_usable": 0,
+      "per_slot_usable": [
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "case": "one_nonzero_slot_2",
+      "all_usable": 0,
+      "per_slot_usable": [
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "case": "one_nonzero_slot_3",
+      "all_usable": 0,
+      "per_slot_usable": [
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "case": "one_nonzero_slot_4",
+      "all_usable": 0,
+      "per_slot_usable": [
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "case": "one_nonzero_slot_5",
+      "all_usable": 0,
+      "per_slot_usable": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "case": "one_nonzero_slot_6",
+      "all_usable": 0,
+      "per_slot_usable": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "case": "one_nonzero_slot_7",
+      "all_usable": 0,
+      "per_slot_usable": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "case": "one_nonzero_slot_8",
+      "all_usable": 0,
+      "per_slot_usable": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1
+      ]
+    },
+    {
+      "case": "one_nonzero_slot_9",
+      "all_usable": 0,
+      "per_slot_usable": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0
+      ]
+    }
+  ],
+  "outside_output_boundaries_preserved": true,
+  "does_not_establish_genuine_identity_or_physical_IES_state": true,
+  "patch_or_installable_firmware_generated": false
+}

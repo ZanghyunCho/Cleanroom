@@ -1,0 +1,11 @@
+{
+  "source": "User report in conversation; not independently observed from cloud",
+  "reported_on_client_date": "2026-11-04",
+  "candidate": "LAB_UNVERIFIED_FM001PA_METADATA_ONLY.EFU",
+  "candidate_sha256": "38541332b85d5db44809565517e180a929c336c99f151bcc3ce375c76ec37b14",
+  "user_report": "Successful update; maintenance cartridge available space always 100 percent",
+  "exact_downloaded_file_hash_verified_on_user_device": false,
+  "printer_boot_and_maintenance_display_success_reported": true,
+  "ink_cartridge_absence_genuine_or_IES_patches_tested": false,
+  "power_loss_during_flash_tested": false
+}

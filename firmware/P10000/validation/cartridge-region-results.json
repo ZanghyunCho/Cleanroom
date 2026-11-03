@@ -1,0 +1,316 @@
+{
+  "scope": "Original FM001PA T-code lookup; chip element 0x25 supplied by explicit synthetic read hook",
+  "entry": "0x43b2c794",
+  "cases_passed": 164,
+  "regions": [
+    {
+      "internal_region_id": 1,
+      "country_mapping": "UNVERIFIED; do not infer country solely from internal ID",
+      "table_offset": "0x1927d2",
+      "classes": [
+        {
+          "class": 0,
+          "slot_tcodes": [
+            "T8306",
+            "T8302",
+            "T8309",
+            "T8300",
+            "T8305",
+            "T8301",
+            "T8308",
+            "T8307",
+            "T8304",
+            "T8303"
+          ],
+          "raw_capacity_pairs": [
+            [
+              100,
+              130
+            ]
+          ]
+        },
+        {
+          "class": 1,
+          "slot_tcodes": [
+            "T9096",
+            "T9092",
+            "T9099",
+            "T9090",
+            "T9095",
+            "T9091",
+            "T9098",
+            "T9097",
+            "T9094",
+            "T9093"
+          ],
+          "raw_capacity_pairs": [
+            [
+              340,
+              390
+            ]
+          ]
+        },
+        {
+          "class": 2,
+          "slot_tcodes": [
+            "T8096",
+            "T8092",
+            "T8099",
+            "T8090",
+            "T8095",
+            "T8091",
+            "T8098",
+            "T8097",
+            "T8094",
+            "T8093"
+          ],
+          "raw_capacity_pairs": [
+            [
+              680,
+              770
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "internal_region_id": 2,
+      "country_mapping": "UNVERIFIED; do not infer country solely from internal ID",
+      "table_offset": "0x19280e",
+      "classes": [
+        {
+          "class": 0,
+          "slot_tcodes": [
+            "T8306",
+            "T8302",
+            "T8309",
+            "T8300",
+            "T8305",
+            "T8301",
+            "T8308",
+            "T8307",
+            "T8304",
+            "T8303"
+          ],
+          "raw_capacity_pairs": [
+            [
+              100,
+              130
+            ]
+          ]
+        },
+        {
+          "class": 1,
+          "slot_tcodes": [
+            "T9006",
+            "T9002",
+            "T9009",
+            "T9000",
+            "T9005",
+            "T9001",
+            "T9008",
+            "T9007",
+            "T9004",
+            "T9003"
+          ],
+          "raw_capacity_pairs": [
+            [
+              340,
+              390
+            ]
+          ]
+        },
+        {
+          "class": 2,
+          "slot_tcodes": [
+            "T8006",
+            "T8002",
+            "T8009",
+            "T8000",
+            "T8005",
+            "T8001",
+            "T8008",
+            "T8007",
+            "T8004",
+            "T8003"
+          ],
+          "raw_capacity_pairs": [
+            [
+              680,
+              770
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "internal_region_id": 3,
+      "country_mapping": "UNVERIFIED; do not infer country solely from internal ID",
+      "table_offset": "0x19284a",
+      "classes": [
+        {
+          "class": 0,
+          "slot_tcodes": [
+            "T8306",
+            "T8302",
+            "T8309",
+            "T8300",
+            "T8305",
+            "T8301",
+            "T8308",
+            "T8307",
+            "T8304",
+            "T8303"
+          ],
+          "raw_capacity_pairs": [
+            [
+              100,
+              130
+            ]
+          ]
+        },
+        {
+          "class": 1,
+          "slot_tcodes": [
+            "T9036",
+            "T9032",
+            "T9039",
+            "T9030",
+            "T9035",
+            "T9031",
+            "T9038",
+            "T9037",
+            "T9034",
+            "T9033"
+          ],
+          "raw_capacity_pairs": [
+            [
+              340,
+              390
+            ]
+          ]
+        },
+        {
+          "class": 2,
+          "slot_tcodes": [
+            "T8036",
+            "T8032",
+            "T8039",
+            "T8030",
+            "T8035",
+            "T8031",
+            "T8038",
+            "T8037",
+            "T8034",
+            "T8033"
+          ],
+          "raw_capacity_pairs": [
+            [
+              680,
+              770
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "internal_region_id": 4,
+      "country_mapping": "UNVERIFIED; do not infer country solely from internal ID",
+      "table_offset": "0x192886",
+      "classes": [
+        {
+          "class": 0,
+          "slot_tcodes": [
+            "T8306",
+            "T8302",
+            "T8309",
+            "T8300",
+            "T8305",
+            "T8301",
+            "T8308",
+            "T8307",
+            "T8304",
+            "T8303"
+          ],
+          "raw_capacity_pairs": [
+            [
+              100,
+              130
+            ]
+          ]
+        },
+        {
+          "class": 1,
+          "slot_tcodes": [
+            "T9026",
+            "T9022",
+            "T9029",
+            "T9020",
+            "T9025",
+            "T9021",
+            "T9028",
+            "T9027",
+            "T9024",
+            "T9023"
+          ],
+          "raw_capacity_pairs": [
+            [
+              340,
+              390
+            ]
+          ]
+        },
+        {
+          "class": 2,
+          "slot_tcodes": [
+            "T8026",
+            "T8022",
+            "T8029",
+            "T8020",
+            "T8025",
+            "T8021",
+            "T8028",
+            "T8027",
+            "T8024",
+            "T8023"
+          ],
+          "raw_capacity_pairs": [
+            [
+              680,
+              770
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "T8026_cross_region_control": [
+    {
+      "tcode": "T8026",
+      "slot": 0,
+      "region": 1,
+      "lookup_return": 0
+    },
+    {
+      "tcode": "T8026",
+      "slot": 0,
+      "region": 2,
+      "lookup_return": 0
+    },
+    {
+      "tcode": "T8026",
+      "slot": 0,
+      "region": 3,
+      "lookup_return": 0
+    },
+    {
+      "tcode": "T8026",
+      "slot": 0,
+      "region": 4,
+      "lookup_return": 1
+    }
+  ],
+  "invalid_ffff_rejected": true,
+  "country_names_officially_verified": false,
+  "physical_chip_communications_tested": false
+}
