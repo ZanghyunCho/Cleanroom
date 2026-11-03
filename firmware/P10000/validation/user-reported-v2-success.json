@@ -1,0 +1,11 @@
+{
+  "source": "User report in conversation; no cloud hardware access",
+  "reported_on_client_date": "2026-11-04",
+  "candidate": "LAB_UNVERIFIED_FM001PA_REGION_MAINTENANCE_V2.EFU",
+  "candidate_sha256": "6437ea2f72630d5382d1e907ab05559cdda728b2bebe4343502e4628b367b790",
+  "user_report": "Works normally; continue remaining missions",
+  "reported_general_operation_success": true,
+  "exact_download_hash_verified_on_user_device": false,
+  "individual_cross_region_and_missing_maintenance_test_steps_explicitly_reported": false,
+  "ink_absence_genuine_IES_virtualization_tested": false
+}

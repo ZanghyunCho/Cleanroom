@@ -1,0 +1,656 @@
+{
+  "scope": "Compiled ARM word backend and original firmware element decoder in emulator; not installed printer code",
+  "native_decoder": "0x43b2c0ec",
+  "native_word_read_boundary": "0x43b2aa4c",
+  "context_bytes": 1680,
+  "context_address_is_test_workspace_not_validated_printer_reservation": true,
+  "valid_element_count": 77,
+  "reserved_zero_mask_elements": [
+    77
+  ],
+  "native_field_and_identity_cases_passed": 2390,
+  "native_field_write_readback_cases_passed": 2310,
+  "original_field_write_entry": "0x43b2e65c",
+  "word_write_dirty_marker": "0x8000",
+  "non_target_word_bits_preserved": true,
+  "invalid_bounds_rejected_without_mutation": true,
+  "output_bounds_preserved": true,
+  "reset_identity_cases": [
+    {
+      "region": 1,
+      "slot": 0,
+      "tcode": 8096,
+      "capacity_raw": 3400
+    },
+    {
+      "region": 1,
+      "slot": 1,
+      "tcode": 8092,
+      "capacity_raw": 3400
+    },
+    {
+      "region": 1,
+      "slot": 2,
+      "tcode": 8099,
+      "capacity_raw": 3400
+    },
+    {
+      "region": 1,
+      "slot": 3,
+      "tcode": 8090,
+      "capacity_raw": 3400
+    },
+    {
+      "region": 1,
+      "slot": 4,
+      "tcode": 8095,
+      "capacity_raw": 3400
+    },
+    {
+      "region": 1,
+      "slot": 5,
+      "tcode": 8091,
+      "capacity_raw": 3400
+    },
+    {
+      "region": 1,
+      "slot": 6,
+      "tcode": 8098,
+      "capacity_raw": 3400
+    },
+    {
+      "region": 1,
+      "slot": 7,
+      "tcode": 8097,
+      "capacity_raw": 3400
+    },
+    {
+      "region": 1,
+      "slot": 8,
+      "tcode": 8094,
+      "capacity_raw": 3400
+    },
+    {
+      "region": 1,
+      "slot": 9,
+      "tcode": 8093,
+      "capacity_raw": 3400
+    },
+    {
+      "region": 2,
+      "slot": 0,
+      "tcode": 8006,
+      "capacity_raw": 3400
+    },
+    {
+      "region": 2,
+      "slot": 1,
+      "tcode": 8002,
+      "capacity_raw": 3400
+    },
+    {
+      "region": 2,
+      "slot": 2,
+      "tcode": 8009,
+      "capacity_raw": 3400
+    },
+    {
+      "region": 2,
+      "slot": 3,
+      "tcode": 8000,
+      "capacity_raw": 3400
+    },
+    {
+      "region": 2,
+      "slot": 4,
+      "tcode": 8005,
+      "capacity_raw": 3400
+    },
+    {
+      "region": 2,
+      "slot": 5,
+      "tcode": 8001,
+      "capacity_raw": 3400
+    },
+    {
+      "region": 2,
+      "slot": 6,
+      "tcode": 8008,
+      "capacity_raw": 3400
+    },
+    {
+      "region": 2,
+      "slot": 7,
+      "tcode": 8007,
+      "capacity_raw": 3400
+    },
+    {
+      "region": 2,
+      "slot": 8,
+      "tcode": 8004,
+      "capacity_raw": 3400
+    },
+    {
+      "region": 2,
+      "slot": 9,
+      "tcode": 8003,
+      "capacity_raw": 3400
+    },
+    {
+      "region": 3,
+      "slot": 0,
+      "tcode": 8036,
+      "capacity_raw": 3400
+    },
+    {
+      "region": 3,
+      "slot": 1,
+      "tcode": 8032,
+      "capacity_raw": 3400
+    },
+    {
+      "region": 3,
+      "slot": 2,
+      "tcode": 8039,
+      "capacity_raw": 3400
+    },
+    {
+      "region": 3,
+      "slot": 3,
+      "tcode": 8030,
+      "capacity_raw": 3400
+    },
+    {
+      "region": 3,
+      "slot": 4,
+      "tcode": 8035,
+      "capacity_raw": 3400
+    },
+    {
+      "region": 3,
+      "slot": 5,
+      "tcode": 8031,
+      "capacity_raw": 3400
+    },
+    {
+      "region": 3,
+      "slot": 6,
+      "tcode": 8038,
+      "capacity_raw": 3400
+    },
+    {
+      "region": 3,
+      "slot": 7,
+      "tcode": 8037,
+      "capacity_raw": 3400
+    },
+    {
+      "region": 3,
+      "slot": 8,
+      "tcode": 8034,
+      "capacity_raw": 3400
+    },
+    {
+      "region": 3,
+      "slot": 9,
+      "tcode": 8033,
+      "capacity_raw": 3400
+    },
+    {
+      "region": 4,
+      "slot": 0,
+      "tcode": 8026,
+      "capacity_raw": 3400
+    },
+    {
+      "region": 4,
+      "slot": 1,
+      "tcode": 8022,
+      "capacity_raw": 3400
+    },
+    {
+      "region": 4,
+      "slot": 2,
+      "tcode": 8029,
+      "capacity_raw": 3400
+    },
+    {
+      "region": 4,
+      "slot": 3,
+      "tcode": 8020,
+      "capacity_raw": 3400
+    },
+    {
+      "region": 4,
+      "slot": 4,
+      "tcode": 8025,
+      "capacity_raw": 3400
+    },
+    {
+      "region": 4,
+      "slot": 5,
+      "tcode": 8021,
+      "capacity_raw": 3400
+    },
+    {
+      "region": 4,
+      "slot": 6,
+      "tcode": 8028,
+      "capacity_raw": 3400
+    },
+    {
+      "region": 4,
+      "slot": 7,
+      "tcode": 8027,
+      "capacity_raw": 3400
+    },
+    {
+      "region": 4,
+      "slot": 8,
+      "tcode": 8024,
+      "capacity_raw": 3400
+    },
+    {
+      "region": 4,
+      "slot": 9,
+      "tcode": 8023,
+      "capacity_raw": 3400
+    }
+  ],
+  "element_schema": [
+    {
+      "element": 0,
+      "word_address": 0,
+      "mask": 8191
+    },
+    {
+      "element": 1,
+      "word_address": 1,
+      "mask": 6144
+    },
+    {
+      "element": 2,
+      "word_address": 2,
+      "mask": 8191
+    },
+    {
+      "element": 3,
+      "word_address": 3,
+      "mask": 6144
+    },
+    {
+      "element": 4,
+      "word_address": 4,
+      "mask": 4096
+    },
+    {
+      "element": 5,
+      "word_address": 4,
+      "mask": 2048
+    },
+    {
+      "element": 6,
+      "word_address": 4,
+      "mask": 128
+    },
+    {
+      "element": 7,
+      "word_address": 4,
+      "mask": 64
+    },
+    {
+      "element": 8,
+      "word_address": 4,
+      "mask": 1
+    },
+    {
+      "element": 9,
+      "word_address": 5,
+      "mask": 4096
+    },
+    {
+      "element": 10,
+      "word_address": 5,
+      "mask": 2048
+    },
+    {
+      "element": 11,
+      "word_address": 5,
+      "mask": 1024
+    },
+    {
+      "element": 12,
+      "word_address": 6,
+      "mask": 8191
+    },
+    {
+      "element": 13,
+      "word_address": 7,
+      "mask": 7936
+    },
+    {
+      "element": 14,
+      "word_address": 20,
+      "mask": 224
+    },
+    {
+      "element": 15,
+      "word_address": 32,
+      "mask": 32512
+    },
+    {
+      "element": 16,
+      "word_address": 32,
+      "mask": 255
+    },
+    {
+      "element": 17,
+      "word_address": 33,
+      "mask": 32512
+    },
+    {
+      "element": 18,
+      "word_address": 33,
+      "mask": 255
+    },
+    {
+      "element": 19,
+      "word_address": 34,
+      "mask": 32512
+    },
+    {
+      "element": 20,
+      "word_address": 34,
+      "mask": 255
+    },
+    {
+      "element": 21,
+      "word_address": 35,
+      "mask": 32512
+    },
+    {
+      "element": 22,
+      "word_address": 35,
+      "mask": 255
+    },
+    {
+      "element": 23,
+      "word_address": 36,
+      "mask": 32256
+    },
+    {
+      "element": 24,
+      "word_address": 36,
+      "mask": 480
+    },
+    {
+      "element": 25,
+      "word_address": 36,
+      "mask": 31
+    },
+    {
+      "element": 26,
+      "word_address": 37,
+      "mask": 32256
+    },
+    {
+      "element": 27,
+      "word_address": 37,
+      "mask": 480
+    },
+    {
+      "element": 28,
+      "word_address": 37,
+      "mask": 31
+    },
+    {
+      "element": 29,
+      "word_address": 38,
+      "mask": 32767
+    },
+    {
+      "element": 30,
+      "word_address": 39,
+      "mask": 32767
+    },
+    {
+      "element": 31,
+      "word_address": 40,
+      "mask": 32767
+    },
+    {
+      "element": 32,
+      "word_address": 41,
+      "mask": 32767
+    },
+    {
+      "element": 33,
+      "word_address": 42,
+      "mask": 32767
+    },
+    {
+      "element": 34,
+      "word_address": 43,
+      "mask": 31744
+    },
+    {
+      "element": 35,
+      "word_address": 45,
+      "mask": 28672
+    },
+    {
+      "element": 36,
+      "word_address": 45,
+      "mask": 4095
+    },
+    {
+      "element": 37,
+      "word_address": 46,
+      "mask": 32767
+    },
+    {
+      "element": 38,
+      "word_address": 47,
+      "mask": 32512
+    },
+    {
+      "element": 39,
+      "word_address": 47,
+      "mask": 255
+    },
+    {
+      "element": 40,
+      "word_address": 48,
+      "mask": 32512
+    },
+    {
+      "element": 41,
+      "word_address": 48,
+      "mask": 255
+    },
+    {
+      "element": 42,
+      "word_address": 49,
+      "mask": 32512
+    },
+    {
+      "element": 43,
+      "word_address": 49,
+      "mask": 255
+    },
+    {
+      "element": 44,
+      "word_address": 50,
+      "mask": 32512
+    },
+    {
+      "element": 45,
+      "word_address": 50,
+      "mask": 255
+    },
+    {
+      "element": 46,
+      "word_address": 51,
+      "mask": 30720
+    },
+    {
+      "element": 47,
+      "word_address": 51,
+      "mask": 1792
+    },
+    {
+      "element": 48,
+      "word_address": 51,
+      "mask": 255
+    },
+    {
+      "element": 49,
+      "word_address": 52,
+      "mask": 24576
+    },
+    {
+      "element": 50,
+      "word_address": 52,
+      "mask": 7936
+    },
+    {
+      "element": 51,
+      "word_address": 52,
+      "mask": 255
+    },
+    {
+      "element": 52,
+      "word_address": 53,
+      "mask": 32256
+    },
+    {
+      "element": 53,
+      "word_address": 53,
+      "mask": 256
+    },
+    {
+      "element": 54,
+      "word_address": 53,
+      "mask": 255
+    },
+    {
+      "element": 55,
+      "word_address": 54,
+      "mask": 30720
+    },
+    {
+      "element": 56,
+      "word_address": 54,
+      "mask": 1792
+    },
+    {
+      "element": 57,
+      "word_address": 54,
+      "mask": 255
+    },
+    {
+      "element": 58,
+      "word_address": 55,
+      "mask": 24576
+    },
+    {
+      "element": 59,
+      "word_address": 55,
+      "mask": 4096
+    },
+    {
+      "element": 60,
+      "word_address": 55,
+      "mask": 3840
+    },
+    {
+      "element": 61,
+      "word_address": 55,
+      "mask": 255
+    },
+    {
+      "element": 62,
+      "word_address": 56,
+      "mask": 30720
+    },
+    {
+      "element": 63,
+      "word_address": 56,
+      "mask": 1792
+    },
+    {
+      "element": 64,
+      "word_address": 56,
+      "mask": 255
+    },
+    {
+      "element": 65,
+      "word_address": 57,
+      "mask": 28672
+    },
+    {
+      "element": 66,
+      "word_address": 57,
+      "mask": 3840
+    },
+    {
+      "element": 67,
+      "word_address": 57,
+      "mask": 255
+    },
+    {
+      "element": 68,
+      "word_address": 58,
+      "mask": 32512
+    },
+    {
+      "element": 69,
+      "word_address": 58,
+      "mask": 255
+    },
+    {
+      "element": 70,
+      "word_address": 59,
+      "mask": 32512
+    },
+    {
+      "element": 71,
+      "word_address": 59,
+      "mask": 255
+    },
+    {
+      "element": 72,
+      "word_address": 60,
+      "mask": 32512
+    },
+    {
+      "element": 73,
+      "word_address": 60,
+      "mask": 128
+    },
+    {
+      "element": 74,
+      "word_address": 60,
+      "mask": 112
+    },
+    {
+      "element": 75,
+      "word_address": 60,
+      "mask": 127
+    },
+    {
+      "element": 76,
+      "word_address": 60,
+      "mask": 3
+    },
+    {
+      "element": 77,
+      "word_address": 83,
+      "mask": 0
+    }
+  ],
+  "all_chip_metadata_semantics_validated": false,
+  "genuine_crypto_implemented": false,
+  "persistent_storage_implemented": false,
+  "this_probe_generates_installable_EFU": false
+}

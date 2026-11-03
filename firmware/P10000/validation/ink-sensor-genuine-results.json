@@ -1,0 +1,749 @@
+{
+  "scope": "Original ARM routines and explicit RAM/OS fixtures; no physical printer attached",
+  "sensor_end": {
+    "getter": "0x43b3f3a4",
+    "original_caller": "0x43b19804",
+    "original_diagnostic_label": "ils",
+    "normal_mask_for_this_path": "0x000",
+    "descriptor_state_addresses": [
+      "0x43e00184",
+      "0x43e001a0",
+      "0x43e001bc",
+      "0x43e001d8",
+      "0x43e001f4",
+      "0x43e00210",
+      "0x43e0022c",
+      "0x43e00248",
+      "0x43e00264",
+      "0x43e00280",
+      "0x43e0029c",
+      "0x43e002b8"
+    ],
+    "unmodified_cases": [
+      {
+        "raw_debounced_mask": "0x0",
+        "observed_end_result_flags": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "slot_status_codes": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "published_error_count": 0
+      },
+      {
+        "raw_debounced_mask": "0x1",
+        "observed_end_result_flags": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "slot_status_codes": [
+          6,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "published_error_count": 1
+      },
+      {
+        "raw_debounced_mask": "0x2",
+        "observed_end_result_flags": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "slot_status_codes": [
+          0,
+          6,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "published_error_count": 1
+      },
+      {
+        "raw_debounced_mask": "0x4",
+        "observed_end_result_flags": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "slot_status_codes": [
+          0,
+          0,
+          6,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "published_error_count": 1
+      },
+      {
+        "raw_debounced_mask": "0x8",
+        "observed_end_result_flags": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "slot_status_codes": [
+          0,
+          0,
+          0,
+          6,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "published_error_count": 1
+      },
+      {
+        "raw_debounced_mask": "0x10",
+        "observed_end_result_flags": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "slot_status_codes": [
+          0,
+          0,
+          0,
+          0,
+          6,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "published_error_count": 1
+      },
+      {
+        "raw_debounced_mask": "0x20",
+        "observed_end_result_flags": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "slot_status_codes": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          6,
+          0,
+          0,
+          0,
+          0
+        ],
+        "published_error_count": 1
+      },
+      {
+        "raw_debounced_mask": "0x40",
+        "observed_end_result_flags": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "slot_status_codes": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          6,
+          0,
+          0,
+          0
+        ],
+        "published_error_count": 1
+      },
+      {
+        "raw_debounced_mask": "0x80",
+        "observed_end_result_flags": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "slot_status_codes": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          6,
+          0,
+          0
+        ],
+        "published_error_count": 1
+      },
+      {
+        "raw_debounced_mask": "0x100",
+        "observed_end_result_flags": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "slot_status_codes": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          6,
+          0
+        ],
+        "published_error_count": 1
+      },
+      {
+        "raw_debounced_mask": "0x200",
+        "observed_end_result_flags": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "slot_status_codes": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          6
+        ],
+        "published_error_count": 1
+      },
+      {
+        "raw_debounced_mask": "0x400",
+        "observed_end_result_flags": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "slot_status_codes": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "published_error_count": 0
+      },
+      {
+        "raw_debounced_mask": "0x800",
+        "observed_end_result_flags": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "slot_status_codes": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "published_error_count": 0
+      },
+      {
+        "raw_debounced_mask": "0x3ff",
+        "observed_end_result_flags": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "slot_status_codes": [
+          6,
+          6,
+          6,
+          6,
+          6,
+          6,
+          6,
+          6,
+          6,
+          6
+        ],
+        "published_error_count": 10
+      },
+      {
+        "raw_debounced_mask": "0xfff",
+        "observed_end_result_flags": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "slot_status_codes": [
+          6,
+          6,
+          6,
+          6,
+          6,
+          6,
+          6,
+          6,
+          6,
+          6
+        ],
+        "published_error_count": 10
+      }
+    ],
+    "candidate_leaf_cases": [
+      {
+        "raw_debounced_mask": "0x0",
+        "end_result_flags": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "raw_debounced_mask": "0x1",
+        "end_result_flags": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "raw_debounced_mask": "0x2",
+        "end_result_flags": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "raw_debounced_mask": "0x4",
+        "end_result_flags": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "raw_debounced_mask": "0x8",
+        "end_result_flags": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "raw_debounced_mask": "0x10",
+        "end_result_flags": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "raw_debounced_mask": "0x20",
+        "end_result_flags": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "raw_debounced_mask": "0x40",
+        "end_result_flags": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "raw_debounced_mask": "0x80",
+        "end_result_flags": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "raw_debounced_mask": "0x100",
+        "end_result_flags": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "raw_debounced_mask": "0x200",
+        "end_result_flags": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "raw_debounced_mask": "0x400",
+        "end_result_flags": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "raw_debounced_mask": "0x800",
+        "end_result_flags": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "raw_debounced_mask": "0x3ff",
+        "end_result_flags": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "raw_debounced_mask": "0xfff",
+        "end_result_flags": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    ],
+    "raw_sensor_cache_not_modified": true,
+    "does_not_establish_electrical_polarity_or_all_physical_sensor_consumers": true
+  },
+  "genuine_reporting": {
+    "info_cache": "0x43e5d58c",
+    "record_stride": 16,
+    "non_genuine_field_offset": 4,
+    "native_sender": "0x43b1edd4",
+    "message_non_genuine_mask_offset": "0x5a",
+    "native_receiver": "0x43c49658",
+    "receiver_state_base": "0x43e83e40",
+    "cases": [
+      {
+        "per_slot_non_genuine_mask": "0x0",
+        "native_message_mask": "0x0",
+        "native_JCT_reported_mask": "0x0"
+      },
+      {
+        "per_slot_non_genuine_mask": "0x1",
+        "native_message_mask": "0x1",
+        "native_JCT_reported_mask": "0x1"
+      },
+      {
+        "per_slot_non_genuine_mask": "0x2",
+        "native_message_mask": "0x2",
+        "native_JCT_reported_mask": "0x2"
+      },
+      {
+        "per_slot_non_genuine_mask": "0x4",
+        "native_message_mask": "0x4",
+        "native_JCT_reported_mask": "0x4"
+      },
+      {
+        "per_slot_non_genuine_mask": "0x8",
+        "native_message_mask": "0x8",
+        "native_JCT_reported_mask": "0x8"
+      },
+      {
+        "per_slot_non_genuine_mask": "0x10",
+        "native_message_mask": "0x10",
+        "native_JCT_reported_mask": "0x10"
+      },
+      {
+        "per_slot_non_genuine_mask": "0x20",
+        "native_message_mask": "0x20",
+        "native_JCT_reported_mask": "0x20"
+      },
+      {
+        "per_slot_non_genuine_mask": "0x40",
+        "native_message_mask": "0x40",
+        "native_JCT_reported_mask": "0x40"
+      },
+      {
+        "per_slot_non_genuine_mask": "0x80",
+        "native_message_mask": "0x80",
+        "native_JCT_reported_mask": "0x80"
+      },
+      {
+        "per_slot_non_genuine_mask": "0x100",
+        "native_message_mask": "0x100",
+        "native_JCT_reported_mask": "0x100"
+      },
+      {
+        "per_slot_non_genuine_mask": "0x200",
+        "native_message_mask": "0x200",
+        "native_JCT_reported_mask": "0x200"
+      },
+      {
+        "per_slot_non_genuine_mask": "0x3ff",
+        "native_message_mask": "0x3ff",
+        "native_JCT_reported_mask": "0x3ff"
+      }
+    ],
+    "zero_mask_is_native_no_non_genuine_report": true,
+    "sticky_receiver_history_also_tested": true,
+    "does_not_claim_actual_chip_cryptographic_authentication": true
+  },
+  "this_probe_generates_installable_EFU": false
+}
