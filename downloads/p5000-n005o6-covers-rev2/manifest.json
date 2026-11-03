@@ -1,0 +1,81 @@
+{
+  "status": "EXPERIMENTAL_UNVERIFIED_DEVICE_ACCEPTANCE",
+  "model": "SC-P5000",
+  "version": "N005O6",
+  "file": "SC-P5000_N005O6_INK-COVERS-CLOSED_REV2_UNVERIFIED.EFU",
+  "size": 9849257,
+  "sha256": "6aee3df02899473907ccf5fae2415d9b0a12cb8efd0cccf6c23c831e90a1dda2",
+  "source_sha256": "a8ac410776d3616b0c7d049c10d0466e30b5760a0f800e844392607ea2c6414e",
+  "source_size": 9849257,
+  "efu_size_unchanged": true,
+  "rcx_size_unchanged": true,
+  "firmware_stream_size_unchanged": true,
+  "zip_original_stored_deflate_blocks_preserved": 151,
+  "zip_offsets_and_metadata_preserved_except_main_crc": true,
+  "rcx_allowed_changed_ranges": [
+    [
+      1770542,
+      1770546
+    ],
+    [
+      1770550,
+      1770554
+    ],
+    [
+      1062,
+      1066
+    ],
+    [
+      1802219,
+      2152812
+    ]
+  ],
+  "local_windows": [
+    {
+      "decoded_window": [
+        65555,
+        69632
+      ],
+      "stream_window": [
+        31645,
+        33625
+      ],
+      "encoded_bytes": 1977,
+      "size_delta": -3
+    },
+    {
+      "decoded_window": [
+        1197930,
+        1202551
+      ],
+      "stream_window": [
+        378738,
+        382238
+      ],
+      "encoded_bytes": 3503,
+      "size_delta": 3
+    }
+  ],
+  "decoded_code_routes": [
+    {
+      "image_offset": "0x12496b",
+      "old_hex": "c0",
+      "new_hex": "00"
+    }
+  ],
+  "decoded_patched_sha256": "eba9e427246ca5fc3f61a750edf5371c08c3c2c373710e1eabd431efaacdbe92",
+  "other_firmware_components_and_resources_unchanged": true,
+  "known_checksums_and_zip_crc_verified": true,
+  "authentication_or_device_acceptance_verified": false,
+  "full_print_and_cartridge_replacement_verified": false,
+  "hardware_write_performed": false,
+  "revision": 2,
+  "revision1_failed_on_hardware": true,
+  "revision2_hardware_operation_verified": false,
+  "intermediate_stream_bytes_shifted_then_restored": true,
+  "window_size_deltas": [
+    -3,
+    3
+  ],
+  "original_dispatch_and_notifications_restored": true
+}
