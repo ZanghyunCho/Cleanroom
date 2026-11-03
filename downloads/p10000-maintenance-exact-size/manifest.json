@@ -1,0 +1,147 @@
+{
+  "file": "SC-P10000_FM001PA_MAINTENANCE_EXACT-SIZE_UNVERIFIED.EFU",
+  "size": 109893043,
+  "sha256": "13a21394cab71e0d63e3c50641c899b70c694872fdfe9c7fddb6e457eb4857e0",
+  "all_members_identical_to_fixed_layout_candidate": true,
+  "all_26_member_names_and_contents_preserved": true,
+  "zip_crc_verified": true,
+  "official_original_size": 109893043,
+  "optional_zip_extra_metadata_removed": true,
+  "archive_comment_padding_bytes": 272,
+  "raw_rcx_deflate_bytes": 109886827,
+  "internal_authentication_recomputed": false,
+  "device_acceptance_verified": false,
+  "internal_data_reference": "maintenance fixed-layout candidate, NOT unmodified official original",
+  "members": [
+    {
+      "name": "EFU_File.rcx",
+      "bytes": 149688175,
+      "sha256": "6169a2478247221b68e9cf0a7147614e756fd4afb1e54c6d36eaceef3f91dfa7"
+    },
+    {
+      "name": "Resources/",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "Resources/de/",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "Resources/de/string2.dat",
+      "bytes": 392,
+      "sha256": "3e48d7b5471f94018ea365bac5cb62971253349b8184a3e93f8049e107457d14"
+    },
+    {
+      "name": "Resources/en/",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "Resources/en/string2.dat",
+      "bytes": 384,
+      "sha256": "7f076d0db74f86450732ff00a762263270c3090abe4e763a8883277467c7a331"
+    },
+    {
+      "name": "Resources/es/",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "Resources/es/string2.dat",
+      "bytes": 386,
+      "sha256": "d0c3f213ab38e896e007a224acc5031d6e3669025f465874c1fdf62c52524b8c"
+    },
+    {
+      "name": "Resources/fr/",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "Resources/fr/string2.dat",
+      "bytes": 394,
+      "sha256": "5c2b956354ec287838a7dbed9f4c480bf1a82339424c580540e7991ce647d6f2"
+    },
+    {
+      "name": "Resources/it/",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "Resources/it/string2.dat",
+      "bytes": 392,
+      "sha256": "b1c06c3560ebbae9342e767fb46544ad3cc802062e61ba3d6b4a1f697a84ab57"
+    },
+    {
+      "name": "Resources/ja/",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "Resources/ja/string2.dat",
+      "bytes": 426,
+      "sha256": "4ba19d1f3e713759658bb6de000e8646081f050de088e4e22d9244eb87e2162d"
+    },
+    {
+      "name": "Resources/ko/",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "Resources/ko/string2.dat",
+      "bytes": 397,
+      "sha256": "8bab9c9162963feb42d6153c1ae6f82ef7befc2123c88dbbd83b8a17c6b97c5d"
+    },
+    {
+      "name": "Resources/nl/",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "Resources/nl/string2.dat",
+      "bytes": 383,
+      "sha256": "76788869df8158b2744a5eb9cff5bcdd3cd33e01c6135be5035fceb57f7d1910"
+    },
+    {
+      "name": "Resources/pt/",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "Resources/pt/string2.dat",
+      "bytes": 390,
+      "sha256": "66b6941fa103f8537aafa2fd0145b95de3ca8200d451113f50faf2b53c153fb6"
+    },
+    {
+      "name": "Resources/ru/",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "Resources/ru/string2.dat",
+      "bytes": 402,
+      "sha256": "362b8a9e61c359c0fc4bd97fa0dbad9e7b1d311b38039e1b7ec92deeea85561e"
+    },
+    {
+      "name": "Resources/zh-CN/",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "Resources/zh-CN/string2.dat",
+      "bytes": 334,
+      "sha256": "69fa841d2cda55202206c3882420dc632df5b2e631e097b3673d4bb5fb5a56ac"
+    },
+    {
+      "name": "Resources/zh-TW/",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "Resources/zh-TW/string2.dat",
+      "bytes": 373,
+      "sha256": "4b8246d3107a6f69874c09003d091778fad72a5c9808e4bc8a4269495b29915a"
+    }
+  ]
+}
