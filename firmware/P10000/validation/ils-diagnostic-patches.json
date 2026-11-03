@@ -1,0 +1,75 @@
+{
+  "classification": "DIAGNOSTIC ONLY; NOT A VERIFIED PUMP FIX",
+  "baseline": "Published V4, matching reported installed version",
+  "baseline_sha256": "baabc031e1fdb8a70e8b6aa257010d81eb3dae4a595d3083ce48813933195fe8",
+  "decoded_sha256": "bdc1ad83e2ec90da0528d479b144d283217b2ee8c437fc33cc3c69921c86eb62",
+  "restored_offset": "0x3f3a4",
+  "restored_bytes": "9c109fe50000a0e3",
+  "only_8_decoded_bytes_restored": true,
+  "sensor_getter_cases": [
+    {
+      "input_mask": "0x0",
+      "native_getter_return": "0x0"
+    },
+    {
+      "input_mask": "0x1",
+      "native_getter_return": "0x1"
+    },
+    {
+      "input_mask": "0x2",
+      "native_getter_return": "0x2"
+    },
+    {
+      "input_mask": "0x4",
+      "native_getter_return": "0x4"
+    },
+    {
+      "input_mask": "0x8",
+      "native_getter_return": "0x8"
+    },
+    {
+      "input_mask": "0x10",
+      "native_getter_return": "0x10"
+    },
+    {
+      "input_mask": "0x20",
+      "native_getter_return": "0x20"
+    },
+    {
+      "input_mask": "0x40",
+      "native_getter_return": "0x40"
+    },
+    {
+      "input_mask": "0x80",
+      "native_getter_return": "0x80"
+    },
+    {
+      "input_mask": "0x100",
+      "native_getter_return": "0x100"
+    },
+    {
+      "input_mask": "0x200",
+      "native_getter_return": "0x200"
+    },
+    {
+      "input_mask": "0x400",
+      "native_getter_return": "0x400"
+    },
+    {
+      "input_mask": "0x800",
+      "native_getter_return": "0x800"
+    },
+    {
+      "input_mask": "0x3ff",
+      "native_getter_return": "0x3ff"
+    },
+    {
+      "input_mask": "0xfff",
+      "native_getter_return": "0xfff"
+    }
+  ],
+  "pressure_driver_0x9a000_to_0x9c000_matches_original": true,
+  "nominal_volume_680_defect_intentionally_not_mixed_into_this_diagnostic": true,
+  "pump_interlocks_modified": false,
+  "physical_pump_tested": false
+}

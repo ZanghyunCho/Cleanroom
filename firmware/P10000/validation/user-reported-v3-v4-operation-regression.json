@@ -1,0 +1,17 @@
+{
+  "source": "User report in conversation; not direct cloud observation",
+  "reported_on_client_date": "2026-11-04",
+  "installed_version_confirmed": "V4",
+  "regression_starts_with": "V3",
+  "working_baseline_reported": "V2",
+  "reported_failed_operations": [
+    "printing",
+    "head cleaning",
+    "automatic nozzle check"
+  ],
+  "reported_decompress_pump_not_operating": true,
+  "reported_V4_error": "Paper not detected",
+  "ILS_causality_confirmed": false,
+  "matching_physical_test_conditions_confirmation_pending": true,
+  "prior_general_operation_success_reports_do_not_establish_printing_success": true
+}

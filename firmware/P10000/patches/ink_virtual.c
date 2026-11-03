@@ -43,7 +43,12 @@ SEC(".ink_refresh") u32 ink_refresh(void) {
 #endif
   p[12]=26;p[13]=11;p[14]=4;p[15]=26;p[16]=11;p[17]=4;
   p[18]='V';p[19]='3';for(i=2;i<10;i++)p[18+i]=(u8)('0'+s);
+#ifdef INK_NOMINAL_FIX
+  *(u16 *)(info+16*s)=700;
+#else
+  /* Retained only to reproduce archived V3/V4 and isolate the ILS diagnostic. */
   *(u16 *)(info+16*s)=680;
+#endif
  }
  FN(0x43b1fb48)(chip);ink_info(info);ink_status((void *)0);return 1;
 }

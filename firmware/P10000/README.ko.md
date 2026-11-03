@@ -89,3 +89,7 @@ python firmware/P10000/probe_mixed_mappings.py --start-index 347332 --seconds 18
 ## V3 사용자 성공 보고와 V4 상세 정보 수정 후보
 
 사용자가 V3 정상 동작 및 Status Monitor의 미확정 상세 정보 화면을 보고했습니다. [V4 수정 내용과 한계](INK-METADATA-V4.ko.md)를 기록했습니다. V4 실제 표시 결과는 미검증입니다.
+
+## 인쇄/청소/펌프 동작 회귀 보고
+
+사용자가 V2와 달리 V3 이후 작업 실패를 보고했고 현재 설치 버전 V4의 용지 감지 오류를 확인했습니다. 이전 일반 동작 성공 보고는 인쇄·청소 검증을 대신하지 않습니다. [진단 범위와 알려진 결함](PUMP-REGRESSION.ko.md)을 기록했습니다.
