@@ -1,24 +1,37 @@
 {
   "source_sha256": {
     "runtime/arm.ld": "c54f32e8c3db2b8785b1433c50b6b02e39aac0cdc1cef80bab714c3a6da9181a",
-    "runtime/build.py": "eae3d0d637726ccd419fc7af9552ca27e224ec614a97fb2afa9acde48fc213da",
-    "runtime/native_adapter.c": "9091f3fa0c0ec425469c067d9d5e7d29ed545bb7b25fd8f0639f54b694571ab6",
-    "runtime/native_adapter.h": "25b68e7f113937711192085d38567fc4ae1f59e8cd3bcbf117157ee4805b716e",
+    "runtime/build.py": "b40ca1e0fdcb1a0a4de4a5d63ebc47f67b9f06e6479f2aa922d44bb596966cea",
+    "runtime/full_nv.c": "3b8d147d3ec7bc80836ce51a979c8163f8da90681b175f4da851dbeb6925f8bb",
+    "runtime/full_nv.h": "4b01a3bf129241fbb8d702f61798f812cd02c0e495cfe526a87ecfe2f449ddc7",
+    "runtime/metadata_store.c": "41628197a43f2a4369c755c4d95482842a96e1ca02be6601f0d2f342aefc90da",
+    "runtime/metadata_store.h": "b3b53b827d3486a19684d2d1a876266b7917cb0890672ada59be4e0bf77efd98",
+    "runtime/native_adapter.c": "0db2c4d3105585a5c4a29c9b7887598241b4580f48aa291bb8cdb300c5e74b0a",
+    "runtime/native_adapter.h": "04a741c5704ac1e5d990999f8fb9926bdcc488421b8e3682959ffb41c3df1797",
     "runtime/native_nv.c": "32e9d344693af459cedf0b57eb006b5cf9c3c3bd74ce32425740763a34f80b01",
     "runtime/native_nv.h": "66a26f2370628ba1e4e28faa664f1055c06c7a1ba8e44dbfd35fa6849419ee9c",
-    "runtime/probe_arm_integration.py": "84e805f86f29afb44d5825c32c1945f76dd2fa44a5fcca453741bea4253d86b5",
+    "runtime/probe_arm_integration.py": "4874e093faddffa65283b232039addfa95f30a80fb08c5bc00a3966d6bb0f016",
     "runtime/probe_compiled_bindings.py": "110cd8d6a30c9b71f99b08689ba4e35f0bed48c77f32e6ecdbaf08d353cbe01d",
     "runtime/probe_dispatch_boundary.py": "19b2c2937684e134997a1928d0cb516d2bc67a4f63aca7874ab21a48cca4bafe",
+    "runtime/probe_full_nv.py": "20c9aab886573547c3244a1be89f0028ecd3186a86a57c3abfc77f3f8cdb7399",
     "runtime/probe_native_nv.py": "408440b2e5f82a618806eef0b63e1f551af48043310e5b0522339e3e738ccdf2",
     "runtime/probe_virtual_ink_data.py": "618299bf649e18206951182e25e70b04de29fbcede650876802638626d6fcb67",
     "runtime/probe_virtual_ink_jobs.py": "a070ca0317f4806b3e998418d8b8fffa568218aa559eec016dea2e30581f93f1",
+    "runtime/test_metadata_store.py": "8821c06c3f4608e54d16e52aa62e87b64fd72326a80200be54e4539a7415a2bd",
     "runtime/test_native_nv.py": "3019e494bc4e3ee689745b6c8f45450159e8af77b58c1d4233433b5fc3a9c8fd",
     "runtime/test_runtime.py": "729bb5dc10bb2be2e46da78b965fa2622aff099aafc786bac760ccbb54d37311",
-    "runtime/verify.py": "29f8676b28b54c6196c805a99fdf1492b7a6bc6f33a854d0f005c126a609e7e8",
+    "runtime/verify.py": "955cc3b8811b8cf106eec0270da88a5140adbe2af6fbc8f78d1becd702c4ccc3",
     "runtime/virtual_cartridge.c": "33236378100b4e3d11dbde4b082bd82b8670ba2c8ccca6f98f1dd6241998628a",
-    "runtime/virtual_cartridge.h": "c37f5e42117a3714256dfffbe55332a67416a82e6b8c03c5c521eddcddcf5d9b"
+    "runtime/virtual_cartridge.h": "c37f5e42117a3714256dfffbe55332a67416a82e6b8c03c5c521eddcddcf5d9b",
+    "delivery/assemble.py": "fc360eb45223eed9bbf94ae9a5b7734af2cb0eaa76bde28c71c7be290be7100d",
+    "delivery/bootstrap.c": "683bcf10c3e1fdc6094122f60d4d7a3f423d81e28fa374580e540d0922434c5f",
+    "delivery/build.py": "43f4805faaed58fb2a03ea42b68d6a4c44aebb15410a1579355fbea51b5d0fb1",
+    "delivery/package.py": "803863f6c113475976d658c2a5b16c6bdddbeaf2b5f1c627010c1e731e63313d",
+    "delivery/payload.ld": "5054a418310e295838f7337d187bcc9953d06f586467d7d7182f6f86e3f2917e",
+    "delivery/prepare.py": "24c463294834209196c87a05206f875b0788e65df55c2dcdb0bf4e820d8eaa24",
+    "delivery/probe_bootstrap.py": "a5c8c3883ff33dd34f3a93cc012b1a7b222cf252829adbd60da0b791c14877b1"
   },
-  "arm_elf_sha256": "9c8e8e94b43acf370401775b0e0d8685154119bc6f16ca9ebf1a2dd57561499d",
+  "arm_elf_sha256": "497e24331655c35d9da3391a23640009a7526fbd90cf34de51ed2bea0dc35868",
   "original_merged_sha256": "ae9b0cd5f15f1f2edcfd671c9131d9383243e1fbf9c59b0bf31dcaa04968c551",
   "reports": {
     "virtual-runtime-host-results.json": {
@@ -54,7 +67,7 @@
         "native_presence": 12,
         "mocked_os_notifications": 48
       },
-      "elapsed_seconds": 1.403,
+      "elapsed_seconds": 1.447,
       "bindings": "Unicorn hooks; no flash-image patch addresses allocated",
       "storage": "Simulated independent erase/program banks, not printer NVRAM",
       "hardware_asic_spi_authentication_tested": false,
@@ -75,117 +88,117 @@
         {
           "entry": "0x433f57c0",
           "adapter": "vr_native_get40",
-          "adapter_address": "0x45001ad0",
+          "adapter_address": "0x450025dc",
           "trampoline": "0x47000200",
           "original_prologue_hex": "f04f2de90cd04de2"
         },
         {
           "entry": "0x433f5934",
           "adapter": "vr_native_set40",
-          "adapter_address": "0x45001c14",
+          "adapter_address": "0x450026e8",
           "trampoline": "0x47000220",
           "original_prologue_hex": "f04f2de90cd04de2"
         },
         {
           "entry": "0x433f5b4c",
           "adapter": "vr_native_add40",
-          "adapter_address": "0x45001cf0",
+          "adapter_address": "0x45002800",
           "trampoline": "0x47000240",
           "original_prologue_hex": "f04f2de90cd04de2"
         },
         {
           "entry": "0x43403f68",
           "adapter": "vr_native_set_cover",
-          "adapter_address": "0x45001dcc",
+          "adapter_address": "0x45002918",
           "trampoline": "0x47000260",
           "original_prologue_hex": "f0402de9020050e3"
         },
         {
           "entry": "0x434027b0",
           "adapter": "vr_native_read_mirror",
-          "adapter_address": "0x45001ef0",
+          "adapter_address": "0x45002a58",
           "trampoline": "0x47000280",
           "original_prologue_hex": "f04f2de90050a0e3"
         },
         {
           "entry": "0x43408d30",
           "adapter": "vr_native_presence_ptr",
-          "adapter_address": "0x45002054",
+          "adapter_address": "0x45002bc8",
           "trampoline": "0x470002a0",
           "original_prologue_hex": "70402de908d04de2"
         },
         {
           "entry": "0x434033a4",
           "adapter": "vr_native_remaining_info",
-          "adapter_address": "0x45002134",
+          "adapter_address": "0x45002cbc",
           "trampoline": null,
           "original_prologue_hex": "f0402de90cd04de2"
         },
         {
           "entry": "0x433f2f04",
           "adapter": "vr_native_waste_info_ptr",
-          "adapter_address": "0x450021a8",
+          "adapter_address": "0x45002d30",
           "trampoline": "0x470002e0",
           "original_prologue_hex": "f0402de90cd04de2"
         },
         {
           "entry": "0x43407f20",
           "adapter": "vr_native_waste_remaining_info",
-          "adapter_address": "0x450022a0",
+          "adapter_address": "0x45002e40",
           "trampoline": null,
           "original_prologue_hex": "f0402de9c4709fe5"
         },
         {
           "entry": "0x43408318",
           "adapter": "vr_native_waste_error_code",
-          "adapter_address": "0x4500230c",
+          "adapter_address": "0x45002eac",
           "trampoline": null,
           "original_prologue_hex": "70402de9240050e3"
         },
         {
           "entry": "0x433f6e90",
           "adapter": "vr_native_ink_check_job",
-          "adapter_address": "0x45002370",
+          "adapter_address": "0x45002f10",
           "trampoline": null,
           "original_prologue_hex": "f04f2de90070a0e3"
         },
         {
           "entry": "0x433f71fc",
           "adapter": "vr_native_ink_status_job",
-          "adapter_address": "0x4500249c",
+          "adapter_address": "0x4500303c",
           "trampoline": null,
           "original_prologue_hex": "f74f2de90070a0e3"
         },
         {
           "entry": "0x43400c3c",
           "adapter": "vr_native_ink_read_words",
-          "adapter_address": "0x450024fc",
+          "adapter_address": "0x4500309c",
           "trampoline": null,
           "original_prologue_hex": "30402de90140a0e1"
         },
         {
           "entry": "0x434006ec",
           "adapter": "vr_native_ink_flush_mirror",
-          "adapter_address": "0x45002648",
+          "adapter_address": "0x4500322c",
           "trampoline": null,
           "original_prologue_hex": "70402de920d04de2"
         },
         {
           "entry": "0x43400dec",
           "adapter": "vr_native_ink_flush_mirror",
-          "adapter_address": "0x45002648",
+          "adapter_address": "0x4500322c",
           "trampoline": null,
           "original_prologue_hex": "70402de911de4de2"
         },
         {
           "entry": "0x43400f18",
           "adapter": "vr_native_ink_flush_mirror",
-          "adapter_address": "0x45002648",
+          "adapter_address": "0x4500322c",
           "trampoline": null,
           "original_prologue_hex": "f8432de90040a0e3"
         }
       ],
-      "elapsed_seconds": 0.589,
+      "elapsed_seconds": 0.724,
       "python_hooks": "Storage transport, OS notifications and fault reporting only",
       "printer_ram_and_flash_placement_allocated": false,
       "printer_nor_erase_sync_contract_verified": false,
@@ -307,7 +320,7 @@
       "full_chip_communication_virtualized": false,
       "native_persistence_backend_bound": false,
       "physical_printer_tested": false,
-      "elapsed_seconds": 3.487
+      "elapsed_seconds": 5.8
     },
     "native-nv-host-results.json": {
       "tests_run": 10,
@@ -352,7 +365,7 @@
       "automatic_boot_reset_enabled": false,
       "printer_startup_hook_installed": false,
       "physical_printer_tested": false,
-      "elapsed_seconds": 1.335
+      "elapsed_seconds": 1.514
     },
     "virtual-ink-data-results.json": {
       "scope": "Compiled upper ink RAM mirror reads/flushes, using NV-backed durable owner state",
@@ -366,9 +379,75 @@
       "unknown_mirror_metadata_scope": "Preserved native RAM view; not persisted as a full chip image",
       "full_chip_communication_virtualized": false,
       "physical_printer_tested": false,
-      "elapsed_seconds": 2.147
+      "elapsed_seconds": 3.046
+    },
+    "full-metadata-host-results.json": {
+      "tests_run": 5,
+      "failures": 0,
+      "errors": 0,
+      "checks": {
+        "metadata_torn_writes": 8193,
+        "record_bit_corruptions": 32768,
+        "full_profiles_restored": 13
+      },
+      "metadata_bytes_per_profile": 192,
+      "profiles": 13,
+      "storage_bytes_per_bank": 4096,
+      "scope": "Compiled lossless journal with injected two-bank storage; native printer allocation not bound",
+      "physical_printer_tested": false
+    },
+    "full-native-nv-results.json": {
+      "scope": "Full journal and compiled native mirror adapter through original NV API and compiled prefix-preserving worker",
+      "existing_record_mappings_preserved": 157,
+      "native_prefix_preserved": true,
+      "native_prefix_update_preserved_owner_data": true,
+      "concurrent_latest_prefix_preserved": true,
+      "full_ink_profiles_restored": 12,
+      "maintenance_profile_restored": true,
+      "core_profiles_restored": 13,
+      "object_bytes": 9216,
+      "native_volume_extra_logical_bytes": 8192,
+      "native_flash_worker_executed": false,
+      "physical_printer_tested": false,
+      "elapsed_seconds": 8.104
+    },
+    "delivery-bootstrap-results.json": {
+      "scope": "Actual-address statically patched module, native NV APIs and compiled bootstrap; legacy DSM restore/physical NV fixtures",
+      "installer_bootstrap_passed": true,
+      "runtime_bootstrap_restore_passed": true,
+      "early_native_pointer_getters_passed": true,
+      "heap_allocation_bytes": [
+        49743
+      ],
+      "ink_generation_and_full_metadata_restored": true,
+      "maintenance_full_metadata_and_mode_restored": true,
+      "native_gf_bus_ready_passed": true,
+      "native_prefix_preserved": true,
+      "runtime_missing_metadata_not_formatted": true,
+      "physical_printer_boot_tested": false,
+      "physical_power_cut_tested": false,
+      "elapsed_seconds": 7.384
+    },
+    "spi-package-results.json": {
+      "artifact": "/workspace/Cleanroom/firmware/P7500/build/P7500-EXPERIMENTAL-SPI.zip",
+      "bytes": 33921037,
+      "sha256": "9f95e730fd020d60559bd9df1b32f18cdfeb6e41c8c3689505fc560fc99ed8e0",
+      "installer_chip_files": {
+        "EXPERIMENTAL_INSTALLER_IC13.BIN": {
+          "bytes": 67108864,
+          "sha256": "eec76055f646d7120f6c090cf10cda4fc5889d133c3a28b9919a300d0c087a33"
+        },
+        "EXPERIMENTAL_INSTALLER_IC14.BIN": {
+          "bytes": 67108864,
+          "sha256": "5799602db15db92ff16f7ef89512610fddc626e26d767b1a4618dec87489629e"
+        }
+      },
+      "physical_printer_tested": false,
+      "stage_two_state_preservation_test_passed": true
     }
   },
   "physical_printer_or_flash_tested": false,
-  "flash_image_generated": false
+  "flash_image_generated": true,
+  "image_classification": "EXPERIMENTAL SPI installer plus state-preserving runtime promotion",
+  "physical_boot_and_power_cut_validation_assigned_to_user": true
 }

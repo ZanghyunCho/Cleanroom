@@ -10,5 +10,5 @@
   "unknown_mirror_metadata_scope": "Preserved native RAM view; not persisted as a full chip image",
   "full_chip_communication_virtualized": false,
   "physical_printer_tested": false,
-  "elapsed_seconds": 2.147
+  "elapsed_seconds": 3.046
 }

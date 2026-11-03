@@ -12,117 +12,117 @@
     {
       "entry": "0x433f57c0",
       "adapter": "vr_native_get40",
-      "adapter_address": "0x45001ad0",
+      "adapter_address": "0x450025dc",
       "trampoline": "0x47000200",
       "original_prologue_hex": "f04f2de90cd04de2"
     },
     {
       "entry": "0x433f5934",
       "adapter": "vr_native_set40",
-      "adapter_address": "0x45001c14",
+      "adapter_address": "0x450026e8",
       "trampoline": "0x47000220",
       "original_prologue_hex": "f04f2de90cd04de2"
     },
     {
       "entry": "0x433f5b4c",
       "adapter": "vr_native_add40",
-      "adapter_address": "0x45001cf0",
+      "adapter_address": "0x45002800",
       "trampoline": "0x47000240",
       "original_prologue_hex": "f04f2de90cd04de2"
     },
     {
       "entry": "0x43403f68",
       "adapter": "vr_native_set_cover",
-      "adapter_address": "0x45001dcc",
+      "adapter_address": "0x45002918",
       "trampoline": "0x47000260",
       "original_prologue_hex": "f0402de9020050e3"
     },
     {
       "entry": "0x434027b0",
       "adapter": "vr_native_read_mirror",
-      "adapter_address": "0x45001ef0",
+      "adapter_address": "0x45002a58",
       "trampoline": "0x47000280",
       "original_prologue_hex": "f04f2de90050a0e3"
     },
     {
       "entry": "0x43408d30",
       "adapter": "vr_native_presence_ptr",
-      "adapter_address": "0x45002054",
+      "adapter_address": "0x45002bc8",
       "trampoline": "0x470002a0",
       "original_prologue_hex": "70402de908d04de2"
     },
     {
       "entry": "0x434033a4",
       "adapter": "vr_native_remaining_info",
-      "adapter_address": "0x45002134",
+      "adapter_address": "0x45002cbc",
       "trampoline": null,
       "original_prologue_hex": "f0402de90cd04de2"
     },
     {
       "entry": "0x433f2f04",
       "adapter": "vr_native_waste_info_ptr",
-      "adapter_address": "0x450021a8",
+      "adapter_address": "0x45002d30",
       "trampoline": "0x470002e0",
       "original_prologue_hex": "f0402de90cd04de2"
     },
     {
       "entry": "0x43407f20",
       "adapter": "vr_native_waste_remaining_info",
-      "adapter_address": "0x450022a0",
+      "adapter_address": "0x45002e40",
       "trampoline": null,
       "original_prologue_hex": "f0402de9c4709fe5"
     },
     {
       "entry": "0x43408318",
       "adapter": "vr_native_waste_error_code",
-      "adapter_address": "0x4500230c",
+      "adapter_address": "0x45002eac",
       "trampoline": null,
       "original_prologue_hex": "70402de9240050e3"
     },
     {
       "entry": "0x433f6e90",
       "adapter": "vr_native_ink_check_job",
-      "adapter_address": "0x45002370",
+      "adapter_address": "0x45002f10",
       "trampoline": null,
       "original_prologue_hex": "f04f2de90070a0e3"
     },
     {
       "entry": "0x433f71fc",
       "adapter": "vr_native_ink_status_job",
-      "adapter_address": "0x4500249c",
+      "adapter_address": "0x4500303c",
       "trampoline": null,
       "original_prologue_hex": "f74f2de90070a0e3"
     },
     {
       "entry": "0x43400c3c",
       "adapter": "vr_native_ink_read_words",
-      "adapter_address": "0x450024fc",
+      "adapter_address": "0x4500309c",
       "trampoline": null,
       "original_prologue_hex": "30402de90140a0e1"
     },
     {
       "entry": "0x434006ec",
       "adapter": "vr_native_ink_flush_mirror",
-      "adapter_address": "0x45002648",
+      "adapter_address": "0x4500322c",
       "trampoline": null,
       "original_prologue_hex": "70402de920d04de2"
     },
     {
       "entry": "0x43400dec",
       "adapter": "vr_native_ink_flush_mirror",
-      "adapter_address": "0x45002648",
+      "adapter_address": "0x4500322c",
       "trampoline": null,
       "original_prologue_hex": "70402de911de4de2"
     },
     {
       "entry": "0x43400f18",
       "adapter": "vr_native_ink_flush_mirror",
-      "adapter_address": "0x45002648",
+      "adapter_address": "0x4500322c",
       "trampoline": null,
       "original_prologue_hex": "f8432de90040a0e3"
     }
   ],
-  "elapsed_seconds": 0.589,
+  "elapsed_seconds": 0.724,
   "python_hooks": "Storage transport, OS notifications and fault reporting only",
   "printer_ram_and_flash_placement_allocated": false,
   "printer_nor_erase_sync_contract_verified": false,

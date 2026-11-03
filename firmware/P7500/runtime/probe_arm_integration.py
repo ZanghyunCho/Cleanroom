@@ -27,6 +27,8 @@ CAPACITY=7_000_000
 NATIVE_MIRROR=0x437c4fb4
 
 class Machine:
+    instruction_limit=5_000_000
+    timeout_us=5_000_000
     def __init__(self,flash=None,cut=None):
         self.u=Uc(UC_ARCH_ARM,UC_MODE_ARM)
         for a,n in [(0x43000000,0x1000000),(0x45000000,0x100000),
@@ -164,7 +166,7 @@ class Machine:
         saved=[UC_ARM_REG_R4,UC_ARM_REG_R5,UC_ARM_REG_R6,UC_ARM_REG_R7,UC_ARM_REG_R8,UC_ARM_REG_R9,UC_ARM_REG_R10,UC_ARM_REG_R11]
         for i,r in enumerate(saved):self.u.reg_write(r,0x12340000+i)
         self.u.reg_write(UC_ARM_REG_SP,sp);self.u.reg_write(UC_ARM_REG_LR,STOP)
-        try:self.u.emu_start(address,STOP,count=5000000,timeout=5000000)
+        try:self.u.emu_start(address,STOP,count=self.instruction_limit,timeout=self.timeout_us)
         except UcError as e:raise AssertionError((str(e),name,hex(self.reg(UC_ARM_REG_PC)))) from e
         if self.reg(UC_ARM_REG_PC)!=STOP:raise AssertionError(('ARM call did not finish',name,hex(self.reg(UC_ARM_REG_PC))))
         if self.reg(UC_ARM_REG_SP)!=sp:raise AssertionError(('ARM stack was not restored',name))

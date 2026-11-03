@@ -1,0 +1,15 @@
+{
+  "tests_run": 5,
+  "failures": 0,
+  "errors": 0,
+  "checks": {
+    "metadata_torn_writes": 8193,
+    "record_bit_corruptions": 32768,
+    "full_profiles_restored": 13
+  },
+  "metadata_bytes_per_profile": 192,
+  "profiles": 13,
+  "storage_bytes_per_bank": 4096,
+  "scope": "Compiled lossless journal with injected two-bank storage; native printer allocation not bound",
+  "physical_printer_tested": false
+}

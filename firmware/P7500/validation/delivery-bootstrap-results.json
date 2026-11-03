@@ -1,0 +1,17 @@
+{
+  "scope": "Actual-address statically patched module, native NV APIs and compiled bootstrap; legacy DSM restore/physical NV fixtures",
+  "installer_bootstrap_passed": true,
+  "runtime_bootstrap_restore_passed": true,
+  "early_native_pointer_getters_passed": true,
+  "heap_allocation_bytes": [
+    49743
+  ],
+  "ink_generation_and_full_metadata_restored": true,
+  "maintenance_full_metadata_and_mode_restored": true,
+  "native_gf_bus_ready_passed": true,
+  "native_prefix_preserved": true,
+  "runtime_missing_metadata_not_formatted": true,
+  "physical_printer_boot_tested": false,
+  "physical_power_cut_tested": false,
+  "elapsed_seconds": 7.384
+}

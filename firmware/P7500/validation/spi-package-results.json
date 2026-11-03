@@ -1,0 +1,17 @@
+{
+  "artifact": "/workspace/Cleanroom/firmware/P7500/build/P7500-EXPERIMENTAL-SPI.zip",
+  "bytes": 33921037,
+  "sha256": "9f95e730fd020d60559bd9df1b32f18cdfeb6e41c8c3689505fc560fc99ed8e0",
+  "installer_chip_files": {
+    "EXPERIMENTAL_INSTALLER_IC13.BIN": {
+      "bytes": 67108864,
+      "sha256": "eec76055f646d7120f6c090cf10cda4fc5889d133c3a28b9919a300d0c087a33"
+    },
+    "EXPERIMENTAL_INSTALLER_IC14.BIN": {
+      "bytes": 67108864,
+      "sha256": "5799602db15db92ff16f7ef89512610fddc626e26d767b1a4618dec87489629e"
+    }
+  },
+  "physical_printer_tested": false,
+  "stage_two_state_preservation_test_passed": true
+}

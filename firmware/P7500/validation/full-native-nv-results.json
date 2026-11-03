@@ -1,0 +1,15 @@
+{
+  "scope": "Full journal and compiled native mirror adapter through original NV API and compiled prefix-preserving worker",
+  "existing_record_mappings_preserved": 157,
+  "native_prefix_preserved": true,
+  "native_prefix_update_preserved_owner_data": true,
+  "concurrent_latest_prefix_preserved": true,
+  "full_ink_profiles_restored": 12,
+  "maintenance_profile_restored": true,
+  "core_profiles_restored": 13,
+  "object_bytes": 9216,
+  "native_volume_extra_logical_bytes": 8192,
+  "native_flash_worker_executed": false,
+  "physical_printer_tested": false,
+  "elapsed_seconds": 8.104
+}
