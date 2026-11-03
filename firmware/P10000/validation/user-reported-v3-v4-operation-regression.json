@@ -12,6 +12,7 @@
   "reported_decompress_pump_not_operating": true,
   "reported_V4_error": "Paper not detected",
   "ILS_causality_confirmed": false,
-  "matching_physical_test_conditions_confirmation_pending": true,
-  "prior_general_operation_success_reports_do_not_establish_printing_success": true
+  "matching_physical_test_conditions_confirmation_pending": false,
+  "prior_general_operation_success_reports_do_not_establish_printing_success": true,
+  "same_cartridge_ink_supply_and_paper_conditions_V2_normal_confirmed_by_user": true
 }
