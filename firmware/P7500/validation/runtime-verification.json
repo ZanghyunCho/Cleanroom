@@ -1,0 +1,150 @@
+{
+  "source_sha256": {
+    "runtime/arm.ld": "c54f32e8c3db2b8785b1433c50b6b02e39aac0cdc1cef80bab714c3a6da9181a",
+    "runtime/build.py": "678f67dffc4d6aa4e9964a2d461464bfb139b37d8125b07819101346a14e91f9",
+    "runtime/native_adapter.c": "b58a0add23f7daba7df64499a08c047074bf69b5c545cbe168bc1b58d0f53f05",
+    "runtime/native_adapter.h": "62d02a89b21ddd1a1f564ddeb22002359fcb46fb2c8321c4236ecb458be65f86",
+    "runtime/probe_arm_integration.py": "84e805f86f29afb44d5825c32c1945f76dd2fa44a5fcca453741bea4253d86b5",
+    "runtime/probe_compiled_bindings.py": "10f146dcf5ec167d0f4bf9dfeb8bc75daf2a9425bd86ff2de52617189fa92677",
+    "runtime/test_runtime.py": "729bb5dc10bb2be2e46da78b965fa2622aff099aafc786bac760ccbb54d37311",
+    "runtime/verify.py": "c18a329225bc6850e2bd9d8eed5ef47474f3c1cb0c2890a26395b842c9c9607c",
+    "runtime/virtual_cartridge.c": "77427fb13d8f8935bd35f72d7bd0458960fffac6922025b74328a68b73a3e86f",
+    "runtime/virtual_cartridge.h": "6c5667124a3c81bc44e78771da551391428ad3d286f8aa6f802c28a8f404aa99"
+  },
+  "arm_elf_sha256": "3dd93f7df962905ae6cbd745e8b60ca862013c7ff6acb6f225e56cf571705ea1",
+  "original_merged_sha256": "ae9b0cd5f15f1f2edcfd671c9131d9383243e1fbf9c59b0bf31dcaa04968c551",
+  "reports": {
+    "virtual-runtime-host-results.json": {
+      "tests_run": 12,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "checks": {
+        "power_cuts": 1025,
+        "bit_corruptions": 4096,
+        "boundary_scenarios": 60,
+        "protocol_requests": 26
+      },
+      "backend_scope": "Byte-programmable simulated banks and fsync file backend; printer flash not bound"
+    },
+    "virtual-runtime-arm-results.json": {
+      "scope": "Compiled ARM C runtime plus original ARM consumption, percentage, cover, mirror and presence functions",
+      "native_boundary_cases_passed": 24,
+      "native_serial_generation_cases_passed": 12,
+      "native_slot_presence_cases_passed": 12,
+      "restored_profiles_passed": 13,
+      "arm_torn_write_cases_passed": 11,
+      "maintenance_logical_profile_passed": true,
+      "native_calls": {
+        "read": 76,
+        "erase": 37,
+        "write": 111,
+        "sync": 74,
+        "native_counter_get": 36,
+        "native_counter_add": 24,
+        "native_cover_set": 48,
+        "native_identity_read": 360,
+        "native_presence": 12,
+        "mocked_os_notifications": 48
+      },
+      "elapsed_seconds": 17.42,
+      "bindings": "Unicorn hooks; no flash-image patch addresses allocated",
+      "storage": "Simulated independent erase/program banks, not printer NVRAM",
+      "hardware_asic_spi_authentication_tested": false,
+      "os_notifications": "mocked",
+      "generic_native_counter_corrections_bound": false
+    },
+    "compiled-native-binding-results.json": {
+      "scope": "Actual 8-byte ARM entry patches to compiled C adapters in emulated RAM",
+      "native_boundary_cases_passed": 24,
+      "generation_and_native_serial_cases_passed": 12,
+      "stale_native_zero_reports_preserved": 12,
+      "restored_profiles_passed": 13,
+      "native_presence_slots_passed": 12,
+      "storage_failure_reporting_passed": true,
+      "native_maintenance_info_layout_passed": true,
+      "native_maintenance_error_getters_passed": 36,
+      "patches": [
+        {
+          "entry": "0x433f57c0",
+          "adapter": "vr_native_get40",
+          "adapter_address": "0x45001528",
+          "trampoline": "0x47000200",
+          "original_prologue_hex": "f04f2de90cd04de2"
+        },
+        {
+          "entry": "0x433f5934",
+          "adapter": "vr_native_set40",
+          "adapter_address": "0x4500166c",
+          "trampoline": "0x47000220",
+          "original_prologue_hex": "f04f2de90cd04de2"
+        },
+        {
+          "entry": "0x433f5b4c",
+          "adapter": "vr_native_add40",
+          "adapter_address": "0x45001748",
+          "trampoline": "0x47000240",
+          "original_prologue_hex": "f04f2de90cd04de2"
+        },
+        {
+          "entry": "0x43403f68",
+          "adapter": "vr_native_set_cover",
+          "adapter_address": "0x45001824",
+          "trampoline": "0x47000260",
+          "original_prologue_hex": "f0402de9020050e3"
+        },
+        {
+          "entry": "0x434027b0",
+          "adapter": "vr_native_read_mirror",
+          "adapter_address": "0x45001948",
+          "trampoline": "0x47000280",
+          "original_prologue_hex": "f04f2de90050a0e3"
+        },
+        {
+          "entry": "0x43408d30",
+          "adapter": "vr_native_presence_ptr",
+          "adapter_address": "0x45001aac",
+          "trampoline": "0x470002a0",
+          "original_prologue_hex": "70402de908d04de2"
+        },
+        {
+          "entry": "0x434033a4",
+          "adapter": "vr_native_remaining_info",
+          "adapter_address": "0x45001b8c",
+          "trampoline": null,
+          "original_prologue_hex": "f0402de90cd04de2"
+        },
+        {
+          "entry": "0x433f2f04",
+          "adapter": "vr_native_waste_info_ptr",
+          "adapter_address": "0x45001c00",
+          "trampoline": "0x470002e0",
+          "original_prologue_hex": "f0402de90cd04de2"
+        },
+        {
+          "entry": "0x43407f20",
+          "adapter": "vr_native_waste_remaining_info",
+          "adapter_address": "0x45001cf8",
+          "trampoline": null,
+          "original_prologue_hex": "f0402de9c4709fe5"
+        },
+        {
+          "entry": "0x43408318",
+          "adapter": "vr_native_waste_error_code",
+          "adapter_address": "0x45001d64",
+          "trampoline": null,
+          "original_prologue_hex": "70402de9240050e3"
+        }
+      ],
+      "elapsed_seconds": 0.726,
+      "python_hooks": "Storage transport, OS notifications and fault reporting only",
+      "printer_ram_and_flash_placement_allocated": false,
+      "printer_nor_erase_sync_contract_verified": false,
+      "hardware_asic_spi_authentication_tested": false,
+      "maintenance_scope": "Compiled native information/remaining/error getters; no physical GF-chip wire emulation",
+      "flash_image_generated": false
+    }
+  },
+  "physical_printer_or_flash_tested": false,
+  "flash_image_generated": false
+}

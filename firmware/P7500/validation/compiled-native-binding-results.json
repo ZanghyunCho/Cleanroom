@@ -1,0 +1,90 @@
+{
+  "scope": "Actual 8-byte ARM entry patches to compiled C adapters in emulated RAM",
+  "native_boundary_cases_passed": 24,
+  "generation_and_native_serial_cases_passed": 12,
+  "stale_native_zero_reports_preserved": 12,
+  "restored_profiles_passed": 13,
+  "native_presence_slots_passed": 12,
+  "storage_failure_reporting_passed": true,
+  "native_maintenance_info_layout_passed": true,
+  "native_maintenance_error_getters_passed": 36,
+  "patches": [
+    {
+      "entry": "0x433f57c0",
+      "adapter": "vr_native_get40",
+      "adapter_address": "0x45001528",
+      "trampoline": "0x47000200",
+      "original_prologue_hex": "f04f2de90cd04de2"
+    },
+    {
+      "entry": "0x433f5934",
+      "adapter": "vr_native_set40",
+      "adapter_address": "0x4500166c",
+      "trampoline": "0x47000220",
+      "original_prologue_hex": "f04f2de90cd04de2"
+    },
+    {
+      "entry": "0x433f5b4c",
+      "adapter": "vr_native_add40",
+      "adapter_address": "0x45001748",
+      "trampoline": "0x47000240",
+      "original_prologue_hex": "f04f2de90cd04de2"
+    },
+    {
+      "entry": "0x43403f68",
+      "adapter": "vr_native_set_cover",
+      "adapter_address": "0x45001824",
+      "trampoline": "0x47000260",
+      "original_prologue_hex": "f0402de9020050e3"
+    },
+    {
+      "entry": "0x434027b0",
+      "adapter": "vr_native_read_mirror",
+      "adapter_address": "0x45001948",
+      "trampoline": "0x47000280",
+      "original_prologue_hex": "f04f2de90050a0e3"
+    },
+    {
+      "entry": "0x43408d30",
+      "adapter": "vr_native_presence_ptr",
+      "adapter_address": "0x45001aac",
+      "trampoline": "0x470002a0",
+      "original_prologue_hex": "70402de908d04de2"
+    },
+    {
+      "entry": "0x434033a4",
+      "adapter": "vr_native_remaining_info",
+      "adapter_address": "0x45001b8c",
+      "trampoline": null,
+      "original_prologue_hex": "f0402de90cd04de2"
+    },
+    {
+      "entry": "0x433f2f04",
+      "adapter": "vr_native_waste_info_ptr",
+      "adapter_address": "0x45001c00",
+      "trampoline": "0x470002e0",
+      "original_prologue_hex": "f0402de90cd04de2"
+    },
+    {
+      "entry": "0x43407f20",
+      "adapter": "vr_native_waste_remaining_info",
+      "adapter_address": "0x45001cf8",
+      "trampoline": null,
+      "original_prologue_hex": "f0402de9c4709fe5"
+    },
+    {
+      "entry": "0x43408318",
+      "adapter": "vr_native_waste_error_code",
+      "adapter_address": "0x45001d64",
+      "trampoline": null,
+      "original_prologue_hex": "70402de9240050e3"
+    }
+  ],
+  "elapsed_seconds": 0.726,
+  "python_hooks": "Storage transport, OS notifications and fault reporting only",
+  "printer_ram_and_flash_placement_allocated": false,
+  "printer_nor_erase_sync_contract_verified": false,
+  "hardware_asic_spi_authentication_tested": false,
+  "maintenance_scope": "Compiled native information/remaining/error getters; no physical GF-chip wire emulation",
+  "flash_image_generated": false
+}

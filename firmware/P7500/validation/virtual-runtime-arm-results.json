@@ -1,0 +1,27 @@
+{
+  "scope": "Compiled ARM C runtime plus original ARM consumption, percentage, cover, mirror and presence functions",
+  "native_boundary_cases_passed": 24,
+  "native_serial_generation_cases_passed": 12,
+  "native_slot_presence_cases_passed": 12,
+  "restored_profiles_passed": 13,
+  "arm_torn_write_cases_passed": 11,
+  "maintenance_logical_profile_passed": true,
+  "native_calls": {
+    "read": 76,
+    "erase": 37,
+    "write": 111,
+    "sync": 74,
+    "native_counter_get": 36,
+    "native_counter_add": 24,
+    "native_cover_set": 48,
+    "native_identity_read": 360,
+    "native_presence": 12,
+    "mocked_os_notifications": 48
+  },
+  "elapsed_seconds": 17.42,
+  "bindings": "Unicorn hooks; no flash-image patch addresses allocated",
+  "storage": "Simulated independent erase/program banks, not printer NVRAM",
+  "hardware_asic_spi_authentication_tested": false,
+  "os_notifications": "mocked",
+  "generic_native_counter_corrections_bound": false
+}

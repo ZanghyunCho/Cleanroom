@@ -1,0 +1,13 @@
+{
+  "tests_run": 12,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "checks": {
+    "power_cuts": 1025,
+    "bit_corruptions": 4096,
+    "boundary_scenarios": 60,
+    "protocol_requests": 26
+  },
+  "backend_scope": "Byte-programmable simulated banks and fsync file backend; printer flash not bound"
+}

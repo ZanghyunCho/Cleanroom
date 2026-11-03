@@ -1,0 +1,22 @@
+{
+  "start": "0x0",
+  "end": "0x15dc0b",
+  "output_bytes": 3562656,
+  "token_count": 693688,
+  "literal_bytes": 302367,
+  "scan_bits_consumed": 9034918,
+  "scan_padding_bits": 218,
+  "sha256": "c9665aaf63a4bd06d0eaef163dbc2588a54c44d288e0dc984abaf8ca77f2da41",
+  "references_converted_to_literals": 5,
+  "scope": "Synthetic edits for codec validation only; not a firmware release",
+  "modified_offsets": [
+    0,
+    4,
+    8,
+    288,
+    32768,
+    65536,
+    131072,
+    3562652
+  ]
+}

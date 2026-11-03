@@ -1,0 +1,8 @@
+/original
+/decoded
+/tools
+/build
+/analysis
+/private
+__pycache__/
+*.py[cod]

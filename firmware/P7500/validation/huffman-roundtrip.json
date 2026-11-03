@@ -1,0 +1,30 @@
+[
+  {
+    "frame": "crom-00070000-0.bin",
+    "scan_equal": true
+  },
+  {
+    "frame": "crom-00070000-1.bin",
+    "scan_equal": true
+  },
+  {
+    "frame": "crom-00277400-0.bin",
+    "scan_equal": true
+  },
+  {
+    "frame": "crom-002d6c00-0.bin",
+    "scan_equal": true
+  },
+  {
+    "frame": "crom-008d6c00-0.bin",
+    "scan_equal": true
+  },
+  {
+    "frame": "crom-00a4dc00-0.bin",
+    "scan_equal": true
+  },
+  {
+    "frame": "crom-0294dc00-0.bin",
+    "scan_equal": true
+  }
+]
