@@ -3,10 +3,12 @@ import argparse,hashlib,json
 from pathlib import Path
 SIZE=67108864
 PROFILES={
+ 'key_only_original_firmware':('23f1a3ecfb713ee4432db1c6d8fe5bb54a51b5e259e06086d447d5d28bc06f8b','bdcf3ed2c771a8306cefe21d88e71c890977f17ef4ba588806c8f8f2598636bc'),
  'original':('894056f5b002e75c26d636b269910a8f48eb1a95762e849f8fda7339e08914ed','4403822b3eb8e7a2fafb71bbc1f989377908334f81a0e02c70532a1c4ccf8b7e'),
  'delivered_installer_boot_failure_reported':('eec76055f646d7120f6c090cf10cda4fc5889d133c3a28b9919a300d0c087a33','5799602db15db92ff16f7ef89512610fddc626e26d767b1a4618dec87489629e')}
 CODE_PREFIX_LENGTH=1932489
 CODE_PREFIX_HASHES={'original': '1179fa3461dbdbf7949623e8e7aaff65a827896ed3bfde9fc5eae1c695d21bfe', 'delivered_installer': '0c23874a8cbb9a17ac47bd619e67fea77159405de9b53320a38499c287e580d9', 'delivered_runtime': 'e6c443fbf9b48c71a1b8463d605df423b117f6f1d5c3f082b55fcc369cf90fe3'}
+CODE_PREFIX_HASHES['key_only_original_firmware']='2c2eeb6c7acb32e369e20528470e5706acb714134ee560456348ea464a986ef5'
 def read_merged_prefix(paths,length):
  lane_bytes=((length+3)//4)*2
  lanes=[]

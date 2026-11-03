@@ -1,0 +1,67 @@
+{
+  "artifact": "/workspace/Cleanroom/firmware/P7500/build/P7500-KEY-ONLY-SPI.zip",
+  "bytes": 31101555,
+  "sha256": "5f5e7a2147dae06c58eac01e69946e0c66af91adac96eb94e435673bf3599df1",
+  "manifest": {
+    "classification": "KEY REPLACEMENT CANDIDATE; PHYSICAL BOOT AND CUSTOM EFU ACCEPTANCE NOT VERIFIED",
+    "original_merged_sha256": "ae9b0cd5f15f1f2edcfd671c9131d9383243e1fbf9c59b0bf31dcaa04968c551",
+    "key_only_merged_sha256": "6e121d870ad5ee7f9216b9232ca49485938617f65de19101b7929a36ec4f45d7",
+    "public_key_encoding": "NIST P-256, uncompressed X||Y, big-endian coordinates, 64 bytes",
+    "original_public_key_sha256": "32c269b3944bebfdb0eacf3b8637d904d658383aa61c2c6b41ee8e8d45251161",
+    "owner_public_key_sha256": "0cb5418f7bdfe9e27b6878cfd4bd92a927f61a7083cd9a3b818291ffb81c3c68",
+    "both_public_points_valid_p256": true,
+    "changed_merged_ranges": [
+      {
+        "start": "0x7010",
+        "end_exclusive": "0x7050",
+        "bytes": 64,
+        "differing_bytes": 64
+      },
+      {
+        "start": "0x6d000",
+        "end_exclusive": "0x6d040",
+        "bytes": 64,
+        "differing_bytes": 64
+      }
+    ],
+    "all_bytes_outside_key_ranges_equal_original": true,
+    "all_bytes_from_0x70000_to_end_equal_original": true,
+    "crom_recompressed": false,
+    "virtualization_or_nv_expansion_included": false,
+    "private_key_included": false,
+    "physical_boot_verified": false,
+    "custom_efu_acceptance_verified": false,
+    "files": {
+      "P7500_KEY_ONLY_IC13.BIN": {
+        "physical_chip": "IC13",
+        "bytes": 67108864,
+        "sha256": "23f1a3ecfb713ee4432db1c6d8fe5bb54a51b5e259e06086d447d5d28bc06f8b"
+      },
+      "P7500_KEY_ONLY_IC14.BIN": {
+        "physical_chip": "IC14",
+        "bytes": 67108864,
+        "sha256": "bdcf3ed2c771a8306cefe21d88e71c890977f17ef4ba588806c8f8f2598636bc"
+      }
+    }
+  },
+  "readback_tool_offline_checks": [
+    {
+      "offline_input": "key-only",
+      "exact_pair": "key_only_original_firmware",
+      "reversed_pair": null,
+      "prefix_match": "key_only_original_firmware"
+    },
+    {
+      "offline_input": "original",
+      "exact_pair": "original",
+      "reversed_pair": null,
+      "prefix_match": "original"
+    },
+    {
+      "offline_input": "key-only-swapped",
+      "exact_pair": null,
+      "reversed_pair": "key_only_original_firmware",
+      "prefix_match": null
+    }
+  ]
+}
