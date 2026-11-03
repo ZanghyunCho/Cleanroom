@@ -1,3 +1,7 @@
+> **사용 중단 — 실제 장비 동작 실패 확인**
+>
+> 업데이트 수락·부팅은 되지만, 물리 커버가 열린 상태에서 명령을 보내면 멈추며 커버를 닫고 재부팅해야 복구된다는 시험 결과가 있습니다. 이 EFU를 재사용하지 말고 공식 원본으로 복구하세요. 원인은 조사 중입니다. 아래 파일은 실패한 시험본의 재현 기록으로만 보존합니다.
+
 # SC-P5000 N005O6 잉크 커버 닫힘 실험본
 
 [EFU 한 파일 다운로드](https://github.com/ZanghyunCho/Cleanroom/raw/refs/heads/delivery/p5000-n005o6-covers-closed/downloads/p5000-n005o6-covers-closed/SC-P5000_N005O6_INK-COVERS-CLOSED_UNVERIFIED.EFU)

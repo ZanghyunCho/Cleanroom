@@ -1,5 +1,5 @@
 {
-  "status": "EXPERIMENTAL_UNVERIFIED_DEVICE_ACCEPTANCE",
+  "status": "DEVICE_OPERATION_FAILED_DO_NOT_USE",
   "model": "SC-P5000",
   "version": "N005O6",
   "file": "SC-P5000_N005O6_INK-COVERS-CLOSED_UNVERIFIED.EFU",
@@ -111,5 +111,22 @@
   "known_checksums_and_zip_crc_verified": true,
   "authentication_or_device_acceptance_verified": false,
   "full_print_and_cartridge_replacement_verified": false,
-  "hardware_write_performed": false
+  "hardware_write_performed": false,
+  "hardware_test_status": "ACCEPTED_AND_BOOTS_BUT_FUNCTIONALLY_FAILED",
+  "user_observed_failure": {
+    "accepted_and_booted": true,
+    "requires_physical_cover_closed_to_operate": true,
+    "command_while_cover_open_stalls": true,
+    "close_and_reboot_required_to_recover": true
+  },
+  "device_use_recommendation": "Do not reuse; restore official firmware",
+  "root_cause_confirmed": false,
+  "missing_model_coverage": [
+    "input dispatcher consumes patched low-level getters",
+    "physical controller/RTOS message waits",
+    "cover notification receivers"
+  ],
+  "device_acceptance_verified": true,
+  "boot_verified": true,
+  "authentication_verified": false
 }
