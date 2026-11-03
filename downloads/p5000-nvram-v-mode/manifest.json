@@ -1,0 +1,32 @@
+{
+  "source": "X2UU100054 20261104044947.bin",
+  "source_sha256": "700ddcc4ab4348512c1ebc4b46614e04de17fd42f0da0b8ed82ddc432a60902a",
+  "file": "X2UU100054_20261104044947_V_MODE_1E2D-01.bin",
+  "sha256": "3232e8e7856052c3b913ace3ac2b2be7e6a210f39c1bb6d99364768d703ec579",
+  "bytes": 8216,
+  "changed_bytes": [
+    {
+      "file_offset": "0x1E2D",
+      "original_hex": "02",
+      "replacement_hex": "01",
+      "meaning": "stored ink configuration LLK -> Violet"
+    }
+  ],
+  "region_selector_0x1fc6": 2,
+  "backup_timestamp_preserved": true,
+  "all_other_bytes_preserved": true,
+  "physical_header_added": false,
+  "device_restore_verified": false,
+  "limits": [
+    "This changes the saved configuration byte only.",
+    "Existing slot identity cache/history are preserved, including the previous LLK product ID.",
+    "Native initialization/re-identification and any firmware-specific forced metadata still govern actual behavior.",
+    "It does not change actual ink, flush the ink path, or configure the driver/RIP."
+  ],
+  "verification": {
+    "test_functions_passed": 3,
+    "region_matrix_cases": 528,
+    "native_mode_load_emulated": true,
+    "external_calls_stubbed": true
+  }
+}
