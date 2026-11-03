@@ -1,0 +1,115 @@
+{
+  "status": "EXPERIMENTAL_UNVERIFIED_DEVICE_ACCEPTANCE",
+  "model": "SC-P5000",
+  "version": "N005O6",
+  "file": "SC-P5000_N005O6_INK-COVERS-CLOSED_UNVERIFIED.EFU",
+  "size": 9849257,
+  "sha256": "4cf47276991e1250e2d2ca1228cf24972611fa7776da861d51d591a5e6a7b023",
+  "source_sha256": "a8ac410776d3616b0c7d049c10d0466e30b5760a0f800e844392607ea2c6414e",
+  "source_size": 9849257,
+  "efu_size_unchanged": true,
+  "rcx_size_unchanged": true,
+  "firmware_stream_size_unchanged": true,
+  "zip_original_stored_deflate_blocks_preserved": 151,
+  "zip_offsets_and_metadata_preserved_except_main_crc": true,
+  "rcx_allowed_changed_ranges": [
+    [
+      1770542,
+      1770546
+    ],
+    [
+      1770550,
+      1770554
+    ],
+    [
+      1062,
+      1066
+    ],
+    [
+      2169424,
+      2172952
+    ],
+    [
+      2590713,
+      2594217
+    ]
+  ],
+  "local_windows": [
+    {
+      "decoded_window": [
+        1226049,
+        1230707
+      ],
+      "stream_window": [
+        398850,
+        402378
+      ]
+    },
+    {
+      "decoded_window": [
+        1794382,
+        1799783
+      ],
+      "stream_window": [
+        820139,
+        823643
+      ]
+    }
+  ],
+  "decoded_code_routes": [
+    {
+      "address": "0x1002b756",
+      "end_exclusive": "0x1002b75e",
+      "image_offset": "0x12b756",
+      "original_hex": "405641102a57b066",
+      "replacement_hex": "0052000000000000",
+      "purpose": "low-level logical input returns original closed value 0; original return instruction preserved"
+    },
+    {
+      "address": "0x1002b760",
+      "end_exclusive": "0x1002b768",
+      "image_offset": "0x12b760",
+      "original_hex": "405641102a579466",
+      "replacement_hex": "0052000000000000",
+      "purpose": "low-level logical input returns original closed value 0; original return instruction preserved"
+    },
+    {
+      "address": "0x100b6352",
+      "end_exclusive": "0x100b6374",
+      "image_offset": "0x1b6352",
+      "original_hex": "0152400e4110615732ea408e4110318f30ea618a400e4110e287000061872eea9a65",
+      "replacement_hex": "400e4110015261572eea615730ea615732ea8007d000000000000000000000000000",
+      "purpose": "left close: normalize caches, keep callback rearm and event recomputation; no logical transition notification"
+    },
+    {
+      "address": "0x100b653c",
+      "end_exclusive": "0x100b655e",
+      "image_offset": "0x1b653c",
+      "original_hex": "0152400e4110615730ea408e4110318f32ea618a400e4110e287000061872eea9a65",
+      "replacement_hex": "400e4110015261572eea615730ea615732ea8007d000000000000000000000000000",
+      "purpose": "right close: normalize caches, keep callback rearm and event recomputation; no logical transition notification"
+    },
+    {
+      "address": "0x100b645c",
+      "end_exclusive": "0x100b6478",
+      "image_offset": "0x1b645c",
+      "original_hex": "40ee41103def2eea400e4110610732ea400e411061072eeabfffde92",
+      "replacement_hex": "400e4110015261572eea615730ea615732eabfffe4928007a6000000",
+      "purpose": "left open: consume physical event, normalize logical caches, recompute, preserve original rearm; no logical open/close notification"
+    },
+    {
+      "address": "0x100b6646",
+      "end_exclusive": "0x100b6662",
+      "image_offset": "0x1b6646",
+      "original_hex": "40ee41103def2eea400e4110610730ea400e411061072eeabffff490",
+      "replacement_hex": "400e4110015261572eea615730ea615732eabffffa908007a6000000",
+      "purpose": "right open: consume physical event, normalize logical caches, recompute, preserve original rearm; no logical open/close notification"
+    }
+  ],
+  "decoded_patched_sha256": "a85255d5cb77e3f836d041273c842e1ccd9be562c48383a3297df44aae97db31",
+  "other_firmware_components_and_resources_unchanged": true,
+  "known_checksums_and_zip_crc_verified": true,
+  "authentication_or_device_acceptance_verified": false,
+  "full_print_and_cartridge_replacement_verified": false,
+  "hardware_write_performed": false
+}
