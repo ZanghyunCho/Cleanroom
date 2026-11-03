@@ -1,0 +1,60 @@
+{
+  "scope": "Actual original ARM frame parser and LZ/literal copy execution; Huffman ASIC tokens supplied by Python fixture",
+  "variants": [
+    {
+      "variant": "original",
+      "native_parser_returned_frames": 2,
+      "native_decode_return": 1,
+      "huffman_fixture_calls": 690,
+      "frames": [
+        {
+          "frame_start": "0x70004",
+          "destination": "0x433e0000",
+          "bytes": 3562656,
+          "all_bytes_equal_python_decoder": true,
+          "first_mismatch": null,
+          "native_output_sha256": "8a555736d1697ff907d0da70b179e29537682b5c095bd09fe4a39d938af6fdde",
+          "python_output_sha256": "8a555736d1697ff907d0da70b179e29537682b5c095bd09fe4a39d938af6fdde"
+        },
+        {
+          "frame_start": "0x1cdb9f",
+          "destination": "0xb9dc7000",
+          "bytes": 34436,
+          "all_bytes_equal_python_decoder": true,
+          "first_mismatch": null,
+          "native_output_sha256": "18ba565dee9ffdf1252c60fba3a7fcbcb7e3e909c234129b6b019b400a86f065",
+          "python_output_sha256": "18ba565dee9ffdf1252c60fba3a7fcbcb7e3e909c234129b6b019b400a86f065"
+        }
+      ]
+    },
+    {
+      "variant": "delivered_installer",
+      "native_parser_returned_frames": 2,
+      "native_decode_return": 1,
+      "huffman_fixture_calls": 690,
+      "frames": [
+        {
+          "frame_start": "0x70004",
+          "destination": "0x433e0000",
+          "bytes": 3562656,
+          "all_bytes_equal_python_decoder": true,
+          "first_mismatch": null,
+          "native_output_sha256": "cf0747159ad719a8d62dcaf4b191560d7cf4a4901a3a7633a9b231a0b8eb3cb6",
+          "python_output_sha256": "cf0747159ad719a8d62dcaf4b191560d7cf4a4901a3a7633a9b231a0b8eb3cb6"
+        },
+        {
+          "frame_start": "0x1d2fed",
+          "destination": "0xb9dc7000",
+          "bytes": 34436,
+          "all_bytes_equal_python_decoder": true,
+          "first_mismatch": null,
+          "native_output_sha256": "18ba565dee9ffdf1252c60fba3a7fcbcb7e3e909c234129b6b019b400a86f065",
+          "python_output_sha256": "18ba565dee9ffdf1252c60fba3a7fcbcb7e3e909c234129b6b019b400a86f065"
+        }
+      ]
+    }
+  ],
+  "physical_printer_tested": false,
+  "full_boot_tested": false,
+  "elapsed_seconds": 16.38
+}

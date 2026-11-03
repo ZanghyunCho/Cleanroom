@@ -1,0 +1,25 @@
+{
+  "date_client_timezone": "2026-11-04 Asia/Seoul",
+  "source_commit_of_delivered_image": "d94a046",
+  "artifact": "P7500-EXPERIMENTAL-SPI.zip",
+  "artifact_sha256": "9f95e730fd020d60559bd9df1b32f18cdfeb6e41c8c3689505fc560fc99ed8e0",
+  "user_report": {
+    "images": "EXPERIMENTAL_INSTALLER_IC13.BIN and EXPERIMENTAL_INSTALLER_IC14.BIN",
+    "power_switch_sound": true,
+    "display_visible": false,
+    "power_button_led_lit": false,
+    "same_chips_rewritten_with_original_boot_normally": true,
+    "modified_image_programmer_readback_matches_not_yet_confirmed": true
+  },
+  "classification": "BOOT FAILURE REPORTED; ORIGINAL IMAGE RESTORES BOOT ON SAME CHIPS",
+  "root_cause": "Not established",
+  "native_probe_scope": "Original ARM frame walker and LZ/literal copy loop; Huffman ASIC fixture; no complete boot or physical hardware emulation",
+  "not_yet_verified": [
+    "Programmed readback equals delivered BINs",
+    "Physical Huffman/decompression hardware behavior",
+    "Real initialization order and callback expectations",
+    "Extended NV object behavior in actual flash worker"
+  ],
+  "action": "Keep original working firmware; do not treat delivered candidate as boot-verified; compare readback before further writes",
+  "corrected_boot_verified_image_available": false
+}

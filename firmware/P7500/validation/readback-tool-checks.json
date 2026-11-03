@@ -1,0 +1,16 @@
+[
+  {
+    "input": "original",
+    "exact_pair": "original",
+    "prefix": "original"
+  },
+  {
+    "input": "installer",
+    "exact_pair": "delivered_installer_boot_failure_reported",
+    "prefix": "delivered_installer"
+  },
+  {
+    "input": "swapped_original",
+    "detected": "original_reversed"
+  }
+]
