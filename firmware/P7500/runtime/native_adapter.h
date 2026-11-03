@@ -12,6 +12,7 @@ struct vr_native_bindings {
     uint8_t *ink_mirror;
     uint8_t *(*waste_info_ptr)(uint32_t);
     uint32_t (*slot_access)(uint32_t);
+    uint8_t *ink_dirty;
 };
 /* Original-function pointers must target verified relocated prologues, not the
  * patched entry addresses. No actual printer storage/RAM placement is selected. */
@@ -32,4 +33,8 @@ uint32_t vr_native_waste_error_code(uint32_t);
  * selected slots. These functions do not emulate physical chip registers. */
 uint32_t vr_native_ink_check_job(const uint32_t *,uint8_t *);
 uint32_t vr_native_ink_status_job(uint32_t,const uint32_t *,uint8_t *);
+/* RAM mirror view: owner serial/vendor come from durable virtual state. Other
+ * fields remain native RAM data, not a newly persisted full chip image. */
+uint32_t vr_native_ink_read_words(uint32_t slot,uint32_t words);
+uint32_t vr_native_ink_flush_mirror(uint32_t slot,uint32_t keep_dirty);
 #endif

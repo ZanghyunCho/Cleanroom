@@ -12,89 +12,117 @@
     {
       "entry": "0x433f57c0",
       "adapter": "vr_native_get40",
-      "adapter_address": "0x4500158c",
+      "adapter_address": "0x45001ad0",
       "trampoline": "0x47000200",
       "original_prologue_hex": "f04f2de90cd04de2"
     },
     {
       "entry": "0x433f5934",
       "adapter": "vr_native_set40",
-      "adapter_address": "0x450016d0",
+      "adapter_address": "0x45001c14",
       "trampoline": "0x47000220",
       "original_prologue_hex": "f04f2de90cd04de2"
     },
     {
       "entry": "0x433f5b4c",
       "adapter": "vr_native_add40",
-      "adapter_address": "0x450017ac",
+      "adapter_address": "0x45001cf0",
       "trampoline": "0x47000240",
       "original_prologue_hex": "f04f2de90cd04de2"
     },
     {
       "entry": "0x43403f68",
       "adapter": "vr_native_set_cover",
-      "adapter_address": "0x45001888",
+      "adapter_address": "0x45001dcc",
       "trampoline": "0x47000260",
       "original_prologue_hex": "f0402de9020050e3"
     },
     {
       "entry": "0x434027b0",
       "adapter": "vr_native_read_mirror",
-      "adapter_address": "0x450019ac",
+      "adapter_address": "0x45001ef0",
       "trampoline": "0x47000280",
       "original_prologue_hex": "f04f2de90050a0e3"
     },
     {
       "entry": "0x43408d30",
       "adapter": "vr_native_presence_ptr",
-      "adapter_address": "0x45001b10",
+      "adapter_address": "0x45002054",
       "trampoline": "0x470002a0",
       "original_prologue_hex": "70402de908d04de2"
     },
     {
       "entry": "0x434033a4",
       "adapter": "vr_native_remaining_info",
-      "adapter_address": "0x45001bf0",
+      "adapter_address": "0x45002134",
       "trampoline": null,
       "original_prologue_hex": "f0402de90cd04de2"
     },
     {
       "entry": "0x433f2f04",
       "adapter": "vr_native_waste_info_ptr",
-      "adapter_address": "0x45001c64",
+      "adapter_address": "0x450021a8",
       "trampoline": "0x470002e0",
       "original_prologue_hex": "f0402de90cd04de2"
     },
     {
       "entry": "0x43407f20",
       "adapter": "vr_native_waste_remaining_info",
-      "adapter_address": "0x45001d5c",
+      "adapter_address": "0x450022a0",
       "trampoline": null,
       "original_prologue_hex": "f0402de9c4709fe5"
     },
     {
       "entry": "0x43408318",
       "adapter": "vr_native_waste_error_code",
-      "adapter_address": "0x45001dc8",
+      "adapter_address": "0x4500230c",
       "trampoline": null,
       "original_prologue_hex": "70402de9240050e3"
     },
     {
       "entry": "0x433f6e90",
       "adapter": "vr_native_ink_check_job",
-      "adapter_address": "0x45001e2c",
+      "adapter_address": "0x45002370",
       "trampoline": null,
       "original_prologue_hex": "f04f2de90070a0e3"
     },
     {
       "entry": "0x433f71fc",
       "adapter": "vr_native_ink_status_job",
-      "adapter_address": "0x45001f58",
+      "adapter_address": "0x4500249c",
       "trampoline": null,
       "original_prologue_hex": "f74f2de90070a0e3"
+    },
+    {
+      "entry": "0x43400c3c",
+      "adapter": "vr_native_ink_read_words",
+      "adapter_address": "0x450024fc",
+      "trampoline": null,
+      "original_prologue_hex": "30402de90140a0e1"
+    },
+    {
+      "entry": "0x434006ec",
+      "adapter": "vr_native_ink_flush_mirror",
+      "adapter_address": "0x45002648",
+      "trampoline": null,
+      "original_prologue_hex": "70402de920d04de2"
+    },
+    {
+      "entry": "0x43400dec",
+      "adapter": "vr_native_ink_flush_mirror",
+      "adapter_address": "0x45002648",
+      "trampoline": null,
+      "original_prologue_hex": "70402de911de4de2"
+    },
+    {
+      "entry": "0x43400f18",
+      "adapter": "vr_native_ink_flush_mirror",
+      "adapter_address": "0x45002648",
+      "trampoline": null,
+      "original_prologue_hex": "f8432de90040a0e3"
     }
   ],
-  "elapsed_seconds": 1.35,
+  "elapsed_seconds": 0.589,
   "python_hooks": "Storage transport, OS notifications and fault reporting only",
   "printer_ram_and_flash_placement_allocated": false,
   "printer_nor_erase_sync_contract_verified": false,

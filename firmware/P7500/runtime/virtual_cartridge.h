@@ -6,6 +6,7 @@
 #define VR_SLOTS 12u
 #define VR_MAINTENANCE 12u
 #define VR_RECORD_SIZE 512u
+#define VR_COMPACT_SIZE 128u
 #define VR_MAX_USAGE UINT64_C(0xffffffffff)
 
 enum vr_result {
@@ -64,4 +65,9 @@ int vr_exchange(struct vr_context *,uint32_t operation,uint32_t slot,
  * RAM mirror. Product/authentication/unknown fields remain unchanged. This is
  * not a complete authenticated Epson chip image. */
 int vr_publish_ink_identity(struct vr_context *,uint32_t slot,void *mirror,uint32_t bytes);
+/* Lossless codec for canonical v1 records using externally supplied capacities.
+ * Compact CRC binds those capacities; a different profile cannot silently load.
+ * Both committed and uncommitted records are supported. No storage I/O here. */
+int vr_record_compact(const uint8_t *,const uint64_t *,uint8_t *);
+int vr_record_expand(const uint8_t *,const uint64_t *,uint8_t *);
 #endif

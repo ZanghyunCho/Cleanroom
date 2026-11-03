@@ -9,10 +9,12 @@ import time
 ROOT=Path(__file__).resolve().parents[1]
 started=time.time()
 for script in ('build.py','test_runtime.py','probe_arm_integration.py','probe_compiled_bindings.py',
-               'probe_dispatch_boundary.py','probe_virtual_ink_jobs.py'):
+               'probe_dispatch_boundary.py','probe_virtual_ink_jobs.py','test_native_nv.py',
+               'probe_native_nv.py','probe_virtual_ink_data.py'):
     subprocess.run([sys.executable,str(ROOT/'runtime'/script)],cwd=ROOT,check=True)
 names=['virtual-runtime-host-results.json','virtual-runtime-arm-results.json','compiled-native-binding-results.json',
-       'native-dispatch-boundary-results.json','virtual-ink-job-results.json']
+       'native-dispatch-boundary-results.json','virtual-ink-job-results.json',
+       'native-nv-host-results.json','native-nv-arm-results.json','virtual-ink-data-results.json']
 reports={}
 for name in names:
     path=ROOT/'analysis'/name

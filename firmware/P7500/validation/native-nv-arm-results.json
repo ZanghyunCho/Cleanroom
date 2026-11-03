@@ -1,0 +1,33 @@
+{
+  "scope": "Compiled ARM backend through original NV validation, queue submission and completion wait; fsync worker fixture",
+  "native_api_entries": [
+    "0x435efdd4",
+    "0x435efdf0"
+  ],
+  "owner_record_ids": [
+    "0x01607500",
+    "0x01607501"
+  ],
+  "original_record_mappings_preserved": 155,
+  "owner_record_offsets_preserved": 2,
+  "original_volume_geometries_preserved": 29,
+  "compact_bytes_per_bank": 128,
+  "generation_transactions_passed": 12,
+  "restored_profiles_passed": 13,
+  "state_not_published_before_service_completion": true,
+  "queued_but_failed_completion_rejected": true,
+  "failed_reply_after_durable_commit_reconciled_on_reboot": true,
+  "missing_record_not_autoformatted": true,
+  "native_queue_events": 304,
+  "stale_native_id_map_rejected": true,
+  "unguarded_native_registration_rejected": true,
+  "legacy_valid_indices_preserved": 10,
+  "legacy_off_by_one_owner_alias_blocked": true,
+  "owner_out_of_bounds_read_write_cases_blocked": 4,
+  "native_flash_worker_and_gc_executed": false,
+  "explicit_installer_provisioning_passed": true,
+  "automatic_boot_reset_enabled": false,
+  "printer_startup_hook_installed": false,
+  "physical_printer_tested": false,
+  "elapsed_seconds": 1.335
+}

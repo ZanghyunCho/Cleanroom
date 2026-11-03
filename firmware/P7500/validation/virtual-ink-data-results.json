@@ -1,0 +1,14 @@
+{
+  "scope": "Compiled upper ink RAM mirror reads/flushes, using NV-backed durable owner state",
+  "partial_read_cases_passed": 1164,
+  "flush_mode_cases_passed": 72,
+  "unmodified_recovery_wrappers_passed": 12,
+  "restored_owner_identity_reads_passed": 12,
+  "faulted_transfer_cases_passed": 4,
+  "invalid_data_request_cases_passed": 5,
+  "physical_chip_transport_entries": 0,
+  "unknown_mirror_metadata_scope": "Preserved native RAM view; not persisted as a full chip image",
+  "full_chip_communication_virtualized": false,
+  "physical_printer_tested": false,
+  "elapsed_seconds": 2.147
+}

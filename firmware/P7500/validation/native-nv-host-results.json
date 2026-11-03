@@ -1,0 +1,12 @@
+{
+  "tests_run": 10,
+  "failures": 0,
+  "errors": 0,
+  "checks": {
+    "torn_logical_writes": 257,
+    "compact_bit_corruptions": 1024,
+    "codec_boundary_records": 30
+  },
+  "scope": "Compiled bridge with injected logical NV records; physical flash service not emulated",
+  "native_flash_power_loss_contract_verified": false
+}

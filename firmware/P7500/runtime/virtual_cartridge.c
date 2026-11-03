@@ -60,6 +60,45 @@ static void encode(uint8_t *p,const struct vr_slot *slots,uint64_t sequence) {
     }
     put32(p+24,crc_record(p));
 }
+static uint32_t compact_crc(const uint8_t *p,const uint64_t *capacity) {
+    uint32_t crc=crc_step(0xffffffffu,p,120);uint8_t q[8];
+    for(uint32_t s=0;s<VR_SLOTS;s++){put64(q,capacity[s]);crc=crc_step(crc,q,8);}
+    return ~crc;
+}
+int vr_record_compact(const uint8_t *record,const uint64_t *capacity,uint8_t *out) {
+    if(!record || !capacity || !out)return VR_ARGUMENT;
+    int result=validate(record,0);if(result)return result;
+    uint32_t marker=get32(record+28);
+    if(marker!=COMMITTED && marker!=UINT32_MAX)return VR_CORRUPT;
+    uint8_t packed[VR_COMPACT_SIZE];copy(packed,"V7C1",4);copy(packed+4,record+12,8);
+    struct vr_slot slots[VR_SLOTS];
+    for(uint32_t s=0;s<VR_SLOTS;s++) {
+        const uint8_t *q=record+32+s*20;uint8_t *p=packed+12+s*9;
+        if(get64(q+12)!=capacity[s])return VR_ARGUMENT;
+        copy(p,q,5);copy(p+5,q+8,4);
+        slots[s].used=get64(q);slots[s].generation=get32(q+8);slots[s].capacity=capacity[s];
+    }
+    /* Reject noncanonical extensions rather than silently discarding them. */
+    uint8_t canonical[VR_RECORD_SIZE];encode(canonical,slots,get64(record+12));put32(canonical+28,marker);
+    if(!equal(canonical,record,VR_RECORD_SIZE))return VR_CORRUPT;
+    put32(packed+120,compact_crc(packed,capacity));put32(packed+124,marker);
+    copy(out,packed,VR_COMPACT_SIZE);return VR_OK;
+}
+int vr_record_expand(const uint8_t *packed,const uint64_t *capacity,uint8_t *out) {
+    if(!packed || !capacity || !out)return VR_ARGUMENT;
+    if(!equal(packed,"V7C1",4))return VR_VERSION;
+    if(get32(packed+120)!=compact_crc(packed,capacity))return VR_CORRUPT;
+    uint32_t marker=get32(packed+124);
+    if(!get64(packed+4) || (marker!=COMMITTED && marker!=UINT32_MAX))return VR_CORRUPT;
+    struct vr_slot slots[VR_SLOTS];
+    for(uint32_t s=0;s<VR_SLOTS;s++) {
+        if(capacity[s]<10000 || capacity[s]>VR_MAX_USAGE)return VR_ARGUMENT;
+        const uint8_t *p=packed+12+s*9;
+        slots[s].used=get32(p)|((uint64_t)p[4]<<32);
+        slots[s].generation=get32(p+5);slots[s].capacity=capacity[s];
+    }
+    encode(out,slots,get64(packed+4));put32(out+28,marker);return VR_OK;
+}
 static int usable(const struct vr_context *c) {return c && c->ready && !c->fault;}
 static int guard(struct vr_context *c) {
     if(!usable(c))return VR_NOT_READY;

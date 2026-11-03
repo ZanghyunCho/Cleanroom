@@ -14,7 +14,7 @@ static void failed(int error) {
 int vr_native_attach(struct vr_context *c,const struct vr_native_bindings *b) {
     if(!c || !b || !b->get40 || !b->set40 || !b->add40 || !b->set_cover ||
        !b->read_mirror || !b->presence_ptr || !b->fault || !b->ink_mirror ||
-       !b->waste_info_ptr || !b->slot_access)return VR_ARGUMENT;
+       !b->waste_info_ptr || !b->slot_access || !b->ink_dirty)return VR_ARGUMENT;
     if(c->busy)return VR_BUSY;
     if(vr_presence_value(c,0)!=1)return VR_NOT_READY;
     uint8_t routes[VR_SLOTS];
@@ -116,4 +116,27 @@ uint32_t vr_native_ink_check_job(const uint32_t *mask,uint8_t *result) {
 uint32_t vr_native_ink_status_job(uint32_t mode,const uint32_t *mask,uint8_t *result) {
     if(mode>1){failed(VR_ARGUMENT);return 1;}
     return ink_job(mask,result,2);
+}
+uint32_t vr_native_ink_read_words(uint32_t slot,uint32_t words) {
+    if(slot>=VR_SLOTS || words>96){failed(VR_ARGUMENT);return 1;}
+    if(!ready()){failed(VR_NOT_READY);return 1;}
+    uint8_t snapshot[192],*mirror=original.ink_mirror+slot*192;
+    for(uint32_t i=0;i<192;i++)snapshot[i]=mirror[i];
+    int result=vr_publish_ink_identity(context,slot,snapshot,sizeof(snapshot));
+    if(result){failed(result);return 1;}
+    /* A partial native read must not modify words beyond the requested prefix. */
+    for(uint32_t i=0;i<words*2;i++)mirror[i]=snapshot[i];
+    return 0;
+}
+uint32_t vr_native_ink_flush_mirror(uint32_t slot,uint32_t keep_dirty) {
+    if(slot>=VR_SLOTS || keep_dirty>1){failed(VR_ARGUMENT);return 1;}
+    if(!ready()){failed(VR_NOT_READY);return 1;}
+    /* The native caller has already written this authoritative RAM view.
+     * Durable usage/generation were committed by their own adapters. Never
+     * accept a stale mirror's serial/vendor over the owner's virtual identity.
+     * Unknown metadata is retained in RAM only; no physical chip is written. */
+    int result=vr_publish_ink_identity(context,slot,original.ink_mirror+slot*192,192);
+    if(result){failed(result);return 1;}
+    if(!keep_dirty)for(uint32_t i=0;i<96;i++)original.ink_dirty[slot*96+i]=0;
+    return 0;
 }
