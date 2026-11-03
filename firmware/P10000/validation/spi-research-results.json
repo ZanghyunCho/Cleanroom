@@ -1,0 +1,165 @@
+{
+  "original_sha256": "68b953939ffe425203af51309fbd1e7f6a479e0cf2f25c5f05b4a5931749c476",
+  "original_firmware_version": "FM018GB",
+  "not_FM001PA": true,
+  "variants": [
+    {
+      "variant": "metadata-only",
+      "classification": "LAB ONLY; NOT PHYSICALLY BOOT VERIFIED",
+      "merged_sha256": "0c4a20e41c08409f3a437d0ead7da18428e891e242811729bd2740e869f20685",
+      "target_header_auth_flag": 0,
+      "boot_code_modified": false,
+      "allowed_changed_ranges": [
+        [
+          "0x1400000",
+          "0x15928f2"
+        ]
+      ],
+      "codec": {
+        "decoded_bytes": 2814756,
+        "decoded_sha256": "92d673d14b0543b555445d3eee8230e0df01e75845cc3ba2902d2a00eb0fc2db",
+        "changed_decoded_range": [
+          "0x13954",
+          "0x1395c"
+        ],
+        "original_stream_bytes": 1648753,
+        "new_stream_bytes": 1648770,
+        "converted_references": [
+          {
+            "decoded_offset": "0x13955",
+            "length": 8,
+            "reference": "0x131d1"
+          },
+          {
+            "decoded_offset": "0x13978",
+            "length": 8,
+            "reference": "0x13954"
+          },
+          {
+            "decoded_offset": "0x14337",
+            "length": 3,
+            "reference": "0x1395b"
+          },
+          {
+            "decoded_offset": "0x147cd",
+            "length": 4,
+            "reference": "0x13959"
+          }
+        ],
+        "unchanged_replay_exact_original": true
+      },
+      "validation": {
+        "mode": "metadata-only",
+        "original_boot_self_checksum_passed": true,
+        "original_boot_gate_returned_success": true,
+        "target_hmac_not_called": true,
+        "other_block_authentication_retained": true,
+        "other_block_tamper_rejected_by_exact_original_oracle": true,
+        "original_native_lzss_loader_returned_success": true,
+        "all_native_decoded_bytes_equal_expected": true,
+        "usage_and_remaining_cases_passed": 70,
+        "cryptographic_oracle_limitation": "Only unchanged other block uses exact-original oracle; its HMAC was not computed",
+        "full_boot_or_hardware_tested": false
+      },
+      "files": [
+        "LAB_UNVERIFIED_FM018GB_metadata-only_IC2.BIN",
+        "LAB_UNVERIFIED_FM018GB_metadata-only_IC3.BIN"
+      ]
+    },
+    {
+      "variant": "targeted-boot-code",
+      "classification": "LAB ONLY; NOT PHYSICALLY BOOT VERIFIED",
+      "merged_sha256": "d88d39ef3bc4cd66e760bae1317b92ac9b338417e092c4d234b06e85f149e0c0",
+      "target_header_auth_flag": 1,
+      "boot_code_modified": true,
+      "allowed_changed_ranges": [
+        [
+          "0x1400000",
+          "0x15928f2"
+        ],
+        [
+          "0x18b4",
+          "0x18b8"
+        ],
+        [
+          "0x1ff00",
+          "0x1ff10"
+        ],
+        [
+          "0x1fff0",
+          "0x1fff4"
+        ]
+      ],
+      "codec": {
+        "decoded_bytes": 2814756,
+        "decoded_sha256": "92d673d14b0543b555445d3eee8230e0df01e75845cc3ba2902d2a00eb0fc2db",
+        "changed_decoded_range": [
+          "0x13954",
+          "0x1395c"
+        ],
+        "original_stream_bytes": 1648753,
+        "new_stream_bytes": 1648770,
+        "converted_references": [
+          {
+            "decoded_offset": "0x13955",
+            "length": 8,
+            "reference": "0x131d1"
+          },
+          {
+            "decoded_offset": "0x13978",
+            "length": 8,
+            "reference": "0x13954"
+          },
+          {
+            "decoded_offset": "0x14337",
+            "length": 3,
+            "reference": "0x1395b"
+          },
+          {
+            "decoded_offset": "0x147cd",
+            "length": 4,
+            "reference": "0x13959"
+          }
+        ],
+        "unchanged_replay_exact_original": true
+      },
+      "validation": {
+        "mode": "targeted-boot-code",
+        "original_boot_self_checksum_passed": true,
+        "original_boot_gate_returned_success": true,
+        "target_hmac_not_called": true,
+        "other_block_authentication_retained": true,
+        "other_block_tamper_rejected_by_exact_original_oracle": true,
+        "original_native_lzss_loader_returned_success": true,
+        "all_native_decoded_bytes_equal_expected": true,
+        "usage_and_remaining_cases_passed": 70,
+        "cryptographic_oracle_limitation": "Only unchanged other block uses exact-original oracle; its HMAC was not computed",
+        "full_boot_or_hardware_tested": false
+      },
+      "files": [
+        "LAB_UNVERIFIED_FM018GB_targeted-boot-code_IC2.BIN",
+        "LAB_UNVERIFIED_FM018GB_targeted-boot-code_IC3.BIN"
+      ]
+    }
+  ],
+  "files": {
+    "LAB_UNVERIFIED_FM018GB_metadata-only_IC2.BIN": {
+      "bytes": 16777216,
+      "sha256": "6d621d33b1a083a6639a63148580f9df3d17b70029496e692f2731ef5f32fcae"
+    },
+    "LAB_UNVERIFIED_FM018GB_metadata-only_IC3.BIN": {
+      "bytes": 16777216,
+      "sha256": "3e6c6e0b5a7e08f5fb88102961655fd3ac871caffeefbf3960499becc2bae430"
+    },
+    "LAB_UNVERIFIED_FM018GB_targeted-boot-code_IC2.BIN": {
+      "bytes": 16777216,
+      "sha256": "6e43623e6926528e985f0ff95599f674e2fb3fb7a34328fb0233f8580980a14d"
+    },
+    "LAB_UNVERIFIED_FM018GB_targeted-boot-code_IC3.BIN": {
+      "bytes": 16777216,
+      "sha256": "99d64e7d58677f910523afd49b48ac6fe6e7734e06823cbc5b569fbca3a33881"
+    }
+  },
+  "physical_printer_tested": false,
+  "elapsed_seconds": 24.509
+}

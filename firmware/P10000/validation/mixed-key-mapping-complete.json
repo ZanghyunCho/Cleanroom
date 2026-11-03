@@ -1,0 +1,17 @@
+{
+  "scope": "All bounded independent 0x24/0x2a window combinations from supplied files",
+  "intervals": [
+    [
+      0,
+      347332
+    ],
+    [
+      347332,
+      521640
+    ]
+  ],
+  "all_intervals_contiguous_and_complete": true,
+  "combinations_checked": 521640,
+  "matches": [],
+  "does_not_prove_secret_absent_from_dumps": true
+}

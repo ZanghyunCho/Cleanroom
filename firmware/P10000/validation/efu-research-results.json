@@ -1,0 +1,191 @@
+{
+  "classification": "LAB ONLY; TRANSPORT AND PHYSICAL BOOT UNVERIFIED",
+  "firmware": "FM001PA",
+  "output": "LAB_UNVERIFIED_FM001PA_METADATA_ONLY.EFU",
+  "bytes": 109910610,
+  "sha256": "38541332b85d5db44809565517e180a929c336c99f151bcc3ce375c76ec37b14",
+  "rcx_sha256": "5dead67b1953d2dfc810c76ca778378606177ec2ae3116ed986cf5b25df6575c",
+  "component_growth_bytes": 18,
+  "codec": {
+    "decoded_bytes": 2581676,
+    "decoded_sha256": "3934eeb6b2dec427f22284ca017301d0a314d18897778addac544f49175f9a69",
+    "changed_decoded_range": [
+      "0x13954",
+      "0x1395c"
+    ],
+    "original_stream_bytes": 1410218,
+    "new_stream_bytes": 1410236,
+    "converted_references": [
+      {
+        "decoded_offset": "0x13955",
+        "length": 8,
+        "reference": "0x131d1"
+      },
+      {
+        "decoded_offset": "0x13978",
+        "length": 8,
+        "reference": "0x13954"
+      },
+      {
+        "decoded_offset": "0x14337",
+        "length": 3,
+        "reference": "0x1395b"
+      },
+      {
+        "decoded_offset": "0x147cd",
+        "length": 4,
+        "reference": "0x13959"
+      }
+    ],
+    "unchanged_replay_exact_original": true
+  },
+  "all_five_record_byte_sums_valid": true,
+  "native_updater_sum_gate_passed": true,
+  "native_updater_auth_gate_passed": true,
+  "target_auth_not_called": true,
+  "unchanged_other_block_exact_original_oracle_calls": 1,
+  "authentication_code_unchanged": true,
+  "opaque_32_byte_trailer_unchanged_but_not_validated": true,
+  "native_boot_decoder_full_output_exact": true,
+  "getter_and_remaining_cases_passed": 70,
+  "zip_crc_passed": true,
+  "entries": [
+    {
+      "name": "EFU_File.rcx",
+      "changed": true,
+      "sha256": "5dead67b1953d2dfc810c76ca778378606177ec2ae3116ed986cf5b25df6575c"
+    },
+    {
+      "name": "Resources/",
+      "changed": false,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "Resources/de/",
+      "changed": false,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "Resources/de/string2.dat",
+      "changed": false,
+      "sha256": "3e48d7b5471f94018ea365bac5cb62971253349b8184a3e93f8049e107457d14"
+    },
+    {
+      "name": "Resources/en/",
+      "changed": false,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "Resources/en/string2.dat",
+      "changed": false,
+      "sha256": "7f076d0db74f86450732ff00a762263270c3090abe4e763a8883277467c7a331"
+    },
+    {
+      "name": "Resources/es/",
+      "changed": false,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "Resources/es/string2.dat",
+      "changed": false,
+      "sha256": "d0c3f213ab38e896e007a224acc5031d6e3669025f465874c1fdf62c52524b8c"
+    },
+    {
+      "name": "Resources/fr/",
+      "changed": false,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "Resources/fr/string2.dat",
+      "changed": false,
+      "sha256": "5c2b956354ec287838a7dbed9f4c480bf1a82339424c580540e7991ce647d6f2"
+    },
+    {
+      "name": "Resources/it/",
+      "changed": false,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "Resources/it/string2.dat",
+      "changed": false,
+      "sha256": "b1c06c3560ebbae9342e767fb46544ad3cc802062e61ba3d6b4a1f697a84ab57"
+    },
+    {
+      "name": "Resources/ja/",
+      "changed": false,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "Resources/ja/string2.dat",
+      "changed": false,
+      "sha256": "4ba19d1f3e713759658bb6de000e8646081f050de088e4e22d9244eb87e2162d"
+    },
+    {
+      "name": "Resources/ko/",
+      "changed": false,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "Resources/ko/string2.dat",
+      "changed": false,
+      "sha256": "8bab9c9162963feb42d6153c1ae6f82ef7befc2123c88dbbd83b8a17c6b97c5d"
+    },
+    {
+      "name": "Resources/nl/",
+      "changed": false,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "Resources/nl/string2.dat",
+      "changed": false,
+      "sha256": "76788869df8158b2744a5eb9cff5bcdd3cd33e01c6135be5035fceb57f7d1910"
+    },
+    {
+      "name": "Resources/pt/",
+      "changed": false,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "Resources/pt/string2.dat",
+      "changed": false,
+      "sha256": "66b6941fa103f8537aafa2fd0145b95de3ca8200d451113f50faf2b53c153fb6"
+    },
+    {
+      "name": "Resources/ru/",
+      "changed": false,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "Resources/ru/string2.dat",
+      "changed": false,
+      "sha256": "362b8a9e61c359c0fc4bd97fa0dbad9e7b1d311b38039e1b7ec92deeea85561e"
+    },
+    {
+      "name": "Resources/zh-CN/",
+      "changed": false,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "Resources/zh-CN/string2.dat",
+      "changed": false,
+      "sha256": "69fa841d2cda55202206c3882420dc632df5b2e631e097b3673d4bb5fb5a56ac"
+    },
+    {
+      "name": "Resources/zh-TW/",
+      "changed": false,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "Resources/zh-TW/string2.dat",
+      "changed": false,
+      "sha256": "4b8246d3107a6f69874c09003d091778fad72a5c9808e4bc8a4269495b29915a"
+    }
+  ],
+  "limitations": [
+    "Other block authentication uses an exact-original oracle, not a real MAC calculation",
+    "NML front receiver and opaque trailer semantics unresolved",
+    "Standalone decompressor test temporarily combines old boot emulator with new module, never outputs a mixed-version SPI image",
+    "No physical boot, USB transport, update or power-loss test performed"
+  ],
+  "elapsed_seconds": 16.395
+}

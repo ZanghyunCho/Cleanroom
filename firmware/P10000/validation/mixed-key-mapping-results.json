@@ -1,0 +1,10 @@
+{
+  "scope": "Independent masked/scaled windows over provided files; no brute force of arbitrary secret key space",
+  "unique_window24_options": 828,
+  "unique_window2a_options": 630,
+  "combinations_checked": 347332,
+  "enumeration_completed": false,
+  "matches": [],
+  "no_key_values_printed_or_saved": true,
+  "elapsed_seconds": 180.003
+}

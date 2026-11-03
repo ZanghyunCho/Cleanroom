@@ -1,0 +1,112 @@
+{
+  "scope": "Original ARM code in Cortex-A9 Unicorn; exact-original MAC oracle used only in gate branch tests, not a real HMAC computation",
+  "updater_gate_cases": [
+    {
+      "case": "original_with_exact_original_pair_oracle",
+      "auth_gate_return": 1,
+      "checksum_gate_return": 1,
+      "auth_calls": [
+        {
+          "bytes": 524288,
+          "exact_original_input_and_tag": true
+        }
+      ]
+    },
+    {
+      "case": "modified_prefix_auth_retained",
+      "auth_gate_return": 0,
+      "checksum_gate_return": 1,
+      "auth_calls": [
+        {
+          "bytes": 524288,
+          "exact_original_input_and_tag": false
+        }
+      ]
+    },
+    {
+      "case": "outer_only_clear",
+      "auth_gate_return": 1,
+      "checksum_gate_return": 1,
+      "auth_calls": []
+    },
+    {
+      "case": "inner_only_clear",
+      "auth_gate_return": 0,
+      "checksum_gate_return": 1,
+      "auth_calls": []
+    },
+    {
+      "case": "both_flags_clear",
+      "auth_gate_return": 1,
+      "checksum_gate_return": 1,
+      "auth_calls": []
+    },
+    {
+      "case": "both_clear_bad_checksum",
+      "auth_gate_return": 1,
+      "checksum_gate_return": 0,
+      "auth_calls": []
+    }
+  ],
+  "boot_gate_cases": [
+    {
+      "case": "original_with_exact_original_pair_oracle",
+      "return": 1,
+      "auth_calls": [
+        {
+          "header": "0xf00000",
+          "exact_original_input_and_tag": true
+        },
+        {
+          "header": "0x1400000",
+          "exact_original_input_and_tag": true
+        }
+      ]
+    },
+    {
+      "case": "modified_prefix_auth_retained",
+      "return": 0,
+      "auth_calls": [
+        {
+          "header": "0xf00000",
+          "exact_original_input_and_tag": true
+        },
+        {
+          "header": "0x1400000",
+          "exact_original_input_and_tag": false
+        }
+      ]
+    },
+    {
+      "case": "target_flag_clear",
+      "return": 1,
+      "auth_calls": [
+        {
+          "header": "0xf00000",
+          "exact_original_input_and_tag": true
+        }
+      ]
+    },
+    {
+      "case": "target_clear_other_block_damaged",
+      "return": 0,
+      "auth_calls": [
+        {
+          "header": "0xf00000",
+          "exact_original_input_and_tag": false
+        }
+      ]
+    }
+  ],
+  "original_native_loader_control": {
+    "entry": "0x17e8",
+    "return": 1,
+    "original_native_loader_and_lzss_decoder_executed": true,
+    "bytes": 2814756,
+    "sha256": "0c6f6ffcb886e73481649844c729144dd1a3ad35d050e6679b6d4538b48aa39f",
+    "all_bytes_equal_python_decode": true,
+    "hardware_or_crypto_fixture_used": false
+  },
+  "physical_printer_tested": false,
+  "elapsed_seconds": 3.162
+}

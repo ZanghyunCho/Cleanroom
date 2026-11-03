@@ -1,0 +1,23 @@
+[
+  {
+    "public_test_vector": 0,
+    "native": "b617318655057264e28bc0b6fb378c8ef146be00",
+    "standard_sha1": "b617318655057264e28bc0b6fb378c8ef146be00",
+    "matches_standard": true,
+    "matches_word_swapped_standard": false
+  },
+  {
+    "public_test_vector": 1,
+    "native": "effcdf6ae5eb2fa2d27416d5f184df9c259a7c79",
+    "standard_sha1": "effcdf6ae5eb2fa2d27416d5f184df9c259a7c79",
+    "matches_standard": true,
+    "matches_word_swapped_standard": false
+  },
+  {
+    "public_test_vector": 2,
+    "native": "2046d0e3ddb314f21aa9588a075dea913b878aa2",
+    "standard_sha1": "2046d0e3ddb314f21aa9588a075dea913b878aa2",
+    "matches_standard": true,
+    "matches_word_swapped_standard": false
+  }
+]
