@@ -1,5 +1,15 @@
 # SC-P7500 USB 공개키 읽기 시험
 
+## LK29Q5 유지보수 박스 실험용 EFU
+
+- [실험용 EFU 후보](downloads/FW7560TL_LK29Q5-maintenance-prototype.efu)
+- [변경 내용·검증 범위·SHA-256](downloads/LK29Q5-maintenance-prototype.README.ko.md)
+
+관련 ARM 시험 80건을 통과한 후보이며, 실기 설치·부팅·동작과 PC 업데이터
+호환성은 미검증입니다. 파일을 연 뒤 **Download raw file**로 저장하세요.
+
+## USB 읽기 시험 도구
+
 Windows 10/11용 Python GUI와 읽기 전용 USB 보조 프로그램입니다.
 
 - [사용 설명서](p7500_usb_probe/README.ko.md)
