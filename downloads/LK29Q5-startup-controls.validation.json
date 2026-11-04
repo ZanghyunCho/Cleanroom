@@ -1,0 +1,151 @@
+{
+  "controls": [
+    {
+      "label": "A-envelope-only",
+      "filename": "FW7560TL_LK29Q5-startup-A-envelope-only.efu",
+      "efu_sha256": "d6e15e5624b493e1dd24619481cbf5c8c565572c401090cd4b48e2a35db48cee",
+      "bytes": 47965926,
+      "original_rcx_sha256": "5a8c9ff4c942e436e7ab9da60237dd7d60587715071d748a58c90fe20ca557b1",
+      "rcx_sha256": "c277338908979efd9f9c297a3b18030859fa27a7b770d53f1a82951aca0d2401",
+      "decoded_control_sha256": "82c4c34f4ed5c1dd7118dd74839b499329d732d37b467df734ed5382a25dedac",
+      "decoded_control_byte_differences": 0,
+      "maintenance_behavior": "Unmodified original behavior; no 100-percent/absent-box patches",
+      "actual_signed_body_bytes": 159977472,
+      "declared_signed_body_bytes": 159977473,
+      "body_identical_to_official": true,
+      "original_epson_key_and_signature_bytes_preserved": true,
+      "ordinary_body_signature": {
+        "status": "valid",
+        "implementation": "host cryptography, not ARM"
+      },
+      "compression": null,
+      "second_frame_bytes_preserved": true,
+      "second_frame_original_offset": "0x173a6c",
+      "second_frame_new_offset": "0x173a6c",
+      "second_frame_relocation_bytes": 0,
+      "all_four_host_section_checks_passed": true,
+      "sections": [
+        {
+          "offset": "0x1153",
+          "metadata_bytes": 8192,
+          "payload_bytes": 117047296
+        },
+        {
+          "offset": "0x6fa4153",
+          "metadata_bytes": 991232,
+          "payload_bytes": 3682304
+        },
+        {
+          "offset": "0x741a153",
+          "metadata_bytes": 991232,
+          "payload_bytes": 3682304
+        },
+        {
+          "offset": "0x7890153",
+          "metadata_bytes": 33558528,
+          "payload_bytes": 0
+        }
+      ],
+      "hardware_startup_tested": false,
+      "purpose": "Isolate startup hang, not a functional fix",
+      "native_payload_checksum": {
+        "image": "A-envelope-only",
+        "payload_bytes": 117047296,
+        "declared_sum16": 39784,
+        "actual_sum16": 39784,
+        "native_checksum_return": 1,
+        "inner_sha1_matches": true
+      }
+    },
+    {
+      "label": "B-original-code-reencoded",
+      "filename": "FW7560TL_LK29Q5-startup-B-original-code-reencoded.efu",
+      "efu_sha256": "ac4dc89f824e225791d44fc3ac6a4ddf2785cf7265f3683afe4f478cc51ee43c",
+      "bytes": 47998009,
+      "original_rcx_sha256": "5a8c9ff4c942e436e7ab9da60237dd7d60587715071d748a58c90fe20ca557b1",
+      "rcx_sha256": "ee95c066091659f55eb431f89ddc2b711c02ea8e70092d140564c7949a2984f2",
+      "decoded_control_sha256": "82c4c34f4ed5c1dd7118dd74839b499329d732d37b467df734ed5382a25dedac",
+      "decoded_control_byte_differences": 0,
+      "maintenance_behavior": "Unmodified original behavior; no 100-percent/absent-box patches",
+      "actual_signed_body_bytes": 159977472,
+      "declared_signed_body_bytes": 159977473,
+      "body_identical_to_official": false,
+      "original_epson_key_and_signature_bytes_preserved": true,
+      "ordinary_body_signature": {
+        "status": "invalid",
+        "implementation": "host cryptography, not ARM",
+        "interpretation": "Fails raw big-endian r||s / SHA256(body) hypothesis"
+      },
+      "compression": {
+        "encoded_frame_size": 1487815,
+        "tokens": 691071,
+        "padding_tokens": 1,
+        "padded_token_count": 691072,
+        "dma_output_bytes": 2073216,
+        "packed_size": 1133216,
+        "literal_size": 353775,
+        "decoded_sha256": "82c4c34f4ed5c1dd7118dd74839b499329d732d37b467df734ed5382a25dedac",
+        "roundtrip_exact": true
+      },
+      "second_frame_bytes_preserved": true,
+      "second_frame_original_offset": "0x173a6c",
+      "second_frame_new_offset": "0x17f51e",
+      "second_frame_relocation_bytes": 47794,
+      "all_four_host_section_checks_passed": true,
+      "sections": [
+        {
+          "offset": "0x1153",
+          "metadata_bytes": 8192,
+          "payload_bytes": 117047296
+        },
+        {
+          "offset": "0x6fa4153",
+          "metadata_bytes": 991232,
+          "payload_bytes": 3682304
+        },
+        {
+          "offset": "0x741a153",
+          "metadata_bytes": 991232,
+          "payload_bytes": 3682304
+        },
+        {
+          "offset": "0x7890153",
+          "metadata_bytes": 33558528,
+          "payload_bytes": 0
+        }
+      ],
+      "hardware_startup_tested": false,
+      "purpose": "Isolate startup hang, not a functional fix",
+      "native_payload_checksum": {
+        "image": "B-original-code-reencoded",
+        "payload_bytes": 117047296,
+        "declared_sum16": 8633,
+        "actual_sum16": 8633,
+        "native_checksum_return": 1,
+        "inner_sha1_matches": true
+      },
+      "native_loader": {
+        "image": "B-original-code-reencoded",
+        "token_count": 691071,
+        "padding_tokens": 1,
+        "padded_count_mod16": 0,
+        "native_dma_output_bytes": 2073216,
+        "native_dma_mod48": 0,
+        "native_lz_copy_return": 1,
+        "native_lz_output_exact": true,
+        "huffman_completion_fixture_calls": 676,
+        "hardware_huffman_execution": false
+      }
+    }
+  ],
+  "reported_v3_behavior": "Maintenance box installed; initialization screen persists; UI touches and ink-door prompt react; no observed motor/pump movement or sound",
+  "not_proven": [
+    "A or B physical boot",
+    "Hardware Huffman correctness",
+    "Drive-control task/module liveness",
+    "Boot-time authentication or checksum acceptance",
+    "Maintenance logic as actual cause of hang"
+  ],
+  "huffman_in_loader_audit": "Completion boundary modeled, actual hardware not executed",
+  "official_post_v3_normal_boot_user_confirmed": true
+}
