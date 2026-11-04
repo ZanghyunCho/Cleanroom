@@ -2,13 +2,19 @@
 
 ## LK29Q5 유지보수 박스 실험용 EFU
 
+- [진단용 v2 EFU](downloads/FW7560TL_LK29Q5-maintenance-diagnostic-v2.efu)
+- [v2 변경 내용·검증 범위·SHA-256](downloads/LK29Q5-maintenance-diagnostic-v2.README.ko.md)
+
+v2는 v1의 본문 합계·CROM 패딩 오류를 수정한 진단본입니다.
+원본 ARM 대조 검사는 통과했으나 실기 설치·부팅·동작은 미검증입니다.
+
 - [실패 보고된 v1 EFU — 분석용 보존](downloads/FW7560TL_LK29Q5-maintenance-prototype.efu)
 - [변경 내용·검증 범위·SHA-256](downloads/LK29Q5-maintenance-prototype.README.ko.md)
 - [Recovery Mode 진입 분석](downloads/LK29Q5-maintenance-prototype.RECOVERY.ko.md)
 
 이 v1 후보는 실기 업데이트 후 Recovery Mode 진입이 보고되었습니다.
 섹션 본문 합계와 CROM 토큰 패딩의 포장 결함을 확인했습니다.
-기존 파일은 원인 분석용으로 보존합니다. 수정 진단본은 배포하지 않았습니다.
+기존 v1 파일은 원인 분석용으로 보존합니다.
 
 ## USB 읽기 시험 도구
 

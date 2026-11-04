@@ -1,0 +1,48 @@
+{
+  "artifact": "FW7560TL_LK29Q5-maintenance-diagnostic-v2.efu",
+  "status": "experimental; not hardware/updater validated",
+  "efu_sha256": "eae73400d8dea242ef462f9f74eedebe3893caeb11cb4c6d81e5c62b5998132f",
+  "rcx_sha256": "64caa7c172136e47b470c106115816e9e95d36f2a8b1183e34f04083f850d017",
+  "original_rcx_sha256": "5a8c9ff4c942e436e7ab9da60237dd7d60587715071d748a58c90fe20ca557b1",
+  "rcx_size": 159981907,
+  "prototype_module_sha256": "00aaacd555d8dc0e1701067a84c5b94ba122bd9628df4f57c2992bc7c14a1b2f",
+  "arm_prototype_scenarios": 80,
+  "compression": {
+    "encoded_frame_size": 1487813,
+    "tokens": 691069,
+    "padding_tokens": 3,
+    "padded_token_count": 691072,
+    "dma_output_bytes": 2073216,
+    "packed_size": 1133216,
+    "literal_size": 353773,
+    "decoded_sha256": "00aaacd555d8dc0e1701067a84c5b94ba122bd9628df4f57c2992bc7c14a1b2f",
+    "roundtrip_exact": true
+  },
+  "second_crom_frame_preserved": true,
+  "original_metadata_sum": 229,
+  "original_payload_sum": 39784,
+  "new_payload_sum": 42337,
+  "declared_payload_sum_matches": true,
+  "original_section_sha1": "a1a3e72202a27ba68f648537e75691085d88d897",
+  "new_section_sha1": "1ea43b05b7d5fd181424c7061c07bc24d1ebe779",
+  "actual_signed_body_length": 159977472,
+  "declared_signed_body_length": 159977473,
+  "original_epson_key_preserved": true,
+  "original_signature_bytes_preserved": true,
+  "ecdsa_signature_valid_after_modification": false,
+  "host_signature_check": {
+    "status": "invalid",
+    "implementation": "host cryptography, not ARM",
+    "interpretation": "Fails raw big-endian r||s / SHA256(body) hypothesis"
+  },
+  "original_latest_receiver_module_preserved": true,
+  "zip_crc_and_roundtrip_passed": true,
+  "limitations": [
+    "No physical printer, USB or PC updater validation",
+    "No full startup or reboot test",
+    "No native hardware CROM decompressor validation",
+    "Full packaged EFU has not been run through the ARM receiver",
+    "Existing stored consumption is not erased",
+    "No device flashing performed"
+  ]
+}
