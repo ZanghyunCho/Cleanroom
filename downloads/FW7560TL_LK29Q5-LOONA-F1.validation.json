@@ -1,0 +1,84 @@
+{
+  "variant": "F1",
+  "artifact": "FW7560TL_LK29Q5-LOONA-F1.efu",
+  "efu_sha256": "1f4925e8d8dd3d023962214ff78b48147ca64d7e4a974db470bae0c43a4159c7",
+  "rcx_sha256": "97f76c3f675ad8a4180e5e440fdc85bf91722e900f80c93103f5719a6a83c5cc",
+  "baseline_efu_sha256": "9687f463b43d9fa6a597c1a93c2c56ada687cb967adac8b4dc096a7e60325da1",
+  "source_png_sha256": "c4192fb7f7173da0192dfa9b9c91bee36b1d721fddddbabc2d522f8c221cfe2a",
+  "exact_source_pixels": true,
+  "original_code_and_data_tail_preserved": true,
+  "maintenance_module_and_other_modules_unchanged_from_baseline": true,
+  "changes_vs_baseline": "Logo slot and first-section payload sum/SHA1 only",
+  "declared_body_length": 159977473,
+  "actual_body_length": 159977472,
+  "original_key_and_signature_bytes_preserved": true,
+  "ecdsa_signature_valid_after_modification": false,
+  "host_sections": [
+    {
+      "offset": "0x1153",
+      "checks_passed": true
+    },
+    {
+      "offset": "0x6fa4153",
+      "checks_passed": true
+    },
+    {
+      "offset": "0x741a153",
+      "checks_passed": true
+    },
+    {
+      "offset": "0x7890153",
+      "checks_passed": true
+    }
+  ],
+  "native_checksum": {
+    "image": "LOONA-F1",
+    "payload_bytes": 117047296,
+    "declared_sum16": 49334,
+    "actual_sum16": 49334,
+    "native_checksum_return": 1,
+    "inner_sha1_matches": true
+  },
+  "native_logo_loader": {
+    "image": "LOONA-boot-resource",
+    "token_count": 4361,
+    "padding_tokens": 7,
+    "padded_count_mod16": 0,
+    "native_dma_output_bytes": 13104,
+    "native_dma_mod48": 0,
+    "native_lz_copy_return": 1,
+    "native_lz_output_exact": true,
+    "huffman_completion_fixture_calls": 6,
+    "hardware_huffman_execution": false
+  },
+  "resource": {
+    "width": 480,
+    "height": 272,
+    "raw_image_sha256": "2e818dba7f073d5301ac394b5e4a907b9db8f802688aaee0ef19d7b9a20e288a",
+    "resource_sha256": "47a3e5471669cd4f39bb76d48c57adba60f005df48cbeb689b0048e151254e89",
+    "compression": {
+      "encoded_frame_size": 9339,
+      "tokens": 4361,
+      "padding_tokens": 7,
+      "noop_alignment_token_added": false,
+      "padded_token_count": 4368,
+      "dma_output_bytes": 13104,
+      "packed_size": 6624,
+      "literal_size": 2367,
+      "decoded_sha256": "47a3e5471669cd4f39bb76d48c57adba60f005df48cbeb689b0048e151254e89",
+      "roundtrip_exact": true
+    },
+    "trailing_code_and_data_preserved": true,
+    "bytes_outside_resource_slot_preserved": true,
+    "efu_generated": false,
+    "hardware_tested": false
+  },
+  "hardware_tested": false,
+  "full_upper_receiver_replay": false,
+  "limits": [
+    "No physical boot, panel controller, USB updater or flash test",
+    "Hardware Huffman modeled at completion boundary",
+    "Prior E/F1 tests do not prove the combined logo artifact boots",
+    "No ink-cartridge feature or cover-sensor modification included"
+  ]
+}

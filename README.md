@@ -1,5 +1,14 @@
 # SC-P7500 USB 공개키 읽기 시험
 
+## LOONA 부팅 로고 시험본
+
+제공된 검은 배경 LOONA 로고를 E/F1 각각에 추가한 시험본입니다. 기존 기준의 유지보수 코드를 보존합니다. **새 EFU의 실기 부팅·표시는 미검증입니다.** 현재 사용하는 기준에 맞춰 하나를 선택합니다.
+
+- [E + LOONA](downloads/FW7560TL_LK29Q5-LOONA-E.efu)
+- [F1 + LOONA](downloads/FW7560TL_LK29Q5-LOONA-F1.efu)
+- [검증 범위·선택 방법·복구 안내](downloads/LK29Q5-LOONA.README.ko.md)
+- [복원한 화면 미리보기](downloads/LK29Q5-LOONA-preview.png)
+
 ## LK29Q5 유지보수 박스 실험용 EFU
 
 사용자는 E가 매우 정상적으로 동작한다고 보고했습니다. 실제 사용량 증가 중단을
