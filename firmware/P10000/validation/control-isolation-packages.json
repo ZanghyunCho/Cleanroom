@@ -1,0 +1,67 @@
+{
+  "classification": "CONTROL ISOLATION DIAGNOSTICS; NOT VERIFIED FIXES",
+  "physical_printer_tested": false,
+  "uploaded_to_GitHub": false,
+  "packages": {
+    "both": {
+      "output": "DIAG_FM001PA_V2_CONTROL_BOTH.EFU",
+      "bytes": 109911113,
+      "sha256": "0658a36a7fc2e14ef155604e333e5e40b76aafbc5e35c3f4f7206afbd7995cf4",
+      "component_growth_bytes": 850,
+      "all_five_record_byte_sums_valid": true,
+      "native_updater_sum_gate_passed": true,
+      "native_updater_auth_gate_passed": true,
+      "target_auth_not_called": true,
+      "unchanged_other_block_exact_original_oracle_calls": 1,
+      "native_boot_decoder_full_output_exact": true,
+      "getter_and_remaining_cases_passed": 70,
+      "zip_crc_passed": true,
+      "limitations": [
+        "Other block authentication uses an exact-original oracle, not a real MAC calculation",
+        "NML front receiver and opaque trailer semantics unresolved",
+        "Standalone decompressor test temporarily combines old boot emulator with new module, never outputs a mixed-version SPI image",
+        "No physical boot, USB transport, update or power-loss test performed"
+      ]
+    },
+    "status": {
+      "output": "DIAG_FM001PA_V2_CONTROL_STATUS.EFU",
+      "bytes": 109911099,
+      "sha256": "4c9b143639a883cb069ecd4c3ab7d0322b1e9708a1631920ca4de3a62f8396ce",
+      "component_growth_bytes": 766,
+      "all_five_record_byte_sums_valid": true,
+      "native_updater_sum_gate_passed": true,
+      "native_updater_auth_gate_passed": true,
+      "target_auth_not_called": true,
+      "unchanged_other_block_exact_original_oracle_calls": 1,
+      "native_boot_decoder_full_output_exact": true,
+      "getter_and_remaining_cases_passed": 70,
+      "zip_crc_passed": true,
+      "limitations": [
+        "Other block authentication uses an exact-original oracle, not a real MAC calculation",
+        "NML front receiver and opaque trailer semantics unresolved",
+        "Standalone decompressor test temporarily combines old boot emulator with new module, never outputs a mixed-version SPI image",
+        "No physical boot, USB transport, update or power-loss test performed"
+      ]
+    },
+    "info": {
+      "output": "DIAG_FM001PA_V2_CONTROL_INFO.EFU",
+      "bytes": 109911207,
+      "sha256": "b36c14004fa43bdd1888cd805b65feaf24c63bf46102a85429b0a33449b8905d",
+      "component_growth_bytes": 758,
+      "all_five_record_byte_sums_valid": true,
+      "native_updater_sum_gate_passed": true,
+      "native_updater_auth_gate_passed": true,
+      "target_auth_not_called": true,
+      "unchanged_other_block_exact_original_oracle_calls": 1,
+      "native_boot_decoder_full_output_exact": true,
+      "getter_and_remaining_cases_passed": 70,
+      "zip_crc_passed": true,
+      "limitations": [
+        "Other block authentication uses an exact-original oracle, not a real MAC calculation",
+        "NML front receiver and opaque trailer semantics unresolved",
+        "Standalone decompressor test temporarily combines old boot emulator with new module, never outputs a mixed-version SPI image",
+        "No physical boot, USB transport, update or power-loss test performed"
+      ]
+    }
+  }
+}

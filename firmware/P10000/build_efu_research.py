@@ -5,8 +5,14 @@ from native import *
 from build_spi_research import make_payload,getter_checks,sha
 ROOT=Path(__file__).resolve().parent; INPUT=ROOT/'inputs'; OUT=ROOT/'build'
 def main():
- parser=argparse.ArgumentParser();group=parser.add_mutually_exclusive_group();group.add_argument('--region-maintenance',action='store_true');group.add_argument('--ink-virtual',action='store_true');group.add_argument('--ink-metadata',action='store_true');group.add_argument('--ils-diagnostic',action='store_true');args=parser.parse_args()
+ parser=argparse.ArgumentParser();group=parser.add_mutually_exclusive_group();group.add_argument('--region-maintenance',action='store_true');group.add_argument('--ink-virtual',action='store_true');group.add_argument('--ink-metadata',action='store_true');group.add_argument('--ils-diagnostic',action='store_true');group.add_argument('--control-isolation',choices=['status','info','both']);args=parser.parse_args()
  extra=None;runtime=None;ink_runtime=None
+ if args.control_isolation:
+  from build_control_isolation import build
+  from probe_region_maintenance import run as v2_run
+  isolation=build();key={'status':'V2_STATUS_ONLY','info':'V2_INFO_ONLY','both':'V2_STATUS_AND_INFO'}[args.control_isolation]
+  ink_runtime={'classification':'CONTROL ISOLATION DIAGNOSTIC; NOT A VERIFIED FIX','variant':isolation['variants'][key],'limitations':isolation}
+  extra=(OUT/isolation['variants'][key]['file']).read_bytes();runtime=v2_run(extra)
  if args.ils_diagnostic:
   from build_ils_diagnostic import patched_module
   extra,ink_runtime=patched_module()
@@ -33,6 +39,7 @@ def main():
  old=raw[record+14:record+14+size];payload,expected,codec=make_payload(old,0,extra)
  if args.ink_virtual or args.ink_metadata:codec['changed_decoded_range']='see '+('ink-metadata-v4-patches.json' if args.ink_metadata else 'ink-virtual-patches.json')+', including base V2 ranges'
  if args.ils_diagnostic:codec['changed_decoded_range']='see ils-diagnostic-patches.json and unchanged published V4 patch manifest'
+ if args.control_isolation:codec['changed_decoded_range']='V2 baseline plus selected cache setters; see control-isolation-build.json'
  replacement=struct.pack('<BBIII',kind,0,address,len(payload),sum(payload)&0xffffffff)+payload
  component=bytearray(raw[first:record]+replacement+raw[record+14+size:end])
  delta=len(component)-(end-first);assert delta>=0
@@ -66,6 +73,7 @@ def main():
  assert bytes(boot.u.mem_read(0x43b00000,len(expected)))==expected
  cases=getter_checks(boot,0x43b24d70)
  source=INPUT/'extracted/SC-P10000_FM001PA.EFU';dest=OUT/('P10000_FM001PA_V4.5.EFU' if args.ils_diagnostic else ('LAB_UNVERIFIED_FM001PA_INK_METADATA_V4.EFU' if args.ink_metadata else ('LAB_UNVERIFIED_FM001PA_INK_VIRTUAL_V3.EFU' if args.ink_virtual else ('LAB_UNVERIFIED_FM001PA_REGION_MAINTENANCE_V2.EFU' if args.region_maintenance else 'LAB_UNVERIFIED_FM001PA_METADATA_ONLY.EFU'))));entries=[]
+ if args.control_isolation:dest=OUT/('DIAG_FM001PA_V2_CONTROL_'+args.control_isolation.upper()+'.EFU')
  with zipfile.ZipFile(source) as src,zipfile.ZipFile(dest,'w') as dst:
   for info in src.infolist():
    old_entry=src.read(info.filename);new_entry=changed if info.filename=='EFU_File.rcx' else old_entry
@@ -74,5 +82,6 @@ def main():
   assert z.testzip() is None and z.read('EFU_File.rcx')==changed
   for entry in entries:assert sha(z.read(entry['name']))==entry['sha256']
  report={'classification':'LAB ONLY; TRANSPORT AND PHYSICAL BOOT UNVERIFIED','firmware':'FM001PA','region_maintenance_runtime':runtime,'ink_virtual_runtime':ink_runtime,'output':dest.name,'bytes':dest.stat().st_size,'sha256':sha(dest.read_bytes()),'rcx_sha256':sha(changed),'component_growth_bytes':delta,'codec':codec,'all_five_record_byte_sums_valid':True,'native_updater_sum_gate_passed':True,'native_updater_auth_gate_passed':True,'target_auth_not_called':True,'unchanged_other_block_exact_original_oracle_calls':len(calls),'authentication_code_unchanged':True,'opaque_32_byte_trailer_unchanged_but_not_validated':True,'native_boot_decoder_full_output_exact':True,'getter_and_remaining_cases_passed':cases,'zip_crc_passed':True,'entries':entries,'limitations':['Other block authentication uses an exact-original oracle, not a real MAC calculation','NML front receiver and opaque trailer semantics unresolved','Standalone decompressor test temporarily combines old boot emulator with new module, never outputs a mixed-version SPI image','No physical boot, USB transport, update or power-loss test performed'],'elapsed_seconds':round(time.time()-start,3)}
- (OUT/('ils-diagnostic-efu-results.json' if args.ils_diagnostic else ('ink-metadata-v4-efu-results.json' if args.ink_metadata else ('ink-virtual-efu-results.json' if args.ink_virtual else ('region-maintenance-efu-results.json' if args.region_maintenance else 'efu-research-results.json'))))).write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(report,indent=2))
+ report_path=OUT/('control-isolation-'+args.control_isolation+'-efu-results.json') if args.control_isolation else OUT/('ils-diagnostic-efu-results.json' if args.ils_diagnostic else ('ink-metadata-v4-efu-results.json' if args.ink_metadata else ('ink-virtual-efu-results.json' if args.ink_virtual else ('region-maintenance-efu-results.json' if args.region_maintenance else 'efu-research-results.json'))))
+ report_path.write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(report,indent=2))
 if __name__=='__main__':main()

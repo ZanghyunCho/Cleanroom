@@ -1,0 +1,365 @@
+{
+  "gate_address": "0x43c28f98",
+  "results": {
+    "original": {
+      "module_sha256": "5abd9825c9842eb606a04af6ab8bf236c7d385ca788e1d5bd26657dd7d36b26f",
+      "cases": [
+        {
+          "unavailable_slot": null,
+          "call_success": 1,
+          "operation_allowed": 1,
+          "error_sink_values": []
+        },
+        {
+          "unavailable_slot": 0,
+          "call_success": 1,
+          "operation_allowed": 0,
+          "error_sink_values": [
+            19,
+            19
+          ]
+        },
+        {
+          "unavailable_slot": 1,
+          "call_success": 1,
+          "operation_allowed": 0,
+          "error_sink_values": [
+            19,
+            19
+          ]
+        },
+        {
+          "unavailable_slot": 2,
+          "call_success": 1,
+          "operation_allowed": 0,
+          "error_sink_values": [
+            19,
+            19
+          ]
+        },
+        {
+          "unavailable_slot": 3,
+          "call_success": 1,
+          "operation_allowed": 0,
+          "error_sink_values": [
+            19,
+            19
+          ]
+        },
+        {
+          "unavailable_slot": 4,
+          "call_success": 1,
+          "operation_allowed": 0,
+          "error_sink_values": [
+            19,
+            19
+          ]
+        },
+        {
+          "unavailable_slot": 5,
+          "call_success": 1,
+          "operation_allowed": 0,
+          "error_sink_values": [
+            19,
+            19
+          ]
+        },
+        {
+          "unavailable_slot": 6,
+          "call_success": 1,
+          "operation_allowed": 0,
+          "error_sink_values": [
+            19,
+            19
+          ]
+        },
+        {
+          "unavailable_slot": 7,
+          "call_success": 1,
+          "operation_allowed": 0,
+          "error_sink_values": [
+            19,
+            19
+          ]
+        },
+        {
+          "unavailable_slot": 8,
+          "call_success": 1,
+          "operation_allowed": 0,
+          "error_sink_values": [
+            19,
+            19
+          ]
+        },
+        {
+          "unavailable_slot": 9,
+          "call_success": 1,
+          "operation_allowed": 0,
+          "error_sink_values": [
+            19,
+            19
+          ]
+        },
+        {
+          "unavailable_slot": 10,
+          "call_success": 1,
+          "operation_allowed": 0,
+          "error_sink_values": [
+            23
+          ]
+        },
+        {
+          "unavailable_slot": 11,
+          "call_success": 1,
+          "operation_allowed": 0,
+          "error_sink_values": [
+            23
+          ]
+        }
+      ]
+    },
+    "V2": {
+      "module_sha256": "b37525fced77a59472134ff1a262d8e34e2d10cbd2fba560fcf748f95c87382f",
+      "cases": [
+        {
+          "unavailable_slot": null,
+          "call_success": 1,
+          "operation_allowed": 1,
+          "error_sink_values": []
+        },
+        {
+          "unavailable_slot": 0,
+          "call_success": 1,
+          "operation_allowed": 0,
+          "error_sink_values": [
+            19,
+            19
+          ]
+        },
+        {
+          "unavailable_slot": 1,
+          "call_success": 1,
+          "operation_allowed": 0,
+          "error_sink_values": [
+            19,
+            19
+          ]
+        },
+        {
+          "unavailable_slot": 2,
+          "call_success": 1,
+          "operation_allowed": 0,
+          "error_sink_values": [
+            19,
+            19
+          ]
+        },
+        {
+          "unavailable_slot": 3,
+          "call_success": 1,
+          "operation_allowed": 0,
+          "error_sink_values": [
+            19,
+            19
+          ]
+        },
+        {
+          "unavailable_slot": 4,
+          "call_success": 1,
+          "operation_allowed": 0,
+          "error_sink_values": [
+            19,
+            19
+          ]
+        },
+        {
+          "unavailable_slot": 5,
+          "call_success": 1,
+          "operation_allowed": 0,
+          "error_sink_values": [
+            19,
+            19
+          ]
+        },
+        {
+          "unavailable_slot": 6,
+          "call_success": 1,
+          "operation_allowed": 0,
+          "error_sink_values": [
+            19,
+            19
+          ]
+        },
+        {
+          "unavailable_slot": 7,
+          "call_success": 1,
+          "operation_allowed": 0,
+          "error_sink_values": [
+            19,
+            19
+          ]
+        },
+        {
+          "unavailable_slot": 8,
+          "call_success": 1,
+          "operation_allowed": 0,
+          "error_sink_values": [
+            19,
+            19
+          ]
+        },
+        {
+          "unavailable_slot": 9,
+          "call_success": 1,
+          "operation_allowed": 0,
+          "error_sink_values": [
+            19,
+            19
+          ]
+        },
+        {
+          "unavailable_slot": 10,
+          "call_success": 1,
+          "operation_allowed": 0,
+          "error_sink_values": [
+            23
+          ]
+        },
+        {
+          "unavailable_slot": 11,
+          "call_success": 1,
+          "operation_allowed": 0,
+          "error_sink_values": [
+            23
+          ]
+        }
+      ]
+    },
+    "V4.5": {
+      "module_sha256": "bdc1ad83e2ec90da0528d479b144d283217b2ee8c437fc33cc3c69921c86eb62",
+      "cases": [
+        {
+          "unavailable_slot": null,
+          "call_success": 1,
+          "operation_allowed": 1,
+          "error_sink_values": []
+        },
+        {
+          "unavailable_slot": 0,
+          "call_success": 1,
+          "operation_allowed": 0,
+          "error_sink_values": [
+            19,
+            19
+          ]
+        },
+        {
+          "unavailable_slot": 1,
+          "call_success": 1,
+          "operation_allowed": 0,
+          "error_sink_values": [
+            19,
+            19
+          ]
+        },
+        {
+          "unavailable_slot": 2,
+          "call_success": 1,
+          "operation_allowed": 0,
+          "error_sink_values": [
+            19,
+            19
+          ]
+        },
+        {
+          "unavailable_slot": 3,
+          "call_success": 1,
+          "operation_allowed": 0,
+          "error_sink_values": [
+            19,
+            19
+          ]
+        },
+        {
+          "unavailable_slot": 4,
+          "call_success": 1,
+          "operation_allowed": 0,
+          "error_sink_values": [
+            19,
+            19
+          ]
+        },
+        {
+          "unavailable_slot": 5,
+          "call_success": 1,
+          "operation_allowed": 0,
+          "error_sink_values": [
+            19,
+            19
+          ]
+        },
+        {
+          "unavailable_slot": 6,
+          "call_success": 1,
+          "operation_allowed": 0,
+          "error_sink_values": [
+            19,
+            19
+          ]
+        },
+        {
+          "unavailable_slot": 7,
+          "call_success": 1,
+          "operation_allowed": 0,
+          "error_sink_values": [
+            19,
+            19
+          ]
+        },
+        {
+          "unavailable_slot": 8,
+          "call_success": 1,
+          "operation_allowed": 0,
+          "error_sink_values": [
+            19,
+            19
+          ]
+        },
+        {
+          "unavailable_slot": 9,
+          "call_success": 1,
+          "operation_allowed": 0,
+          "error_sink_values": [
+            19,
+            19
+          ]
+        },
+        {
+          "unavailable_slot": 10,
+          "call_success": 1,
+          "operation_allowed": 0,
+          "error_sink_values": [
+            23
+          ]
+        },
+        {
+          "unavailable_slot": 11,
+          "call_success": 1,
+          "operation_allowed": 0,
+          "error_sink_values": [
+            23
+          ]
+        }
+      ]
+    }
+  },
+  "identical_results_for_identical_state": true,
+  "fixtures": [
+    "Original initialized .data copied from main-module scatter source",
+    "All ten slots selected; mode byte zero",
+    "Availability state injected directly, not obtained from RTOS",
+    "Logging and error sink intercepted"
+  ],
+  "does_not_identify_real_printer_state_or_root_cause": true,
+  "pump_hardware_or_full_job_not_emulated": true
+}

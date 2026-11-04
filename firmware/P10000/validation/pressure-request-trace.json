@@ -1,0 +1,623 @@
+{
+  "entry": "0x43b9af90",
+  "results": {
+    "original": {
+      "module_sha256": "5abd9825c9842eb606a04af6ab8bf236c7d385ca788e1d5bd26657dd7d36b26f",
+      "driver_matches_original": true,
+      "cases": [
+        {
+          "requested_repetitions": 0,
+          "stop_bit_0x100": false,
+          "CSIC_end_reply_fixture": 0,
+          "events": []
+        },
+        {
+          "requested_repetitions": 0,
+          "stop_bit_0x100": false,
+          "CSIC_end_reply_fixture": 1,
+          "events": []
+        },
+        {
+          "requested_repetitions": 0,
+          "stop_bit_0x100": true,
+          "CSIC_end_reply_fixture": 0,
+          "events": []
+        },
+        {
+          "requested_repetitions": 0,
+          "stop_bit_0x100": true,
+          "CSIC_end_reply_fixture": 1,
+          "events": []
+        },
+        {
+          "requested_repetitions": 1,
+          "stop_bit_0x100": false,
+          "CSIC_end_reply_fixture": 0,
+          "events": [
+            {
+              "event": "callback",
+              "r0": 1
+            },
+            {
+              "event": "motion_dispatch",
+              "r0": 0
+            },
+            {
+              "event": "motion_wait",
+              "r0": 0
+            },
+            {
+              "event": "motion_dispatch",
+              "r0": 1
+            },
+            {
+              "event": "motion_wait",
+              "r0": 0
+            },
+            {
+              "event": "CSIC_end_query",
+              "fixture_value": 0
+            }
+          ]
+        },
+        {
+          "requested_repetitions": 1,
+          "stop_bit_0x100": false,
+          "CSIC_end_reply_fixture": 1,
+          "events": [
+            {
+              "event": "callback",
+              "r0": 1
+            },
+            {
+              "event": "motion_dispatch",
+              "r0": 0
+            },
+            {
+              "event": "motion_wait",
+              "r0": 0
+            },
+            {
+              "event": "motion_dispatch",
+              "r0": 1
+            },
+            {
+              "event": "motion_wait",
+              "r0": 0
+            },
+            {
+              "event": "CSIC_end_query",
+              "fixture_value": 1
+            }
+          ]
+        },
+        {
+          "requested_repetitions": 1,
+          "stop_bit_0x100": true,
+          "CSIC_end_reply_fixture": 0,
+          "events": []
+        },
+        {
+          "requested_repetitions": 1,
+          "stop_bit_0x100": true,
+          "CSIC_end_reply_fixture": 1,
+          "events": []
+        },
+        {
+          "requested_repetitions": 2,
+          "stop_bit_0x100": false,
+          "CSIC_end_reply_fixture": 0,
+          "events": [
+            {
+              "event": "callback",
+              "r0": 1
+            },
+            {
+              "event": "motion_dispatch",
+              "r0": 0
+            },
+            {
+              "event": "motion_wait",
+              "r0": 0
+            },
+            {
+              "event": "motion_dispatch",
+              "r0": 1
+            },
+            {
+              "event": "motion_wait",
+              "r0": 0
+            },
+            {
+              "event": "CSIC_end_query",
+              "fixture_value": 0
+            },
+            {
+              "event": "callback",
+              "r0": 2
+            },
+            {
+              "event": "motion_dispatch",
+              "r0": 2
+            },
+            {
+              "event": "motion_wait",
+              "r0": 0
+            },
+            {
+              "event": "motion_dispatch",
+              "r0": 3
+            },
+            {
+              "event": "motion_wait",
+              "r0": 0
+            },
+            {
+              "event": "CSIC_end_query",
+              "fixture_value": 0
+            }
+          ]
+        },
+        {
+          "requested_repetitions": 2,
+          "stop_bit_0x100": false,
+          "CSIC_end_reply_fixture": 1,
+          "events": [
+            {
+              "event": "callback",
+              "r0": 1
+            },
+            {
+              "event": "motion_dispatch",
+              "r0": 0
+            },
+            {
+              "event": "motion_wait",
+              "r0": 0
+            },
+            {
+              "event": "motion_dispatch",
+              "r0": 1
+            },
+            {
+              "event": "motion_wait",
+              "r0": 0
+            },
+            {
+              "event": "CSIC_end_query",
+              "fixture_value": 1
+            }
+          ]
+        },
+        {
+          "requested_repetitions": 2,
+          "stop_bit_0x100": true,
+          "CSIC_end_reply_fixture": 0,
+          "events": []
+        },
+        {
+          "requested_repetitions": 2,
+          "stop_bit_0x100": true,
+          "CSIC_end_reply_fixture": 1,
+          "events": []
+        }
+      ]
+    },
+    "V2": {
+      "module_sha256": "b37525fced77a59472134ff1a262d8e34e2d10cbd2fba560fcf748f95c87382f",
+      "driver_matches_original": true,
+      "cases": [
+        {
+          "requested_repetitions": 0,
+          "stop_bit_0x100": false,
+          "CSIC_end_reply_fixture": 0,
+          "events": []
+        },
+        {
+          "requested_repetitions": 0,
+          "stop_bit_0x100": false,
+          "CSIC_end_reply_fixture": 1,
+          "events": []
+        },
+        {
+          "requested_repetitions": 0,
+          "stop_bit_0x100": true,
+          "CSIC_end_reply_fixture": 0,
+          "events": []
+        },
+        {
+          "requested_repetitions": 0,
+          "stop_bit_0x100": true,
+          "CSIC_end_reply_fixture": 1,
+          "events": []
+        },
+        {
+          "requested_repetitions": 1,
+          "stop_bit_0x100": false,
+          "CSIC_end_reply_fixture": 0,
+          "events": [
+            {
+              "event": "callback",
+              "r0": 1
+            },
+            {
+              "event": "motion_dispatch",
+              "r0": 0
+            },
+            {
+              "event": "motion_wait",
+              "r0": 0
+            },
+            {
+              "event": "motion_dispatch",
+              "r0": 1
+            },
+            {
+              "event": "motion_wait",
+              "r0": 0
+            },
+            {
+              "event": "CSIC_end_query",
+              "fixture_value": 0
+            }
+          ]
+        },
+        {
+          "requested_repetitions": 1,
+          "stop_bit_0x100": false,
+          "CSIC_end_reply_fixture": 1,
+          "events": [
+            {
+              "event": "callback",
+              "r0": 1
+            },
+            {
+              "event": "motion_dispatch",
+              "r0": 0
+            },
+            {
+              "event": "motion_wait",
+              "r0": 0
+            },
+            {
+              "event": "motion_dispatch",
+              "r0": 1
+            },
+            {
+              "event": "motion_wait",
+              "r0": 0
+            },
+            {
+              "event": "CSIC_end_query",
+              "fixture_value": 1
+            }
+          ]
+        },
+        {
+          "requested_repetitions": 1,
+          "stop_bit_0x100": true,
+          "CSIC_end_reply_fixture": 0,
+          "events": []
+        },
+        {
+          "requested_repetitions": 1,
+          "stop_bit_0x100": true,
+          "CSIC_end_reply_fixture": 1,
+          "events": []
+        },
+        {
+          "requested_repetitions": 2,
+          "stop_bit_0x100": false,
+          "CSIC_end_reply_fixture": 0,
+          "events": [
+            {
+              "event": "callback",
+              "r0": 1
+            },
+            {
+              "event": "motion_dispatch",
+              "r0": 0
+            },
+            {
+              "event": "motion_wait",
+              "r0": 0
+            },
+            {
+              "event": "motion_dispatch",
+              "r0": 1
+            },
+            {
+              "event": "motion_wait",
+              "r0": 0
+            },
+            {
+              "event": "CSIC_end_query",
+              "fixture_value": 0
+            },
+            {
+              "event": "callback",
+              "r0": 2
+            },
+            {
+              "event": "motion_dispatch",
+              "r0": 2
+            },
+            {
+              "event": "motion_wait",
+              "r0": 0
+            },
+            {
+              "event": "motion_dispatch",
+              "r0": 3
+            },
+            {
+              "event": "motion_wait",
+              "r0": 0
+            },
+            {
+              "event": "CSIC_end_query",
+              "fixture_value": 0
+            }
+          ]
+        },
+        {
+          "requested_repetitions": 2,
+          "stop_bit_0x100": false,
+          "CSIC_end_reply_fixture": 1,
+          "events": [
+            {
+              "event": "callback",
+              "r0": 1
+            },
+            {
+              "event": "motion_dispatch",
+              "r0": 0
+            },
+            {
+              "event": "motion_wait",
+              "r0": 0
+            },
+            {
+              "event": "motion_dispatch",
+              "r0": 1
+            },
+            {
+              "event": "motion_wait",
+              "r0": 0
+            },
+            {
+              "event": "CSIC_end_query",
+              "fixture_value": 1
+            }
+          ]
+        },
+        {
+          "requested_repetitions": 2,
+          "stop_bit_0x100": true,
+          "CSIC_end_reply_fixture": 0,
+          "events": []
+        },
+        {
+          "requested_repetitions": 2,
+          "stop_bit_0x100": true,
+          "CSIC_end_reply_fixture": 1,
+          "events": []
+        }
+      ]
+    },
+    "V4.5": {
+      "module_sha256": "bdc1ad83e2ec90da0528d479b144d283217b2ee8c437fc33cc3c69921c86eb62",
+      "driver_matches_original": true,
+      "cases": [
+        {
+          "requested_repetitions": 0,
+          "stop_bit_0x100": false,
+          "CSIC_end_reply_fixture": 0,
+          "events": []
+        },
+        {
+          "requested_repetitions": 0,
+          "stop_bit_0x100": false,
+          "CSIC_end_reply_fixture": 1,
+          "events": []
+        },
+        {
+          "requested_repetitions": 0,
+          "stop_bit_0x100": true,
+          "CSIC_end_reply_fixture": 0,
+          "events": []
+        },
+        {
+          "requested_repetitions": 0,
+          "stop_bit_0x100": true,
+          "CSIC_end_reply_fixture": 1,
+          "events": []
+        },
+        {
+          "requested_repetitions": 1,
+          "stop_bit_0x100": false,
+          "CSIC_end_reply_fixture": 0,
+          "events": [
+            {
+              "event": "callback",
+              "r0": 1
+            },
+            {
+              "event": "motion_dispatch",
+              "r0": 0
+            },
+            {
+              "event": "motion_wait",
+              "r0": 0
+            },
+            {
+              "event": "motion_dispatch",
+              "r0": 1
+            },
+            {
+              "event": "motion_wait",
+              "r0": 0
+            },
+            {
+              "event": "CSIC_end_query",
+              "fixture_value": 0
+            }
+          ]
+        },
+        {
+          "requested_repetitions": 1,
+          "stop_bit_0x100": false,
+          "CSIC_end_reply_fixture": 1,
+          "events": [
+            {
+              "event": "callback",
+              "r0": 1
+            },
+            {
+              "event": "motion_dispatch",
+              "r0": 0
+            },
+            {
+              "event": "motion_wait",
+              "r0": 0
+            },
+            {
+              "event": "motion_dispatch",
+              "r0": 1
+            },
+            {
+              "event": "motion_wait",
+              "r0": 0
+            },
+            {
+              "event": "CSIC_end_query",
+              "fixture_value": 1
+            }
+          ]
+        },
+        {
+          "requested_repetitions": 1,
+          "stop_bit_0x100": true,
+          "CSIC_end_reply_fixture": 0,
+          "events": []
+        },
+        {
+          "requested_repetitions": 1,
+          "stop_bit_0x100": true,
+          "CSIC_end_reply_fixture": 1,
+          "events": []
+        },
+        {
+          "requested_repetitions": 2,
+          "stop_bit_0x100": false,
+          "CSIC_end_reply_fixture": 0,
+          "events": [
+            {
+              "event": "callback",
+              "r0": 1
+            },
+            {
+              "event": "motion_dispatch",
+              "r0": 0
+            },
+            {
+              "event": "motion_wait",
+              "r0": 0
+            },
+            {
+              "event": "motion_dispatch",
+              "r0": 1
+            },
+            {
+              "event": "motion_wait",
+              "r0": 0
+            },
+            {
+              "event": "CSIC_end_query",
+              "fixture_value": 0
+            },
+            {
+              "event": "callback",
+              "r0": 2
+            },
+            {
+              "event": "motion_dispatch",
+              "r0": 2
+            },
+            {
+              "event": "motion_wait",
+              "r0": 0
+            },
+            {
+              "event": "motion_dispatch",
+              "r0": 3
+            },
+            {
+              "event": "motion_wait",
+              "r0": 0
+            },
+            {
+              "event": "CSIC_end_query",
+              "fixture_value": 0
+            }
+          ]
+        },
+        {
+          "requested_repetitions": 2,
+          "stop_bit_0x100": false,
+          "CSIC_end_reply_fixture": 1,
+          "events": [
+            {
+              "event": "callback",
+              "r0": 1
+            },
+            {
+              "event": "motion_dispatch",
+              "r0": 0
+            },
+            {
+              "event": "motion_wait",
+              "r0": 0
+            },
+            {
+              "event": "motion_dispatch",
+              "r0": 1
+            },
+            {
+              "event": "motion_wait",
+              "r0": 0
+            },
+            {
+              "event": "CSIC_end_query",
+              "fixture_value": 1
+            }
+          ]
+        },
+        {
+          "requested_repetitions": 2,
+          "stop_bit_0x100": true,
+          "CSIC_end_reply_fixture": 0,
+          "events": []
+        },
+        {
+          "requested_repetitions": 2,
+          "stop_bit_0x100": true,
+          "CSIC_end_reply_fixture": 1,
+          "events": []
+        }
+      ]
+    }
+  },
+  "observed_first_motion_precedes_CSIC_end_query": true,
+  "zero_count_or_stop_bit_prevents_motion_dispatch_in_this_path": true,
+  "fixtures": [
+    "Selected mask contains ten ones; driver mode input is zero",
+    "Driver control structure cleared and callback pointer supplied",
+    "Repetition count and subsystem stop word set explicitly",
+    "Motion dispatch/wait and callback intercepted, returning zero",
+    "CSIC API reply replaced by explicit all-zero/all-one end flags"
+  ],
+  "actual_request_arguments_and_stop_word_unknown": true,
+  "not_a_complete_print_cleaning_or_pump_hardware_test": true,
+  "does_not_identify_regression_root_cause": true
+}

@@ -1,0 +1,504 @@
+{
+  "module_sha256": "bdc1ad83e2ec90da0528d479b144d283217b2ee8c437fc33cc3c69921c86eb62",
+  "cases": [
+    {
+      "cleaning_discharge_counter_fixture": 0,
+      "presence_response": "unaltered_V4.5",
+      "operation_allowed": 1,
+      "error_sink_values": [],
+      "requests": [
+        {
+          "command": "0xbc000013",
+          "completion_count": 1,
+          "flags": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "cleaning_discharge_counter_fixture": 0,
+      "presence_response": "all_absent_fixture",
+      "operation_allowed": 1,
+      "error_sink_values": [],
+      "requests": [
+        {
+          "command": "0xbc000013",
+          "completion_count": 1,
+          "flags": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "cleaning_discharge_counter_fixture": 1,
+      "presence_response": "unaltered_V4.5",
+      "operation_allowed": 0,
+      "error_sink_values": [
+        35,
+        35
+      ],
+      "requests": [
+        {
+          "command": "0xbc000013",
+          "completion_count": 1,
+          "flags": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "command": "0xbc000014",
+          "completion_count": 1,
+          "flags": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "cleaning_discharge_counter_fixture": 1,
+      "presence_response": "all_absent_fixture",
+      "operation_allowed": 1,
+      "error_sink_values": [],
+      "requests": [
+        {
+          "command": "0xbc000013",
+          "completion_count": 1,
+          "flags": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "command": "0xbc000014",
+          "completion_count": 1,
+          "flags": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "cleaning_discharge_counter_fixture": 2,
+      "presence_response": "unaltered_V4.5",
+      "operation_allowed": 0,
+      "error_sink_values": [
+        35,
+        35
+      ],
+      "requests": [
+        {
+          "command": "0xbc000013",
+          "completion_count": 1,
+          "flags": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "command": "0xbc000014",
+          "completion_count": 1,
+          "flags": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "cleaning_discharge_counter_fixture": 2,
+      "presence_response": "all_absent_fixture",
+      "operation_allowed": 1,
+      "error_sink_values": [],
+      "requests": [
+        {
+          "command": "0xbc000013",
+          "completion_count": 1,
+          "flags": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "command": "0xbc000014",
+          "completion_count": 1,
+          "flags": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "cleaning_discharge_counter_fixture": 3,
+      "presence_response": "unaltered_V4.5",
+      "operation_allowed": 0,
+      "error_sink_values": [
+        35,
+        35
+      ],
+      "requests": [
+        {
+          "command": "0xbc000013",
+          "completion_count": 1,
+          "flags": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "command": "0xbc000014",
+          "completion_count": 1,
+          "flags": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "cleaning_discharge_counter_fixture": 3,
+      "presence_response": "all_absent_fixture",
+      "operation_allowed": 1,
+      "error_sink_values": [],
+      "requests": [
+        {
+          "command": "0xbc000013",
+          "completion_count": 1,
+          "flags": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "command": "0xbc000014",
+          "completion_count": 1,
+          "flags": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "cleaning_discharge_counter_fixture": 4,
+      "presence_response": "unaltered_V4.5",
+      "operation_allowed": 0,
+      "error_sink_values": [
+        35,
+        35
+      ],
+      "requests": [
+        {
+          "command": "0xbc000013",
+          "completion_count": 1,
+          "flags": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "command": "0xbc000014",
+          "completion_count": 1,
+          "flags": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "cleaning_discharge_counter_fixture": 4,
+      "presence_response": "all_absent_fixture",
+      "operation_allowed": 1,
+      "error_sink_values": [],
+      "requests": [
+        {
+          "command": "0xbc000013",
+          "completion_count": 1,
+          "flags": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "command": "0xbc000014",
+          "completion_count": 1,
+          "flags": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "cleaning_discharge_counter_fixture": 5,
+      "presence_response": "unaltered_V4.5",
+      "operation_allowed": 0,
+      "error_sink_values": [
+        35,
+        35
+      ],
+      "requests": [
+        {
+          "command": "0xbc000013",
+          "completion_count": 1,
+          "flags": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "command": "0xbc000014",
+          "completion_count": 1,
+          "flags": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "cleaning_discharge_counter_fixture": 5,
+      "presence_response": "all_absent_fixture",
+      "operation_allowed": 1,
+      "error_sink_values": [],
+      "requests": [
+        {
+          "command": "0xbc000013",
+          "completion_count": 1,
+          "flags": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "command": "0xbc000014",
+          "completion_count": 1,
+          "flags": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    }
+  ],
+  "fixtures": [
+    "Two CPU instances with original main scatter-copy data/code",
+    "RTOS allocation/send/receive/free/completion replaced synchronously",
+    "NV/date housekeeping at 0x43b2dab4 and 0x43b18a74 stubbed",
+    "JCT status notifications and final IKS reply delivery not executed",
+    "Explicit selected-slot pointers and identity slot mapping",
+    "Counter injected at 0x7ff029c2; real printer value unknown",
+    "Absent cases replace only presence query with ten zeros"
+  ],
+  "not_a_V2_vs_V4_full_printer_comparison": true,
+  "does_not_identify_actual_regression_root_cause": true,
+  "physical_printer_or_pump_not_tested": true
+}

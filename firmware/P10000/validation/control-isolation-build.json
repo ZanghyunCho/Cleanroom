@@ -1,0 +1,264 @@
+{
+  "classification": "LOCAL NON-FLASHABLE DIAGNOSTIC MODULES; NOT VERIFIED FIXES",
+  "baseline_sha256": "b37525fced77a59472134ff1a262d8e34e2d10cbd2fba560fcf748f95c87382f",
+  "variants": {
+    "V2_BASELINE": {
+      "file": "V2_BASELINE_MODULE_NOT_FLASHABLE.bin",
+      "sha256": "b37525fced77a59472134ff1a262d8e34e2d10cbd2fba560fcf748f95c87382f",
+      "changes": [],
+      "native_ARM_cases": [
+        {
+          "input_state": 0,
+          "slots_checked": 10,
+          "status_normalized": false,
+          "info_normalized": false,
+          "input_buffers_preserved": true
+        },
+        {
+          "input_state": 1,
+          "slots_checked": 10,
+          "status_normalized": false,
+          "info_normalized": false,
+          "input_buffers_preserved": true
+        },
+        {
+          "input_state": 2,
+          "slots_checked": 10,
+          "status_normalized": false,
+          "info_normalized": false,
+          "input_buffers_preserved": true
+        },
+        {
+          "input_state": 4,
+          "slots_checked": 10,
+          "status_normalized": false,
+          "info_normalized": false,
+          "input_buffers_preserved": true
+        },
+        {
+          "input_state": 5,
+          "slots_checked": 10,
+          "status_normalized": false,
+          "info_normalized": false,
+          "input_buffers_preserved": true
+        },
+        {
+          "input_state": 6,
+          "slots_checked": 10,
+          "status_normalized": false,
+          "info_normalized": false,
+          "input_buffers_preserved": true
+        },
+        {
+          "input_state": 12,
+          "slots_checked": 10,
+          "status_normalized": false,
+          "info_normalized": false,
+          "input_buffers_preserved": true
+        }
+      ],
+      "other_bytes_identical_to_V2": true
+    },
+    "V2_STATUS_ONLY": {
+      "file": "V2_STATUS_ONLY_MODULE_NOT_FLASHABLE.bin",
+      "sha256": "d2a4c611ad184f7a3437d5791467e7715d80a3d76c05a0d314d3fd2d4b87c47a",
+      "changes": [
+        {
+          "section": ".ink_status",
+          "offset": "0x20014",
+          "bytes": 144
+        }
+      ],
+      "native_ARM_cases": [
+        {
+          "input_state": 0,
+          "slots_checked": 10,
+          "status_normalized": true,
+          "info_normalized": false,
+          "input_buffers_preserved": true
+        },
+        {
+          "input_state": 1,
+          "slots_checked": 10,
+          "status_normalized": true,
+          "info_normalized": false,
+          "input_buffers_preserved": true
+        },
+        {
+          "input_state": 2,
+          "slots_checked": 10,
+          "status_normalized": true,
+          "info_normalized": false,
+          "input_buffers_preserved": true
+        },
+        {
+          "input_state": 4,
+          "slots_checked": 10,
+          "status_normalized": true,
+          "info_normalized": false,
+          "input_buffers_preserved": true
+        },
+        {
+          "input_state": 5,
+          "slots_checked": 10,
+          "status_normalized": true,
+          "info_normalized": false,
+          "input_buffers_preserved": true
+        },
+        {
+          "input_state": 6,
+          "slots_checked": 10,
+          "status_normalized": true,
+          "info_normalized": false,
+          "input_buffers_preserved": true
+        },
+        {
+          "input_state": 12,
+          "slots_checked": 10,
+          "status_normalized": true,
+          "info_normalized": false,
+          "input_buffers_preserved": true
+        }
+      ],
+      "other_bytes_identical_to_V2": true
+    },
+    "V2_INFO_ONLY": {
+      "file": "V2_INFO_ONLY_MODULE_NOT_FLASHABLE.bin",
+      "sha256": "90f463c89db83da74fd59bfb9e66c4f26f7f352af24c80c3a3e9b9c1c2f9e7a6",
+      "changes": [
+        {
+          "section": ".ink_info",
+          "offset": "0x1fef4",
+          "bytes": 120
+        }
+      ],
+      "native_ARM_cases": [
+        {
+          "input_state": 0,
+          "slots_checked": 10,
+          "status_normalized": false,
+          "info_normalized": true,
+          "input_buffers_preserved": true
+        },
+        {
+          "input_state": 1,
+          "slots_checked": 10,
+          "status_normalized": false,
+          "info_normalized": true,
+          "input_buffers_preserved": true
+        },
+        {
+          "input_state": 2,
+          "slots_checked": 10,
+          "status_normalized": false,
+          "info_normalized": true,
+          "input_buffers_preserved": true
+        },
+        {
+          "input_state": 4,
+          "slots_checked": 10,
+          "status_normalized": false,
+          "info_normalized": true,
+          "input_buffers_preserved": true
+        },
+        {
+          "input_state": 5,
+          "slots_checked": 10,
+          "status_normalized": false,
+          "info_normalized": true,
+          "input_buffers_preserved": true
+        },
+        {
+          "input_state": 6,
+          "slots_checked": 10,
+          "status_normalized": false,
+          "info_normalized": true,
+          "input_buffers_preserved": true
+        },
+        {
+          "input_state": 12,
+          "slots_checked": 10,
+          "status_normalized": false,
+          "info_normalized": true,
+          "input_buffers_preserved": true
+        }
+      ],
+      "other_bytes_identical_to_V2": true
+    },
+    "V2_STATUS_AND_INFO": {
+      "file": "V2_STATUS_AND_INFO_MODULE_NOT_FLASHABLE.bin",
+      "sha256": "a53cf0055c2f2a7f70ddf81d0b98307997ae495bbac4d5f14d411ba0ce5e575f",
+      "changes": [
+        {
+          "section": ".ink_status",
+          "offset": "0x20014",
+          "bytes": 144
+        },
+        {
+          "section": ".ink_info",
+          "offset": "0x1fef4",
+          "bytes": 120
+        }
+      ],
+      "native_ARM_cases": [
+        {
+          "input_state": 0,
+          "slots_checked": 10,
+          "status_normalized": true,
+          "info_normalized": true,
+          "input_buffers_preserved": true
+        },
+        {
+          "input_state": 1,
+          "slots_checked": 10,
+          "status_normalized": true,
+          "info_normalized": true,
+          "input_buffers_preserved": true
+        },
+        {
+          "input_state": 2,
+          "slots_checked": 10,
+          "status_normalized": true,
+          "info_normalized": true,
+          "input_buffers_preserved": true
+        },
+        {
+          "input_state": 4,
+          "slots_checked": 10,
+          "status_normalized": true,
+          "info_normalized": true,
+          "input_buffers_preserved": true
+        },
+        {
+          "input_state": 5,
+          "slots_checked": 10,
+          "status_normalized": true,
+          "info_normalized": true,
+          "input_buffers_preserved": true
+        },
+        {
+          "input_state": 6,
+          "slots_checked": 10,
+          "status_normalized": true,
+          "info_normalized": true,
+          "input_buffers_preserved": true
+        },
+        {
+          "input_state": 12,
+          "slots_checked": 10,
+          "status_normalized": true,
+          "info_normalized": true,
+          "input_buffers_preserved": true
+        }
+      ],
+      "other_bytes_identical_to_V2": true
+    }
+  },
+  "physical_ink_presence_and_transport_retained": true,
+  "ILS_getter_retained_from_V2": true,
+  "all_V2_bytes_except_selected_two_cache_setters_retained": true,
+  "normalizers_affect_internal_caches_not_just_display": true,
+  "no_forced_motor_or_stop_bit_changes": true,
+  "full_print_or_physical_printer_not_tested": true,
+  "EFU_not_created": true
+}
