@@ -135,5 +135,10 @@
   "envelope": {
     "actual": 159977472,
     "declared": 159977473
+  },
+  "subsequent_user_report": {
+    "normal_operation": true,
+    "independently_observed_by_agent": false,
+    "physical_usage_freeze_verified": false
   }
 }

@@ -1,0 +1,147 @@
+{
+  "artifact": "FW7560TL_LK29Q5-startup-F1-profile-exemption.efu",
+  "efu_sha256": "9687f463b43d9fa6a597c1a93c2c56ada687cb967adac8b4dc096a7e60325da1",
+  "module": {
+    "label": "F1-profile-exemption-probe",
+    "module_sha256": "02bc065cb2b64e0cc8b326c132c39643b0a4233c5c947f5a9eac9dc3d9919bee",
+    "E_module_sha256": "217cbca7aa223ea017e70a02cc936ed69337130c3f2547a76a20110368713da7",
+    "patches": [
+      {
+        "address": "0x43408044",
+        "before": "0540d0e7",
+        "after": "6440a0e3",
+        "reason": "C numeric remaining report retained"
+      },
+      {
+        "address": "0x43405998",
+        "before": "0140a003",
+        "after": "0040a003",
+        "reason": "Persistent life-bit predicate: keep reads, return no expired bit"
+      },
+      {
+        "address": "0x43406b54",
+        "before": "0100a093",
+        "after": "0000a093",
+        "reason": "Usage limit predicate: keep counter reads and output flag writes, return no full verdict"
+      },
+      {
+        "address": "0x434068ac",
+        "before": "0120a0e1",
+        "after": "0020a0e3",
+        "reason": "Primary consumption: zero requested delta"
+      },
+      {
+        "address": "0x434068d8",
+        "before": "0120a0e1",
+        "after": "0020a0e3",
+        "reason": "Secondary consumption: zero requested delta"
+      },
+      {
+        "address": "0x434068e8",
+        "before": "0120a0e1",
+        "after": "0020a0e3",
+        "reason": "Whole/fractional consumption: zero requested delta"
+      },
+      {
+        "address": "0x4340acf0",
+        "before": "0000a0e3",
+        "after": "0100a0e3",
+        "reason": "Default original profile predicate result to 1; keep original profile reads and conditional result path"
+      }
+    ],
+    "extra_changed_bytes_vs_E": 1,
+    "changed_bytes": 12,
+    "instruction_sites": 7,
+    "intent": "Exercise original chip-exemption branches with real counter reads and E zero-new-usage logic",
+    "preserved": [
+      "Original raw state getter and transitions",
+      "Real existing counter reads",
+      "Original profile-record reads",
+      "Cover checks and error selector",
+      "C/D/E changes"
+    ],
+    "limitations": [
+      "Profile predicate affects multiple original paths",
+      "Physical boot and missing-chip operation unverified",
+      "Same general exemption predicate was part of failed v3 together with other changes; F1 isolates it",
+      "UI/RTOS completion behavior and actual bus callbacks not established",
+      "Actual waste collection is still necessary"
+    ],
+    "physical_boot_tested": false,
+    "physical_chipless_tested": false
+  },
+  "native_scenarios": 527,
+  "package_audit": {
+    "efu_sha256": "9687f463b43d9fa6a597c1a93c2c56ada687cb967adac8b4dc096a7e60325da1",
+    "module_sha256": "02bc065cb2b64e0cc8b326c132c39643b0a4233c5c947f5a9eac9dc3d9919bee",
+    "native_cases": 527,
+    "native_payload_checksum": {
+      "image": "F1-maintenance-control",
+      "payload_bytes": 117047296,
+      "declared_sum16": 135,
+      "actual_sum16": 135,
+      "native_checksum_return": 1,
+      "inner_sha1_matches": true
+    },
+    "native_loader": {
+      "image": "F1-maintenance-control",
+      "token_count": 691073,
+      "padding_tokens": 15,
+      "padded_count_mod16": 0,
+      "native_dma_output_bytes": 2073264,
+      "native_dma_mod48": 0,
+      "native_lz_copy_return": 1,
+      "native_lz_output_exact": true,
+      "huffman_completion_fixture_calls": 676,
+      "hardware_huffman_execution": false
+    },
+    "host_sections": [
+      {
+        "offset": "0x1153",
+        "metadata_bytes": 8192,
+        "payload_bytes": 117047296,
+        "all_checks_passed": true
+      },
+      {
+        "offset": "0x6fa4153",
+        "metadata_bytes": 991232,
+        "payload_bytes": 3682304,
+        "all_checks_passed": true
+      },
+      {
+        "offset": "0x741a153",
+        "metadata_bytes": 991232,
+        "payload_bytes": 3682304,
+        "all_checks_passed": true
+      },
+      {
+        "offset": "0x7890153",
+        "metadata_bytes": 33558528,
+        "payload_bytes": 0,
+        "all_checks_passed": true
+      }
+    ],
+    "baseline_user_report": {
+      "official_after_v3_boots": true,
+      "A_boots": true,
+      "B_boots": true
+    },
+    "candidate": "F1",
+    "physical_candidate_boot_tested": false,
+    "full_candidate_upper_receiver_replay_executed": false,
+    "limitations": [
+      "Hardware Huffman modeled at completion boundary",
+      "No whole boot, physical CSIC, PC updater or flash execution",
+      "This is a staged maintenance experiment, not a complete virtual cartridge implementation"
+    ]
+  },
+  "physical_F1_tested": false,
+  "E_user_report": {
+    "normal_operation": true,
+    "physical_usage_freeze_verified": false
+  },
+  "envelope": {
+    "actual": 159977472,
+    "declared": 159977473
+  }
+}

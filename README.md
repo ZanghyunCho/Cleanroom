@@ -2,14 +2,18 @@
 
 ## LK29Q5 유지보수 박스 실험용 EFU
 
-A/B 대조군과 C의 정상 동작 이후, 사용자는 D에서 수명 종료 카트리지도 잔량 100%로
-인식된다고 보고했습니다. 다음은 새 사용량의 증가 인자만 0으로 만드는 E입니다.
+사용자는 E가 매우 정상적으로 동작한다고 보고했습니다. 실제 사용량 증가 중단을
+작업 전후 비교로 확인한 결과는 아직 아닙니다. 다음은 원본 칩 생략 조건을 분리하는 F1입니다.
 
-- [E: 새 사용량 증가 중단 후보 EFU](downloads/FW7560TL_LK29Q5-startup-E-zero-new-consumption.efu)
-- [E 변경 내용·검증·실기 확인 범위](downloads/LK29Q5-startup-E.README.ko.md)
+- [F1: 칩 생략 조건 1바이트 추가 진단본](downloads/FW7560TL_LK29Q5-startup-F1-profile-exemption.efu)
+- [F1 검증 범위·실기 시험 순서](downloads/LK29Q5-startup-F1.README.ko.md)
 
-**E는 실기 부팅과 실제 사용량 증가 중단이 미검증입니다.** 기존 누적값은 유지하고
-알려진 세 추가 함수의 인자만 0으로 바꿉니다. 미장착 동작은 아직 포함하지 않습니다.
+**F1의 실기 부팅·칩 미인식 동작은 미검증입니다.** 먼저 카트리지를 장착한 상태로
+정상 부팅되는지 확인합니다. 이 단계에서 멈추면 E로 되돌리고 미장착 시험은 진행하지 않습니다.
+실제 폐잉크 수거 구조는 계속 필요합니다.
+
+- [정상 동작이 보고된 E](downloads/FW7560TL_LK29Q5-startup-E-zero-new-consumption.efu)
+- [E 변경 내용·검증·사용자 보고](downloads/LK29Q5-startup-E.README.ko.md)
 
 - [수명 종료 카트리지의 100% 인식이 보고된 D](downloads/FW7560TL_LK29Q5-startup-D-lifetime-control.efu)
 - [D 변경 내용·검증·사용자 보고](downloads/LK29Q5-startup-D.README.ko.md)
