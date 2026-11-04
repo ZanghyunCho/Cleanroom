@@ -1,0 +1,161 @@
+{
+  "user_observation": "Failed candidate entered Recovery after reboot; official EFU restored successfully",
+  "checksums": [
+    {
+      "image": "official",
+      "payload_bytes": 117047296,
+      "declared_sum16": 39784,
+      "actual_sum16": 39784,
+      "native_checksum_return": 1,
+      "inner_sha1_matches": true
+    },
+    {
+      "image": "failed_v1",
+      "payload_bytes": 117047296,
+      "declared_sum16": 39784,
+      "actual_sum16": 42339,
+      "native_checksum_return": 0,
+      "inner_sha1_matches": true
+    },
+    {
+      "image": "diagnostic_v2",
+      "payload_bytes": 117047296,
+      "declared_sum16": 42337,
+      "actual_sum16": 42337,
+      "native_checksum_return": 1,
+      "inner_sha1_matches": true
+    }
+  ],
+  "loaders": [
+    {
+      "image": "official",
+      "token_count": 697611,
+      "padding_tokens": 5,
+      "padded_count_mod16": 0,
+      "native_dma_output_bytes": 2092848,
+      "native_dma_mod48": 0,
+      "native_lz_copy_return": 1,
+      "native_lz_output_exact": true,
+      "huffman_completion_fixture_calls": 683,
+      "hardware_huffman_execution": false
+    },
+    {
+      "image": "failed_v1",
+      "token_count": 691069,
+      "padding_tokens": 5,
+      "padded_count_mod16": 2,
+      "native_dma_output_bytes": 2073222,
+      "native_dma_mod48": 6,
+      "native_lz_copy_return": 1,
+      "native_lz_output_exact": true,
+      "huffman_completion_fixture_calls": 676,
+      "hardware_huffman_execution": false
+    },
+    {
+      "image": "diagnostic_v2",
+      "token_count": 691069,
+      "padding_tokens": 3,
+      "padded_count_mod16": 0,
+      "native_dma_output_bytes": 2073216,
+      "native_dma_mod48": 0,
+      "native_lz_copy_return": 1,
+      "native_lz_output_exact": true,
+      "huffman_completion_fixture_calls": 676,
+      "hardware_huffman_execution": false
+    }
+  ],
+  "original_alignment_frames_checked": [
+    {
+      "offset": "0x14157",
+      "tokens": 697611,
+      "padding": 5
+    },
+    {
+      "offset": "0x173a6c",
+      "tokens": 10011,
+      "padding": 5
+    },
+    {
+      "offset": "0x21b557",
+      "tokens": 2820,
+      "padding": 12
+    },
+    {
+      "offset": "0x27ad57",
+      "tokens": 1747850,
+      "padding": 6
+    },
+    {
+      "offset": "0x87ad57",
+      "tokens": 144529,
+      "padding": 15
+    },
+    {
+      "offset": "0x9f1d57",
+      "tokens": 3612760,
+      "padding": 8
+    },
+    {
+      "offset": "0x28f1d57",
+      "tokens": 901010,
+      "padding": 14
+    },
+    {
+      "offset": "0x710a157",
+      "tokens": 469745,
+      "padding": 15
+    },
+    {
+      "offset": "0x71f8fee",
+      "tokens": 1145,
+      "padding": 7
+    },
+    {
+      "offset": "0x725a157",
+      "tokens": 114749,
+      "padding": 3
+    },
+    {
+      "offset": "0x7291faa",
+      "tokens": 2180,
+      "padding": 12
+    },
+    {
+      "offset": "0x733a157",
+      "tokens": 55550,
+      "padding": 2
+    },
+    {
+      "offset": "0x7580157",
+      "tokens": 469745,
+      "padding": 15
+    },
+    {
+      "offset": "0x766efee",
+      "tokens": 1145,
+      "padding": 7
+    },
+    {
+      "offset": "0x76d0157",
+      "tokens": 114749,
+      "padding": 3
+    },
+    {
+      "offset": "0x7707faa",
+      "tokens": 2180,
+      "padding": 12
+    },
+    {
+      "offset": "0x77b0157",
+      "tokens": 55550,
+      "padding": 2
+    }
+  ],
+  "confirmed_packaging_defects": [
+    "Section payload sum16 left stale after recompression",
+    "Original padding-token count copied instead of recalculated"
+  ],
+  "physical_recovery_root_cause_confirmed": false,
+  "scope": "Native checksum and loader metadata/setup/LZ copy; Huffman completion fixture used for LZ test. No full startup, physical Huffman, CSIC, flash or updater execution.",
+  "diagnostic_v2_hardware_ready": false
+}

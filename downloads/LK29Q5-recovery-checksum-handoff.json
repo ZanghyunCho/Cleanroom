@@ -1,0 +1,23 @@
+[
+  {
+    "image": "official",
+    "native_parser_return": 1,
+    "section_type": 0,
+    "declared_sum16": 39784,
+    "installer_descriptor_sum16": 39784
+  },
+  {
+    "image": "failed_v1",
+    "native_parser_return": 1,
+    "section_type": 0,
+    "declared_sum16": 39784,
+    "installer_descriptor_sum16": 39784
+  },
+  {
+    "image": "diagnostic_v2",
+    "native_parser_return": 1,
+    "section_type": 0,
+    "declared_sum16": 42337,
+    "installer_descriptor_sum16": 42337
+  }
+]

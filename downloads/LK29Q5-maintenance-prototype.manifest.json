@@ -1,6 +1,6 @@
 {
   "artifact": "FW7560TL_LK29Q5-maintenance-prototype.efu",
-  "status": "experimental; not hardware/updater validated",
+  "status": "failed hardware trial: Recovery after reboot; official EFU restored successfully",
   "efu_sha256": "8a05b7a22f41686354b6aac4cc329cd4f963d0534d39c50e311de0e703fa6588",
   "rcx_sha256": "6209fb37fd10b0c015ad24ef467158ef1c46925a9b6da6188d8e74156816b161",
   "original_rcx_sha256": "5a8c9ff4c942e436e7ab9da60237dd7d60587715071d748a58c90fe20ca557b1",
@@ -38,5 +38,10 @@
     "status": "invalid",
     "implementation": "host cryptography, not ARM",
     "interpretation": "Fails raw big-endian r||s / SHA256(body) hypothesis"
-  }
+  },
+  "confirmed_packaging_defects": [
+    "Payload sum16 field stale: declared 0x9B68, actual 0xA563",
+    "Padding-token count stale: 691069 + 5 is not divisible by 16"
+  ],
+  "recovery_analysis": "LK29Q5-maintenance-prototype.RECOVERY.ko.md"
 }

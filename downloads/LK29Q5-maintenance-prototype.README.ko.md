@@ -1,5 +1,11 @@
 # LK29Q5 유지보수 박스 실험용 EFU 후보
 
+**실패 보고된 v1 파일입니다.** 업데이트 후 재부팅에서 Recovery Mode에
+진입했고 공식 원본 EFU로 복구에 성공한 사례가 보고되었습니다.
+본문 합계와 CROM 토큰 패딩의 포장 결함을 확인했습니다.
+[원인 분석과 원본 ARM 대조 결과](LK29Q5-maintenance-prototype.RECOVERY.ko.md)를
+참조하세요. 아래 파일은 분석용 보존본이며 정상 작동 확인본이 아닙니다.
+
 [EFU 다운로드](FW7560TL_LK29Q5-maintenance-prototype.efu)
 · [SHA-256](FW7560TL_LK29Q5-maintenance-prototype.efu.sha256)
 · [포장 검증 기록](LK29Q5-maintenance-prototype.manifest.json)
