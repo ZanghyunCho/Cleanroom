@@ -2,14 +2,18 @@
 
 ## LK29Q5 유지보수 박스 실험용 EFU
 
-v3는 시작 화면에서 정지했지만, 이후 원본 동작 대조군 A/B는 모두 정상 작동했다고
-사용자가 확인했습니다. 이제 잔량 보고만 한 명령 변경한 C를 분리해 시험합니다.
+v3의 정지 이후 A/B 대조군과 잔량 보고 전용 C는 정상 작동했다고 사용자가 확인했습니다.
+C는 낮은 잔량도 100%로 표시하지만, 수명 종료 카트리지는 여전히 수명 종료로 표시합니다.
 
-- [C: 잔량 보고만 변경한 진단용 EFU](downloads/FW7560TL_LK29Q5-startup-C-remaining-report-only.efu)
-- [C 변경 내용·검증·시험 범위](downloads/LK29Q5-startup-C.README.ko.md)
+- [D: 수명 종료 검출 두 곳만 추가 변경한 진단용 EFU](downloads/FW7560TL_LK29Q5-startup-D-lifetime-control.efu)
+- [D 변경 내용·검증·시험 범위](downloads/LK29Q5-startup-D.README.ko.md)
 
-**C는 실기 부팅 미검증입니다. 소비량 0 처리나 카트리지 미장착 동작은 포함하지 않습니다.**
-내부 상태·칩 처리·카운터·초기화 상태 코드를 원본으로 유지하고 잔량 수치 보고만 변경합니다.
+**D의 실기 부팅과 수명 종료 카트리지 동작은 아직 미검증입니다.**
+C에 코드 바이트 2개만 추가 변경하며 내부 상태·칩 통신·실제 카운터는 유지합니다.
+소비량 0 처리와 카트리지 미장착 동작은 아직 포함하지 않습니다.
+
+- [정상 동작과 100% 표시가 보고된 C](downloads/FW7560TL_LK29Q5-startup-C-remaining-report-only.efu)
+- [C 변경 내용·검증·실기 보고](downloads/LK29Q5-startup-C.README.ko.md)
 
 - [정상 동작이 보고된 원본 대조군 A/B · 비교 순서](downloads/LK29Q5-startup-controls.README.ko.md)
 - [A: 원본 본문 그대로 + 선언 길이 1 증가](downloads/FW7560TL_LK29Q5-startup-A-envelope-only.efu)

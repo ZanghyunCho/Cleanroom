@@ -1,0 +1,124 @@
+{
+  "artifact": "FW7560TL_LK29Q5-startup-D-lifetime-control.efu",
+  "efu_sha256": "07ffcef232a9de377f05ff1fc44ec992ac3e7fd1408ac3887bd7d5ca722e9378",
+  "module": {
+    "label": "D-lifetime-control",
+    "module_sha256": "26f2b0d2bf27bf4a635f698000290fe5ad6b015abd41e67e62a0f879f21dd505",
+    "original_module_sha256": "82c4c34f4ed5c1dd7118dd74839b499329d732d37b467df734ed5382a25dedac",
+    "patches": [
+      {
+        "address": "0x43408044",
+        "before": "0540d0e7",
+        "after": "6440a0e3",
+        "reason": "C numeric remaining report retained"
+      },
+      {
+        "address": "0x43405998",
+        "before": "0140a003",
+        "after": "0040a003",
+        "reason": "Persistent life-bit predicate: keep reads, return no expired bit"
+      },
+      {
+        "address": "0x43406b54",
+        "before": "0100a093",
+        "after": "0000a093",
+        "reason": "Usage limit predicate: keep counter reads and output flag writes, return no full verdict"
+      }
+    ],
+    "changed_bytes": 5,
+    "instruction_sites": 3,
+    "extra_changed_bytes_vs_C": 2,
+    "preserved": [
+      "Raw state getter and state transitions",
+      "Error selector including direct error 35 handling",
+      "Original chip/profile selection",
+      "Original counters and increments",
+      "Original capacity calculation",
+      "Near-limit predicate and warning",
+      "Chip I/O and synchronization",
+      "Cover handling"
+    ],
+    "not_implemented": [
+      "Zero consumption",
+      "Operation without a maintenance cartridge",
+      "Erasure/reset of chip or nonvolatile life records"
+    ],
+    "physical_boot_tested": false,
+    "physical_expired_cartridge_operation_tested": false
+  },
+  "native_scenarios": 118,
+  "package_audit": {
+    "efu_sha256": "07ffcef232a9de377f05ff1fc44ec992ac3e7fd1408ac3887bd7d5ca722e9378",
+    "module_sha256": "26f2b0d2bf27bf4a635f698000290fe5ad6b015abd41e67e62a0f879f21dd505",
+    "native_cases": 118,
+    "native_payload_checksum": {
+      "image": "D-maintenance-control",
+      "payload_bytes": 117047296,
+      "declared_sum16": 36868,
+      "actual_sum16": 36868,
+      "native_checksum_return": 1,
+      "inner_sha1_matches": true
+    },
+    "native_loader": {
+      "image": "D-maintenance-control",
+      "token_count": 691073,
+      "padding_tokens": 15,
+      "padded_count_mod16": 0,
+      "native_dma_output_bytes": 2073264,
+      "native_dma_mod48": 0,
+      "native_lz_copy_return": 1,
+      "native_lz_output_exact": true,
+      "huffman_completion_fixture_calls": 676,
+      "hardware_huffman_execution": false
+    },
+    "host_sections": [
+      {
+        "offset": "0x1153",
+        "metadata_bytes": 8192,
+        "payload_bytes": 117047296,
+        "all_checks_passed": true
+      },
+      {
+        "offset": "0x6fa4153",
+        "metadata_bytes": 991232,
+        "payload_bytes": 3682304,
+        "all_checks_passed": true
+      },
+      {
+        "offset": "0x741a153",
+        "metadata_bytes": 991232,
+        "payload_bytes": 3682304,
+        "all_checks_passed": true
+      },
+      {
+        "offset": "0x7890153",
+        "metadata_bytes": 33558528,
+        "payload_bytes": 0,
+        "all_checks_passed": true
+      }
+    ],
+    "baseline_user_report": {
+      "official_after_v3_boots": true,
+      "A_boots": true,
+      "B_boots": true
+    },
+    "candidate": "D",
+    "physical_candidate_boot_tested": false,
+    "full_candidate_upper_receiver_replay_executed": false,
+    "limitations": [
+      "Hardware Huffman modeled at completion boundary",
+      "No whole boot, physical CSIC, PC updater or flash execution",
+      "This is a staged maintenance experiment, not a complete virtual cartridge implementation"
+    ]
+  },
+  "physical_D_tested": false,
+  "user_reported_C": {
+    "normal_operation": true,
+    "remaining_100": true,
+    "expired_cartridge_warning_still_present": true
+  },
+  "envelope": {
+    "actual": 159977472,
+    "declared": 159977473
+  }
+}

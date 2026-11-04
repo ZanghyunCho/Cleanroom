@@ -104,5 +104,11 @@
     "actual": 159977472,
     "declared": 159977473
   },
-  "physical_C_boot_tested": false
+  "physical_C_boot_tested": false,
+  "subsequent_user_report": {
+    "normal_operation": true,
+    "low_remaining_shows_100": true,
+    "expired_cartridge_warning_preserved": true,
+    "independently_observed_by_agent": false
+  }
 }
