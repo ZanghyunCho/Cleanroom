@@ -1,0 +1,49 @@
+{
+  "status": "Diagnostic EFU generated and software checks passed; NOT a physical-boot validation",
+  "artifact": "FW7560TL_LK29Q5-maintenance-diagnostic-v3.efu",
+  "efu_sha256": "4cbf22ba87b443bf70207180916a1a149ea30ad2110185d7dd57cd687911a542",
+  "module_sha256": "4cb149544bef6198bc99c2129af05199f0fb5d89d7a2518553de72646169f9aa",
+  "native_maintenance_scenarios": 74,
+  "native_subsystem_flows": 24,
+  "container_receiver": {
+    "return": 1,
+    "state": [
+      1,
+      1
+    ],
+    "ecdsa_calls": 0,
+    "bytes_consumed": 159981568,
+    "wire_bytes": 159981568,
+    "native_checks": {
+      "parser": 4,
+      "checksum": 1,
+      "sha1": 1
+    },
+    "elapsed_seconds": 112.97352094800226,
+    "timing_scope": "Resumed suffix only; native prefix was executed and saved separately",
+    "native_prefix_checkpoint_used": true,
+    "raw_drain_elided_bytes": 0
+  },
+  "host_sections_verified": 4,
+  "native_payload_sum_bytes": 117047296,
+  "changed_control_bytes": 45,
+  "actual_body_size": 159977472,
+  "declared_body_size": 159977473,
+  "original_key_and_receiver_preserved": true,
+  "ordinary_ecdsa_signature_valid": false,
+  "receiver_RAM_library_id_fixture": "BA; derived from compiled BA01J2 identifier, not measured printer RAM",
+  "original_library_header_worker_controls": 4,
+  "remaining_checks": [
+    "Physical startup with attached cartridge",
+    "Physical startup without cartridge",
+    "Actual printing/cleaning and waste collection",
+    "RTOS concurrency and actual flash/USB/updater/Huffman hardware"
+  ],
+  "fixtures": [
+    "OS delay",
+    "OS signaling",
+    "ROM copy utility",
+    "One enumerated bus with absent/present status callback; begin/end callbacks omitted",
+    "Synthetic RAM clock/cache, profile header, capacity, nonvolatile cache and chip mirror"
+  ]
+}

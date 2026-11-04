@@ -1,0 +1,61 @@
+{
+  "artifact_type": "Uncompressed diagnostic ARM module; not a boot-validated firmware",
+  "version": "LK29Q5",
+  "original_sha256": "82c4c34f4ed5c1dd7118dd74839b499329d732d37b467df734ed5382a25dedac",
+  "module_sha256": "4cb149544bef6198bc99c2129af05199f0fb5d89d7a2518553de72646169f9aa",
+  "patches": [
+    {
+      "address": "0x4340ace0",
+      "before": "ac241fe50010a0e1",
+      "after": "0100a0e31eff2fe1",
+      "reason": "Select original per-box chip-exemption profile branches (compiled box count is one)"
+    },
+    {
+      "address": "0x43407ffc",
+      "before": "f0402de9c4709fe5",
+      "after": "6400a0e31eff2fe1",
+      "reason": "Remaining report always 100"
+    },
+    {
+      "address": "0x43406890",
+      "before": "0010a0e11d00a0e3",
+      "after": "0000a0e31eff2fe1",
+      "reason": "Primary consumption read reports zero"
+    },
+    {
+      "address": "0x434068bc",
+      "before": "0010a0e11e00a0e3",
+      "after": "0000a0e31eff2fe1",
+      "reason": "Secondary consumption read reports zero"
+    },
+    {
+      "address": "0x434068ac",
+      "before": "0120a0e10010a0e1",
+      "after": "0000a0e31eff2fe1",
+      "reason": "Do not add primary consumption"
+    },
+    {
+      "address": "0x434068d8",
+      "before": "0120a0e10010a0e1",
+      "after": "0000a0e31eff2fe1",
+      "reason": "Do not add secondary consumption"
+    },
+    {
+      "address": "0x434068e8",
+      "before": "0120a0e1b8129fe5",
+      "after": "0000a0e31eff2fe1",
+      "reason": "Do not add whole-unit or fractional consumption"
+    }
+  ],
+  "changed_bytes": 45,
+  "raw_state_getter_preserved": true,
+  "notification_code_preserved": true,
+  "status_output_code_preserved": true,
+  "cover_interlock_preserved": true,
+  "limitations": [
+    "Full startup is not emulated",
+    "Actual hardware CSIC driver and RTOS scheduling are not exercised",
+    "Original profile-byte semantics beyond observed branches are not established",
+    "Preexisting stored consumption is preserved, not erased"
+  ]
+}

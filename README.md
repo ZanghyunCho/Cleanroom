@@ -2,11 +2,19 @@
 
 ## LK29Q5 유지보수 박스 실험용 EFU
 
-- [진단용 v2 EFU](downloads/FW7560TL_LK29Q5-maintenance-diagnostic-v2.efu)
+- [진단용 v3 EFU](downloads/FW7560TL_LK29Q5-maintenance-diagnostic-v3.efu)
+- [v3 변경 내용·검증 범위·SHA-256](downloads/LK29Q5-maintenance-diagnostic-v3.README.ko.md)
+- [v3 검증 코드·결과 묶음](downloads/LK29Q5-maintenance-diagnostic-v3-validation.zip)
+
+v3는 내부 상태 getter를 원복하고 원본의 프로필 조건 분기를 이용하는 진단본입니다.
+소프트웨어/ARM 검증 범위와 실기 부팅 성공은 별개의 항목이며, **v3의 실기 부팅은 미검증**입니다.
+
+- [시작 화면 정지가 보고된 v2 EFU — 분석용 보존](downloads/FW7560TL_LK29Q5-maintenance-diagnostic-v2.efu)
 - [v2 변경 내용·검증 범위·SHA-256](downloads/LK29Q5-maintenance-diagnostic-v2.README.ko.md)
 
 v2는 v1의 본문 합계·CROM 패딩 오류를 수정한 진단본입니다.
-원본 ARM 대조 검사는 통과했으나 실기 설치·부팅·동작은 미검증입니다.
+사용자는 업데이트가 진행된 뒤 유지보수 카트리지가 장착된 상태에서도 시작 화면에
+계속 멈춘다고 보고했습니다. 정상 부팅·출력 성공은 확인되지 않았습니다.
 
 - [실패 보고된 v1 EFU — 분석용 보존](downloads/FW7560TL_LK29Q5-maintenance-prototype.efu)
 - [변경 내용·검증 범위·SHA-256](downloads/LK29Q5-maintenance-prototype.README.ko.md)

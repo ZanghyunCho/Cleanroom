@@ -1,0 +1,67 @@
+{
+  "artifact": "FW7560TL_LK29Q5-maintenance-diagnostic-v3.efu",
+  "status": "Diagnostic candidate: matched software/native checks passed; physical boot unverified",
+  "efu_sha256": "4cbf22ba87b443bf70207180916a1a149ea30ad2110185d7dd57cd687911a542",
+  "rcx_sha256": "beee5a1dacf2c57871ce35e3b6dc6e1041cd3092213b7242f0924da9bff733dd",
+  "original_rcx_sha256": "5a8c9ff4c942e436e7ab9da60237dd7d60587715071d748a58c90fe20ca557b1",
+  "rcx_size": 159981907,
+  "prototype_module_sha256": "4cb149544bef6198bc99c2129af05199f0fb5d89d7a2518553de72646169f9aa",
+  "arm_prototype_scenarios": 74,
+  "variant": "v3",
+  "compression": {
+    "encoded_frame_size": 1487815,
+    "tokens": 691068,
+    "padding_tokens": 4,
+    "padded_token_count": 691072,
+    "dma_output_bytes": 2073216,
+    "packed_size": 1133216,
+    "literal_size": 353775,
+    "decoded_sha256": "4cb149544bef6198bc99c2129af05199f0fb5d89d7a2518553de72646169f9aa",
+    "roundtrip_exact": true
+  },
+  "second_crom_frame_preserved": true,
+  "original_metadata_sum": 229,
+  "original_payload_sum": 39784,
+  "new_payload_sum": 44545,
+  "declared_payload_sum_matches": true,
+  "original_section_sha1": "a1a3e72202a27ba68f648537e75691085d88d897",
+  "new_section_sha1": "1b157087f3e9bdfd426539a2d3aaf085b6ce1a82",
+  "actual_signed_body_length": 159977472,
+  "declared_signed_body_length": 159977473,
+  "original_epson_key_preserved": true,
+  "original_signature_bytes_preserved": true,
+  "ecdsa_signature_valid_after_modification": false,
+  "host_signature_check": {
+    "status": "invalid",
+    "implementation": "host cryptography, not ARM",
+    "interpretation": "Fails raw big-endian r||s / SHA256(body) hypothesis"
+  },
+  "original_latest_receiver_module_preserved": true,
+  "zip_crc_and_roundtrip_passed": true,
+  "limitations": [
+    "No physical printer, USB or PC updater validation",
+    "No full startup or reboot test",
+    "No native hardware CROM decompressor validation",
+    "Existing stored consumption is not erased",
+    "No device flashing performed"
+  ],
+  "actual_packaged_receiver_test": {
+    "return": 1,
+    "state": [
+      1,
+      1
+    ],
+    "ecdsa_calls": 0,
+    "bytes_consumed": 159981568,
+    "wire_bytes": 159981568,
+    "native_checks": {
+      "parser": 4,
+      "checksum": 1,
+      "sha1": 1
+    },
+    "elapsed_seconds": 112.97352094800226,
+    "timing_scope": "Resumed suffix only; native prefix was executed and saved separately",
+    "native_prefix_checkpoint_used": true,
+    "raw_drain_elided_bytes": 0
+  }
+}
