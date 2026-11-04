@@ -147,5 +147,10 @@
     "Maintenance logic as actual cause of hang"
   ],
   "huffman_in_loader_audit": "Completion boundary modeled, actual hardware not executed",
-  "official_post_v3_normal_boot_user_confirmed": true
+  "official_post_v3_normal_boot_user_confirmed": true,
+  "subsequent_user_report": {
+    "A": "Normal operation reported",
+    "B": "Normal operation reported",
+    "independently_observed_by_agent": false
+  }
 }

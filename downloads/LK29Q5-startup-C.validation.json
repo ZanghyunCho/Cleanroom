@@ -1,0 +1,108 @@
+{
+  "artifact": "FW7560TL_LK29Q5-startup-C-remaining-report-only.efu",
+  "efu_sha256": "ba1e4abecbda8db021edc337e68620e1c2b6741e1b748231928b5cae7bbc619d",
+  "module": {
+    "label": "C-remaining-report-only",
+    "address": "0x43408044",
+    "before": "0540d0e7",
+    "after": "6440a0e3",
+    "original_module_sha256": "82c4c34f4ed5c1dd7118dd74839b499329d732d37b467df734ed5382a25dedac",
+    "module_sha256": "8ce2ddf0e6d2ced8e85bfe64d1474cdccb9e3b962b65ed7db45b8c73a3500716",
+    "instruction_sites": 1,
+    "changed_bytes": 3,
+    "numeric_remaining_states": [
+      0,
+      6,
+      7
+    ],
+    "preserved_status_encodings": {
+      "1": 105,
+      "2": 110,
+      "3": 114,
+      "4": 114,
+      "5": 119
+    },
+    "preserved": [
+      "Internal raw state and transitions",
+      "Original profile selection and chip I/O",
+      "Consumption reads and increments",
+      "Capacity/limit calculation",
+      "Notification state/error fields",
+      "Cover status checks"
+    ],
+    "not_implemented": [
+      "Zero consumption",
+      "Operate without a maintenance cartridge"
+    ],
+    "hardware_boot_status": "Unverified diagnostic candidate"
+  },
+  "native_cases": 87,
+  "package_audit": {
+    "efu_sha256": "ba1e4abecbda8db021edc337e68620e1c2b6741e1b748231928b5cae7bbc619d",
+    "module_sha256": "8ce2ddf0e6d2ced8e85bfe64d1474cdccb9e3b962b65ed7db45b8c73a3500716",
+    "native_cases": 87,
+    "native_payload_checksum": {
+      "image": "C-remaining-report-only",
+      "payload_bytes": 117047296,
+      "declared_sum16": 25093,
+      "actual_sum16": 25093,
+      "native_checksum_return": 1,
+      "inner_sha1_matches": true
+    },
+    "native_loader": {
+      "image": "C-remaining-report-only",
+      "token_count": 691073,
+      "padding_tokens": 15,
+      "padded_count_mod16": 0,
+      "native_dma_output_bytes": 2073264,
+      "native_dma_mod48": 0,
+      "native_lz_copy_return": 1,
+      "native_lz_output_exact": true,
+      "huffman_completion_fixture_calls": 676,
+      "hardware_huffman_execution": false
+    },
+    "host_sections": [
+      {
+        "offset": "0x1153",
+        "metadata_bytes": 8192,
+        "payload_bytes": 117047296,
+        "all_checks_passed": true
+      },
+      {
+        "offset": "0x6fa4153",
+        "metadata_bytes": 991232,
+        "payload_bytes": 3682304,
+        "all_checks_passed": true
+      },
+      {
+        "offset": "0x741a153",
+        "metadata_bytes": 991232,
+        "payload_bytes": 3682304,
+        "all_checks_passed": true
+      },
+      {
+        "offset": "0x7890153",
+        "metadata_bytes": 33558528,
+        "payload_bytes": 0,
+        "all_checks_passed": true
+      }
+    ],
+    "baseline_user_report": {
+      "official_after_v3_boots": true,
+      "A_boots": true,
+      "B_boots": true
+    },
+    "physical_C_boot_tested": false,
+    "full_C_upper_receiver_replay_executed": false,
+    "limitations": [
+      "Hardware Huffman modeled at completion boundary",
+      "No whole boot, physical CSIC, PC updater or flash execution",
+      "This is a remaining report experiment, not a virtual maintenance cartridge implementation"
+    ]
+  },
+  "envelope": {
+    "actual": 159977472,
+    "declared": 159977473
+  },
+  "physical_C_boot_tested": false
+}

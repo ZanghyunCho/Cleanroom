@@ -2,15 +2,20 @@
 
 ## LK29Q5 유지보수 박스 실험용 EFU
 
-v3에서도 시작 화면 정지가 보고됐습니다. 터치음과 잉크 도어 안내는 동작하지만,
-유지보수 카트리지가 장착된 상태에서 구동부는 움직이지 않는다는 관찰입니다.
+v3는 시작 화면에서 정지했지만, 이후 원본 동작 대조군 A/B는 모두 정상 작동했다고
+사용자가 확인했습니다. 이제 잔량 보고만 한 명령 변경한 C를 분리해 시험합니다.
 
-- [원본 동작 대조군 A/B · 시험 순서](downloads/LK29Q5-startup-controls.README.ko.md)
+- [C: 잔량 보고만 변경한 진단용 EFU](downloads/FW7560TL_LK29Q5-startup-C-remaining-report-only.efu)
+- [C 변경 내용·검증·시험 범위](downloads/LK29Q5-startup-C.README.ko.md)
+
+**C는 실기 부팅 미검증입니다. 소비량 0 처리나 카트리지 미장착 동작은 포함하지 않습니다.**
+내부 상태·칩 처리·카운터·초기화 상태 코드를 원본으로 유지하고 잔량 수치 보고만 변경합니다.
+
+- [정상 동작이 보고된 원본 대조군 A/B · 비교 순서](downloads/LK29Q5-startup-controls.README.ko.md)
 - [A: 원본 본문 그대로 + 선언 길이 1 증가](downloads/FW7560TL_LK29Q5-startup-A-envelope-only.efu)
 - [B: 원본 실행 코드 재압축 + 선언 길이 1 증가](downloads/FW7560TL_LK29Q5-startup-B-original-code-reencoded.efu)
 
-A/B는 정지 원인을 구분하려는 대조군으로, 잔량 100%나 미장착 동작 패치가 없습니다.
-A/B의 실기 부팅은 아직 확인하지 않았습니다. 사용자는 v3 이후에도 공식 원본으로 정상 부팅됨을 확인했습니다.
+A/B는 원본 동작 대조군입니다. 두 파일에는 잔량 100%나 미장착 동작 패치가 없습니다.
 
 - [시작 화면 정지가 보고된 v3 EFU — 분석용 보존](downloads/FW7560TL_LK29Q5-maintenance-diagnostic-v3.efu)
 - [v3 변경 내용·검증 범위·SHA-256](downloads/LK29Q5-maintenance-diagnostic-v3.README.ko.md)
