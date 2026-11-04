@@ -2,15 +2,17 @@
 
 ## LK29Q5 유지보수 박스 실험용 EFU
 
-v3의 정지 이후 A/B 대조군과 잔량 보고 전용 C는 정상 작동했다고 사용자가 확인했습니다.
-C는 낮은 잔량도 100%로 표시하지만, 수명 종료 카트리지는 여전히 수명 종료로 표시합니다.
+A/B 대조군과 C의 정상 동작 이후, 사용자는 D에서 수명 종료 카트리지도 잔량 100%로
+인식된다고 보고했습니다. 다음은 새 사용량의 증가 인자만 0으로 만드는 E입니다.
 
-- [D: 수명 종료 검출 두 곳만 추가 변경한 진단용 EFU](downloads/FW7560TL_LK29Q5-startup-D-lifetime-control.efu)
-- [D 변경 내용·검증·시험 범위](downloads/LK29Q5-startup-D.README.ko.md)
+- [E: 새 사용량 증가 중단 후보 EFU](downloads/FW7560TL_LK29Q5-startup-E-zero-new-consumption.efu)
+- [E 변경 내용·검증·실기 확인 범위](downloads/LK29Q5-startup-E.README.ko.md)
 
-**D의 실기 부팅과 수명 종료 카트리지 동작은 아직 미검증입니다.**
-C에 코드 바이트 2개만 추가 변경하며 내부 상태·칩 통신·실제 카운터는 유지합니다.
-소비량 0 처리와 카트리지 미장착 동작은 아직 포함하지 않습니다.
+**E는 실기 부팅과 실제 사용량 증가 중단이 미검증입니다.** 기존 누적값은 유지하고
+알려진 세 추가 함수의 인자만 0으로 바꿉니다. 미장착 동작은 아직 포함하지 않습니다.
+
+- [수명 종료 카트리지의 100% 인식이 보고된 D](downloads/FW7560TL_LK29Q5-startup-D-lifetime-control.efu)
+- [D 변경 내용·검증·사용자 보고](downloads/LK29Q5-startup-D.README.ko.md)
 
 - [정상 동작과 100% 표시가 보고된 C](downloads/FW7560TL_LK29Q5-startup-C-remaining-report-only.efu)
 - [C 변경 내용·검증·실기 보고](downloads/LK29Q5-startup-C.README.ko.md)

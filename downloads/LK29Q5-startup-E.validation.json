@@ -1,0 +1,139 @@
+{
+  "artifact": "FW7560TL_LK29Q5-startup-E-zero-new-consumption.efu",
+  "efu_sha256": "6dcd7e3e62f43af50cc2fb3f4f0cf623a8ee21d0603c4dc4e833d90374aee766",
+  "module": {
+    "label": "E-zero-new-consumption",
+    "module_sha256": "217cbca7aa223ea017e70a02cc936ed69337130c3f2547a76a20110368713da7",
+    "original_module_sha256": "82c4c34f4ed5c1dd7118dd74839b499329d732d37b467df734ed5382a25dedac",
+    "D_module_sha256": "26f2b0d2bf27bf4a635f698000290fe5ad6b015abd41e67e62a0f879f21dd505",
+    "patches": [
+      {
+        "address": "0x43408044",
+        "before": "0540d0e7",
+        "after": "6440a0e3",
+        "reason": "C numeric remaining report retained"
+      },
+      {
+        "address": "0x43405998",
+        "before": "0140a003",
+        "after": "0040a003",
+        "reason": "Persistent life-bit predicate: keep reads, return no expired bit"
+      },
+      {
+        "address": "0x43406b54",
+        "before": "0100a093",
+        "after": "0000a093",
+        "reason": "Usage limit predicate: keep counter reads and output flag writes, return no full verdict"
+      },
+      {
+        "address": "0x434068ac",
+        "before": "0120a0e1",
+        "after": "0020a0e3",
+        "reason": "Primary consumption: zero requested delta"
+      },
+      {
+        "address": "0x434068d8",
+        "before": "0120a0e1",
+        "after": "0020a0e3",
+        "reason": "Secondary consumption: zero requested delta"
+      },
+      {
+        "address": "0x434068e8",
+        "before": "0120a0e1",
+        "after": "0020a0e3",
+        "reason": "Whole/fractional consumption: zero requested delta"
+      }
+    ],
+    "changed_bytes": 11,
+    "instruction_sites": 6,
+    "extra_instruction_sites_vs_D": 3,
+    "extra_changed_bytes_vs_D": 6,
+    "semantics": "Three usage addition helpers receive delta 0; original native bodies and return semantics execute",
+    "preserved": [
+      "Actual stored counter reads",
+      "Native dirty tracking and zero-delta return behavior",
+      "Original chip I/O and synchronization",
+      "D lifetime handling",
+      "C 100-percent numeric report",
+      "Original raw state/profile/cover/other errors"
+    ],
+    "not_implemented": [
+      "Reset existing accumulated usage to zero",
+      "Suppress every reconciliation/restore write",
+      "Operation without a maintenance cartridge"
+    ],
+    "physical_boot_tested": false,
+    "physical_usage_freeze_tested": false
+  },
+  "native_scenarios": 395,
+  "package_audit": {
+    "efu_sha256": "6dcd7e3e62f43af50cc2fb3f4f0cf623a8ee21d0603c4dc4e833d90374aee766",
+    "module_sha256": "217cbca7aa223ea017e70a02cc936ed69337130c3f2547a76a20110368713da7",
+    "native_cases": 395,
+    "native_payload_checksum": {
+      "image": "E-maintenance-control",
+      "payload_bytes": 117047296,
+      "declared_sum16": 33947,
+      "actual_sum16": 33947,
+      "native_checksum_return": 1,
+      "inner_sha1_matches": true
+    },
+    "native_loader": {
+      "image": "E-maintenance-control",
+      "token_count": 691073,
+      "padding_tokens": 15,
+      "padded_count_mod16": 0,
+      "native_dma_output_bytes": 2073264,
+      "native_dma_mod48": 0,
+      "native_lz_copy_return": 1,
+      "native_lz_output_exact": true,
+      "huffman_completion_fixture_calls": 676,
+      "hardware_huffman_execution": false
+    },
+    "host_sections": [
+      {
+        "offset": "0x1153",
+        "metadata_bytes": 8192,
+        "payload_bytes": 117047296,
+        "all_checks_passed": true
+      },
+      {
+        "offset": "0x6fa4153",
+        "metadata_bytes": 991232,
+        "payload_bytes": 3682304,
+        "all_checks_passed": true
+      },
+      {
+        "offset": "0x741a153",
+        "metadata_bytes": 991232,
+        "payload_bytes": 3682304,
+        "all_checks_passed": true
+      },
+      {
+        "offset": "0x7890153",
+        "metadata_bytes": 33558528,
+        "payload_bytes": 0,
+        "all_checks_passed": true
+      }
+    ],
+    "baseline_user_report": {
+      "official_after_v3_boots": true,
+      "A_boots": true,
+      "B_boots": true
+    },
+    "candidate": "E",
+    "physical_candidate_boot_tested": false,
+    "full_candidate_upper_receiver_replay_executed": false,
+    "limitations": [
+      "Hardware Huffman modeled at completion boundary",
+      "No whole boot, physical CSIC, PC updater or flash execution",
+      "This is a staged maintenance experiment, not a complete virtual cartridge implementation"
+    ]
+  },
+  "physical_E_tested": false,
+  "D_user_report": "Expired maintenance cartridge recognized with 100-percent remaining; not independently observed",
+  "envelope": {
+    "actual": 159977472,
+    "declared": 159977473
+  }
+}

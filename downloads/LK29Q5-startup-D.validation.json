@@ -120,5 +120,10 @@
   "envelope": {
     "actual": 159977472,
     "declared": 159977473
+  },
+  "subsequent_user_report": {
+    "expired_cartridge_recognized_remaining_100": true,
+    "independently_observed_by_agent": false,
+    "usage_freeze_verified": false
   }
 }
