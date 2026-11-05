@@ -88,3 +88,7 @@ python research/audit_remaining_report_control.py --variant F1
 ```
 
 GitHub 파일 화면의 **Download raw file**로 저장하세요.
+
+## 이후 실기 보고
+
+F1과 F1+LOONA 모두 장착 상태에서는 정상 동작하지만, 미장착 부팅·작동 중 제거 시 진행되지 않는다고 보고됐습니다. 재장착 후 재부팅해야 정상화됩니다. 미장착 기능은 실패로 기록합니다. 후속 G2도 실기 해결 여부는 미검증입니다. [G2 안내](LK29Q5-startup-G2.README.ko.md)를 참조하세요.

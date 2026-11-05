@@ -1,0 +1,92 @@
+{
+  "artifact": "FW7560TL_LK29Q5-LOONA-G2.efu",
+  "efu_sha256": "c9fc7d548babf651606d8dff80f124b2ee45910f9ba10149809de5b086e20cdd",
+  "rcx_sha256": "78af43b5fadd9692815bef987c1558027a39416fa9d986ed0a7d743318001aac",
+  "baseline": "F1+LOONA",
+  "baseline_efu_sha256": "1f4925e8d8dd3d023962214ff78b48147ca64d7e4a974db470bae0c43a4159c7",
+  "module_sha256": "89da92ed366577c6d7166a0f1b7245a9b4b7c25ae30b1ead4b277656d6552aa8",
+  "native_scenarios": 975,
+  "compression": {
+    "encoded_frame_size": 1487825,
+    "tokens": 691066,
+    "padding_tokens": 6,
+    "noop_alignment_token_added": false,
+    "padded_token_count": 691072,
+    "dma_output_bytes": 2073216,
+    "packed_size": 1133216,
+    "literal_size": 353785,
+    "decoded_sha256": "89da92ed366577c6d7166a0f1b7245a9b4b7c25ae30b1ead4b277656d6552aa8",
+    "roundtrip_exact": true
+  },
+  "native_loader": {
+    "image": "G2-maintenance",
+    "token_count": 691066,
+    "padding_tokens": 6,
+    "padded_count_mod16": 0,
+    "native_dma_output_bytes": 2073216,
+    "native_dma_mod48": 0,
+    "native_lz_copy_return": 1,
+    "native_lz_output_exact": true,
+    "huffman_completion_fixture_calls": 676,
+    "hardware_huffman_execution": false
+  },
+  "native_checksum": {
+    "image": "G2-maintenance",
+    "payload_bytes": 117047296,
+    "declared_sum16": 23627,
+    "actual_sum16": 23627,
+    "native_checksum_return": 1,
+    "inner_sha1_matches": true
+  },
+  "host_sections": [
+    {
+      "offset": "0x1153",
+      "checks_passed": true
+    },
+    {
+      "offset": "0x6fa4153",
+      "checks_passed": true
+    },
+    {
+      "offset": "0x741a153",
+      "checks_passed": true
+    },
+    {
+      "offset": "0x7890153",
+      "checks_passed": true
+    }
+  ],
+  "second_control_frame_preserved": true,
+  "LOONA_slot_preserved": true,
+  "receiver_and_public_key_and_signature_bytes_preserved": true,
+  "body_declared_length": 159977473,
+  "body_actual_length": 159977472,
+  "signature_valid_after_modification": false,
+  "physical_tested": false,
+  "full_receiver_replay": false,
+  "user_F1_observation": {
+    "installed_works": true,
+    "absent_boot_fails": true,
+    "hot_removal_stops": true,
+    "original_and_LOONA_both_fail": true,
+    "no_maintenance_cover": true
+  },
+  "limits": [
+    "Bus lifecycle/recovery hypothesis, not confirmed physical root cause",
+    "No complete cold boot, physical absence or hot-removal execution",
+    "Hardware Huffman modeled at completion boundary",
+    "No ink cartridge feature or cover sensor change included"
+  ],
+  "embedded_module_entry_gate_checks": [
+    {
+      "raw_profile": 0,
+      "original_gate_return": 1,
+      "helper_not_reached": true
+    },
+    {
+      "raw_profile": 1,
+      "original_gate_return": 1,
+      "helper_not_reached": true
+    }
+  ]
+}
