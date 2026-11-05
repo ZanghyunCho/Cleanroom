@@ -1,0 +1,81 @@
+{
+  "label": "A-envelope-only",
+  "filename": "FWCL14TL_KU25Q4-A-envelope-only.efu",
+  "bytes": 45731778,
+  "efu_sha256": "54c5c3d811ecd6a3f8ac4ba033ba55a7ae16b7533ea39210a553e11a9482d170",
+  "source_efu_sha256": "fb8bc19af5a13bb6dba43f8971aafeb062425e030be0c761eeccbf6000c99a56",
+  "original_rcx_sha256": "69876190f9f7189d9679835045028b451745256753cbc6b7eed425cd8cd23b14",
+  "rcx_sha256": "34bd690c3287071cc0ea829f538b94425bb24ee597f9b690ad6210336057d767",
+  "actual_body_bytes": 86728704,
+  "declared_body_bytes": 86728705,
+  "body_identical_to_official": true,
+  "original_public_key_and_signature_preserved": true,
+  "public_key_sha256": "9da293d93baeeee5ab539aba4ba64d170a00a1cd7746a23cf04def25832b9cc3",
+  "ordinary_body_ecdsa_verification": "valid",
+  "zip_crc_and_reextraction_exact": true,
+  "all_sections_verified": [
+    {
+      "offset": "0x112e",
+      "metadata_bytes": 8192,
+      "payload_bytes": 56295424,
+      "end": "0x35b412e",
+      "checks": {
+        "metadata_sum16": true,
+        "payload_sum16": true,
+        "sha1": true
+      }
+    },
+    {
+      "offset": "0x35b412e",
+      "metadata_bytes": 8192,
+      "payload_bytes": 30408704,
+      "end": "0x52b712e",
+      "checks": {
+        "metadata_sum16": true,
+        "payload_sum16": true,
+        "sha1": true
+      }
+    }
+  ],
+  "changes_confined_to_declared_ranges": true,
+  "allowed_rcx_change_ranges": [
+    [
+      "0x13e",
+      "0x142"
+    ]
+  ],
+  "original_crom": {
+    "source_offset": "0x11412e",
+    "container_end": "0x24a0f3",
+    "packed_size": 1008592,
+    "token_count": 619932,
+    "literal_size": 260289,
+    "literal_bytes_used": 260289,
+    "token_bits_used": 8068652,
+    "decoded_size": 3069664,
+    "sha256": "e6c02c744d84e50bebc97dc2f348525d58ddd290e011f7133fd0567a06263288"
+  },
+  "final_crom": {
+    "source_offset": "0x11412e",
+    "container_end": "0x24a0f3",
+    "packed_size": 1008592,
+    "token_count": 619932,
+    "literal_size": 260289,
+    "literal_bytes_used": 260289,
+    "token_bits_used": 8068652,
+    "decoded_size": 3069664,
+    "sha256": "e6c02c744d84e50bebc97dc2f348525d58ddd290e011f7133fd0567a06263288"
+  },
+  "final_decoded_control_sha256": "e6c02c744d84e50bebc97dc2f348525d58ddd290e011f7133fd0567a06263288",
+  "decoded_control_identical_to_official": true,
+  "second_frame_bytes_preserved": true,
+  "second_frame_decoded_sha256": "8a5a1d68dbe0b40869c768005a9849ef1515b153fe58183228f77f33bac09e08",
+  "second_frame_original_offset": "0x24a0f3",
+  "second_frame_new_offset": "0x24a0f3",
+  "slot_start": "0x11412e",
+  "slot_end": "0x41412e",
+  "compression": null,
+  "hardware_update_and_boot_tested": false,
+  "native_loader_or_full_receiver_executed": false,
+  "maintenance_behavior": "Official unmodified executable behavior; no absent-box or remaining-level patches."
+}
