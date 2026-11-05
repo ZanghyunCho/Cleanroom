@@ -1,0 +1,111 @@
+{
+  "filename": "FWCL14TL_KU25Q4-S2-LOONA.efu",
+  "efu_sha256": "633456ec029012746a6c814161911c6a19532a3034d99a90e2d0cd1ee82273ef",
+  "bytes": 45767690,
+  "baseline_S2_efu_sha256": "66bd161b0b9c6fa2da49af0cca8cb412c2840a195f5f658acb45f0b56d292cc8",
+  "rcx_sha256": "bf54d2c03ce263a29ecec199fd9ca49cb0d47c3af57887fba73e2c9455dcb483",
+  "source_png_sha256": "c4192fb7f7173da0192dfa9b9c91bee36b1d721fddddbabc2d522f8c221cfe2a",
+  "source_provenance": "Original LOONA artwork from repository LK29Q5-LOONA-validation.zip, visually matching the current supplied reference; current inline attachment file bytes were not exposed to the executor.",
+  "width": 480,
+  "height": 272,
+  "pixel_format": "R,G,B,A bytes; alpha=255",
+  "source_pixels_exact": true,
+  "no_resize_redraw_or_color_change": true,
+  "resource_offset": "0x41412e",
+  "resource_slot_end": "0x41812e",
+  "original_resource_sha256": "5f4b3537569473df36f1b78fd8ad4f03210e341a8b07c1ceb2f9ebfd5c823a45",
+  "new_resource_sha256": "7911319cc1eab60d50b123a4cd430991d67f0591f9a112ef5b122a9c47e0cd78",
+  "resource_decoded_bytes": 522884,
+  "pixel_bytes": 522240,
+  "trailing_code_data_bytes": 644,
+  "trailing_code_data_sha256": "0ec9ca27b4ef7e2567098d29e7d2995e261b9935855741c67fdf4ff45d8b6e1b",
+  "trailing_code_data_preserved": true,
+  "allowed_rcx_change_ranges": [
+    [
+      "0x1164",
+      "0x1166"
+    ],
+    [
+      "0x1172",
+      "0x1186"
+    ],
+    [
+      "0x41412e",
+      "0x41812e"
+    ]
+  ],
+  "outside_allowed_ranges_identical_to_S2": true,
+  "S2_control_module_sha256": "2c23dd32742e4060cdeb1c9e20a9da49d6d54072094d1e4eb0082826f7661453",
+  "S2_control_byte_identical": true,
+  "retained_S2_native_test_evidence": "7063 scenarios passed on the byte-identical S2 control module; tests were not rerun for this bitmap-only change.",
+  "original_key_signature_and_declared_length_preserved_from_S2": true,
+  "actual_body_bytes": 86728704,
+  "declared_body_bytes": 86728705,
+  "modified_body_ecdsa_signature_valid": false,
+  "zip_crc_and_reextraction_exact": true,
+  "host_sections": [
+    {
+      "offset": "0x112e",
+      "metadata_bytes": 8192,
+      "payload_bytes": 56295424,
+      "end": "0x35b412e",
+      "checks": {
+        "metadata_sum16": true,
+        "payload_sum16": true,
+        "sha1": true
+      }
+    },
+    {
+      "offset": "0x35b412e",
+      "metadata_bytes": 8192,
+      "payload_bytes": 30408704,
+      "end": "0x52b712e",
+      "checks": {
+        "metadata_sum16": true,
+        "payload_sum16": true,
+        "sha1": true
+      }
+    }
+  ],
+  "compression": {
+    "encoded_frame_size": 9001,
+    "tokens": 4275,
+    "padding_tokens": 13,
+    "noop_alignment_token_added": false,
+    "padded_token_count": 4288,
+    "dma_output_bytes": 12864,
+    "packed_size": 6480,
+    "literal_size": 2189,
+    "decoded_sha256": "7911319cc1eab60d50b123a4cd430991d67f0591f9a112ef5b122a9c47e0cd78",
+    "roundtrip_exact": true
+  },
+  "original_frame": {
+    "source_offset": "0x41412e",
+    "container_end": "0x414f52",
+    "packed_size": 3024,
+    "token_count": 2666,
+    "literal_size": 260,
+    "literal_bytes_used": 260,
+    "token_bits_used": 24022,
+    "decoded_size": 522884,
+    "sha256": "5f4b3537569473df36f1b78fd8ad4f03210e341a8b07c1ceb2f9ebfd5c823a45"
+  },
+  "final_frame": {
+    "source_offset": "0x41412e",
+    "container_end": "0x41645b",
+    "packed_size": 6480,
+    "token_count": 4275,
+    "literal_size": 2189,
+    "literal_bytes_used": 2189,
+    "token_bits_used": 51600,
+    "decoded_size": 522884,
+    "sha256": "7911319cc1eab60d50b123a4cd430991d67f0591f9a112ef5b122a9c47e0cd78"
+  },
+  "physical_boot_display_tested": false,
+  "native_loader_hardware_huffman_or_panel_controller_executed": false,
+  "limits": [
+    "Source archive bitmap was used without redrawing; current reference is a visual match, not a byte comparison with the inaccessible inline attachment.",
+    "No physical update, full boot, panel controller or hardware Huffman/DMA test.",
+    "S2 feature behavior is preserved byte-for-byte; S1 reported success is not a physical success result for S2-LOONA."
+  ]
+}
