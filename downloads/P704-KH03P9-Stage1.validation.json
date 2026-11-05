@@ -1,0 +1,270 @@
+{
+  "base": "KH03P9.FY19",
+  "module_base": "0x43808000",
+  "module_source_rcx_offset": "0x4f0a12e",
+  "original_module_sha256": "f5236e51018930c24945ef53fd760871c4d293d3939b35b9dbc5efc0efe7f080",
+  "patched_module_sha256": "46e8453422f664471259ff44c31d4cf816cc81a765cfcf7279b80b1ba875d2d2",
+  "instruction_sites": 29,
+  "changed_bytes": 86,
+  "patches": [
+    {
+      "offset": "0xaf330",
+      "address": "0x438b7330",
+      "before": "b010dde1",
+      "after": "0010a0e3",
+      "reason": "Software ZA/YA read returns zero after original backing read"
+    },
+    {
+      "offset": "0xaf37c",
+      "address": "0x438b737c",
+      "before": "b010dde1",
+      "after": "0010a0e3",
+      "reason": "Software ZA/YA read returns zero after original backing read"
+    },
+    {
+      "offset": "0xaf340",
+      "address": "0x438b7340",
+      "before": "b000cde1",
+      "after": "0030a0e3",
+      "reason": "Zero software usage value"
+    },
+    {
+      "offset": "0xaf344",
+      "address": "0x438b7344",
+      "before": "10019fe5",
+      "after": "b030cde1",
+      "reason": "Store zero into the original two-byte write buffer"
+    },
+    {
+      "offset": "0xaf348",
+      "address": "0x438b7348",
+      "before": "0030a0e3",
+      "after": "0c019fe5",
+      "reason": "Preserve original setting ID and normal write dispatch"
+    },
+    {
+      "offset": "0xaf38c",
+      "address": "0x438b738c",
+      "before": "b000cde1",
+      "after": "0030a0e3",
+      "reason": "Zero software usage value"
+    },
+    {
+      "offset": "0xaf390",
+      "address": "0x438b7390",
+      "before": "c8009fe5",
+      "after": "b030cde1",
+      "reason": "Store zero into the original two-byte write buffer"
+    },
+    {
+      "offset": "0xaf394",
+      "address": "0x438b7394",
+      "before": "0030a0e3",
+      "after": "c4009fe5",
+      "reason": "Preserve original setting ID and normal write dispatch"
+    },
+    {
+      "offset": "0xaf46c",
+      "address": "0x438b746c",
+      "before": "0c1091e5",
+      "after": "0010a0e3",
+      "reason": "Chip-counter reconciliation mirrors return zero"
+    },
+    {
+      "offset": "0xaf488",
+      "address": "0x438b7488",
+      "before": "101091e5",
+      "after": "0010a0e3",
+      "reason": "Chip-counter reconciliation mirrors return zero"
+    },
+    {
+      "offset": "0xb108c",
+      "address": "0x438b908c",
+      "before": "010080e1",
+      "after": "0000a0e3",
+      "reason": "Chip usage read returns zero after original cache reads"
+    },
+    {
+      "offset": "0xb127c",
+      "address": "0x438b927c",
+      "before": "010080e1",
+      "after": "0000a0e3",
+      "reason": "Chip usage read returns zero after original cache reads"
+    },
+    {
+      "offset": "0xb112c",
+      "address": "0x438b912c",
+      "before": "0037a0e1",
+      "after": "0030a0e3",
+      "reason": "Zero high/middle usage component before original chip cache setter"
+    },
+    {
+      "offset": "0xb1134",
+      "address": "0x438b9134",
+      "before": "2019a0e1",
+      "after": "0010a0e3",
+      "reason": "Zero high usage component"
+    },
+    {
+      "offset": "0xb1138",
+      "address": "0x438b9138",
+      "before": "075000e2",
+      "after": "0050a0e3",
+      "reason": "Zero low usage component"
+    },
+    {
+      "offset": "0xb1290",
+      "address": "0x438b9290",
+      "before": "0037a0e1",
+      "after": "0030a0e3",
+      "reason": "Zero high/middle usage component before original chip cache setter"
+    },
+    {
+      "offset": "0xb1298",
+      "address": "0x438b9298",
+      "before": "2019a0e1",
+      "after": "0010a0e3",
+      "reason": "Zero high usage component"
+    },
+    {
+      "offset": "0xb129c",
+      "address": "0x438b929c",
+      "before": "075000e2",
+      "after": "0050a0e3",
+      "reason": "Zero low usage component"
+    },
+    {
+      "offset": "0xb1c5c",
+      "address": "0x438b9c5c",
+      "before": "b000dde1",
+      "after": "0000a0e3",
+      "reason": "Read near/full usage flags as clear; original cache access remains"
+    },
+    {
+      "offset": "0xb1c7c",
+      "address": "0x438b9c7c",
+      "before": "b000dde1",
+      "after": "0000a0e3",
+      "reason": "Read near/full usage flags as clear; original cache access remains"
+    },
+    {
+      "offset": "0xb1cc8",
+      "address": "0x438b9cc8",
+      "before": "b000dde1",
+      "after": "0000a0e3",
+      "reason": "Read near/full usage flags as clear; original cache access remains"
+    },
+    {
+      "offset": "0xb1ce8",
+      "address": "0x438b9ce8",
+      "before": "b000dde1",
+      "after": "0000a0e3",
+      "reason": "Read near/full usage flags as clear; original cache access remains"
+    },
+    {
+      "offset": "0xb1c8c",
+      "address": "0x438b9c8c",
+      "before": "0050a0e1",
+      "after": "0050a0e3",
+      "reason": "Write clear near/full usage flags through original setter"
+    },
+    {
+      "offset": "0xb1cf8",
+      "address": "0x438b9cf8",
+      "before": "0050a0e1",
+      "after": "0050a0e3",
+      "reason": "Write clear near/full usage flags through original setter"
+    },
+    {
+      "offset": "0xf55e0",
+      "address": "0x438fd5e0",
+      "before": "0000d4e5",
+      "after": "6400a0e3",
+      "reason": "Publish maintenance available space as 100 percent"
+    },
+    {
+      "offset": "0xf55f0",
+      "address": "0x438fd5f0",
+      "before": "b000d4e1",
+      "after": "0000a0e3",
+      "reason": "Publish maintenance ZA/YA usage as zero"
+    },
+    {
+      "offset": "0xf55fc",
+      "address": "0x438fd5fc",
+      "before": "b000d4e1",
+      "after": "0000a0e3",
+      "reason": "Publish maintenance ZA/YA usage as zero"
+    },
+    {
+      "offset": "0x1a584",
+      "address": "0x43822584",
+      "before": "b800dde1",
+      "after": "0000a0e3",
+      "reason": "Use zero consumption in IKS maintenance capacity comparison"
+    },
+    {
+      "offset": "0x1a648",
+      "address": "0x43822648",
+      "before": "640060e2",
+      "after": "6400a0e3",
+      "reason": "IKS normal maintenance available-space report is 100 percent"
+    }
+  ],
+  "physical_update_tested": false,
+  "physical_boot_tested": false,
+  "scope": "Software-visible ZA/YA counters, known cache/config writers, reconciliation and reporting; no claim that existing physical chip/NVRAM cells are erased.",
+  "not_implemented": [
+    "No-cartridge operation",
+    "Bypass unrelated chip or cover errors",
+    "Physical EEPROM/chip transaction validation"
+  ],
+  "file": "FW4838TL_KH03P9-P704-Stage1-maintenance-zero.efu",
+  "bytes": 51506415,
+  "sha256": "6d0050646b09887f0d9ca73531913645e52058acf48c2cacfb1d4f3c91ed4cab",
+  "rcx_sha256": "3a489d5cb6e05d7832a0647f34da3093172a155c3b5ef66a797f59fb5b62349d",
+  "actual_body_bytes": 95981568,
+  "declared_body_bytes": 95981569,
+  "compression": {
+    "encoded_frame_size": 751923,
+    "tokens": 352866,
+    "padding_tokens": 14,
+    "padded_token_count": 352880,
+    "dma_output_bytes": 1058640,
+    "packed_size": 561072,
+    "literal_size": 190047,
+    "decoded_sha256": "46e8453422f664471259ff44c31d4cf816cc81a765cfcf7279b80b1ba875d2d2",
+    "roundtrip_exact": true
+  },
+  "sections": [
+    {
+      "offset": "0x112e",
+      "metadata_bytes": 8192,
+      "body_bytes": 15663104,
+      "checks_passed": true
+    },
+    {
+      "offset": "0xef412e",
+      "metadata_bytes": 8192,
+      "body_bytes": 67108864,
+      "checks_passed": true
+    },
+    {
+      "offset": "0x4ef712e",
+      "metadata_bytes": 8192,
+      "body_bytes": 13172736,
+      "checks_passed": true
+    }
+  ],
+  "final_crc_ok": true,
+  "final_module_exact": true,
+  "second_frame_identical": true,
+  "second_frame_new_offset": "0x4fc1a65",
+  "public_key_and_signature_preserved": true,
+  "unexpected_changes": false,
+  "normal_body_signature_valid": false,
+  "native_tests_passed": 125,
+  "native_tests_failed": 0,
+  "host_signature_check": "invalid, expected after body modification",
+  "physical_external_drain": "User reports external waste-ink drainage completed; not independently inspected"
+}
