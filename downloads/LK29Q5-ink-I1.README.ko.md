@@ -38,3 +38,7 @@
 SHA-256: `66de866614df4dec3019aee9a8476000b19d7ef73db5b00391ef4c762dbaa4c6`
 
 재현: 원본 `*.rcx`, 대응 압축 해제 제어/수신 모듈, 기존 E+LOONA EFU를 준비한 뒤 `python research/verify_ink_i1.py`, `python research/package_ink_i1.py` 실행.
+
+## 이후 실기 보고
+
+사용자는 I1에서 잔량이 가득 찬 것으로 표시되지만 비정품 확인을 인쇄할 때마다 눌러야 한다고 보고했다. 잔량 표시 성공과 경고 제거를 구분한다. 후속 [I2](LK29Q5-ink-I2.README.ko.md)도 경고 제거의 실기 성공은 아직 미검증이다.

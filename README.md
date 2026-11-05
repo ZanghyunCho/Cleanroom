@@ -1,5 +1,14 @@
 # SC-P7500 USB 공개키 읽기 시험
 
+## I2 비정품 사용 확인 반복 경로 시험본
+
+I1의 100% 표시가 작동하지만 비정품 확인이 반복된다는 사용자 보고에 따른 후보입니다. I1에서 특정 비정품 사용 승인 조회 한 곳만 변경했습니다. ARM 시험 9,160건과 포장 검사를 통과했지만 **실제 프린터의 경고 제거는 미검증**입니다. 실제 정품 인증이 아니라 해당 승인 조건을 완료된 것으로 취급합니다. I1의 잔량·소비 변경과 LOONA 로고를 유지합니다.
+
+- [I2 EFU 다운로드](downloads/FW7560TL_LK29Q5-LOONA-I2-ink-approval.efu)
+- [변경·검증·시험 순서](downloads/LK29Q5-ink-I2.README.ko.md)
+- [상세 검증 결과](downloads/FW7560TL_LK29Q5-LOONA-I2-ink-approval.validation.json)
+- [소스·검증 자료](downloads/LK29Q5-ink-I2-validation.zip)
+
 ## P704 KH03P9 A/B 대조군
 
 - [A: 원본 본문 · 선언 길이 +1](downloads/FW4838TL_KH03P9-startup-A-envelope-only.efu)

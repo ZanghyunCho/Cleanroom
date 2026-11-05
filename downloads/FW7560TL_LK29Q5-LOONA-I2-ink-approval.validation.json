@@ -1,0 +1,70 @@
+{
+  "artifact": "FW7560TL_LK29Q5-LOONA-I2-ink-approval.efu",
+  "efu_sha256": "df55d2242c85b86be65c9e3997187a958d67954809b9bb5308b0679f31bfdc26",
+  "rcx_sha256": "999b88b41106f64c228d9ff53ccf84957d469fb5365e2d4aea8b4129e615eeb2",
+  "baseline": "E+LOONA; G/G2 not included",
+  "module_sha256": "e91c2736350541b224adea0bde965d28849131821c26553401cadd9afe4cc5c7",
+  "native_cases": 9160,
+  "compression": {
+    "encoded_frame_size": 1487836,
+    "tokens": 691075,
+    "padding_tokens": 13,
+    "noop_alignment_token_added": false,
+    "padded_token_count": 691088,
+    "dma_output_bytes": 2073264,
+    "packed_size": 1133232,
+    "literal_size": 353780,
+    "decoded_sha256": "e91c2736350541b224adea0bde965d28849131821c26553401cadd9afe4cc5c7",
+    "roundtrip_exact": true
+  },
+  "native_loader": {
+    "image": "I2-ink",
+    "token_count": 691075,
+    "padding_tokens": 13,
+    "padded_count_mod16": 0,
+    "native_dma_output_bytes": 2073264,
+    "native_dma_mod48": 0,
+    "native_lz_copy_return": 1,
+    "native_lz_output_exact": true,
+    "huffman_completion_fixture_calls": 676,
+    "hardware_huffman_execution": false
+  },
+  "native_checksum": {
+    "image": "I2-ink",
+    "payload_bytes": 117047296,
+    "declared_sum16": 24194,
+    "actual_sum16": 24194,
+    "native_checksum_return": 1,
+    "inner_sha1_matches": true
+  },
+  "host_sections": [
+    {
+      "offset": "0x1153",
+      "checks_passed": true
+    },
+    {
+      "offset": "0x6fa4153",
+      "checks_passed": true
+    },
+    {
+      "offset": "0x741a153",
+      "checks_passed": true
+    },
+    {
+      "offset": "0x7890153",
+      "checks_passed": true
+    }
+  ],
+  "original_key_signature_receiver_and_LOONA_preserved": true,
+  "actual_body_length": 159977472,
+  "declared_body_length": 159977473,
+  "modified_signature_valid": false,
+  "physical_tested": false,
+  "full_receiver_replay": false,
+  "scope": "I1 report/usage changes; specific non-logo approval query",
+  "limits": [
+    "Synthetic metadata and job cycles, not physical printing",
+    "Other warning/compatibility conditions and explicit errors remain",
+    "Actual UI confirmation suppression needs a printer test"
+  ]
+}
