@@ -18,6 +18,15 @@ I1의 100% 표시가 작동하지만 비정품 확인이 반복된다는 사용�
 
 공식 KH03P9 기반 포장 대조군입니다. 실제 업데이트·부팅은 미검증이며, 유지보수 카트리지 동작을 변경하지 않습니다.
 
+## SC-P5300 Series KU25Q4 S1 유지보수 사용량 0 시험본
+
+두 유지보수 슬롯의 정상 숫자 잔량 100%, 사용량 읽기·설정·증가와 소수 누적값의 0 처리를 적용했습니다. 최종 EFU에서 추출한 코드로 ARM 시험 1,923개와 포장 검사를 통과했습니다. **실기 업데이트·부팅·실제 소비 후 고정은 미검증**입니다.
+
+- [S1 EFU 다운로드](downloads/FWCL14TL_KU25Q4-S1-maintenance-zero-usage.efu)
+- [변경·검증·실기 확인 항목](downloads/KU25Q4-S1.README.ko.md)
+- [상세 검증 결과](downloads/FWCL14TL_KU25Q4-S1-maintenance-zero-usage.validation.json)
+- [재현 코드·ARM 시험 자료](downloads/KU25Q4-S1-validation.zip)
+
 ## SC-P5300 Series KU25Q4 A·B 대조군
 
 - [A: 원본 본문 유지·선언 길이 +1](downloads/FWCL14TL_KU25Q4-A-envelope-only.efu)

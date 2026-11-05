@@ -1,0 +1,209 @@
+{
+  "label": "KU25Q4-S1-maintenance-zero-usage",
+  "filename": "FWCL14TL_KU25Q4-S1-maintenance-zero-usage.efu",
+  "bytes": 45762220,
+  "efu_sha256": "7956e54ab76c5be66bb66a8b67ef5d6fdab697fb262b2f6f98603e5e08f7a890",
+  "source_efu_sha256": "fb8bc19af5a13bb6dba43f8971aafeb062425e030be0c761eeccbf6000c99a56",
+  "original_rcx_sha256": "69876190f9f7189d9679835045028b451745256753cbc6b7eed425cd8cd23b14",
+  "rcx_sha256": "6abffac56b26ac748ba8b03eac659419293da1a48a0a2d0940ae89081a835f41",
+  "actual_body_bytes": 86728704,
+  "declared_body_bytes": 86728705,
+  "original_key_and_signature_bytes_preserved": true,
+  "ordinary_modified_body_signature": "invalid",
+  "zip_crc_and_reextraction_exact": true,
+  "sections": [
+    {
+      "offset": "0x112e",
+      "metadata_bytes": 8192,
+      "payload_bytes": 56295424,
+      "end": "0x35b412e",
+      "checks": {
+        "metadata_sum16": true,
+        "payload_sum16": true,
+        "sha1": true
+      }
+    },
+    {
+      "offset": "0x35b412e",
+      "metadata_bytes": 8192,
+      "payload_bytes": 30408704,
+      "end": "0x52b712e",
+      "checks": {
+        "metadata_sum16": true,
+        "payload_sum16": true,
+        "sha1": true
+      }
+    }
+  ],
+  "allowed_rcx_change_ranges": [
+    [
+      "0x13e",
+      "0x142"
+    ],
+    [
+      "0x1164",
+      "0x1166"
+    ],
+    [
+      "0x1172",
+      "0x1186"
+    ],
+    [
+      "0x11412e",
+      "0x41412e"
+    ]
+  ],
+  "outside_allowed_ranges_unchanged": true,
+  "original_module_sha256": "e6c02c744d84e50bebc97dc2f348525d58ddd290e011f7133fd0567a06263288",
+  "final_decoded_module_sha256": "49bd6d6d5eedaa7c869405bddd4f34e30089ee224c1763cac9eb756df21951f5",
+  "final_module_matches_tested_module": true,
+  "module_patches": {
+    "label": "KU25Q4-S1-maintenance-zero-usage",
+    "original_control_sha256": "e6c02c744d84e50bebc97dc2f348525d58ddd290e011f7133fd0567a06263288",
+    "modified_control_sha256": "49bd6d6d5eedaa7c869405bddd4f34e30089ee224c1763cac9eb756df21951f5",
+    "load_address": "0x44604000",
+    "module_bytes": 3069664,
+    "configured_maintenance_slots": 2,
+    "maintenance_accounting_ids": [
+      "0x1d",
+      "0x1e",
+      "0x26"
+    ],
+    "patches": [
+      {
+        "address": "0x4463420c",
+        "module_offset": "0x3020c",
+        "before": "70402de90150a0e10040a0e13b0f00eb000050e30f00000a0410a0e11d00a0e32e8effebd0139fe5fa2fa0e3041191e7910202e0020050e10600008a050080e0000052e10300008a0410a0e17040bde81d00a0e34b8effea0520a0e10410a0e17040bde81d00a0e3aa8effea",
+        "after": "0020a0e30010a0e11d00a0e35d8effea1d0050e31e005013260050130400001a10402de92d0000eb568effeb0000a0e31080bde870402de9298effea1d0050e31e005013260050130020a003f0402de94d8effea1d0050e31e00501326005013488eff0af0402de9ab8effea",
+        "reason": "Replace primary maintenance addition with zero write; reuse its retired body for ID-specific read/set/add gates"
+      },
+      {
+        "address": "0x44617aec",
+        "module_offset": "0x13aec",
+        "before": "70402de9",
+        "after": "ca7100ea",
+        "reason": "Only IDs 0x1d,0x1e,0x26 clear stored maintenance usage; all other IDs execute original prologue and body"
+      },
+      {
+        "address": "0x44617b94",
+        "module_offset": "0x13b94",
+        "before": "f0402de9",
+        "after": "ab7100ea",
+        "reason": "Only IDs 0x1d,0x1e,0x26 clear stored maintenance usage; all other IDs execute original prologue and body"
+      },
+      {
+        "address": "0x44617d24",
+        "module_offset": "0x13d24",
+        "before": "f0402de9",
+        "after": "4d7100ea",
+        "reason": "Only IDs 0x1d,0x1e,0x26 clear stored maintenance usage; all other IDs execute original prologue and body"
+      },
+      {
+        "address": "0x446342a4",
+        "module_offset": "0x302a4",
+        "before": "0120a0e1",
+        "after": "0020a0e3",
+        "reason": "Ignore new fractional maintenance consumption amount"
+      },
+      {
+        "address": "0x446342b4",
+        "module_offset": "0x302b4",
+        "before": "023083e0",
+        "after": "0030a0e3",
+        "reason": "Clear pre-existing fractional remainder on fractional accounting update"
+      },
+      {
+        "address": "0x44635760",
+        "module_offset": "0x31760",
+        "before": "0040d1e7",
+        "after": "6440a0e3",
+        "reason": "Report 100 in numeric maintenance states 0,8,9, preserving original error encodings"
+      },
+      {
+        "address": "0x446342e4",
+        "module_offset": "0x302e4",
+        "before": "70402de90060a0e1",
+        "after": "6400a0e31eff2fe1",
+        "reason": "Return 100 for maintenance remaining-capacity calculation"
+      },
+      {
+        "address": "0x446342ec",
+        "module_offset": "0x302ec",
+        "before": "bfffffeb18139fe50040a0e3912080e02053a0e1",
+        "after": "0020a0e304c09fe501218ce71eff2fe1d4b39844",
+        "reason": "Clear the selected slot fractional remainder on every maintenance accounting read, before the native zero setter"
+      }
+    ],
+    "changed_bytes": 137,
+    "semantics": "Native setters clear pre-existing RAM usage on accounting reads, sets and additions; fractional accounting reads and updates clear remainder. Numeric report and capacity calculation return 100.",
+    "preserved": [
+      "Other accounting IDs, including ink",
+      "Two-slot count and slot addressing",
+      "Original error encodings 105,110,114,119",
+      "Chip access, printer mode, mechanical controls and cover checks"
+    ],
+    "not_claimed": [
+      "Every direct or DMA write to RAM intercepted",
+      "Physical chip EEPROM already cleared",
+      "Physical update, boot, printing or waste-fluid consumption tested",
+      "Operation with cartridges absent"
+    ]
+  },
+  "compression": {
+    "encoded_frame_size": 1311318,
+    "tokens": 616067,
+    "padding_tokens": 13,
+    "noop_alignment_token_added": false,
+    "padded_token_count": 616080,
+    "dma_output_bytes": 1848240,
+    "packed_size": 1007728,
+    "literal_size": 302774,
+    "decoded_sha256": "49bd6d6d5eedaa7c869405bddd4f34e30089ee224c1763cac9eb756df21951f5",
+    "roundtrip_exact": true
+  },
+  "original_frame": {
+    "source_offset": "0x11412e",
+    "container_end": "0x24a0f3",
+    "packed_size": 1008592,
+    "token_count": 619932,
+    "literal_size": 260289,
+    "literal_bytes_used": 260289,
+    "token_bits_used": 8068652,
+    "decoded_size": 3069664,
+    "sha256": "e6c02c744d84e50bebc97dc2f348525d58ddd290e011f7133fd0567a06263288"
+  },
+  "final_frame": {
+    "source_offset": "0x11412e",
+    "container_end": "0x254388",
+    "packed_size": 1007728,
+    "token_count": 616067,
+    "literal_size": 302774,
+    "literal_bytes_used": 302774,
+    "token_bits_used": 8061517,
+    "decoded_size": 3069664,
+    "sha256": "49bd6d6d5eedaa7c869405bddd4f34e30089ee224c1763cac9eb756df21951f5"
+  },
+  "second_frame_preserved": true,
+  "second_frame_original_offset": "0x24a0f3",
+  "second_frame_new_offset": "0x254388",
+  "second_frame_decoded_sha256": "8a5a1d68dbe0b40869c768005a9849ef1515b153fe58183228f77f33bac09e08",
+  "allocation_end": "0x41412e",
+  "native_scenarios_passed": 1923,
+  "native_case_counts": {
+    "configured_slot_count": 1,
+    "maintenance_accounting_cases": 432,
+    "other_accounting_regressions": 972,
+    "specific_helper_cases": 360,
+    "fraction_clear_on_read_cases": 24,
+    "remaining_report_cases": 100,
+    "remaining_calculation_cases": 8,
+    "original_positive_controls": 1,
+    "repeated_mixed_sequences": 1,
+    "two_slot_consumption_worker_cases": 24
+  },
+  "native_verdict_hooks": 0,
+  "native_tests_run_on_final_efu_extraction": true,
+  "hardware_update_boot_printing_tested": false,
+  "full_receiver_native_loader_hardware_huffman_executed": false,
+  "persistence_scope": "Native accounting RAM and dirty flags. Actual physical cartridge EEPROM writes and restoration across reboot not validated."
+}
