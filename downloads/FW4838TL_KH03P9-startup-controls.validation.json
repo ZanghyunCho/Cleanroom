@@ -1,0 +1,112 @@
+[
+  {
+    "label": "A-envelope-only",
+    "file": "FW4838TL_KH03P9-startup-A-envelope-only.efu",
+    "bytes": 51490357,
+    "sha256": "aaf9857f991e4b694acce3099c57ce2add9b4d9ebade829d82b815e7aff5332b",
+    "rcx_sha256": "28797a5acfb7373110ce1db953ba1311378f35e1e740ca22c3f3321a3e005841",
+    "base_version": "KH03P9.FY19",
+    "dump_version": "KH04M4",
+    "original_signature_bytes_preserved": true,
+    "original_public_key_bytes_preserved": true,
+    "actual_body_bytes": 95981568,
+    "declared_body_bytes": 95981569,
+    "body_identical_to_official": true,
+    "normal_body_signature_host_check": "valid",
+    "sections": [
+      {
+        "offset": "0x112e",
+        "metadata_bytes": 8192,
+        "body_bytes": 15663104,
+        "checks_passed": true
+      },
+      {
+        "offset": "0xef412e",
+        "metadata_bytes": 8192,
+        "body_bytes": 67108864,
+        "checks_passed": true
+      },
+      {
+        "offset": "0x4ef712e",
+        "metadata_bytes": 8192,
+        "body_bytes": 13172736,
+        "checks_passed": true
+      }
+    ],
+    "compression": null,
+    "decoded_code_identical_to_official": true,
+    "decoded_code_sha256": "5385d8f1b8cdbf5ad7078f5d82bf398c3e0917f40a2b23c14e84323688096ec8",
+    "second_frame_identical": true,
+    "second_frame_original_offset": "0x42b21d",
+    "second_frame_new_offset": "0x42b21d",
+    "allocation_end": "0x46e12e",
+    "unexpected_changes": false,
+    "final_zip_crc_ok": true,
+    "final_reextract_identical": true,
+    "physical_update_tested": false,
+    "physical_boot_tested": false,
+    "full_upper_receiver_tested": false,
+    "native_loader_dma_tested": false,
+    "purpose": "Packaging controls only; original maintenance-cartridge behavior remains."
+  },
+  {
+    "label": "B-original-code-reencoded",
+    "file": "FW4838TL_KH03P9-startup-B-original-code-reencoded.efu",
+    "bytes": 51580000,
+    "sha256": "8e894a7c05590aae90beccab47d231f8ebb8fee743f68a545c042bfc63342fa8",
+    "rcx_sha256": "525bf9e44c3dfc841e4251b7ea9da1417983a8638b8808f0b7e5a1257d74e3b5",
+    "base_version": "KH03P9.FY19",
+    "dump_version": "KH04M4",
+    "original_signature_bytes_preserved": true,
+    "original_public_key_bytes_preserved": true,
+    "actual_body_bytes": 95981568,
+    "declared_body_bytes": 95981569,
+    "body_identical_to_official": false,
+    "normal_body_signature_host_check": "invalid",
+    "sections": [
+      {
+        "offset": "0x112e",
+        "metadata_bytes": 8192,
+        "body_bytes": 15663104,
+        "checks_passed": true
+      },
+      {
+        "offset": "0xef412e",
+        "metadata_bytes": 8192,
+        "body_bytes": 67108864,
+        "checks_passed": true
+      },
+      {
+        "offset": "0x4ef712e",
+        "metadata_bytes": 8192,
+        "body_bytes": 13172736,
+        "checks_passed": true
+      }
+    ],
+    "compression": {
+      "encoded_frame_size": 3555662,
+      "tokens": 1537969,
+      "padding_tokens": 15,
+      "padded_token_count": 1537984,
+      "dma_output_bytes": 4613952,
+      "packed_size": 2639120,
+      "literal_size": 915690,
+      "decoded_sha256": "5385d8f1b8cdbf5ad7078f5d82bf398c3e0917f40a2b23c14e84323688096ec8",
+      "roundtrip_exact": true
+    },
+    "decoded_code_identical_to_official": true,
+    "decoded_code_sha256": "5385d8f1b8cdbf5ad7078f5d82bf398c3e0917f40a2b23c14e84323688096ec8",
+    "second_frame_identical": true,
+    "second_frame_original_offset": "0x42b21d",
+    "second_frame_new_offset": "0x448280",
+    "allocation_end": "0x46e12e",
+    "unexpected_changes": false,
+    "final_zip_crc_ok": true,
+    "final_reextract_identical": true,
+    "physical_update_tested": false,
+    "physical_boot_tested": false,
+    "full_upper_receiver_tested": false,
+    "native_loader_dma_tested": false,
+    "purpose": "Packaging controls only; original maintenance-cartridge behavior remains."
+  }
+]

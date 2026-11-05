@@ -1,5 +1,14 @@
 # SC-P7500 USB 공개키 읽기 시험
 
+## P704 KH03P9 A/B 대조군
+
+- [A: 원본 본문 · 선언 길이 +1](downloads/FW4838TL_KH03P9-startup-A-envelope-only.efu)
+- [B: 원본 코드 재압축 · 포장](downloads/FW4838TL_KH03P9-startup-B-original-code-reencoded.efu)
+- [검증 범위와 시험 순서](downloads/P704-KH03P9-startup-controls.README.ko.md)
+- [검증 결과](downloads/FW4838TL_KH03P9-startup-controls.validation.json) · [재현 코드와 분석 자료](downloads/P704-KH03P9-startup-controls-validation.zip)
+
+공식 KH03P9 기반 포장 대조군입니다. 실제 업데이트·부팅은 미검증이며, 유지보수 카트리지 동작을 변경하지 않습니다.
+
 ## I1 잉크 잔량·장착/브랜딩 보고 시험본
 
 E+LOONA 기준의 I1 진단 후보입니다. 잔량 보고 100%, 식별한 두 소비 증가 경로의 증가량 0, 정상 장착·브랜딩 분류의 알림 출력을 적용했습니다. G/G2 변경은 포함하지 않습니다. ARM 시험 1,671건과 포장 검사를 통과했지만 **실기 부팅·인쇄 및 모든 정품/호환성 경고 제거는 미검증**입니다. 기존 잉크 종료·통신 오류를 일괄 해제하지 않습니다.
