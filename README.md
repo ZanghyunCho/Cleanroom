@@ -1,5 +1,13 @@
 # SC-P7500 USB 공개키 읽기 시험
 
+## P704 Stage 2 R1: 반복 동기화 결함 수정
+
+- [R1 EFU 다운로드](downloads/FW4838TL_KH03P9-P704-Stage2-R1-handshake-fix.efu)
+- [원인·수정·검증 범위](downloads/P704-KH03P9-Stage2-R1.README.ko.md)
+- [검증 결과](downloads/P704-KH03P9-Stage2-R1.validation.json) · [재현 코드·자료](downloads/P704-KH03P9-Stage2-R1-validation.zip)
+
+A/B에 없던 드라이버 ‘인쇄중’ 표시 조사 중 구 Stage 1/2의 기록 검증 플래그 오류를 재현했습니다. 잘못 바꾼 명령 세 개만 원복하고 잔량 100%·사용량 0 변경은 유지합니다. ARM 1,312건과 최종 포장 검사를 통과했습니다. 원격 드라이버 표시 해소는 실기 미검증입니다.
+
 ## P704 KH03P9 Stage 2: 잉크 10개 슬롯 잔량 100% / 사용량 0
 
 - [Stage 2 EFU 다운로드](downloads/FW4838TL_KH03P9-P704-Stage2-all-ink-zero.efu)
