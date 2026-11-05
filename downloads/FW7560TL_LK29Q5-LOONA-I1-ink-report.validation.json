@@ -1,0 +1,71 @@
+{
+  "artifact": "FW7560TL_LK29Q5-LOONA-I1-ink-report.efu",
+  "efu_sha256": "66de866614df4dec3019aee9a8476000b19d7ef73db5b00391ef4c762dbaa4c6",
+  "rcx_sha256": "2007234799573bb73a3f98a731b6c5e364f9a02b3efd990baf1df3ec825a2777",
+  "baseline": "E+LOONA; G/G2 not included",
+  "module_sha256": "0f318bc1ebb838e862f28dfab4aace05aee220bd72c049d61ccce45cdc824c77",
+  "native_cases": 1671,
+  "compression": {
+    "encoded_frame_size": 1487835,
+    "tokens": 691076,
+    "padding_tokens": 12,
+    "noop_alignment_token_added": false,
+    "padded_token_count": 691088,
+    "dma_output_bytes": 2073264,
+    "packed_size": 1133232,
+    "literal_size": 353779,
+    "decoded_sha256": "0f318bc1ebb838e862f28dfab4aace05aee220bd72c049d61ccce45cdc824c77",
+    "roundtrip_exact": true
+  },
+  "native_loader": {
+    "image": "I1-ink-report",
+    "token_count": 691076,
+    "padding_tokens": 12,
+    "padded_count_mod16": 0,
+    "native_dma_output_bytes": 2073264,
+    "native_dma_mod48": 0,
+    "native_lz_copy_return": 1,
+    "native_lz_output_exact": true,
+    "huffman_completion_fixture_calls": 676,
+    "hardware_huffman_execution": false
+  },
+  "native_checksum": {
+    "image": "I1-ink-report",
+    "payload_bytes": 117047296,
+    "declared_sum16": 794,
+    "actual_sum16": 794,
+    "native_checksum_return": 1,
+    "inner_sha1_matches": true
+  },
+  "host_sections": [
+    {
+      "offset": "0x1153",
+      "checks_passed": true
+    },
+    {
+      "offset": "0x6fa4153",
+      "checks_passed": true
+    },
+    {
+      "offset": "0x741a153",
+      "checks_passed": true
+    },
+    {
+      "offset": "0x7890153",
+      "checks_passed": true
+    }
+  ],
+  "original_key_signature_receiver_and_LOONA_preserved": true,
+  "actual_body_length": 159977472,
+  "declared_body_length": 159977473,
+  "modified_signature_valid": false,
+  "physical_tested": false,
+  "full_receiver_replay": false,
+  "scope": "Normal installed/branding presentation, 100-percent report, two identified usage helpers",
+  "limits": [
+    "Report-field equivalence is not proof of every UI message being suppressed",
+    "No real chip, electrical absence, printing, ink-end or boot test",
+    "Two identified addition helpers, not all restoration/reconciliation writes",
+    "Notification normal class is a presentation result, not cryptographic authentication"
+  ]
+}
