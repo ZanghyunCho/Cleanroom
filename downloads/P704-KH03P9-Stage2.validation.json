@@ -1,0 +1,277 @@
+{
+  "label": "P704-Stage2-all-ink-zero",
+  "base": "KH03P9.FY19",
+  "stage1_user_report": "User reported Stage 1 passed on device",
+  "module_base": "0x43808000",
+  "stage1_module_sha256": "46e8453422f664471259ff44c31d4cf816cc81a765cfcf7279b80b1ba875d2d2",
+  "patched_module_sha256": "ab6968d68959ba877d454a3f8a064f26b559bab9e4dd1a2bfc6fbe7999045e3d",
+  "slot_count": 10,
+  "ink_usage_ids_by_slot": [
+    "0x1299",
+    "0x1309",
+    "0x130c",
+    "0x130d",
+    "0x1296",
+    "0x130a",
+    "0x1297",
+    "0x130b",
+    "0x129b",
+    "0x130e"
+  ],
+  "secondary_usage_ids": [
+    "0x1004",
+    "0x1005",
+    "0x100a",
+    "0x1098",
+    "0x1099",
+    "0x109a",
+    "0x109b",
+    "0x109c",
+    "0x109d",
+    "0x109e"
+  ],
+  "patches": [
+    {
+      "offset": "0x99664",
+      "address": "0x438a1664",
+      "before": "38402de90020e0e30a0050e30140a0e100208de500f19f37310000ea08178a43a8168a4318178a4328178a43b8168a43c8168a43",
+      "after": "0a0050e30030e0e3003081251eff2f2110402de90140a0e1203701e38a3344e3000193e70420a0e3f1ffffeb000094e51080bde8",
+      "reason": "Compact original-ID ink getter; invalid indices retain 0xffffffff"
+    },
+    {
+      "offset": "0x996a0",
+      "address": "0x438a16a0",
+      "before": "d8168a4338178a4334089fe50420a0e30d10a0e1220000ea28089fe50420a0e30d10a0e11e0000ea1c089fe50420a0e3",
+      "after": "560054e357005413590054135b0054130200000ac9c044e205005ce30100008a0000a0e3040182e7040192e771a3fdea",
+      "reason": "32-bit ink usage read clears actual RAM and returns zero; other IDs original"
+    },
+    {
+      "offset": "0x996e0",
+      "address": "0x438a16e0",
+      "before": "0d10a0e1160000ea04089fe50420a0e30d10a0e1120000eaf8079fe50420a0e30d10a0e10e0000eaec079fe5",
+      "after": "610054e362005413670054130200000af5c044e206005ce30100008a00c0a0e3b0c0c0e1b000d0e16ea3fdea",
+      "reason": "16-bit ink reconciliation usage read clears actual RAM; other IDs original"
+    },
+    {
+      "offset": "0x99720",
+      "address": "0x438a1720",
+      "before": "0d10a0e1060000ead4079fe50420a0e30d10a0e1020000eac8079fe50420a0e30d10a0e1c3ffffeb",
+      "after": "99120000091300000c1300000d130000961200000a130000971200000b1300009b1200000e130000",
+      "reason": "Exact original physical-slot to usage-ID mapping"
+    },
+    {
+      "offset": "0x99754",
+      "address": "0x438a1754",
+      "before": "13402de90a0050e300f19f37130000ea0c188a438c178a4320188a4334188a43a0178a43bc178a43e4178a43f8178a43d0178a4348188a43",
+      "after": "0a0050e31eff2f2110402de908d04de20030a0e300308de520c701e38ac344e300019ce70d10a0e10420a0e3b5ffffeb08d08de21080bde8",
+      "reason": "All ten ink usage writers submit zero via original setting dispatch"
+    },
+    {
+      "offset": "0x997a0",
+      "address": "0x438a17a0",
+      "before": "40079fe50030a0e30420a0e304108de2a9ffffeb08d08de21080bde828079fe50030a0e30420a0e304108de2f7ffffea",
+      "after": "560050e357005013590050135b0050130200000ac9c040e205005ce30100008a0010a0e3c2a2fdea001091e5c0a2fdea",
+      "reason": "Every common 32-bit write to selected ink IDs is zero; input buffer unchanged"
+    },
+    {
+      "offset": "0x997e0",
+      "address": "0x438a17e0",
+      "before": "f2ffffea08079fe50030a0e30420a0e304108de2edffffeaf8069fe50030a0e30420a0e304108de2e8ffffea",
+      "after": "610050e362005013670050130200000af5c040e206005ce30100008a0010a0e3bba2fdeab010d1e1b9a2fdea",
+      "reason": "Every common 16-bit write to selected ink usage IDs is zero"
+    },
+    {
+      "offset": "0x99820",
+      "address": "0x438a1820",
+      "before": "d8069fe50030a0e30420a0e304108de2",
+      "after": "800082e00010a0e3b010c0e11eff2fe1",
+      "reason": "Normalized current usage-cache setter preserves per-slot address calculation"
+    },
+    {
+      "offset": "0x99830",
+      "address": "0x438a1830",
+      "before": "deffffeac8069fe50030a0e30420a0e3",
+      "after": "0030a0e3b030c0e10000a0e3320900ea",
+      "reason": "Normalized current usage-cache read clears only the addressed slot"
+    },
+    {
+      "offset": "0x99840",
+      "address": "0x438a1840",
+      "before": "04108de2d9ffffeab8069fe50030a0e3",
+      "after": "0030a0e3003182e70000a0e35c0900ea",
+      "reason": "Pulse-total read clears the existing RAM value of only the addressed slot"
+    },
+    {
+      "offset": "0x22d0",
+      "address": "0x4380a2d0",
+      "before": "001091e5",
+      "after": "325d02ea",
+      "reason": "Intercept common 32-bit usage write"
+    },
+    {
+      "offset": "0x2494",
+      "address": "0x4380a494",
+      "before": "040192e7",
+      "after": "815c02ea",
+      "reason": "Intercept common 32-bit usage read"
+    },
+    {
+      "offset": "0x22f0",
+      "address": "0x4380a2f0",
+      "before": "b010d1e1",
+      "after": "3a5d02ea",
+      "reason": "Intercept common 16-bit usage write"
+    },
+    {
+      "offset": "0x24c4",
+      "address": "0x4380a4c4",
+      "before": "b000d0e1",
+      "after": "855c02ea",
+      "reason": "Intercept common 16-bit usage read"
+    },
+    {
+      "offset": "0x9bd18",
+      "address": "0x438a3d18",
+      "before": "800082e0",
+      "after": "c0f6ffea",
+      "reason": "Zero normalized usage cache writes"
+    },
+    {
+      "offset": "0x9bd08",
+      "address": "0x438a3d08",
+      "before": "b000d0e1",
+      "after": "c8f6ffea",
+      "reason": "Zero normalized usage cache reads"
+    },
+    {
+      "offset": "0xabe94",
+      "address": "0x438b3e94",
+      "before": "b000dde1",
+      "after": "0000a0e3",
+      "reason": "Chip usage read reports zero after original field read"
+    },
+    {
+      "offset": "0xac198",
+      "address": "0x438b4198",
+      "before": "b000dde1",
+      "after": "0000a0e3",
+      "reason": "Chip usage read reports zero after original field read"
+    },
+    {
+      "offset": "0xac744",
+      "address": "0x438b4744",
+      "before": "b000dde1",
+      "after": "0000a0e3",
+      "reason": "Chip usage read reports zero after original field read"
+    },
+    {
+      "offset": "0xac128",
+      "address": "0x438b4128",
+      "before": "0140a0e1",
+      "after": "0040a0e3",
+      "reason": "Write zero into both original copies of this chip usage field"
+    },
+    {
+      "offset": "0xac1ac",
+      "address": "0x438b41ac",
+      "before": "0140a0e1",
+      "after": "0040a0e3",
+      "reason": "Write zero into both original copies of this chip usage field"
+    },
+    {
+      "offset": "0x9c9b8",
+      "address": "0x438a49b8",
+      "before": "b810dde1",
+      "after": "0010a0e3",
+      "reason": "Reconciliation pending usage snapshot is zero"
+    },
+    {
+      "offset": "0x9bd94",
+      "address": "0x438a3d94",
+      "before": "01c0e0e1002193e70c0052e1",
+      "after": "0010a0e3001183e71eff2fe1",
+      "reason": "Pulse accumulation normalizes existing total to zero instead of adding"
+    },
+    {
+      "offset": "0x9bdb0",
+      "address": "0x438a3db0",
+      "before": "38229fe5",
+      "after": "f6ffffea",
+      "reason": "Direct pulse-total setter uses the same zero-normalizing path"
+    },
+    {
+      "offset": "0x9bdc0",
+      "address": "0x438a3dc0",
+      "before": "000192e7",
+      "after": "9ef6ffea",
+      "reason": "Pulse total read normalizes actual RAM to zero"
+    },
+    {
+      "offset": "0xf6378",
+      "address": "0x438fe378",
+      "before": "0000d0e5",
+      "after": "6400a0e3",
+      "reason": "Normal numeric ink remaining report is 100 percent; error dispatch unchanged"
+    },
+    {
+      "offset": "0xf54e4",
+      "address": "0x438fd4e4",
+      "before": "0130d3e5",
+      "after": "6430a0e3",
+      "reason": "Canonical ink remaining event stores 100; adjacent state/branding events unchanged"
+    }
+  ],
+  "changed_bytes_vs_stage1": 412,
+  "all_stage1_patches_preserved": true,
+  "physical_update_tested": false,
+  "physical_boot_tested": false,
+  "scope": "Identified ink software accounting, chip usage cache access, normal numeric reporting; no physical ink or authentication claim.",
+  "file": "FW4838TL_KH03P9-P704-Stage2-all-ink-zero.efu",
+  "bytes": 51506510,
+  "sha256": "05a4d09f31597f3e0c3f8e95b1848f2bc0ecd029a1c8a9f27606f0f8fce5120a",
+  "rcx_sha256": "04b94d88bbbe5ebb16356bb13f9817390d4a4153ced389269076c77040934fd9",
+  "actual_body_bytes": 95981568,
+  "declared_body_bytes": 95981569,
+  "compression": {
+    "encoded_frame_size": 752000,
+    "tokens": 352893,
+    "padding_tokens": 3,
+    "padded_token_count": 352896,
+    "dma_output_bytes": 1058688,
+    "packed_size": 561104,
+    "literal_size": 190092,
+    "decoded_sha256": "ab6968d68959ba877d454a3f8a064f26b559bab9e4dd1a2bfc6fbe7999045e3d",
+    "roundtrip_exact": true
+  },
+  "sections": [
+    {
+      "offset": "0x112e",
+      "metadata_bytes": 8192,
+      "body_bytes": 15663104,
+      "checks_passed": true
+    },
+    {
+      "offset": "0xef412e",
+      "metadata_bytes": 8192,
+      "body_bytes": 67108864,
+      "checks_passed": true
+    },
+    {
+      "offset": "0x4ef712e",
+      "metadata_bytes": 8192,
+      "body_bytes": 13172736,
+      "checks_passed": true
+    }
+  ],
+  "final_crc_ok": true,
+  "final_module_exact": true,
+  "second_frame_identical": true,
+  "second_frame_new_offset": "0x4fc1ab2",
+  "public_key_and_signature_preserved": true,
+  "unexpected_changes": false,
+  "native_tests_passed": 1295,
+  "native_tests_failed": 0,
+  "ink_native_scenarios": 1170,
+  "stage1_native_regressions": 125,
+  "host_signature_check": "invalid, expected after body modification"
+}

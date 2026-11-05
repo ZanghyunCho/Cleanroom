@@ -1,5 +1,13 @@
 # SC-P7500 USB 공개키 읽기 시험
 
+## P704 KH03P9 Stage 2: 잉크 10개 슬롯 잔량 100% / 사용량 0
+
+- [Stage 2 EFU 다운로드](downloads/FW4838TL_KH03P9-P704-Stage2-all-ink-zero.efu)
+- [변경·검증 범위](downloads/P704-KH03P9-Stage2.README.ko.md)
+- [검증 결과](downloads/P704-KH03P9-Stage2.validation.json) · [재현 코드·자료](downloads/P704-KH03P9-Stage2-validation.zip)
+
+사용자가 실기 통과를 보고한 P704 Stage 1을 유지하고 잉크 10개 슬롯으로 확장했습니다. 공통 회계·칩 사용량 접근·잔량 이벤트를 수정했으며 ARM 비교 1,295건과 최종 포장 검사를 통과했습니다. Stage 2의 실기 업데이트·부팅·칩 기록은 미검증입니다. 미장착·통신·인증 등 별도 오류 상태는 보존합니다.
+
 ## P704 KH03P9 Stage 1: 유지보수 잔량 100% / 사용량 0
 
 - [Stage 1 EFU 다운로드](downloads/FW4838TL_KH03P9-P704-Stage1-maintenance-zero.efu)
