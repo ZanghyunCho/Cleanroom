@@ -1,0 +1,71 @@
+{
+  "artifact": "FW7560TL_LK29Q5-LOONA-I3-ink-status.efu",
+  "efu_sha256": "9334a7f8995f5ab49419c29ecff5db077b1132b2296f6a7e53806d65dfee7eab",
+  "rcx_sha256": "88246ee8fcb8061d072f5084c2e45aa24a875749c06fba7882157ca4c886e68f",
+  "baseline": "E+LOONA; G/G2 not included",
+  "module_sha256": "a3cf41926858d0cbbb8de872b21523c8e99eece88341577f55cb4e520116c9d0",
+  "native_cases": 9784,
+  "compression": {
+    "encoded_frame_size": 1487836,
+    "tokens": 691073,
+    "padding_tokens": 15,
+    "noop_alignment_token_added": false,
+    "padded_token_count": 691088,
+    "dma_output_bytes": 2073264,
+    "packed_size": 1133232,
+    "literal_size": 353780,
+    "decoded_sha256": "a3cf41926858d0cbbb8de872b21523c8e99eece88341577f55cb4e520116c9d0",
+    "roundtrip_exact": true
+  },
+  "native_loader": {
+    "image": "I3-ink",
+    "token_count": 691073,
+    "padding_tokens": 15,
+    "padded_count_mod16": 0,
+    "native_dma_output_bytes": 2073264,
+    "native_dma_mod48": 0,
+    "native_lz_copy_return": 1,
+    "native_lz_output_exact": true,
+    "huffman_completion_fixture_calls": 676,
+    "hardware_huffman_execution": false
+  },
+  "native_checksum": {
+    "image": "I3-ink",
+    "payload_bytes": 117047296,
+    "declared_sum16": 16752,
+    "actual_sum16": 16752,
+    "native_checksum_return": 1,
+    "inner_sha1_matches": true
+  },
+  "host_sections": [
+    {
+      "offset": "0x1153",
+      "checks_passed": true
+    },
+    {
+      "offset": "0x6fa4153",
+      "checks_passed": true
+    },
+    {
+      "offset": "0x741a153",
+      "checks_passed": true
+    },
+    {
+      "offset": "0x7890153",
+      "checks_passed": true
+    }
+  ],
+  "original_key_signature_receiver_and_LOONA_preserved": true,
+  "actual_body_length": 159977472,
+  "declared_body_length": 159977473,
+  "modified_signature_valid": false,
+  "physical_tested": false,
+  "full_receiver_replay": false,
+  "scope": "I2 plus synchronous branding report; model/capacity and other status flags preserved",
+  "limits": [
+    "Actual print-time Korean UI warning source not traced on hardware",
+    "Raw physical chip branding/authentication is unchanged",
+    "Other status flags, area approval and explicit faults remain",
+    "No electrical chip or whole UI/boot/print execution"
+  ]
+}

@@ -34,3 +34,7 @@ I1의 100% 잔량 보고와 두 소비 증가 helper 변경, E의 기존 유지�
 SHA-256: `df55d2242c85b86be65c9e3997187a958d67954809b9bb5308b0679f31bfdc26`
 
 재현: 원본 `*.rcx`와 대응 모듈·E+LOONA 기준 파일을 준비한 뒤 `python research/verify_ink_i2.py`, `python research/package_ink_i1.py --variant I2`.
+
+## 이후 실기 보고
+
+사용자는 I2에서도 비정품 경고가 남는다고 보고했다. 모델 표기는 T44L 계열이며 기준 용량은 사용자 확인으로 700mL다. I2의 경고 제거는 실기에서 확인되지 않았다. 후속 [I3](LK29Q5-ink-I3.README.ko.md)도 실기 경고 제거 여부는 미검증이다.

@@ -143,3 +143,13 @@ v0.2는 USB ID와 NVRAM 시리얼을 별도로 표시하며, 수신 HEX 보기·
 v0.3의 영역 범위 읽기는 D6의 4KiB 백업 범위 안과 경계 밖을 구분해 시험하고, 현재 일반/Repair 모드를 사용자 기록으로 남깁니다. 프린터 모드를 자동 변경하지 않습니다.
 
 v0.4는 **영역 전체 2회 읽기**로 A3 64KiB / D6 4KiB를 읽고 회차별 BIN·SHA-256·불일치/누락 구간과 중간 JSONL을 저장합니다. 새 전체 읽기의 실기 시험은 아직 수행하지 않았습니다.
+
+
+## I3 실시간 잉크 상태 보고 시험본
+
+I2에서도 비정품 경고가 남는다는 보고에 따라, 별도 동기 상태 보고의 브랜딩 필드 한 곳을 추가 변경한 후보입니다. T44L 모델·용량 정보와 I1/I2의 기존 잔량·소비 변경, LOONA를 유지합니다. ARM 시험 9,784건과 EFU 검사를 통과했지만 **실제 경고 제거는 미검증**입니다.
+
+- [I3 EFU 다운로드](downloads/FW7560TL_LK29Q5-LOONA-I3-ink-status.efu)
+- [변경·검증 범위·시험 순서](downloads/LK29Q5-ink-I3.README.ko.md)
+- [상세 검증 결과](downloads/FW7560TL_LK29Q5-LOONA-I3-ink-status.validation.json)
+- [소스·검증 자료](downloads/LK29Q5-ink-I3-validation.zip)
