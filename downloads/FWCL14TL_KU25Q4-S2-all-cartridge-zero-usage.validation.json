@@ -1,0 +1,295 @@
+{
+  "label": "KU25Q4-S2-all-cartridge-zero-usage",
+  "filename": "FWCL14TL_KU25Q4-S2-all-cartridge-zero-usage.efu",
+  "bytes": 45762103,
+  "efu_sha256": "66bd161b0b9c6fa2da49af0cca8cb412c2840a195f5f658acb45f0b56d292cc8",
+  "source_efu_sha256": "fb8bc19af5a13bb6dba43f8971aafeb062425e030be0c761eeccbf6000c99a56",
+  "original_rcx_sha256": "69876190f9f7189d9679835045028b451745256753cbc6b7eed425cd8cd23b14",
+  "rcx_sha256": "ceaa8e7354cd148e43f2bf447701ab5f414d97c47adfe1a2c4827016ab5f602b",
+  "actual_body_bytes": 86728704,
+  "declared_body_bytes": 86728705,
+  "original_key_and_signature_bytes_preserved": true,
+  "ordinary_modified_body_signature": "invalid",
+  "zip_crc_and_reextraction_exact": true,
+  "sections": [
+    {
+      "offset": "0x112e",
+      "metadata_bytes": 8192,
+      "payload_bytes": 56295424,
+      "end": "0x35b412e",
+      "checks": {
+        "metadata_sum16": true,
+        "payload_sum16": true,
+        "sha1": true
+      }
+    },
+    {
+      "offset": "0x35b412e",
+      "metadata_bytes": 8192,
+      "payload_bytes": 30408704,
+      "end": "0x52b712e",
+      "checks": {
+        "metadata_sum16": true,
+        "payload_sum16": true,
+        "sha1": true
+      }
+    }
+  ],
+  "allowed_rcx_change_ranges": [
+    [
+      "0x13e",
+      "0x142"
+    ],
+    [
+      "0x1164",
+      "0x1166"
+    ],
+    [
+      "0x1172",
+      "0x1186"
+    ],
+    [
+      "0x11412e",
+      "0x41412e"
+    ]
+  ],
+  "outside_allowed_ranges_unchanged": true,
+  "original_module_sha256": "e6c02c744d84e50bebc97dc2f348525d58ddd290e011f7133fd0567a06263288",
+  "final_decoded_module_sha256": "2c23dd32742e4060cdeb1c9e20a9da49d6d54072094d1e4eb0082826f7661453",
+  "final_module_matches_tested_module": true,
+  "module_patches": {
+    "label": "KU25Q4-S2-all-cartridge-zero-usage",
+    "S1_module_sha256": "49bd6d6d5eedaa7c869405bddd4f34e30089ee224c1763cac9eb756df21951f5",
+    "S1_hardware_result": "User reports S1 passed; exact tested device operations not independently observed",
+    "module_sha256": "2c23dd32742e4060cdeb1c9e20a9da49d6d54072094d1e4eb0082826f7661453",
+    "load_address": "0x44604000",
+    "configured_ink_slots": 10,
+    "configured_maintenance_slots": 2,
+    "ink_accounting_pairs": [
+      [
+        "0x22",
+        "0x23"
+      ],
+      [
+        "0x24",
+        "0x25"
+      ],
+      [
+        "0x30",
+        "0x31"
+      ]
+    ],
+    "additional_ink_counter": "0x33",
+    "fraction_arrays": [
+      "0x449591ac",
+      "0x4495916c"
+    ],
+    "patches_vs_S1": [
+      {
+        "address": "0x4462ee88",
+        "module_offset": "0x2ae88",
+        "before": "30402de90cd04de2",
+        "after": "6400a0e31eff2fe1",
+        "reason": "All 10 ink percentage getter results are 100; raw state and notification error fields are unchanged"
+      },
+      {
+        "address": "0x4462ee90",
+        "module_offset": "0x2ae90",
+        "before": "0050a0e10040a0e329d8ffeb010050e31300000a1c019fe50500d0e70f0050e300f19f37300000ea14ef624444ef62444cef624454ef624454ef624464ef624454ef624454ef62445cef624414ef624414ef624414ef624438ef624474ef62446cef6244a21e00eb0010a0e15f00a0e3d6c007eb950000e0010080e2ff4000e2250000ea9c109fe5050185e0000181e0080090e5000050e30200000a2f2200eb000050e30200000a90009fe50540d0e7190000ea6940a0e3170000ea6e40a0e3150000ea7240a0e3130000ea6640a0e3110000ea7740a0e30f0000ea6d40a0e30d0000ea6340a0e30b0000eaafd7ffeb",
+        "after": "220050e3230051030700000a240050e3250051030400000a300050e3310051030100000af0402de9cda3ffea10402de908d04de200c0a0e300c08de504c08de51fa4ffeb08d08de20000a0e30010a0e31080bde8220050e3230051030700000a240050e3250051030400000a300050e3310051030100000af0472de911a4ffea10402de9110000eb08d04de200c0a0e300c08de504c08de5f6ffffeb08d08de21080bde8220050e323005103e8ffff0a240050e325005103e5ffff0a300050e331005103e2ffff0af0472de95aa4ffea0030a0e30cc09fe502318ce708c09fe502318ce71eff2fe1ac9195446c919544",
+        "reason": "Reused retired percentage body for exact ink-accounting pair gates and per-ledger fractional reset"
+      },
+      {
+        "address": "0x44617df0",
+        "module_offset": "0x13df0",
+        "before": "f0402de9",
+        "after": "265c00ea",
+        "reason": "Zero only the identified ink low/high ledger pairs; execute native getter/setter/addition for every other pair"
+      },
+      {
+        "address": "0x44617f54",
+        "module_offset": "0x13f54",
+        "before": "f0472de9",
+        "after": "e25b00ea",
+        "reason": "Zero only the identified ink low/high ledger pairs; execute native getter/setter/addition for every other pair"
+      },
+      {
+        "address": "0x446180c8",
+        "module_offset": "0x140c8",
+        "before": "f0472de9",
+        "after": "995b00ea",
+        "reason": "Zero only the identified ink low/high ledger pairs; execute native getter/setter/addition for every other pair"
+      },
+      {
+        "address": "0x44634300",
+        "module_offset": "0x30300",
+        "before": "dbc3ffeb000050e30f00000a0600a0e15d0500eb640050e30100a0931300009aec129fe5910000e0010080e0201ba0e1050081e0010040e2c8ab07eb630050e30140a023",
+        "after": "330050e30400001a10402de90020a0e31f8effeb0000a0e31080bde870402de9f28dffea330050e30020a003f0402de9188effea330050e3158eff0af0402de9788effea",
+        "reason": "Add zero read/set/add handling for ink usage ID 0x33; maintenance IDs retain their original S1 path"
+      },
+      {
+        "address": "0x44634240",
+        "module_offset": "0x30240",
+        "before": "70402de9",
+        "after": "2e0000ea",
+        "reason": "Extend only the S1 nonmaintenance fallback for ink counter 0x33"
+      },
+      {
+        "address": "0x44634258",
+        "module_offset": "0x30258",
+        "before": "f0402de9",
+        "after": "310000ea",
+        "reason": "Extend only the S1 nonmaintenance fallback for ink counter 0x33"
+      },
+      {
+        "address": "0x44634270",
+        "module_offset": "0x30270",
+        "before": "f0402de9",
+        "after": "2f0000ea",
+        "reason": "Extend only the S1 nonmaintenance fallback for ink counter 0x33"
+      },
+      {
+        "address": "0x4462e0dc",
+        "module_offset": "0x2a0dc",
+        "before": "f8119fe5d8219fe5801181e0d000c1e10030a0e3a6bd07ea",
+        "after": "f8119fe5801181e00000a0e3000081e5040081e51eff2fe1",
+        "reason": "Reading the extra ink accumulator clears its actual 64-bit RAM entry and returns zero"
+      },
+      {
+        "address": "0x4462e0f4",
+        "module_offset": "0x2a0f4",
+        "before": "c4219fe5",
+        "after": "0020a0e3",
+        "reason": "Extra ink accumulator setter stores zero instead of a converted positive value"
+      },
+      {
+        "address": "0x4462e11c",
+        "module_offset": "0x2a11c",
+        "before": "013093e0",
+        "after": "0030a0e3",
+        "reason": "Extra ink usage addition stores low word zero"
+      },
+      {
+        "address": "0x4462e120",
+        "module_offset": "0x2a120",
+        "before": "0010ace2",
+        "after": "0010a0e3",
+        "reason": "Extra ink usage addition stores high word zero"
+      },
+      {
+        "address": "0x4462fdf0",
+        "module_offset": "0x2bdf0",
+        "before": "012092e0",
+        "after": "0020a0e3",
+        "reason": "Notification usage accumulator low word zero"
+      },
+      {
+        "address": "0x4462fdf4",
+        "module_offset": "0x2bdf4",
+        "before": "0010a3e2",
+        "after": "0010a0e3",
+        "reason": "Notification usage accumulator high word zero"
+      },
+      {
+        "address": "0x4462fd84",
+        "module_offset": "0x2bd84",
+        "before": "05c091e0",
+        "after": "00c0a0e3",
+        "reason": "Alternate notification consumption accumulator low word zero"
+      },
+      {
+        "address": "0x4462fd88",
+        "module_offset": "0x2bd88",
+        "before": "0010a3e2",
+        "after": "0010a0e3",
+        "reason": "Alternate notification consumption accumulator high word zero"
+      },
+      {
+        "address": "0x4462fe5c",
+        "module_offset": "0x2be5c",
+        "before": "10402de90040a0e1b51b00eb0020a0e144009fe50030a0e3",
+        "after": "54c09fe580c18ce00000a0e300008ce504008ce51eff2fe1",
+        "reason": "Notification numeric usage getter clears its selected 64-bit accumulator and returns zero"
+      }
+    ],
+    "changed_bytes_vs_S1": 375,
+    "gate_addresses": {
+      "get": "0x4462ee90",
+      "get_zero": "0x4462eebc",
+      "set": "0x4462eee4",
+      "set_native": "0x4462ef08",
+      "set_zero": "0x4462ef10",
+      "add": "0x4462ef34",
+      "clear_fraction": "0x4462ef60"
+    },
+    "preserved": [
+      "S1 maintenance behavior",
+      "Raw ink states and cartridge detection",
+      "Branding/authentication fields and approval prompts",
+      "Unrelated accounting pairs",
+      "Chip I/O, printhead drive and mechanical control"
+    ],
+    "physical_S2_tested": false,
+    "limitations": [
+      "RAM accounting and report changes do not prove physical EEPROM contents or persistence",
+      "Not all possible direct/DMA or restoration writes are intercepted",
+      "No claim of absent-cartridge operation or suppression of ink-state/communication errors"
+    ]
+  },
+  "compression": {
+    "encoded_frame_size": 1311275,
+    "tokens": 616059,
+    "padding_tokens": 5,
+    "padded_token_count": 616064,
+    "dma_output_bytes": 1848192,
+    "packed_size": 1007696,
+    "literal_size": 302763,
+    "decoded_sha256": "2c23dd32742e4060cdeb1c9e20a9da49d6d54072094d1e4eb0082826f7661453",
+    "roundtrip_exact": true,
+    "reused_previously_built_verified_frame": true
+  },
+  "original_frame": {
+    "source_offset": "0x11412e",
+    "container_end": "0x24a0f3",
+    "packed_size": 1008592,
+    "token_count": 619932,
+    "literal_size": 260289,
+    "literal_bytes_used": 260289,
+    "token_bits_used": 8068652,
+    "decoded_size": 3069664,
+    "sha256": "e6c02c744d84e50bebc97dc2f348525d58ddd290e011f7133fd0567a06263288"
+  },
+  "final_frame": {
+    "source_offset": "0x11412e",
+    "container_end": "0x25435d",
+    "packed_size": 1007696,
+    "token_count": 616059,
+    "literal_size": 302763,
+    "literal_bytes_used": 302763,
+    "token_bits_used": 8061362,
+    "decoded_size": 3069664,
+    "sha256": "2c23dd32742e4060cdeb1c9e20a9da49d6d54072094d1e4eb0082826f7661453"
+  },
+  "second_frame_preserved": true,
+  "second_frame_original_offset": "0x24a0f3",
+  "second_frame_new_offset": "0x25435d",
+  "second_frame_decoded_sha256": "8a5a1d68dbe0b40869c768005a9849ef1515b153fe58183228f77f33bac09e08",
+  "allocation_end": "0x41412e",
+  "native_scenarios_passed": 7063,
+  "native_case_counts": {
+    "S1_regressions_except_new_ink_ID33": 1905,
+    "configured_slot_counts": 1,
+    "ink_pair_read_set_add_cases": 3240,
+    "unrelated_pair_regressions": 360,
+    "ink_ID33_cases": 270,
+    "ink_percentage_cases": 750,
+    "direct_accumulator_cases": 450,
+    "original_ink_helper_controls": 80,
+    "actual_10_slot_ink_worker_cases": 7
+  },
+  "native_verdict_hooks": 0,
+  "native_tests_run_on_final_efu_extraction": true,
+  "hardware_update_boot_printing_tested": false,
+  "full_receiver_native_loader_hardware_huffman_executed": false,
+  "persistence_scope": "Native accounting RAM and dirty flags. Actual physical cartridge EEPROM writes and restoration across reboot not validated."
+}
