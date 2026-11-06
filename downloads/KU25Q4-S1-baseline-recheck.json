@@ -1,0 +1,17 @@
+{
+  "label": "S1-baseline-recheck-after-S2-boot-failure",
+  "efu_sha256": "7956e54ab76c5be66bb66a8b67ef5d6fdab697fb262b2f6f98603e5e08f7a890",
+  "original_published_bytes_preserved": true,
+  "zip_crc_passed": true,
+  "section_checks_passed": true,
+  "module_matches_original_S1_validation": true,
+  "native_scenarios_passed": 1923,
+  "user_reported_S1_pass_previously": true,
+  "present_device_rollback_boot_confirmed": false,
+  "reported_failure": {
+    "first_stage": "S2",
+    "when": "power-on",
+    "displayed_code": "308223"
+  },
+  "error_code_official_meaning_confirmed": false
+}
