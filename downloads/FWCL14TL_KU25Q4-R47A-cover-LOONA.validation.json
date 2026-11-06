@@ -1,0 +1,221 @@
+{
+  "filename": "FWCL14TL_KU25Q4-R47A-cover-LOONA.efu",
+  "efu_sha256": "2653ace44726bd3c7e6271bd4eda0914fde7581ca6fd1a0c6133463375c4d18d",
+  "bytes": 45767781,
+  "baseline_R46B_sha256": "cd015d121d260fef96ee418bf6fdcf55c7bc8e7a35bef30c93d0bd79c557a04e",
+  "rcx_sha256": "751a041cba7aba191df2f9f97a7b9cae8be403209f07f09534db87ec47ed1f2d",
+  "original_key_and_signature_bytes_preserved": true,
+  "declared_body_bytes": 86728705,
+  "actual_body_bytes": 86728704,
+  "modified_body_ecdsa_signature_valid": false,
+  "zip_crc_and_reextraction_exact": true,
+  "host_sections": [
+    {
+      "offset": "0x112e",
+      "metadata_bytes": 8192,
+      "payload_bytes": 56295424,
+      "end": "0x35b412e",
+      "checks": {
+        "metadata_sum16": true,
+        "payload_sum16": true,
+        "sha1": true
+      }
+    },
+    {
+      "offset": "0x35b412e",
+      "metadata_bytes": 8192,
+      "payload_bytes": 30408704,
+      "end": "0x52b712e",
+      "checks": {
+        "metadata_sum16": true,
+        "payload_sum16": true,
+        "sha1": true
+      }
+    }
+  ],
+  "allowed_rcx_change_ranges": [
+    [
+      "0x1164",
+      "0x1166"
+    ],
+    [
+      "0x1172",
+      "0x1186"
+    ],
+    [
+      "0x11412e",
+      "0x41812e"
+    ]
+  ],
+  "outside_allowed_ranges_byte_identical": true,
+  "patched_control_sha256": "546b0bcdefb9fc42fe210ea15aa8be31a8d139c24d562fc497cd9ac1d9fea104",
+  "final_control_exactly_matches_tested_code": true,
+  "patches": {
+    "manufacturer_and_non_Epson_flag_changes_included": false,
+    "label": "KU25Q4-R47A-cover-LOONA",
+    "source_R46B_module_sha256": "961b8925f84252ee650fb84ee17a648da36517c5ea612b381a0cc41bce5ce2f0",
+    "module_sha256": "546b0bcdefb9fc42fe210ea15aa8be31a8d139c24d562fc497cd9ac1d9fea104",
+    "ink_cover_types": [
+      2,
+      3
+    ],
+    "ink_cover_status_ids": [
+      "0x6009",
+      "0x600a",
+      "0x602f",
+      "0x6030"
+    ],
+    "cover_records_original_and_unchanged": [
+      {
+        "type": 0,
+        "interlock_flag": 1,
+        "sensor_status_id": "0x6027",
+        "state_id": "0x6000",
+        "open_callback": "0x4470575c",
+        "close_callback": "0x447057d4"
+      },
+      {
+        "type": 1,
+        "interlock_flag": 0,
+        "sensor_status_id": "0x6035",
+        "state_id": "0x600e",
+        "open_callback": "0x4470575c",
+        "close_callback": "0x447057d4"
+      },
+      {
+        "type": 2,
+        "interlock_flag": 0,
+        "sensor_status_id": "0x602f",
+        "state_id": "0x6009",
+        "open_callback": "0x44705828",
+        "close_callback": "0x44705880"
+      },
+      {
+        "type": 3,
+        "interlock_flag": 0,
+        "sensor_status_id": "0x6030",
+        "state_id": "0x600a",
+        "open_callback": "0x447058dc",
+        "close_callback": "0x44705934"
+      },
+      {
+        "type": 4,
+        "interlock_flag": 0,
+        "sensor_status_id": "0x602e",
+        "state_id": "0x6008",
+        "open_callback": "0x4470598c",
+        "close_callback": "0x44705a24"
+      },
+      {
+        "type": 5,
+        "interlock_flag": 0,
+        "sensor_status_id": "0x6036",
+        "state_id": "0x600e",
+        "open_callback": "0x0",
+        "close_callback": "0x447057d4"
+      }
+    ],
+    "patches": [
+      {
+        "address": "0x4462fa28",
+        "offset": "0x2ba28",
+        "before": "70402de90160a0e3",
+        "after": "0100a0e31eff2fe1",
+        "reason": "The ink-cover-only two-bank aggregate reports closed/ready"
+      },
+      {
+        "address": "0x4462fa30",
+        "offset": "0x2ba30",
+        "before": "0040a0e3ce1b00eb000050e31c531f850700009a0400d5e7010050e30600000a010084e2ff4000e2c51b00eb040050e1f7ffff8a0600a0e17080bde80060a0e3",
+        "after": "09c006e30c0050e10a00000a0ac006e30c0050e10700000a2fc006e30c0050e10400000a30c006e30c0050e10100000a30402de9f86e03ea0000a0e31eff2fe1",
+        "reason": "Return closed only for four confirmed non-interlock ink-cover sensor/state IDs"
+      },
+      {
+        "address": "0x4470b648",
+        "offset": "0x107648",
+        "before": "30402de9",
+        "after": "f890fcea",
+        "reason": "Route status queries through the exact ink-cover ID filter"
+      },
+      {
+        "address": "0x4462f9c4",
+        "offset": "0x2b9c4",
+        "before": "0400d0e7",
+        "after": "0000a0e3",
+        "reason": "Left/right cached ink-cover getter returns closed"
+      },
+      {
+        "address": "0x4462f9e0",
+        "offset": "0x2b9e0",
+        "before": "0150a0e1",
+        "after": "0050a0e3",
+        "reason": "Left/right ink-cover setter stores closed in the original two-byte array"
+      },
+      {
+        "address": "0x44705828",
+        "offset": "0x101828",
+        "before": "10402de9",
+        "after": "140000ea",
+        "reason": "Non-interlock ink left/home open callback follows its original corresponding close callback"
+      },
+      {
+        "address": "0x447058dc",
+        "offset": "0x1018dc",
+        "before": "10402de9",
+        "after": "140000ea",
+        "reason": "Non-interlock ink right/full open callback follows its original corresponding close callback"
+      }
+    ],
+    "changed_bytes": 81,
+    "actual_interlock_checker_byte_identical": true,
+    "emergency_stop_handler_byte_identical": true,
+    "maintenance_cover_functions_byte_identical": true,
+    "physical_tested": false,
+    "scope": "Two non-interlock ink-cartridge cover status paths only; actual motion/protective cover functions are not changed."
+  },
+  "compression": {
+    "encoded_frame_size": 1311360,
+    "tokens": 616089,
+    "padding_tokens": 7,
+    "noop_alignment_token_added": false,
+    "padded_token_count": 616096,
+    "dma_output_bytes": 1848288,
+    "packed_size": 1007760,
+    "literal_size": 302784,
+    "decoded_sha256": "546b0bcdefb9fc42fe210ea15aa8be31a8d139c24d562fc497cd9ac1d9fea104",
+    "roundtrip_exact": true
+  },
+  "second_frame_preserved": true,
+  "second_frame_original_offset": "0x254384",
+  "second_frame_new_offset": "0x2543b2",
+  "second_frame_decoded_sha256": "8a5a1d68dbe0b40869c768005a9849ef1515b153fe58183228f77f33bac09e08",
+  "LOONA_resource_byte_identical_to_published_LOONA": true,
+  "LOONA_resource_sha256": "7911319cc1eab60d50b123a4cd430991d67f0591f9a112ef5b122a9c47e0cd78",
+  "native_scenarios_passed": 5642,
+  "native_case_counts": {
+    "R4_accounting_regressions": 4973,
+    "cached_ink_cover_combinations": 16,
+    "two_ink_cover_setter_cases": 512,
+    "exact_ink_ID_and_other_query_cases": 48,
+    "actual_interlock_and_other_cover_combinations": 64,
+    "ink_open_to_corresponding_close_callback_cases": 2,
+    "maintenance_cover_regressions": 27
+  },
+  "native_tests_on_final_extracted_module": true,
+  "native_fixture_boundaries": [
+    "DSM IPC context/send/receive/release",
+    "Typed DSM write IPC boundary",
+    "Logging and zero-initialization utility",
+    "Message allocation/delivery and RPC transport"
+  ],
+  "interlock_classification_evidence": "Types 2 and 3 have flag 0; original ms_Cover_IsInterlockCoverOpen tests only flag 1. Type 0 has flag 1 and original results remain unchanged.",
+  "actual_interlock_and_emergency_logic_byte_identical": true,
+  "hardware_print_vibration_tested": false,
+  "limits": [
+    "No physical update/boot/printing/vibration verification",
+    "Not a hardware cover-sensor test; only the identified two non-interlock ink-cover software paths were changed",
+    "Separate safety interlocks, other-cover errors, cartridge presence and communication faults are preserved"
+  ],
+  "manufacturer_and_non_Epson_flag_changes_included": false,
+  "physical_boot_printing_tested": false
+}
