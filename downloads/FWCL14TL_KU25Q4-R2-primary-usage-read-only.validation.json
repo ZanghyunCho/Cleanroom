@@ -1,0 +1,140 @@
+{
+  "label": "KU25Q4-R2-primary-usage-read-only",
+  "filename": "FWCL14TL_KU25Q4-R2-primary-usage-read-only.efu",
+  "bytes": 45762139,
+  "efu_sha256": "9e41ef1e006bebd0cc970803c1e317ebe37c55b9fb8ff0f074bf6ab730293c97",
+  "source_efu_sha256": "fb8bc19af5a13bb6dba43f8971aafeb062425e030be0c761eeccbf6000c99a56",
+  "original_rcx_sha256": "69876190f9f7189d9679835045028b451745256753cbc6b7eed425cd8cd23b14",
+  "rcx_sha256": "0f9fe35195a86f532fb5220a981893d6be6ae5247f6e3fc2c0d525dc35a85df6",
+  "actual_body_bytes": 86728704,
+  "declared_body_bytes": 86728705,
+  "original_key_and_signature_bytes_preserved": true,
+  "ordinary_modified_body_signature": "invalid",
+  "zip_crc_and_reextraction_exact": true,
+  "sections": [
+    {
+      "offset": "0x112e",
+      "metadata_bytes": 8192,
+      "payload_bytes": 56295424,
+      "end": "0x35b412e",
+      "checks": {
+        "metadata_sum16": true,
+        "payload_sum16": true,
+        "sha1": true
+      }
+    },
+    {
+      "offset": "0x35b412e",
+      "metadata_bytes": 8192,
+      "payload_bytes": 30408704,
+      "end": "0x52b712e",
+      "checks": {
+        "metadata_sum16": true,
+        "payload_sum16": true,
+        "sha1": true
+      }
+    }
+  ],
+  "allowed_rcx_change_ranges": [
+    [
+      "0x13e",
+      "0x142"
+    ],
+    [
+      "0x1164",
+      "0x1166"
+    ],
+    [
+      "0x1172",
+      "0x1186"
+    ],
+    [
+      "0x11412e",
+      "0x41412e"
+    ]
+  ],
+  "outside_allowed_ranges_unchanged": true,
+  "original_module_sha256": "e6c02c744d84e50bebc97dc2f348525d58ddd290e011f7133fd0567a06263288",
+  "final_decoded_module_sha256": "e34b2d35317a35a0bf3855a57bac5a716305628fc5f6d12da6fd6afb11b01206",
+  "final_module_matches_tested_module": true,
+  "module_patches": {
+    "label": "KU25Q4-R2-primary-usage-read-only",
+    "baseline": "R1 user reports boot, printing and percentage 100 passed",
+    "baseline_module_sha256": "31f34f7672f74033e4e72e07aaec29c09e95397ef56b0f48af80f5c3a042877d",
+    "module_sha256": "e34b2d35317a35a0bf3855a57bac5a716305628fc5f6d12da6fd6afb11b01206",
+    "change_ranges_vs_R1": [
+      [
+        "0x13df0",
+        "0x13df4"
+      ],
+      [
+        "0x2ae90",
+        "0x2aeac"
+      ]
+    ],
+    "zero_read_pair": [
+      "0x22",
+      "0x23"
+    ],
+    "zero_result_registers": [
+      "r0",
+      "r1"
+    ],
+    "stored_usage_changed": false,
+    "set_add_functions_changed": false,
+    "other_usage_pairs_changed": false,
+    "hardware_boot_print_tested": false,
+    "complete_zero_usage_implementation": false,
+    "chipless_support": false
+  },
+  "compression": {
+    "encoded_frame_size": 1311326,
+    "tokens": 616068,
+    "padding_tokens": 12,
+    "noop_alignment_token_added": false,
+    "padded_token_count": 616080,
+    "dma_output_bytes": 1848240,
+    "packed_size": 1007728,
+    "literal_size": 302782,
+    "decoded_sha256": "e34b2d35317a35a0bf3855a57bac5a716305628fc5f6d12da6fd6afb11b01206",
+    "roundtrip_exact": true
+  },
+  "original_frame": {
+    "source_offset": "0x11412e",
+    "container_end": "0x24a0f3",
+    "packed_size": 1008592,
+    "token_count": 619932,
+    "literal_size": 260289,
+    "literal_bytes_used": 260289,
+    "token_bits_used": 8068652,
+    "decoded_size": 3069664,
+    "sha256": "e6c02c744d84e50bebc97dc2f348525d58ddd290e011f7133fd0567a06263288"
+  },
+  "final_frame": {
+    "source_offset": "0x11412e",
+    "container_end": "0x254390",
+    "packed_size": 1007728,
+    "token_count": 616068,
+    "literal_size": 302782,
+    "literal_bytes_used": 302782,
+    "token_bits_used": 8061530,
+    "decoded_size": 3069664,
+    "sha256": "e34b2d35317a35a0bf3855a57bac5a716305628fc5f6d12da6fd6afb11b01206"
+  },
+  "second_frame_preserved": true,
+  "second_frame_original_offset": "0x24a0f3",
+  "second_frame_new_offset": "0x254390",
+  "second_frame_decoded_sha256": "8a5a1d68dbe0b40869c768005a9849ef1515b153fe58183228f77f33bac09e08",
+  "allocation_end": "0x41412e",
+  "native_scenarios_passed": 2833,
+  "native_case_counts": {
+    "S1_regressions": 1923,
+    "R1_percentage": 10,
+    "ledger_read_and_write_regressions": 900
+  },
+  "native_verdict_hooks": 0,
+  "native_tests_run_on_final_efu_extraction": true,
+  "hardware_update_boot_printing_tested": false,
+  "full_receiver_native_loader_hardware_huffman_executed": false,
+  "persistence_scope": "Native accounting RAM and dirty flags. Actual physical cartridge EEPROM writes and restoration across reboot not validated."
+}
